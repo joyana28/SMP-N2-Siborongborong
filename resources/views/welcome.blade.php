@@ -12,7 +12,7 @@
             font-family: Arial, sans-serif;
         }
         
-        /* Hero section dengan animasi */
+       
         .hero-section {
             background-image: url('/images/siborongborong.jpg');
             background-size: cover;
@@ -22,11 +22,11 @@
             color: white;
             display: flex;
             align-items: center;
-            opacity: 0; /* Mulai dengan opacity 0 */
-            animation: fadeInBackground 2s ease-in forwards; /* Animasi background */
+            opacity: 0;
+            animation: fadeInBackground 2s ease-in forwards;
         }
         
-        /* Animasi untuk background */
+        
         @keyframes fadeInBackground {
             0% { opacity: 0; }
             100% { opacity: 1; }
@@ -46,9 +46,9 @@
             z-index: 2;
             max-width: 800px;
             padding: 0 15px;
-            opacity: 0; /* Mulai dengan opacity 0 */
-            transform: translateY(30px); /* Mulai sedikit di bawah posisi akhir */
-            animation: fadeInText 2s ease-out 1s forwards; /* Animasi teks dengan delay */
+            opacity: 0; 
+            transform: translateY(30px); 
+            animation: fadeInText 2s ease-out 1s forwards; 
         }
         
         /* Animasi untuk teks */
