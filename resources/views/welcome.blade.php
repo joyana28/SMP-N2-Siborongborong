@@ -93,8 +93,8 @@
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s ease;
-            opacity: 0; /* Mulai dengan opacity 0 */
-            animation: pulseButton 2s ease-in-out 2s forwards; /* Animasi tombol dengan delay */
+            opacity: 0;
+            animation: pulseButton 2s ease-in-out 2s forwards; 
         }
         
         /* Animasi untuk tombol contact */
@@ -189,6 +189,83 @@
             text-align: justify;
             margin-bottom: 15px;
         }
+        
+        /* Style untuk section informasi sekolah */
+        .info-section {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .info-card {
+            text-align: center;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .info-icon {
+            font-size: 40px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        
+        .info-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .info-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .profile-section {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .profile-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-text {
+            color: #666;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        
+        .profile-text h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .btn-more {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn-more:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -227,6 +304,57 @@
                         <p>Kami dengan bangga menghadirkan portal ini sebagai sumber informasi bagi siswa, guru, orang tua, dan masyarakat. Di sini, Anda dapat menemukan berbagai informasi terkait sekolah, kegiatan ekstrakurikuler, prestasi, serta berita terbaru dari sekolah kami.</p>
                         <p>SMP Negeri 2 Siborong Borong berkomitmen untuk menciptakan lingkungan belajar yang inspiratif dan mendukung perkembangan potensi setiap siswa, baik dalam bidang akademik maupun non-akademik.</p>
                         <p>Mari bersama-sama membangun masa depan yang lebih baik melalui pendidikan berkualitas!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bagian Profil Sekolah (BARU) -->
+    <div class="profile-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="profile-text">
+                        <h2>Profil Sekolah</h2>
+                        <p>Di samping adalah profil sekolah kami secara keseluruhan dari mulai bagian depan hingga seluruh fasilitas yang terdapat disekolah kami kami akan...</p>
+                        <button class="btn-more">Lebih Lanjut</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Tambahkan gambar profil sekolah di sini -->
+                    <img src="/api/placeholder/600/400" alt="Profil Sekolah" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bagian Informasi (BARU) -->
+    <div class="info-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="info-card">
+                        <img src="/api/placeholder/80/80" alt="Fasilitas Icon" class="mb-4">
+                        <h3>Fasilitas</h3>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info-card">
+                        <img src="/api/placeholder/80/80" alt="Lokasi Icon" class="mb-4">
+                        <h3>Lokasi</h3>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info-card">
+                        <img src="/api/placeholder/80/80" alt="Sejarah Icon" class="mb-4">
+                        <h3>Sejarah</h3>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info-card">
+                        <img src="/api/placeholder/80/80" alt="Prestasi Icon" class="mb-4">
+                        <h3>Prestasi</h3>
                     </div>
                 </div>
             </div>
