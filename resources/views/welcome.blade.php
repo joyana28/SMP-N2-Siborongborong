@@ -313,34 +313,64 @@
     </div>
 
     <!-- Bagian Profil Sekolah (BARU) -->
-    <div class="profile-section">
+    <!-- Bagian Profil Sekolah dengan Efek Hover -->
+<!-- Bagian Profil Sekolah dengan Efek Hover -->
+<div class="profile-section">
     <div class="container">
-        <div class="row align-items-center">
-            <!-- Bagian Teks -->
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-5">
                 <div class="profile-text">
                     <h2><strong>Profil Sekolah</strong></h2>
-                    <p>Di samping adalah profil sekolah kami secara keseluruhan dari mulai bagian depan hingga seluruh fasilitas yang terdapat di sekolah kami kami akan ...</p>
+                    <p>Di samping adalah profil sekolah kami secara keseluruhan dari mulai bagian depan hingga seluruh fasilitas yang terdapat di sekolah kami kami akan memberikan pelayanan yang terbaik untuk masa depan putra-putri anda...</p>
                     <button class="btn-more">Lebih Lanjut</button>
                 </div>
             </div>
-            <!-- Bagian Kartu Profil -->
-            <div class="col-md-6 d-flex flex-wrap gap-3">
-                <div class="info-card text-center flex-fill">
-                    <img src="{{ asset('images/fasilitas.png') }}" alt="Fasilitas Icon" class="mb-3">
-                    <h3>Fasilitas</h3>
-                </div>
-                <div class="info-card text-center flex-fill">
-                    <img src="/api/placeholder/80/80" alt="Lokasi Icon" class="mb-3">
-                    <h3>Lokasi</h3>
-                </div>
-                <div class="info-card text-center flex-fill">
-                    <img src="/api/placeholder/80/80" alt="Sejarah Icon" class="mb-3">
-                    <h3>Sejarah</h3>
-                </div>
-                <div class="info-card text-center flex-fill">
-                    <img src="/api/placeholder/80/80" alt="Prestasi Icon" class="mb-3">
-                    <h3>Prestasi</h3>
+            <div class="col-md-7">
+                <div class="profile-cards">
+                    <div class="card-row">
+                        <div class="profile-card">
+                            <div class="card-icon">
+                                <img src="/api/placeholder/80/80" alt="Fasilitas Icon">
+                            </div>
+                            <h3>Fasilitas</h3>
+                            <div class="card-overlay">
+                                <p>Lihat semua fasilitas lengkap yang kami sediakan untuk mendukung pembelajaran</p>
+                                <a href="#" class="card-link">Lihat Detail</a>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="card-icon">
+                                <img src="/api/placeholder/80/80" alt="Lokasi Icon">
+                            </div>
+                            <h3>Lokasi</h3>
+                            <div class="card-overlay">
+                                <p>Temukan lokasi strategis sekolah kami yang nyaman dan mudah diakses</p>
+                                <a href="#" class="card-link">Lihat Peta</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-row">
+                        <div class="profile-card">
+                            <div class="card-icon">
+                                <img src="/api/placeholder/80/80" alt="Sejarah Icon">
+                            </div>
+                            <h3>Sejarah</h3>
+                            <div class="card-overlay">
+                                <p>Pelajari perjalanan dan sejarah SMP Negeri 2 Siborongborong dari awal berdiri</p>
+                                <a href="#" class="card-link">Baca Sejarah</a>
+                            </div>
+                        </div>
+                        <div class="profile-card">
+                            <div class="card-icon">
+                                <img src="/api/placeholder/80/80" alt="Prestasi Icon">
+                            </div>
+                            <h3>Prestasi</h3>
+                            <div class="card-overlay">
+                                <p>Lihat berbagai prestasi akademik dan non-akademik yang telah diraih siswa kami</p>
+                                <a href="#" class="card-link">Lihat Prestasi</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -357,11 +387,13 @@
         color: #666;
         text-align: justify;
         line-height: 1.6;
+        padding-right: 20px;
     }
     
     .profile-text h2 {
         color: #333;
         margin-bottom: 20px;
+        font-weight: bold;
     }
 
     .btn-more {
@@ -379,20 +411,207 @@
     .btn-more:hover {
         background-color: #0056b3;
     }
-
-    .info-card {
-        padding: 30px;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-align: center;
-        width: 48%;
+    
+    /* Card Styles */
+    .profile-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
+    
+    .card-row {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .profile-card {
+    width: 170px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
 
-    .info-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+/* Efek animasi latar belakang */
+.profile-card::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    background-image: linear-gradient(180deg, rgb(206, 113, 20), rgb(219, 203, 23));
+    height: 130%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+}
+
+/* Latar belakang utama */
+.profile-card::after {
+    content: "";
+    position: absolute;
+    background:rgb(8, 73, 157); /* Warna utama tetap */
+    inset: 5px;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Teks judul di atas kartu */
+.profile-card h3 {
+    position: absolute;
+    font-size: 18px;
+    color: white !important;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Overlay teks tambahan */
+.profile-card .card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6); /* Warna transparan untuk teks */
+    padding: 15px;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.3s ease-in-out;
+    z-index: 3; /* Pastikan overlay berada di atas */
+}
+
+/* Animasi hover */
+.profile-card:hover .card-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-card:hover h3 {
+    opacity: 0; /* Sembunyikan teks utama saat overlay muncul */
+}
+
+/* Animasi background tetap berjalan */
+@keyframes rotBGimg {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+    .card-icon {
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .card-icon img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
+    
+    .profile-card h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #007bff;
+        margin: 0;
+        transition: all 0.3s ease;
+    }
+    
+    /* Overlay Styles */
+    .card-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 123, 255, 0.9);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        padding: 20px;
+        text-align: center;
+        backdrop-filter: blur(5px);
+    }
+    
+    .card-overlay p {
+        color: white;
+        font-size: 14px;
+        margin-bottom: 15px;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s ease 0.1s;
+    }
+    
+    .card-link {
+        background-color: white;
+        color: #007bff;
+        padding: 8px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s ease 0.2s;
+    }
+    
+    .card-link:hover {
+        background-color: #f0f0f0;
+        transform: scale(1.05);
+    }
+    
+    /* Hover Effect */
+    .profile-card:hover .card-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .profile-card:hover .card-overlay p,
+    .profile-card:hover .card-overlay .card-link {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .profile-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .profile-card:hover .card-icon {
+        transform: scale(0.9);
+    }
+    
+    .profile-card:hover h3 {
+        opacity: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .card-row {
+            flex-direction: column;
+        }
+        
+        .profile-card {
+            height: 150px;
+            margin-bottom: 15px;
+        }
     }
 </style>
 
@@ -737,4 +956,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-    </html>
+    </html>
