@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="intro-content">
                     <div class="intro-image">
-                        <img src="school-garden.jpg" alt="Taman Sekolah">
+                        <img src="../images/pp 2.png" alt="Taman Sekolah">
                     </div>
                     <div class="intro-text">
                         <span class="section-tag">Selamat Datang di</span>
