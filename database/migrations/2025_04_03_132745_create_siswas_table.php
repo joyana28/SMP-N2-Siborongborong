@@ -1,27 +1,27 @@
 <?php
-
+// Create Pengumuman Table Migration
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('siswas', function (Blueprint $table) {
-            $table->id();
+        Schema::create('pengumumans', function (Blueprint $table) {
+            $table->id('id_pengumuman');
+            $table->unsignedBigInteger('id_admin');
+            $table->text('isi')->notNullable();
+            $table->date('tanggal_terbit')->notNullable();
             $table->timestamps();
+            
+            $table->foreign('id_admin')->references('id_admin')->on('admins');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('siswas');
+        Schema::dropIfExists('pengumumans');
     }
 };
+

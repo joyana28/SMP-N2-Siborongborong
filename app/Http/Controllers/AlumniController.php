@@ -2,63 +2,118 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alumni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AlumniController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $alumnis = Alumni::with('admin')->get();
+        return response()->json([
+            'success' => true,
+            'data' => $alumnis
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'id_admin' => 'required|exists:admins,id_admin',
+            'nama' => 'required|string|max:100',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
+        $alumni = Alumni::create([
+            'id_admin' => $request->id_admin,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Alumni berhasil ditambahkan',
+            'data' => $alumni
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $alumni = Alumni::with('admin')->find($id);
+        
+        if (!$alumni) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Alumni tidak ditemukan'
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $alumni
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $alumni = Alumni::find($id);
+        
+        if (!$alumni) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Alumni tidak ditemukan'
+            ], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'id_admin' => 'exists:admins,id_admin',
+            'nama' => 'string|max:100',
+            'deskripsi' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()
+            ], 400);
+        }
+
+        $alumni->id_admin = $request->id_admin ?? $alumni->id_admin;
+        $alumni->nama = $request->nama ?? $alumni->nama;
+        $alumni->deskripsi = $request->deskripsi ?? $alumni->deskripsi;
+        $alumni->save();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Alumni berhasil diperbarui',
+            'data' => $alumni
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy($id)
     {
-        //
+        $alumni = Alumni::find($id);
+        
+        if (!$alumni) {
+            return response()->json([
+            'success' => false,
+            'message' => 'Alumni tidak ditemukan'
+        ], 404);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    $alumni->delete();
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Alumni berhasil dihapus'
+    ]);
+}
 }
