@@ -6,6 +6,7 @@
     <title>SMP Negeri 2 Siborongborong</title>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jis-slider.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Font Awesome for icons -->
 </head>
 <body>
@@ -223,38 +224,41 @@
         </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-columns">
-                <div class="footer-col">
-                    <h3>Alamat Sekolah</h3>
-                    <p>Jl. Raya KM. 1 Siborongborong, Tarutung</p>
-                    <p>Kabupaten Tapanuli Utara</p>
-                    <p>Provinsi Sumatera Utara, Kode Pos</p>
-                    <p>Telepon/Fax: 62476-XXXXX</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Jam Sekolah</h3>
-                    <p>Sen - Jum: 07.30 - 15.00</p>
-                    <p>Sab: 07.30 – 12.00</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Media Sosial</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
+    <footer style="background-color: #1e1e2f; color: #fff; padding: 40px 0; font-family: 'Segoe UI', sans-serif;">
+    <div class="container" style="max-width: 1200px; margin: auto; padding: 0 20px;">
+        <div class="footer-columns" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
             
-            <div class="copyright">
-                <p>© 2024. All rights reserved.</p>
+            <div class="footer-col" style="flex: 1; min-width: 250px;">
+                <h3 style="margin-bottom: 15px; color: #ffcc00;">Alamat Sekolah</h3>
+                <p>Jl. Raya KM. 1 Siborongborong, Tarutung</p>
+                <p>Kabupaten Tapanuli Utara</p>
+                <p>Provinsi Sumatera Utara, Kode Pos</p>
+                <p>Telepon/Fax: 62476-XXXXX</p>
             </div>
+
+            <div class="footer-col" style="flex: 1; min-width: 250px;">
+                <h3 style="margin-bottom: 15px; color: #ffcc00;">Jam Sekolah</h3>
+                <p>Sen - Jum: 07.30 - 15.00</p>
+                <p>Sab: 07.30 – 12.00</p>
+            </div>
+
+            <div class="footer-col" style="flex: 1; min-width: 250px;">
+                <h3 style="margin-bottom: 15px; color: #ffcc00;">Media Sosial</h3>
+                <div class="social-links" style="display: flex; gap: 15px; font-size: 24px;">
+                    <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#" style="color: #1DA1F2;" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                    <a href="#" style="color: #C13584;" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
+                </div>
+            </div>
+
         </div>
-    </footer>
-    <script src="{{ asset('js/jis-slider.js') }}"></script>
+
+        <div class="copyright" style="text-align: center; margin-top: 30px; font-size: 14px; color: #ccc;">
+            <p>© 2024. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script src="{{ asset('js/jis-slider.js') }}"></script>
+
 </body>
 </html>
