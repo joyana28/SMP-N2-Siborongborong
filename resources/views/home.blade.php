@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
     <!-- Font Awesome for icons -->
@@ -33,13 +34,30 @@
                 </nav>
             </div>
         </div>
-        <!-- Hero Section -->
-        <div class="bg-dark text-white d-flex align-items-center justify-content-center text-center" style="height: 100vh; background: url('/images/siborongborong.png') center center / cover no-repeat;">
-    <div class="container" style="max-width: 700px; background-color: rgba(0,0,0,0.5); padding: 40px; border-radius: 15px;">
-        <h2 class="display-5 fw-bold mb-4">SMPN 2 Siborongborong Membangun Masa Depan <br>Melalui Pendidikan Berkualitas.</h2>
-        <a href="#" class="btn btn-outline-light btn-lg px-4 py-2">Selengkapnya</a>
+       <!-- Home Section -->
+<section class="py-5 bg-light">
+  <div class="container-fluid px-5 py-5">
+    <div class="row align-items-center">
+      
+      <!-- Gambar Sekolah (Kiri) -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
+      </div>
+
+      <!-- Tulisan Welcome (Kanan) -->
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="display-3 fw-bold mb-4">Selamat Datang di<br><span class="text-primary">SMPN 2 Siborongborong</span></h1>
+        <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
+        <a href="#" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
+      </div>
     </div>
+  </div>
+</section>
+
+
+
 </div>
+
 
 
     </header>
@@ -298,13 +316,13 @@
 </script>
 <!-- Script bagian hero content -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const heroContent = document.querySelector('.hero-content');
-        setTimeout(() => {
-            heroContent.classList.add('show');
-        }, 300);
+    // Saat dokumen sudah dimuat
+    document.addEventListener("DOMContentLoaded", function() {
+        const container = document.getElementById("heroContainer");
+        container.classList.add("animate__fadeInDown");
     });
 </script>
+
 
 
 
