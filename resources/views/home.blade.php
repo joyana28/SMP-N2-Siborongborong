@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jis-slider.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
     <!-- Font Awesome for icons -->
 </head>
 <body>
@@ -162,66 +166,86 @@
     </div>
 
     @include('components.jis-slider-section')
+    <section class="announcements py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-4">Pengumuman</h2>
 
-        <section class="announcements">
-            <div class="container">
-                <h2>Pengumuman</h2>
-                
-                <div class="announcement-list">
-                    <?php
-                    // This would normally come from a database
-                    $announcements = [
-                        [
-                            "title" => "Kelulusan Siswa",
-                            "date" => "20 Juni 2023",
-                            "image" => "announcement1.jpg",
-                            "desc" => "Pengumuman kelulusan siswa tahun ajaran 2022/2023"
-                        ],
-                        [
-                            "title" => "Pengumuman peserta didik baru",
-                            "date" => "15 Juni 2023",
-                            "image" => "announcement2.jpg",
-                            "desc" => "Pendaftaran peserta didik baru tahun ajaran 2023/2024"
-                        ],
-                        [
-                            "title" => "Perubahan jadwal pembelajaran",
-                            "date" => "10 Juni 2023",
-                            "image" => "announcement3.jpg",
-                            "desc" => "Perubahan jadwal pembelajaran untuk semester ganjil"
-                        ],
-                        [
-                            "title" => "Kegiatan Maulid Nabi di sekolah",
-                            "date" => "5 Juni 2023",
-                            "image" => "announcement4.jpg",
-                            "desc" => "Kegiatan Maulid Nabi Muhammad SAW di sekolah"
-                        ],
-                        [
-                            "title" => "Kegiatan Perpisahan Guru",
-                            "date" => "1 Juni 2023",
-                            "image" => "announcement5.jpg",
-                            "desc" => "Kegiatan perpisahan guru yang akan pensiun"
-                        ]
-                    ];
-                    
-                    foreach($announcements as $announcement) {
-                        echo '
-                        <div class="announcement-item">
-                            <div class="announcement-image">
-                                <img src="'.$announcement['image'].'" alt="'.$announcement['title'].'">
-                            </div>
-                            <div class="announcement-content">
-                                <h3>'.$announcement['title'].'</h3>
-                                <p class="announcement-date">'.$announcement['date'].'</p>
-                                <p>'.$announcement['desc'].'</p>
-                                <a href="#" class="read-more">→</a>
-                            </div>
-                        </div>
-                        ';
-                    }
-                    ?>
-                </div>
+        <!-- Search Bar dengan ikon -->
+        <div class="mb-4">
+            <div class="input-group">
+                <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+                <input type="text" id="searchInput" class="form-control" placeholder="Cari pengumuman...">
             </div>
-        </section>
+        </div>
+
+        <div class="row" id="announcementContainer">
+            <?php
+            $announcements = [
+                [
+                    "title" => "Kelulusan Siswa",
+                    "date" => "20 Juni 2023",
+                    "image" => "announcement1.jpg",
+                    "desc" => "Pengumuman kelulusan siswa tahun ajaran 2022/2023"
+                ],
+                [
+                    "title" => "Pengumuman peserta didik baru",
+                    "date" => "15 Juni 2023",
+                    "image" => "announcement2.jpg",
+                    "desc" => "Pendaftaran peserta didik baru tahun ajaran 2023/2024"
+                ],
+                [
+                    "title" => "Perubahan jadwal pembelajaran",
+                    "date" => "10 Juni 2023",
+                    "image" => "announcement3.jpg",
+                    "desc" => "Perubahan jadwal pembelajaran untuk semester ganjil"
+                ],
+                [
+                    "title" => "Kegiatan Maulid Nabi di sekolah",
+                    "date" => "5 Juni 2023",
+                    "image" => "announcement4.jpg",
+                    "desc" => "Kegiatan Maulid Nabi Muhammad SAW di sekolah"
+                ],
+                [
+                    "title" => "Kegiatan Perpisahan Guru",
+                    "date" => "1 Juni 2023",
+                    "image" => "announcement5.jpg",
+                    "desc" => "Kegiatan perpisahan guru yang akan pensiun"
+                ],
+                [
+                    "title" => "Lomba 17 Agustus",
+                    "date" => "17 Agustus 2023",
+                    "image" => "announcement6.jpg",
+                    "desc" => "Berbagai lomba akan diadakan untuk memeriahkan HUT RI ke-78"
+                ],
+                [
+                    "title" => "Workshop Guru",
+                    "date" => "25 Juli 2023",
+                    "image" => "announcement7.jpg",
+                    "desc" => "Pelatihan guru untuk peningkatan kualitas pembelajaran digital"
+                ]
+            ];
+
+            foreach ($announcements as $announcement) {
+                echo '
+                <div class="col-md-6 col-lg-4 mb-4 announcement-item">
+                    <div class="card h-100 shadow-sm">
+                        <img src="' . $announcement['image'] . '" class="card-img-top" alt="' . $announcement['title'] . '">
+                        <div class="card-body">
+                            <h5 class="card-title">' . $announcement['title'] . '</h5>
+                            <p class="text-muted small">' . $announcement['date'] . '</p>
+                            <p class="card-text">' . $announcement['desc'] . '</p>
+                            <a href="#" class="btn btn-primary btn-sm">Baca Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+                ';
+            }
+            ?>
+        </div>
+    </div>
+</section>
+
+
     </main>
 
     <footer style="background-color: #1e1e2f; color: #fff; padding: 40px 0; font-family: 'Segoe UI', sans-serif;">
@@ -259,6 +283,19 @@
     </div>
 </footer>
 <script src="{{ asset('js/jis-slider.js') }}"></script>
+<!-- Script pencarian -->
+<script>
+    document.getElementById('searchInput').addEventListener('keyup', function () {
+        let searchValue = this.value.toLowerCase();
+        let announcements = document.querySelectorAll('.announcement-item');
+
+        announcements.forEach(function (item) {
+            const text = item.innerText.toLowerCase();
+            item.style.display = text.includes(searchValue) ? 'block' : 'none';
+        });
+    });
+</script>
+
 
 </body>
 </html>
