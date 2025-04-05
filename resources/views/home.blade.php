@@ -33,14 +33,15 @@
                 </nav>
             </div>
         </div>
-        <div class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h2>SMPN 2 Siborongborong Membangun Masa Depan Melalui Pendidikan Berkualitas.</h2>
-                    <a href="#" class="btn-primary">Selengkapnya</a>
-                </div>
-            </div>
-        </div>
+        <!-- Hero Section -->
+        <div class="bg-dark text-white d-flex align-items-center justify-content-center text-center" style="height: 100vh; background: url('/images/siborongborong.png') center center / cover no-repeat;">
+    <div class="container" style="max-width: 700px; background-color: rgba(0,0,0,0.5); padding: 40px; border-radius: 15px;">
+        <h2 class="display-5 fw-bold mb-4">SMPN 2 Siborongborong Membangun Masa Depan <br>Melalui Pendidikan Berkualitas.</h2>
+        <a href="#" class="btn btn-outline-light btn-lg px-4 py-2">Selengkapnya</a>
+    </div>
+</div>
+
+
     </header>
 
     <main>
@@ -295,6 +296,16 @@
         });
     });
 </script>
+<!-- Script bagian hero content -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const heroContent = document.querySelector('.hero-content');
+        setTimeout(() => {
+            heroContent.classList.add('show');
+        }, 300);
+    });
+</script>
+
 
 
 </body>
