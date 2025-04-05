@@ -3,7 +3,7 @@
     <div class="container-fluid p-0">
         <div class="slider-container">
             <div class="leaf-decoration">
-                <!-- SVG Leaf decoration pattern -->
+                <!-- SVG Leaf decoration is handled by CSS background -->
             </div>
             
             <div class="slider-track">
@@ -55,7 +55,7 @@
                         <path d="M9 18l6-6-6-6"/>
                     </svg>
                 </button>
-           </div>
+            </div>
             
             <div class="slider-icons">
                 <div class="icon icon-info">
@@ -79,6 +79,85 @@
                     </svg>
                 </div>
             </div>
+
+            <!-- Progress bar indicator -->
+            <div class="slider-progress">
+                <div class="progress-bar"></div>
+            </div>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderItems = document.querySelectorAll('.slider-item');
+            const prevButton = document.querySelector('.arrow-prev');
+            const nextButton = document.querySelector('.arrow-next');
+            const progressBar = document.querySelector('.progress-bar');
+            
+            let currentSlide = 0;
+            const totalSlides = sliderItems.length;
+            
+            // Initialize progress bar
+            updateProgressBar();
+            
+            // Auto slide functionality
+            let slideInterval = setInterval(nextSlide, 5000);
+            
+            function resetInterval() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function updateProgressBar() {
+                const progress = ((currentSlide + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            function showSlide(index) {
+                // Hide all slides
+                sliderItems.forEach(item => {
+                    item.classList.remove('active');
+                    item.classList.remove('previous');
+                    item.style.transform = 'translateX(100%)';
+                });
+                
+                // If there's a previous slide, mark it
+                if (index > 0) {
+                    sliderItems[index - 1].classList.add('previous');
+                    sliderItems[index - 1].style.transform = 'translateX(-100%)';
+                } else if (index === 0) {
+                    sliderItems[sliderItems.length - 1].classList.add('previous');
+                    sliderItems[sliderItems.length - 1].style.transform = 'translateX(-100%)';
+                }
+                
+                // Show current slide
+                sliderItems[index].classList.add('active');
+                sliderItems[index].style.transform = 'translateX(0)';
+                
+                // Update progress bar
+                updateProgressBar();
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+                resetInterval();
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+                resetInterval();
+            }
+            
+            // Add event listeners
+            prevButton.addEventListener('click', prevSlide);
+            nextButton.addEventListener('click', nextSlide);
+            
+            // Initialize first slide
+            showSlide(currentSlide);
+        });
+    </script>
+    @endpush
 </section>
