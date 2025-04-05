@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMP Negeri 2 Siborongborong</title>
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jis-slider.css') }}">
     <!-- Font Awesome for icons -->
 </head>
 <body>
@@ -55,51 +56,111 @@
             </div>
         </section>
 
-        <section class="features">
-            <div class="container">
-                <div class="features-grid">
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3>Fasilitas</h3>
-                    </div>
-                    
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <h3>Lokasi</h3>
-                    </div>
-                    
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <h3>Sejarah</h3>
-                    </div>
-                    
-                    <div class="feature-box">
-                        <div class="feature-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <h3>Prestasi</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
-        <section class="profile-section">
-            <div class="container">
-                <div class="profile-content">
-                    <div class="profile-text">
-                        <h2>Profil Sekolah</h2>
-                        <p>SMP Negeri 2 Siborongborong merupakan sekolah menengah pertama negeri yang terletak di kecamatan Siborongborong, kabupaten Tapanuli Utara, provinsi Sumatera Utara.</p>
-                        <a href="#" class="btn-outline">Selengkapnya</a>
+        <!-- resources/views/components/profile-section.blade.php -->
+<!-- resources/views/components/profile-section.blade.php -->
+<div class="profile-section">
+    <!-- Navigation Menu -->
+    
+
+    <!-- Header Section -->
+    <div class="container main-container">
+        <div class="header-section">
+            <div class="row">
+                <div class="col-md-5">
+                    <h1 class="header-title">Profil Sekolah </h1>
+                </div>
+                <div class="col-md-7">
+                    <p class="header-description">
+                    Jelajahi dunia pendidikan terbaik bersama kami, tempat di mana setiap siswa dibimbing untuk tumbuh, berinovasi, dan meraih masa depan gemilang
+                    </p>
+                    <div class="learn-more">
+                        <a href="#" class="learn-more-link">Learn More →</a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
+        
+        <div class="sections-grid">
+            <div class="row no-gutters card-row">
+                
+                <div class="col card-column">
+                    <div class="card-container">
+                        <div class="section-card">
+                            <div class="section-image visit-jis">
+                                <div class="overlay-content">
+                                    <h3>Fasilitas</h3>
+                                    <p>Fasilitas lengkap dan modern sebagai komitmen utama untuk mendukung proses belajar mengajar yang optimal.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-title">
+                            <h3>Fasilitas</h3>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col card-column">
+                    <div class="card-container">
+                        <div class="section-card">
+                            <div class="section-image say-hello">
+                                <div class="overlay-content">
+                                    <h3>Lokasi</h3>
+                                    <p>Lokasi yang strategis menawarkan lingkungan belajar yang tenang dan asri.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-title">
+                            <h3>Lokasi</h3>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col card-column">
+                    <div class="card-container">
+                        <div class="section-card">
+                            <div class="section-image apply">
+                                <div class="overlay-content">
+                                    <h3>Sejarah</h3>
+                                    <p>Jejak langkah yang berdiri sebagai wujud nyata dari semangat pendidikan.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-title">
+                            <h3>Sejarah</h3>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="col card-column">
+                    <div class="card-container">
+                        <div class="section-card">
+                            <div class="section-image faqs">
+                                <div class="overlay-content">
+                                    <h3>Prestasi</h3>
+                                    <p>Senantiasa menorehkan prestasi membanggakan sebagai wujud dedikasi dan daya juang tinggi.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section-title">
+                            <h3>Prestasi</h3>
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+
+    @include('components.jis-slider-section')
 
         <section class="announcements">
             <div class="container">
@@ -194,5 +255,6 @@
             </div>
         </div>
     </footer>
+    <script src="{{ asset('js/jis-slider.js') }}"></script>
 </body>
 </html>

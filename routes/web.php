@@ -6,5 +6,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
