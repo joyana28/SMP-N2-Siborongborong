@@ -218,10 +218,10 @@
                     "desc" => "Berbagai lomba akan diadakan untuk memeriahkan HUT RI ke-78"
                 ],
                 [
-                    "title" => "Workshop Guru",
-                    "date" => "25 Juli 2023",
-                    "image" => "announcement7.jpg",
-                    "desc" => "Pelatihan guru untuk peningkatan kualitas pembelajaran digital"
+                    "title" => "Hari Guru",
+                    "date" => "25 November 2024",
+                    "image" => "HariGuru.jpg",
+                    "desc" => "Menghargai peran guru dalam membentuk generasi masa depan."
                 ]
             ];
 
