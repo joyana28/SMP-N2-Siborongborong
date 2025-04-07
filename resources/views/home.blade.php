@@ -15,56 +15,92 @@
     <!-- Font Awesome for icons -->
 </head>
 <body>
-  <!-- HEADER -->
+<!-- ================= HEADER ================= -->
 <header>
+
+  <!-- 🔹 Top Navbar -->
   <div class="top-bar py-3" style="background-color: #006666; color: white;">
     <div class="container d-flex flex-wrap align-items-center justify-content-between">
-      
-      <!-- Logo dan Navbar digabung dalam satu baris -->
       <div class="d-flex flex-wrap align-items-center w-100 justify-content-between">
         
-        <!-- Judul Sekolah -->
+        <!-- 🏫 Nama Sekolah -->
         <div class="logo">
           <h1 class="m-0 fw-bold" style="font-size: 1.5rem;">SMP Negeri 2 Siborongborong</h1>
         </div>
 
-        <!-- Menu Navigasi -->
+        <!-- 🌐 Navigasi Menu -->
         <nav class="ms-auto">
-        <ul class="nav gap-2">
-  <li class="nav-item"><a href="{{ route('home') }}" class="nav-link text-white fw-semibold {{ request()->is('/') ? 'active' : '' }}">Home</a></li>
-  <li class="nav-item"><a href="{{ route('about') }}" class="nav-link text-white fw-semibold {{ request()->is('about') ? 'active' : '' }}">About</a></li>
-  <li class="nav-item"><a href="{{ route('prestasi') }}" class="nav-link text-white fw-semibold {{ request()->is('prestasi') ? 'active' : '' }}">Prestasi</a></li>
-  <li class="nav-item"><a href="{{ route('guru') }}" class="nav-link text-white fw-semibold {{ request()->is('guru') ? 'active' : '' }}">Tenaga Pendidik</a></li>
-  <li class="nav-item"><a href="{{ route('siswa') }}" class="nav-link text-white fw-semibold {{ request()->is('siswa') ? 'active' : '' }}">Siswa</a></li>
-  <li class="nav-item"><a href="{{ route('alumni') }}" class="nav-link text-white fw-semibold {{ request()->is('alumni') ? 'active' : '' }}">Profil Alumni</a></li>
-  <li class="nav-item"><a href="{{ route('pendaftaran') }}" class="nav-link text-white fw-semibold {{ request()->is('pendaftaran') ? 'active' : '' }}">Formulir Pendaftaran</a></li>
-</ul>
+          <ul class="nav gap-2">
+
+            <!-- Home -->
+            <li class="nav-item">
+              <a href="{{ route('home') }}" class="nav-link text-white fw-semibold {{ request()->is('/') ? 'active' : '' }}">
+                Home
+              </a>
+            </li>
+
+            <!-- About (Dropdown) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white fw-semibold {{ request()->is('about*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">
+                About
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('about.visimisi') }}">Visi & Misi</a></li>
+                <li><a class="dropdown-item" href="{{ route('about.fasilitas') }}">Fasilitas</a></li>
+                <li><a class="dropdown-item" href="{{ route('about.ekstrakurikuler') }}">Ekstrakurikuler</a></li>
+              </ul>
+            </li>
+
+            <!-- Prestasi (Dropdown) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white fw-semibold {{ request()->is('prestasi*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">
+                Prestasi
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('prestasi.akademik') }}">Akademik</a></li>
+                <li><a class="dropdown-item" href="{{ route('prestasi.nonakademik') }}">Non-Akademik</a></li>
+              </ul>
+            </li>
+
+            <!-- Menu lainnya -->
+            <li class="nav-item"><a href="{{ route('guru') }}" class="nav-link text-white fw-semibold">Tenaga Pendidik</a></li>
+            <li class="nav-item"><a href="{{ route('siswa') }}" class="nav-link text-white fw-semibold">Siswa</a></li>
+            <li class="nav-item"><a href="{{ route('alumni') }}" class="nav-link text-white fw-semibold">Profil Alumni</a></li>
+            <li class="nav-item"><a href="{{ route('pendaftaran') }}" class="nav-link text-white fw-semibold">Formulir Pendaftaran</a></li>
+
+          </ul>
         </nav>
 
       </div>
     </div>
   </div>
 
-  <!-- Home Section -->
+  <!-- 🔸 Hero Section (Welcome Message) -->
   <section class="py-5 bg-light">
     <div class="container-fluid px-5 py-5">
       <div class="row align-items-center">
-        
-        <!-- Gambar Sekolah -->
+
+        <!-- 🖼️ Gambar -->
         <div class="col-lg-6 mb-4 mb-lg-0">
           <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
         </div>
 
-        <!-- Tulisan Welcome -->
+        <!-- 📝 Teks Sambutan -->
         <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="display-3 fw-bold mb-4">Selamat Datang di<br><span class="text-primary">SMPN 2 Siborongborong</span></h1>
+          <h1 class="display-3 fw-bold mb-4">
+            Selamat Datang di<br>
+            <span class="text-primary">SMPN 2 Siborongborong</span>
+          </h1>
           <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
           <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
         </div>
+
       </div>
     </div>
   </section>
+
 </header>
+
 
 
     <main>
@@ -278,6 +314,8 @@
     });
 </script>
 
+<!-- Bootstrap JS (via CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 
