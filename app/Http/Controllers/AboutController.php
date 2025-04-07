@@ -9,7 +9,10 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $about = About::first(); // Pastikan database ada datanya
+        // Ambil data pertama dari tabel 'abouts'
+        $about = About::first();
+
+        // Tetap kirim view meskipun datanya null (ditangani di Blade)
         return view('about', compact('about'));
     }
 }
