@@ -15,48 +15,57 @@
     <!-- Font Awesome for icons -->
 </head>
 <body>
-    <header>
-        <div class="top-bar">
-            <div class="container">
-                <div class="logo">
-                    <h1>SMP Negeri 2 Siborongborong</h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Prestasi</a></li>
-                        <li><a href="#">Tenaga pendidik</a></li>
-                        <li><a href="#">Siswa</a></li>
-                        <li><a href="#">Profil alumni</a></li>
-                        <li><a href="#">Formulir Pendaftaran</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-       <!-- Home Section -->
-<section class="py-5 bg-light">
-  <div class="container-fluid px-5 py-5">
-    <div class="row align-items-center">
+  <!-- HEADER -->
+<header>
+  <div class="top-bar py-3" style="background-color: #006666; color: white;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
       
-      <!-- Gambar Sekolah (Kiri) -->
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
-      </div>
+      <!-- Logo dan Navbar digabung dalam satu baris -->
+      <div class="d-flex flex-wrap align-items-center w-100 justify-content-between">
+        
+        <!-- Judul Sekolah -->
+        <div class="logo">
+          <h1 class="m-0 fw-bold" style="font-size: 1.5rem;">SMP Negeri 2 Siborongborong</h1>
+        </div>
 
-      <!-- Tulisan Welcome (Kanan) -->
-      <div class="col-lg-6 text-center text-lg-start">
-        <h1 class="display-3 fw-bold mb-4">Selamat Datang di<br><span class="text-primary">SMPN 2 Siborongborong</span></h1>
-        <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
-        <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
+        <!-- Menu Navigasi -->
+        <nav class="ms-auto">
+        <ul class="nav gap-2">
+  <li class="nav-item"><a href="{{ route('home') }}" class="nav-link text-white fw-semibold {{ request()->is('/') ? 'active' : '' }}">Home</a></li>
+  <li class="nav-item"><a href="{{ route('about') }}" class="nav-link text-white fw-semibold {{ request()->is('about') ? 'active' : '' }}">About</a></li>
+  <li class="nav-item"><a href="{{ route('prestasi') }}" class="nav-link text-white fw-semibold {{ request()->is('prestasi') ? 'active' : '' }}">Prestasi</a></li>
+  <li class="nav-item"><a href="{{ route('guru') }}" class="nav-link text-white fw-semibold {{ request()->is('guru') ? 'active' : '' }}">Tenaga Pendidik</a></li>
+  <li class="nav-item"><a href="{{ route('siswa') }}" class="nav-link text-white fw-semibold {{ request()->is('siswa') ? 'active' : '' }}">Siswa</a></li>
+  <li class="nav-item"><a href="{{ route('alumni') }}" class="nav-link text-white fw-semibold {{ request()->is('alumni') ? 'active' : '' }}">Profil Alumni</a></li>
+  <li class="nav-item"><a href="{{ route('pendaftaran') }}" class="nav-link text-white fw-semibold {{ request()->is('pendaftaran') ? 'active' : '' }}">Formulir Pendaftaran</a></li>
+</ul>
+        </nav>
+
       </div>
     </div>
   </div>
-</section>
 
+  <!-- Home Section -->
+  <section class="py-5 bg-light">
+    <div class="container-fluid px-5 py-5">
+      <div class="row align-items-center">
+        
+        <!-- Gambar Sekolah -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
+        </div>
 
-</div>
-    </header>
+        <!-- Tulisan Welcome -->
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="display-3 fw-bold mb-4">Selamat Datang di<br><span class="text-primary">SMPN 2 Siborongborong</span></h1>
+          <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
+          <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
 
     <main>
     <section id="intro" class="section-intro">
