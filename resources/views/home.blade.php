@@ -263,7 +263,7 @@
 
     </main>
 
-    <footer style="background-color: #1e1e2f; color: #fff; padding: 40px 0; font-family: 'Segoe UI', sans-serif;">
+    <footer style="background-color:rgb(70, 68, 124); color: #fff; padding: 40px 0; font-family: 'Segoe UI', sans-serif;">
     <div class="container" style="max-width: 1200px; margin: auto; padding: 0 20px;">
         <div class="footer-columns" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
             
@@ -282,14 +282,19 @@
             </div>
 
             <div class="footer-col" style="flex: 1; min-width: 250px;">
-                <h3 style="margin-bottom: 15px; color: #ffcc00;">Media Sosial</h3>
-                <div class="social-links" style="display: flex; gap: 15px; font-size: 24px;">
-                    <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
-                    <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8vJyZv1i42h&_r=1" style="color: #1DA1F2;" aria-label="Tiktok"><i class="fab fa-tiktok-square"></i></a>
-                    <a href="#" style="color: #C13584;" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
-                </div>
-            </div>
-
+    <h3 style="margin-bottom: 15px; color: #ffcc00;">Media Sosial</h3>
+    <div class="social-links" style="display: flex; gap: 15px; font-size: 24px;">
+        <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook">
+            <i class="fab fa-facebook-square"></i>
+        </a>
+        <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8vJyZv1i42h&_r=1" style="color:rgb(0, 0, 0);" aria-label="Tiktok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://wa.me/6281234567890" style="color: #25D366;" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+</div>
         </div>
 
         <div class="copyright" style="text-align: center; margin-top: 30px; font-size: 14px; color: #ccc;">
