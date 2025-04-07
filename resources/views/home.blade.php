@@ -24,12 +24,12 @@
                 <nav>
                     <ul>
                         <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">Profil</a></li>
-                        <li><a href="#">Akademik</a></li>
-                        <li><a href="#">Guru</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Prestasi</a></li>
+                        <li><a href="#">Tenaga pendidik</a></li>
                         <li><a href="#">Siswa</a></li>
-                        <li><a href="#">Galeri</a></li>
-                        <li><a href="#">Kontak</a></li>
+                        <li><a href="#">Profil alumni</a></li>
+                        <li><a href="#">Formulir Pendaftaran</a></li>
                     </ul>
                 </nav>
             </div>
@@ -55,11 +55,7 @@
 </section>
 
 
-
 </div>
-
-
-
     </header>
 
     <main>
@@ -289,7 +285,7 @@
                 <h3 style="margin-bottom: 15px; color: #ffcc00;">Media Sosial</h3>
                 <div class="social-links" style="display: flex; gap: 15px; font-size: 24px;">
                     <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
-                    <a href="#" style="color: #1DA1F2;" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+                    <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8vJyZv1i42h&_r=1" style="color: #1DA1F2;" aria-label="Tiktok"><i class="fab fa-tiktok-square"></i></a>
                     <a href="#" style="color: #C13584;" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
                 </div>
             </div>
