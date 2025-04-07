@@ -126,24 +126,6 @@
                 <div class="col card-column">
                     <div class="card-container">
                         <div class="section-card">
-                            <div class="section-image say-hello">
-                                <div class="overlay-content">
-                                    <h3>Lokasi</h3>
-                                    <p>Lokasi yang strategis menawarkan lingkungan belajar yang tenang dan asri.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section-title">
-                            <h3>Lokasi</h3>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="col card-column">
-                    <div class="card-container">
-                        <div class="section-card">
                             <div class="section-image apply">
                                 <div class="overlay-content">
                                     <h3>Sejarah</h3>
@@ -263,45 +245,51 @@
 
     </main>
 
-    <footer style="background-color:rgb(70, 68, 124); color: #fff; padding: 40px 0; font-family: 'Segoe UI', sans-serif;">
+    <footer style="background-color:#006666; color: #fff; padding: 20px 0; font-family: 'Segoe UI', sans-serif; font-size: 16px;">
     <div class="container" style="max-width: 1200px; margin: auto; padding: 0 20px;">
-        <div class="footer-columns" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
-            
-            <div class="footer-col" style="flex: 1; min-width: 250px;">
-                <h3 style="margin-bottom: 15px; color: #ffcc00;">Alamat Sekolah</h3>
-                <p>Jl. Raya KM. 1 Siborongborong, Tarutung</p>
-                <p>Kabupaten Tapanuli Utara</p>
-                <p>Provinsi Sumatera Utara, Kode Pos</p>
-                <p>Telepon/Fax: 62476-XXXXX</p>
-            </div>
+    <div class="footer-columns" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+      
+      <div class="footer-col" style="flex: 1; min-width: 220px;">
+        <h4 style="margin-bottom: 10px; color: #ffcc00;">Alamat Sekolah</h4>
+        <p>
+          <a href="https://www.google.com/maps/place/SMP+Negeri+2+Siborongborong" target="_blank" style="color: #fff; text-decoration: none;">
+            Jl. Raya KM. 1 Siborongborong, Tarutung
+          </a>
+        </p>
+        <p>Kabupaten Tapanuli Utara</p>
+        <p>Provinsi Sumatera Utara, Kode Pos</p>
+        <p>Telepon/Fax: 62476-XXXXX</p>
+      </div>
 
-            <div class="footer-col" style="flex: 1; min-width: 250px;">
-                <h3 style="margin-bottom: 15px; color: #ffcc00;">Jam Sekolah</h3>
-                <p>Sen - Jum: 07.30 - 15.00</p>
-                <p>Sab: 07.30 – 12.00</p>
-            </div>
+      <div class="footer-col" style="flex: 1; min-width: 220px;">
+        <h4 style="margin-bottom: 10px; color: #ffcc00;">Jam Sekolah</h4>
+        <p>Sen - Jum: 07.30 - 15.00</p>
+        <p>Sab: 07.30 – 12.00</p>
+      </div>
 
-            <div class="footer-col" style="flex: 1; min-width: 250px;">
-    <h3 style="margin-bottom: 15px; color: #ffcc00;">Media Sosial</h3>
-    <div class="social-links" style="display: flex; gap: 15px; font-size: 24px;">
-        <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook">
+      <div class="footer-col" style="flex: 1; min-width: 220px;">
+        <h4 style="margin-bottom: 10px; color: #ffcc00;">Media Sosial</h4>
+        <div class="social-links" style="display: flex; gap: 10px; font-size: 35px;">
+          <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook">
             <i class="fab fa-facebook-square"></i>
-        </a>
-        <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8vJyZv1i42h&_r=1" style="color:rgb(0, 0, 0);" aria-label="Tiktok">
+          </a>
+          <a href="https://www.tiktok.com/@siborongborongsmpn2" style="color:rgb(0, 0, 0);" aria-label="Tiktok">
             <i class="fab fa-tiktok"></i>
-        </a>
-        <a href="https://wa.me/6281234567890" style="color: #25D366;" aria-label="WhatsApp">
+          </a>
+          <a href="https://wa.me/+6281370422455" style="color: #25D366;" aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
-        </a>
-    </div>
-</div>
+          </a>
         </div>
+      </div>
+    </div>
 
-        <div class="copyright" style="text-align: center; margin-top: 30px; font-size: 14px; color: #ccc;">
-            <p>© 2024. All rights reserved.</p>
-        </div>
+    <div class="copyright" style="text-align: center; margin-top: 20px; font-size: 13px; color: #ccc;">
+      <p>© 2024. All rights reserved.</p>
     </div>
+  </div>
 </footer>
+
+
 <script src="{{ asset('js/jis-slider.js') }}"></script>
 <!-- Script pencarian -->
 <script>

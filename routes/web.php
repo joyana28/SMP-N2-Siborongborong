@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController; // Tambahkan ini jika belum
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+// Halaman Beranda (Home)
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
-Route::get('/', function () {
-    return view('home');
-});
+// Halaman About
+Route::get('/about', [AboutController::class, 'index']);
+Route::get('/about/{section}', [AboutController::class, 'show']);
