@@ -15,48 +15,93 @@
     <!-- Font Awesome for icons -->
 </head>
 <body>
-    <header>
-        <div class="top-bar">
-            <div class="container">
-                <div class="logo">
-                    <h1>SMP Negeri 2 Siborongborong</h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#" class="active">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Prestasi</a></li>
-                        <li><a href="#">Tenaga pendidik</a></li>
-                        <li><a href="#">Siswa</a></li>
-                        <li><a href="#">Profil alumni</a></li>
-                        <li><a href="#">Formulir Pendaftaran</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-       <!-- Home Section -->
-<section class="py-5 bg-light">
-  <div class="container-fluid px-5 py-5">
-    <div class="row align-items-center">
-      
-      <!-- Gambar Sekolah (Kiri) -->
-      <div class="col-lg-6 mb-4 mb-lg-0">
-        <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
-      </div>
+<!-- ================= HEADER ================= -->
+<header>
 
-      <!-- Tulisan Welcome (Kanan) -->
-      <div class="col-lg-6 text-center text-lg-start">
-        <h1 class="display-3 fw-bold mb-4">Selamat Datang di<br><span class="text-primary">SMPN 2 Siborongborong</span></h1>
-        <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
-        <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
+  <!-- 🔹 Top Navbar -->
+  <div class="top-bar py-3" style="background-color: #006666; color: white;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between">
+      <div class="d-flex flex-wrap align-items-center w-100 justify-content-between">
+        
+        <!-- 🏫 Nama Sekolah -->
+        <div class="logo">
+          <h1 class="m-0 fw-bold" style="font-size: 1.5rem;">SMP Negeri 2 Siborongborong</h1>
+        </div>
+
+        <!-- 🌐 Navigasi Menu -->
+        <nav class="ms-auto">
+          <ul class="nav gap-2">
+
+            <!-- Home -->
+            <li class="nav-item">
+              <a href="{{ route('home') }}" class="nav-link text-white fw-semibold {{ request()->is('/') ? 'active' : '' }}">
+                Home
+              </a>
+            </li>
+
+            <!-- About (Dropdown) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white fw-semibold {{ request()->is('about*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">
+                About
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('about.visimisi') }}">Visi & Misi</a></li>
+                <li><a class="dropdown-item" href="{{ route('about.fasilitas') }}">Fasilitas</a></li>
+                <li><a class="dropdown-item" href="{{ route('about.ekstrakurikuler') }}">Ekstrakurikuler</a></li>
+              </ul>
+            </li>
+
+            <!-- Prestasi (Dropdown) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white fw-semibold {{ request()->is('prestasi*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">
+                Prestasi
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('prestasi.akademik') }}">Akademik</a></li>
+                <li><a class="dropdown-item" href="{{ route('prestasi.nonakademik') }}">Non-Akademik</a></li>
+              </ul>
+            </li>
+
+            <!-- Menu lainnya -->
+            <li class="nav-item"><a href="{{ route('guru') }}" class="nav-link text-white fw-semibold">Tenaga Pendidik</a></li>
+            <li class="nav-item"><a href="{{ route('siswa') }}" class="nav-link text-white fw-semibold">Siswa</a></li>
+            <li class="nav-item"><a href="{{ route('alumni') }}" class="nav-link text-white fw-semibold">Profil Alumni</a></li>
+            <li class="nav-item"><a href="{{ route('pendaftaran') }}" class="nav-link text-white fw-semibold">Formulir Pendaftaran</a></li>
+
+          </ul>
+        </nav>
+
       </div>
     </div>
   </div>
-</section>
+
+  <!-- 🔸 Hero Section (Welcome Message) -->
+  <section class="py-5 bg-light">
+    <div class="container-fluid px-5 py-5">
+      <div class="row align-items-center">
+
+        <!-- 🖼️ Gambar -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
+        </div>
+
+        <!-- 📝 Teks Sambutan -->
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="display-3 fw-bold mb-4">
+            Selamat Datang di<br>
+            <span class="text-primary">SMPN 2 Siborongborong</span>
+          </h1>
+          <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
+          <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</header>
 
 
-</div>
-    </header>
 
     <main>
     <section id="intro" class="section-intro">
@@ -245,50 +290,7 @@
 
     </main>
 
-    <footer style="background-color:#006666; color: #fff; padding: 20px 0; font-family: 'Segoe UI', sans-serif; font-size: 16px;">
-    <div class="container" style="max-width: 1200px; margin: auto; padding: 0 20px;">
-    <div class="footer-columns" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
-      
-      <div class="footer-col" style="flex: 1; min-width: 220px;">
-        <h4 style="margin-bottom: 10px; color: #ffcc00;">Alamat Sekolah</h4>
-        <p>
-          <a href="https://www.google.com/maps/place/SMP+Negeri+2+Siborongborong" target="_blank" style="color: #fff; text-decoration: none;">
-            Jl. Raya KM. 1 Siborongborong, Tarutung
-          </a>
-        </p>
-        <p>Kabupaten Tapanuli Utara</p>
-        <p>Provinsi Sumatera Utara, Kode Pos</p>
-        <p>Telepon/Fax: 62476-XXXXX</p>
-      </div>
-
-      <div class="footer-col" style="flex: 1; min-width: 220px;">
-        <h4 style="margin-bottom: 10px; color: #ffcc00;">Jam Sekolah</h4>
-        <p>Sen - Jum: 07.30 - 15.00</p>
-        <p>Sab: 07.30 – 12.00</p>
-      </div>
-
-      <div class="footer-col" style="flex: 1; min-width: 220px;">
-        <h4 style="margin-bottom: 10px; color: #ffcc00;">Media Sosial</h4>
-        <div class="social-links" style="display: flex; gap: 10px; font-size: 35px;">
-          <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook">
-            <i class="fab fa-facebook-square"></i>
-          </a>
-          <a href="https://www.tiktok.com/@siborongborongsmpn2" style="color:rgb(0, 0, 0);" aria-label="Tiktok">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a href="https://wa.me/+6281370422455" style="color: #25D366;" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="copyright" style="text-align: center; margin-top: 20px; font-size: 13px; color: #ccc;">
-      <p>© 2024. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
+    
 
 <script src="{{ asset('js/jis-slider.js') }}"></script>
 <!-- Script pencarian -->
@@ -312,6 +314,8 @@
     });
 </script>
 
+<!-- Bootstrap JS (via CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 
 
