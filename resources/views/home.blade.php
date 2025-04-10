@@ -138,27 +138,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section (dipertahankan dari kode asli) -->
-    <section class="py-5 bg-light">
-        <div class="container-fluid px-5 py-5">
-            <div class="row align-items-center">
-                <!-- 🖼️ Gambar -->
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
-                </div>
-
-                <!-- 📝 Teks Sambutan -->
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="display-3 fw-bold mb-4">
-                        Selamat Datang di<br>
-                        <span class="text-primary">SMPN 2 Siborongborong</span>
-                    </h1>
-                    <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
-                    <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
   <!-- 🔸 Hero Section (Welcome Message) -->
   <section class="py-5 bg-light">
