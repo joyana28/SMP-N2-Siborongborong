@@ -18,62 +18,147 @@
 <!-- ================= HEADER ================= -->
 <header>
 
-  <!-- 🔹 Top Navbar -->
-  <div class="top-bar py-3" style="background-color: #006666; color: white;">
-    <div class="container d-flex flex-wrap align-items-center justify-content-between">
-      <div class="d-flex flex-wrap align-items-center w-100 justify-content-between">
+<style>
+        .top-contact-bar {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 8px 0;
+        }
         
-        <!-- 🏫 Nama Sekolah -->
-        <div class="logo">
-          <h1 class="m-0 fw-bold" style="font-size: 1.5rem;">SMP Negeri 2 Siborongborong</h1>
+        .school-logo {
+            font-family: Arial, sans-serif;
+        }
+        
+        .school-logo .be {
+            color: #ff6b00;
+            font-weight: bold;
+            font-size: 32px;
+        }
+        
+        .school-logo .school {
+            color: #333;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 32px;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .navbar .nav-link {
+            color: #555;
+            font-weight: 500;
+            padding: 15px 20px;
+        }
+        
+        .navbar .nav-link:hover {
+            color: #ff6b00;
+        }
+        
+        .search-button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+<!-- ================= HEADER ================= -->
+<header>
+    <!-- Top Contact Bar -->
+    <div class="top-contact-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="contact-info">
+                <span>Have any questions? </span>
+                <a href="tel:+61383766284" class="text-white text-decoration-none ms-2">
+                    <i class="bi bi-telephone"></i> +61 383 766 284
+                </a>
+                <a href="mailto:noreply@envato.com" class="text-white text-decoration-none ms-3">
+                    <i class="bi bi-envelope"></i> noreply@envato.com
+                </a>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="text-white ms-2"><i class="bi bi-skype"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-vimeo"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-youtube"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-flickr"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-behance"></i></a>
+                <a href="#" class="text-white ms-2"><i class="bi bi-dribbble"></i></a>
+            </div>
         </div>
-
-        <!-- 🌐 Navigasi Menu -->
-        <nav class="ms-auto">
-          <ul class="nav gap-2">
-
-            <!-- Home -->
-            <li class="nav-item">
-              <a href="{{ route('home') }}" class="nav-link text-white fw-semibold {{ request()->is('/') ? 'active' : '' }}">
-                Home
-              </a>
-            </li>
-
-            <!-- About (Dropdown) -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white fw-semibold {{ request()->is('about*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">
-                About
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('about.visimisi') }}">Visi & Misi</a></li>
-                <li><a class="dropdown-item" href="{{ route('about.fasilitas') }}">Fasilitas</a></li>
-                <li><a class="dropdown-item" href="{{ route('about.ekstrakurikuler') }}">Ekstrakurikuler</a></li>
-              </ul>
-            </li>
-
-            <!-- Prestasi (Dropdown) -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white fw-semibold {{ request()->is('prestasi*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown">
-                Prestasi
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('prestasi.akademik') }}">Akademik</a></li>
-                <li><a class="dropdown-item" href="{{ route('prestasi.nonakademik') }}">Non-Akademik</a></li>
-              </ul>
-            </li>
-
-            <!-- Menu lainnya -->
-            <li class="nav-item"><a href="{{ route('guru') }}" class="nav-link text-white fw-semibold">Tenaga Pendidik</a></li>
-            <li class="nav-item"><a href="{{ route('siswa') }}" class="nav-link text-white fw-semibold">Siswa</a></li>
-            <li class="nav-item"><a href="{{ route('alumni') }}" class="nav-link text-white fw-semibold">Profil Alumni</a></li>
-            <li class="nav-item"><a href="{{ route('pendaftaran') }}" class="nav-link text-white fw-semibold">Formulir Pendaftaran</a></li>
-
-          </ul>
-        </nav>
-
-      </div>
     </div>
-  </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand school-logo" href="{{ route('home') }}">
+                <span class="be">Be</span><span class="school">school</span>
+            </a>
+            
+            <!-- Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navigation Items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">News & Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About our school</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Buy now</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="search-button">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (dipertahankan dari kode asli) -->
+    <section class="py-5 bg-light">
+        <div class="container-fluid px-5 py-5">
+            <div class="row align-items-center">
+                <!-- 🖼️ Gambar -->
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
+                </div>
+
+                <!-- 📝 Teks Sambutan -->
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1 class="display-3 fw-bold mb-4">
+                        Selamat Datang di<br>
+                        <span class="text-primary">SMPN 2 Siborongborong</span>
+                    </h1>
+                    <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
+                    <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
   <!-- 🔸 Hero Section (Welcome Message) -->
   <section class="py-5 bg-light">
