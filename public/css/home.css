@@ -12,6 +12,52 @@ body {
   background-color: #ebe9e9;
 }
 
+
+        .top-contact-bar {
+            background-color: #2d6a4f;
+            color: white;
+            padding: 8px 0;
+        }
+        
+        .school-logo {
+            font-family: Arial, sans-serif;
+        }
+        
+        .school-logo .be {
+            color: #ff6b00;
+            font-weight: bold;
+            font-size: 32px;
+        }
+        
+        .school-logo .school {
+            color: #333;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 32px;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .navbar .nav-link {
+            color: #555;
+            font-weight: 500;
+            padding: 15px 20px;
+        }
+        
+        .navbar .nav-link:hover {
+            color: #ff6b00;
+        }
+        
+        .search-button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #555;
+        }
+    
 .container {
   width: 90%;
   max-width: 1200px;

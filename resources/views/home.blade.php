@@ -18,52 +18,7 @@
 <!-- ================= HEADER ================= -->
 <header>
 
-<style>
-        .top-contact-bar {
-            background-color: #2d6a4f;
-            color: white;
-            padding: 8px 0;
-        }
-        
-        .school-logo {
-            font-family: Arial, sans-serif;
-        }
-        
-        .school-logo .be {
-            color: #ff6b00;
-            font-weight: bold;
-            font-size: 32px;
-        }
-        
-        .school-logo .school {
-            color: #333;
-            font-style: italic;
-            font-weight: normal;
-            font-size: 32px;
-        }
-        
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .navbar .nav-link {
-            color: #555;
-            font-weight: 500;
-            padding: 15px 20px;
-        }
-        
-        .navbar .nav-link:hover {
-            color: #ff6b00;
-        }
-        
-        .search-button {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            color: #555;
-        }
-    </style>
+
 </head>
 <body>
 <!-- ================= HEADER ================= -->
@@ -114,19 +69,25 @@
                         <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">News & Events</a>
+                        <a class="nav-link" href="#">Profil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About our school</a>
+                        <a class="nav-link" href="#">Akademik</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Courses</a>
+                        <a class="nav-link" href="#">Non-Akademik</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact us</a>
+                        <a class="nav-link" href="#">Tentang </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Buy now</a>
+                        <a class="nav-link" href="#">Program</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Berita</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Galeri</a>
                     </li>
                     <li class="nav-item">
                         <button class="search-button">
