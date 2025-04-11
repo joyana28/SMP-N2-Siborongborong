@@ -25,105 +25,128 @@
 <header>
     <!-- Top Contact Bar -->
     <div class="top-contact-bar">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="contact-info">
-                <span>Have any questions? </span>
-                <a href="tel:+61383766284" class="text-white text-decoration-none ms-2">
-                    <i class="bi bi-telephone"></i> +61 383 766 284
-                </a>
-                <a href="mailto:noreply@envato.com" class="text-white text-decoration-none ms-3">
-                    <i class="bi bi-envelope"></i> noreply@envato.com
-                </a>
-            </div>
-            <div class="social-icons">
-                <a href="#" class="text-white ms-2"><i class="bi bi-skype"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-vimeo"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-youtube"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-flickr"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-behance"></i></a>
-                <a href="#" class="text-white ms-2"><i class="bi bi-dribbble"></i></a>
-            </div>
+    <div class="container d-flex justify-content-between align-items-center">
+        <div class="contact-info">
+            <span>Have any questions? </span>
+            <a href="tel:+61383766284" class="text-white text-decoration-none ms-2">
+                <i class="bi bi-telephone"></i> +61 383 766 284
+            </a>
+            <a href="mailto:noreply@envato.com" class="text-white text-decoration-none ms-3">
+                <i class="bi bi-envelope"></i> noreply@envato.com
+            </a>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="text-white"><i class="bi bi-skype"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-vimeo"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-flickr"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-behance"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-dribbble"></i></a>
         </div>
     </div>
+</div>
 
-    <!-- Main Navigation -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <!-- Logo -->
-            <a class="navbar-brand school-logo" href="{{ route('home') }}">
-                <span class="be">Be</span><span class="school">school</span>
-            </a>
-            
-            <!-- Toggle Button for Mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <!-- Navigation Items -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Profil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Akademik</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Non-Akademik</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Tentang </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Program</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Berita</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Galeri</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="search-button">
-                            <i class="bi bi-search"></i>
-                        </button>
-                    </li>
-                </ul>
-            </div>
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        
+    <!-- Logo -->
+<a class="navbar-brand school-logo" href="{{ route('home') }}">
+    <img src="/images/logo.png" alt="SMPN 2 Logo" class="school-logo-img">
+    <span class="be">SMPN 2</span><span class="school">Siborongborong</span>
+</a>
+        
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navigation Items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('home') }}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Profil
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Sejarah Sekolah</a></li>
+                        <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
+                        <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                        <li><a class="dropdown-item" href="#">Tenaga Pendidik</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Akademik
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Kurikulum</a></li>
+                        <li><a class="dropdown-item" href="#">Jadwal Pelajaran</a></li>
+                        <li><a class="dropdown-item" href="#">Prestasi Akademik</a></li>
+                        <li><a class="dropdown-item" href="#">Fasilitas Belajar</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Non-Akademik
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Ekstrakurikuler</a></li>
+                        <li><a class="dropdown-item" href="#">Kegiatan Sosial</a></li>
+                        <li><a class="dropdown-item" href="#">Kompetisi</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Tentang
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Informasi Umum</a></li>
+                        <li><a class="dropdown-item" href="#">Kontak Kami</a></li>
+                        <li><a class="dropdown-item" href="#">Lokasi</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        Program
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Program Unggulan</a></li>
+                        <li><a class="dropdown-item" href="#">Kegiatan Tahunan</a></li>
+                        <li><a class="dropdown-item" href="#">Program Beasiswa</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Berita</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Galeri</a>
+                </li>
+                <li class="nav-item">
+                    <button class="search-button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     
 
-  <!-- 🔸 Hero Section (Welcome Message) -->
-  <section class="py-5 bg-light">
-    <div class="container-fluid px-5 py-5">
-      <div class="row align-items-center">
-
-        <!-- 🖼️ Gambar -->
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
+    <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>SMPN 2 Siborongborong Membangun Masa Depan Melalui Pendidikan Berkualitas</h1>
+            <a href="#" class="btn-contact mt-3">Contact us</a>
         </div>
-
-        <!-- 📝 Teks Sambutan -->
-        <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="display-3 fw-bold mb-4">
-            Selamat Datang di<br>
-            <span class="text-primary">SMPN 2 Siborongborong</span>
-          </h1>
-          <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
-          <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
-        </div>
-
-      </div>
     </div>
-  </section>
 
 </header>
 
@@ -330,6 +353,55 @@
             item.style.display = text.includes(searchValue) ? 'block' : 'none';
         });
     });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Deteksi scroll untuk mengubah tampilan navbar
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // Untuk tampilan mobile - mengatasi masalah dropdown
+    if (window.innerWidth < 992) {
+        const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggle.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdownMenu = this.nextElementSibling;
+                if (dropdownMenu.style.display === 'block') {
+                    dropdownMenu.style.display = 'none';
+                } else {
+                    dropdownMenu.style.display = 'block';
+                }
+            });
+        });
+    }
+    
+    // Animasi untuk menu item saat hover
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach((item, index) => {
+        item.style.transitionDelay = (index * 0.05) + 's';
+    });
+    
+    // Tombol pencarian dengan animasi klik
+    const searchButton = document.querySelector('.search-button');
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+                // Di sini bisa ditambahkan kode untuk menampilkan modal pencarian
+                // atau redirect ke halaman pencarian
+                console.log('Search clicked');
+            }, 300);
+        });
+    }
+});
 </script>
 <!-- Script bagian hero content -->
 <script>
