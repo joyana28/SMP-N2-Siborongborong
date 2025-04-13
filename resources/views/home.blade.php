@@ -51,8 +51,8 @@
         <a class="navbar-brand" href="/">
             <img src="/images/logo.png" alt="Skola Logo" class="logo-img">
             <div class="brand-text">
-                <span class="brand-name">SKOLA</span>
-                <span class="university-text">university</span>
+                <span class="brand-name">SMPN2</span>
+                <span class="university-text">Siborongborong</span>
             </div>
         </a>
         
@@ -64,24 +64,28 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        COURSES
+                        PROFIL
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        PAGES
+                        AKADEMIK
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        BLOG
+                        NON AKADEMIK
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">SHOP</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        BERITA
+                    </a>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">TENTANG</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT</a>
+                    <a class="nav-link" href="#">KONTAK</a>
                 </li>
             </ul>
             <div class="navbar-icons">
@@ -106,7 +110,7 @@
             <div class="col-md-6 hero-content">
                 <h1>SMPN2 <br>Siborongborong</h1>
                 <p>Sekolah Unggulan yang Membangun Masa Depan Gemilang dengan Pendidikan Berkualitas dengan Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi di Bumi Pertiwi</p>
-                <a href="#" class="btn btn-primary apply-btn">APPLY NOW</a>
+                <a href="#" class="btn btn-primary apply-btn">READ MORE</a>
             </div>
         </div>
     </div>
