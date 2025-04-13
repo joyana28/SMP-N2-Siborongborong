@@ -12,142 +12,164 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
-    <!-- Font Awesome for icons -->
-</head>
-<body>
-<!-- ================= HEADER ================= -->
-<header>
-
-
 </head>
 <body>
 <!-- ================= HEADER ================= -->
 <header>
     <!-- Top Contact Bar -->
-    <div class="top-contact-bar">
-    <div class="container d-flex justify-content-between align-items-center">
-        <div class="contact-info">
-            <span>Have any questions? </span>
-            <a href="tel:+61383766284" class="text-white text-decoration-none ms-2">
-                <i class="bi bi-telephone"></i> +61 383 766 284
-            </a>
-            <a href="mailto:noreply@envato.com" class="text-white text-decoration-none ms-3">
-                <i class="bi bi-envelope"></i> noreply@envato.com
-            </a>
-        </div>
-        <div class="social-icons">
-            <a href="#" class="text-white"><i class="bi bi-skype"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-vimeo"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-youtube"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-flickr"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-behance"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-dribbble"></i></a>
+    <!-- Top Contact Bar -->
+<div class="top-contact-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <span>+01 123 456 789</span>
+                    <span>hello@skola.com</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="social-and-language">
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                    <div class="language-selector">
+                        <span>English <i class="bi bi-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- Main Navigation -->
-<nav class="navbar navbar-expand-lg sticky-top">
+<nav class="navbar navbar-expand-lg">
     <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" alt="Skola Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-name">SKOLA</span>
+                <span class="university-text">university</span>
+            </div>
+        </a>
         
-    <!-- Logo -->
-<a class="navbar-brand school-logo" href="{{ route('home') }}">
-    <img src="/images/logo.png" alt="SMPN 2 Logo" class="school-logo-img">
-    <span class="be">SMPN 2</span><span class="school">Siborongborong</span>
-</a>
-        
+        <!-- Navigation Items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto main-menu">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">HOME</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        COURSES
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        PAGES
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        BLOG
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">SHOP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">CONTACT</a>
+                </li>
+            </ul>
+            <div class="navbar-icons">
+                <a href="#" class="nav-icon"><i class="bi bi-search"></i></a>
+                <a href="#" class="nav-icon"><i class="bi bi-person"></i></a>
+                <a href="#" class="nav-icon"><i class="bi bi-bag"></i></a>
+            </div>
+        </div>
+
         <!-- Toggle Button for Mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
-        <!-- Navigation Items -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Profil
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Sejarah Sekolah</a></li>
-                        <li><a class="dropdown-item" href="#">Visi dan Misi</a></li>
-                        <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
-                        <li><a class="dropdown-item" href="#">Tenaga Pendidik</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Akademik
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Kurikulum</a></li>
-                        <li><a class="dropdown-item" href="#">Jadwal Pelajaran</a></li>
-                        <li><a class="dropdown-item" href="#">Prestasi Akademik</a></li>
-                        <li><a class="dropdown-item" href="#">Fasilitas Belajar</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Non-Akademik
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Ekstrakurikuler</a></li>
-                        <li><a class="dropdown-item" href="#">Kegiatan Sosial</a></li>
-                        <li><a class="dropdown-item" href="#">Kompetisi</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Tentang
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Informasi Umum</a></li>
-                        <li><a class="dropdown-item" href="#">Kontak Kami</a></li>
-                        <li><a class="dropdown-item" href="#">Lokasi</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Program
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Program Unggulan</a></li>
-                        <li><a class="dropdown-item" href="#">Kegiatan Tahunan</a></li>
-                        <li><a class="dropdown-item" href="#">Program Beasiswa</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Berita</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Galeri</a>
-                </li>
-                <li class="nav-item">
-                    <button class="search-button">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </li>
-            </ul>
-        </div>
     </div>
 </nav>
 
-    
-
+    <!-- Hero Section -->
     <div class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <h1>SMPN 2 Siborongborong Membangun Masa Depan Melalui Pendidikan Berkualitas</h1>
-            <a href="#" class="btn-contact mt-3">Contact us</a>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 hero-content">
+                <h1>SMPN2 <br>Siborongborong</h1>
+                <p>Sekolah Unggulan yang Membangun Masa Depan Gemilang dengan Pendidikan Berkualitas dengan Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi di Bumi Pertiwi</p>
+                <a href="#" class="btn btn-primary apply-btn">APPLY NOW</a>
+            </div>
         </div>
     </div>
-
+</div>
+    <!-- Feature Boxes -->
+    <section class="campus-cards">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <h3 class="card-title">Mengapa Memilih SMPN 2 Siborongborong?</h3>
+                            <p class="card-content">
+                            Kami menawarkan pendidikan berkualitas dengan guru berdedikasi, fasilitas modern, dan lingkungan belajar yang mendukung pengembangan potensi siswa secara holistik.
+                            </p>
+                        </div>
+                        <div class="hidden-content">
+                            <p>Di SMPN 2 Siborongborong, setiap siswa mendapatkan pendampingan optimal untuk tumbuh menjadi pribadi cerdas, mandiri, dan bertanggung jawab. Ayo, wujudkan mimpi bersam kami!</p>
+                            <a href="#" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <h3 class="card-title">Kehidupan di SMPN 2 Siborongborong</h3>
+                            <p class="card-content">
+                            Kami menciptakan lingkungan yang dinamis melalui kegiatan akademik, ekstrakurikuler, dan pembinaan karakter, agar siswa tumbuh sebagai pribadi unggul dan percaya diri.
+                        </div>
+                        <div class="hidden-content">
+                            <p>Dari kelas hingga lapangan, kami mendorong siswa untuk aktif, kreatif, dan berkolaborasi dalam berbagai kegiatan yang mendukung perkembangan holistik.</p>
+                            <a href="#" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="bi bi-newspaper"></i>
+                            </div>
+                            <h3 class="card-title">Berita & Kegiatan</h3>
+                            <p class="card-content">
+                            Kami tidak hanya memberikan pendidikan, tetapi juga pengalaman membentuk karakter dan kompetensi siswa untuk kesuksesan di sekolah maupun kehidupan.
+                            </p>
+                        </div>
+                        <div class="hidden-content">
+                            <p>Temukan berita terbaru dan acara-acara seru yang memperkaya pengalaman belajar sekaligus mempererat kebersamaan warga sekolah.</p>
+                            <a href="#" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </header>
 
 
@@ -415,7 +437,7 @@
 <!-- Bootstrap JS (via CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
