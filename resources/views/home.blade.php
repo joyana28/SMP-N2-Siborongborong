@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
@@ -18,31 +19,6 @@
 <header>
     <!-- Top Contact Bar -->
     <!-- Top Contact Bar -->
-<div class="top-contact-bar">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="contact-info">
-                    <span>+01 123 456 789</span>
-                    <span>hello@skola.com</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="social-and-language">
-                    <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                    <div class="language-selector">
-                        <span>English <i class="bi bi-chevron-down"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Main Navigation -->
 <nav class="navbar navbar-expand-lg">
@@ -67,10 +43,10 @@
                         PROFIL
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Sejarah Sekolah</a></li>
-                        <li><a class="dropdown-item" href="#">Visi & Misi</a></li>
-                        <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
-                        <li><a class="dropdown-item" href="#">Tenaga Pendidik</a></li>
+                        <li><a class="dropdown-item" href="#"><span>Sejarah Sekolah</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Visi & Misi</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Struktur Organisasi</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Tenaga Pendidik</span></a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -78,10 +54,10 @@
                         AKADEMIK
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Kurikulum</a></li>
-                        <li><a class="dropdown-item" href="#">Jadwal Pelajaran</a></li>
-                        <li><a class="dropdown-item" href="#">Ujian Sekolah</a></li>
-                        <li><a class="dropdown-item" href="#">E-learning</a></li>
+                        <li><a class="dropdown-item" href="#"><span>Kurikulum</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Jadwal Pelajaran</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Ujian Sekolah</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>E-learning</span></a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -89,10 +65,10 @@
                         NON AKADEMIK
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Ekstrakurikuler</a></li>
-                        <li><a class="dropdown-item" href="#">Organisasi Siswa</a></li>
-                        <li><a class="dropdown-item" href="#">Prestasi</a></li>
-                        <li><a class="dropdown-item" href="#">Galeri Kegiatan</a></li>
+                        <li><a class="dropdown-item" href="#"><span>Ekstrakurikuler</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Organisasi Siswa</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Prestasi</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Galeri Kegiatan</span></a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -100,9 +76,9 @@
                         BERITA
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Berita Sekolah</a></li>
-                        <li><a class="dropdown-item" href="#">Pengumuman</a></li>
-                        <li><a class="dropdown-item" href="#">Agenda</a></li>
+                        <li><a class="dropdown-item" href="#"><span>Berita Sekolah</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Pengumuman</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Agenda</span></a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -207,16 +183,37 @@
     <main>
     <section id="intro" class="section-intro">
     <div class="container">
-        <div class="intro-content">
-            <div class="intro-text">
-                <span class="section-tag">Selamat Datang di</span>
-                <h2>SMP Negeri 2 Siborongborong</h2>
-                <p>Selamat datang di Website & informasi resmi SMP Negeri 2 Siborongborong.</p>
-                <p>SMP Negeri 2 Siborongborong merupakan salah satu lembaga pendidikan yang ada di kabupaten Tapanuli Utara kecamatan Siborongborong yang selalu berusaha memberikan pelayanan pendidikan yang terbaik untuk siswa-siswi kami.</p>
-                <p>Guna memenuhi tuntutan kependidikan serta menciptakan cendekiawan dengan belajar yang berakhlak dan berbudi pekerti luhur, serta menghasilkan SDM yang berdaya saing. Program pembelajaran kami ditekankan pada pembentukan karakter siswa yang baik tanpa mengabaikan hal akademis.</p>
+        <div class="about-header">
+            <span class="about-tag">Sambutan Hangat </span>
+            <h2 class="about-title">SMP Negeri 2 <br>Siborongborong</h2>
+            <p class="about-desc">Selamat datang di website resmi SMP Negeri 2 Siborongborong, tempat tumbuh kembangnya generasi unggul berkarakter. Kami menyediakan fasilitas pendidikan lengkap, seperti laboratorium sains, perpustakaan digital, dan beragam ekstrakurikuler untuk mendukung bakat siswa.
+
+Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkomitmen membentuk siswa yang cerdas, kreatif, dan berakhlak mulia.</p>
+            <a href="#" class="learn-more-btn">
+                <span>Learn more</span>
+                <div class="icon-circle">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>16</h3>
+                    <p>Experience</p>
+                </div>
+                <div class="stat-item">
+                    <h3>46</h3>
+                    <p>Instructor</p>
+                </div>
             </div>
-            <div class="intro-image">
-                <img src="../images/pp 2.png" alt="Taman Sekolah">
+        </div>
+        
+        <div class="swimming-cards">
+            <div class="swim-card left-card">
+                <img src="../images/pp 2.png" alt="Swimmer with equipment">
+            </div>
+            <div class="swim-card right-card">
+                <img src="../images/pp 3.png" alt="Swimmer with gear">
             </div>
         </div>
     </div>
@@ -471,6 +468,76 @@ document.addEventListener('DOMContentLoaded', function() {
   const dropdowns = document.querySelectorAll('.dropdown');
   
   dropdowns.forEach(dropdown => {
+    let timeout;
+    
+    dropdown.addEventListener('mouseenter', function() {
+      clearTimeout(timeout);
+      const dropdownMenu = this.querySelector('.dropdown-menu');
+      dropdownMenu.style.display = 'block';
+      
+      // Berikan sedikit delay agar transisi berjalan dengan baik
+      setTimeout(() => {
+        dropdownMenu.style.opacity = '1';
+        dropdownMenu.style.visibility = 'visible';
+        dropdownMenu.style.transform = 'translateY(0)';
+      }, 10);
+    });
+    
+    dropdown.addEventListener('mouseleave', function() {
+      const dropdownMenu = this.querySelector('.dropdown-menu');
+      dropdownMenu.style.opacity = '0';
+      dropdownMenu.style.visibility = 'hidden';
+      dropdownMenu.style.transform = 'translateY(10px)';
+      
+      // Delay sebelum menyembunyikan dropdown sepenuhnya
+      timeout = setTimeout(() => {
+        if (dropdownMenu.style.opacity === '0') {
+          dropdownMenu.style.display = 'none';
+        }
+      }, 300);
+    });
+  });
+  
+  // Efek hover untuk dropdown item - tambahkan class untuk animasi
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+  
+  dropdownItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.classList.add('hovered');
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      this.classList.remove('hovered');
+    });
+  });
+  
+  // Highlight menu aktif berdasarkan halaman saat ini
+  const highlightActiveMenu = () => {
+    const currentPath = window.location.pathname;
+    
+    // Cek semua dropdown item dan tambahkan class active jika cocok dengan path
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      const href = item.getAttribute('href');
+      if (href && (href === currentPath || currentPath.includes(href))) {
+        item.classList.add('active');
+        
+        // Juga highlight parent dropdown-nya
+        const parentDropdown = item.closest('.dropdown');
+        if (parentDropdown) {
+          const dropdownToggle = parentDropdown.querySelector('.dropdown-toggle');
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      }
+    });
+  };
+  
+  // Jalankan highlightActiveMenu saat halaman dimuat
+  highlightActiveMenu();
+});
+</script>
+<script>
     const menu = dropdown.querySelector('.dropdown-menu');
     const link = dropdown.querySelector('.dropdown-toggle');
     
@@ -500,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
-  
+  </script>
   // Animasi smooth untuk navbar saat scroll
   let prevScrollpos = window.pageYOffset;
   
@@ -527,7 +594,49 @@ document.addEventListener('DOMContentLoaded', function() {
     prevScrollpos = currentScrollPos;
   });
 });
-</scipt>
+</script>
+
+<script>
+// JavaScript untuk animasi tambahan
+document.addEventListener('DOMContentLoaded', function() {
+    // Animasi hover untuk kartu-kartu berenang
+    const cards = document.querySelectorAll('.swim-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+            this.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            if (this.classList.contains('left-card')) {
+                this.style.transform = 'translateY(0) scale(0.95)';
+                this.style.zIndex = '1';
+            } else {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.zIndex = '2';
+            }
+        });
+    });
+    
+    // Animasi fade-in untuk konten ketika halaman dimuat
+    const aboutHeader = document.querySelector('.about-header');
+    const swimmingCards = document.querySelector('.swimming-cards');
+    
+    aboutHeader.style.opacity = '0';
+    swimmingCards.style.opacity = '0';
+    
+    setTimeout(() => {
+        aboutHeader.style.transition = 'opacity 1s ease';
+        aboutHeader.style.opacity = '1';
+        
+        setTimeout(() => {
+            swimmingCards.style.transition = 'opacity 1s ease';
+            swimmingCards.style.opacity = '1';
+        }, 300);
+    }, 300);
+});
+</script>
 
 <!-- Bootstrap JS (via CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
