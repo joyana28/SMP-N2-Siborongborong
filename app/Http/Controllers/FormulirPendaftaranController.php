@@ -73,51 +73,45 @@ class FormulirPendaftaranController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
-            'deskripsi' => 'required|string|max:100',
-            'formulir_pendaftaran' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
-            'tanggal_terbit' => 'required|date',
-            'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
-        ]);
+    $validator = Validator::make($request->all(), [
+        'id_admin' => 'required|exists:admins,id',
+        'deskripsi' => 'required|string|max:100',
+        'formulir_pendaftaran' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+        'tanggal_terbit' => 'required|date',
+        'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
+    ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+    if ($validator->fails()) {
+        return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+    }
+
+    $formulir = FormulirPendaftaran::findOrFail($id);
+
+    $data = $request->only([
+        'id_admin',
+        'deskripsi',
+        'tanggal_terbit',
+        'tanggal_berakhir'
+    ]);
+
+    if ($request->hasFile('formulir_pendaftaran')) {
+        if ($formulir->formulir_pendaftaran && Storage::disk('public')->exists($formulir->formulir_pendaftaran)) {
+            Storage::disk('public')->delete($formulir->formulir_pendaftaran);
         }
 
-        $formulir = FormulirPendaftaran::findOrFail($id);
-        
-        if ($request->hasFile('formulir_pendaftaran')) {
-            // Delete old file
-            if (Storage::disk('public')->exists($formulir->formulir_pendaftaran)) {
-                Storage::disk('public')->delete($formulir->formulir_pendaftaran);
-            }
-            
-            // Upload new file
-            $file = $request->file('formulir_pendaftaran');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('formulir', $fileName, 'public');
-            
-            $formulir->update([
-                'id_admin' => $request->id_admin,
-                'deskripsi' => $request->deskripsi,
-                'formulir_pendaftaran' => $filePath,
-                'tanggal_terbit' => $request->tanggal_terbit,
-                'tanggal_berakhir' => $request->tanggal_berakhir,
-            ]);
-        } else {
-            $formulir->update([
-                'id_admin' => $request->id_admin,
-                'deskripsi' => $request->deskripsi,
-                'tanggal_terbit' => $request->tanggal_terbit,
-                'tanggal_berakhir' => $request->tanggal_berakhir,
-            ]);
-        }
+        $file = $request->file('formulir_pendaftaran');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('formulir', $fileName, 'public');
 
-        return redirect()->route('formulir.index')
-            ->with('success', 'Formulir pendaftaran berhasil diperbarui');
+        $data['formulir_pendaftaran'] = $filePath;
+    }
+
+    $formulir->update($data);
+
+    return redirect()->route('formulir.index')
+        ->with('success', 'Formulir pendaftaran berhasil diperbarui');
     }
 
     public function destroy($id)

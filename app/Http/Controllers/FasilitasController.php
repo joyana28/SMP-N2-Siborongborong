@@ -44,7 +44,7 @@ class FasilitasController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('fasilitas', $fileName, 'public');
 
-            DataFasilitas::create([
+            Fasilitas::create([
                 'id_admin' => $request->id_admin,
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
@@ -76,56 +76,49 @@ class FasilitasController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id',
-            'nama' => 'required|string|max:100',
-            'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'tahun' => 'required|string|max:100',
-            'kerusakan' => 'nullable|string|max:100',
-            'penambahan' => 'nullable|string|max:100',
-        ]);
-        
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+    $validator = Validator::make($request->all(), [
+        'id_admin' => 'required|exists:admins,id',
+        'nama' => 'required|string|max:100',
+        'deskripsi' => 'required',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'tahun' => 'required|string|max:100',
+        'kerusakan' => 'nullable|string|max:100',
+        'penambahan' => 'nullable|string|max:100',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()
+            ->withErrors($validator)
+            ->withInput();
+    }
+
+    $fasilitas = Fasilitas::findOrFail($id);
+
+    $data = $request->only([
+        'id_admin',
+        'nama',
+        'deskripsi',
+        'tahun',
+        'kerusakan',
+        'penambahan'
+    ]);
+
+    if ($request->hasFile('foto')) {
+        if ($fasilitas->foto && Storage::disk('public')->exists($fasilitas->foto)) {
+            Storage::disk('public')->delete($fasilitas->foto);
         }
 
-        $fasilitas = Fasilitas::findOrFail($id);
-        
-        if ($request->hasFile('foto')) {
-            // Hapus foto lama
-            if (Storage::disk('public')->exists($fasilitas->foto)) {
-                Storage::disk('public')->delete($fasilitas->foto);
-            }
-            
-            // Upload foto baru
-            $file = $request->file('foto');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('fasilitas', $fileName, 'public');
-            
-            $fasilitas->update([
-                'id_admin' => $request->id_admin,
-                'nama' => $request->nama,
-                'deskripsi' => $request->deskripsi,
-                'tahun' => $request->tahun,
-                'kerusakan' => $request->kerusakan,
-                'penambahan' => $request->penambahan,
-                ]);
-        } else {
-            $fasilitas->update([
-                'id_admin' => $request->id_admin,
-                'nama' => $request->nama,
-                'deskripsi' => $request->deskripsi,
-                'tahun' => $request->tahun,
-                'kerusakan' => $request->kerusakan,
-                'penambahan' => $request->penambahan,
-                ]);
-        }
+        $file = $request->file('foto');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $filePath = $file->storeAs('fasilitas', $fileName, 'public');
 
-        return redirect()->route('fasilitas.index')
-            ->with('success', 'Data fasilitas berhasil diperbarui');
+        $data['foto'] = $filePath;
+    }
+
+    $fasilitas->update($data);
+
+    return redirect()->route('fasilitas.index')
+        ->with('success', 'Data fasilitas berhasil diperbarui');
     }
 
     public function destroy($id)
