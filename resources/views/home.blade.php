@@ -12,59 +12,170 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
-    <!-- Font Awesome for icons -->
 </head>
 <body>
-  <!-- HEADER -->
+<!-- ================= HEADER ================= -->
 <header>
-  <div class="top-bar py-3" style="background-color: #006666; color: white;">
-    <div class="container d-flex flex-wrap align-items-center justify-content-between">
-      
-      <!-- Logo dan Navbar digabung dalam satu baris -->
-      <div class="d-flex flex-wrap align-items-center w-100 justify-content-between">
-        
-        <!-- Judul Sekolah -->
-        <div class="logo">
-          <h1 class="m-0 fw-bold" style="font-size: 1.5rem;">SMP Negeri 2 Siborongborong</h1>
+    <!-- Top Contact Bar -->
+    <!-- Top Contact Bar -->
+<div class="top-contact-bar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-info">
+                    <span>+01 123 456 789</span>
+                    <span>hello@skola.com</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="social-and-language">
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                    <div class="language-selector">
+                        <span>English <i class="bi bi-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Menu Navigasi -->
-        <nav class="ms-auto">
-        <ul class="nav gap-2">
-  <li class="nav-item"><a href="{{ route('home') }}" class="nav-link text-white fw-semibold {{ request()->is('/') ? 'active' : '' }}">Home</a></li>
-  <li class="nav-item"><a href="{{ route('about') }}" class="nav-link text-white fw-semibold {{ request()->is('about') ? 'active' : '' }}">About</a></li>
-  <li class="nav-item"><a href="{{ route('prestasi') }}" class="nav-link text-white fw-semibold {{ request()->is('prestasi') ? 'active' : '' }}">Prestasi</a></li>
-  <li class="nav-item"><a href="{{ route('guru') }}" class="nav-link text-white fw-semibold {{ request()->is('guru') ? 'active' : '' }}">Tenaga Pendidik</a></li>
-  <li class="nav-item"><a href="{{ route('siswa') }}" class="nav-link text-white fw-semibold {{ request()->is('siswa') ? 'active' : '' }}">Siswa</a></li>
-  <li class="nav-item"><a href="{{ route('alumni') }}" class="nav-link text-white fw-semibold {{ request()->is('alumni') ? 'active' : '' }}">Profil Alumni</a></li>
-  <li class="nav-item"><a href="{{ route('pendaftaran') }}" class="nav-link text-white fw-semibold {{ request()->is('pendaftaran') ? 'active' : '' }}">Formulir Pendaftaran</a></li>
-</ul>
-        </nav>
-
-      </div>
     </div>
-  </div>
+</div>
 
-  <!-- Home Section -->
-  <section class="py-5 bg-light">
-    <div class="container-fluid px-5 py-5">
-      <div class="row align-items-center">
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" alt="Skola Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-name">SMPN2</span>
+                <span class="university-text">Siborongborong</span>
+            </div>
+        </a>
         
-        <!-- Gambar Sekolah -->
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <img src="/images/siborongborong.png" alt="SMPN 2 Siborongborong" class="img-fluid rounded shadow w-100">
+        <!-- Navigation Items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto main-menu">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">HOME</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        PROFIL
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        AKADEMIK
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        NON AKADEMIK
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        BERITA
+                    </a>
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">TENTANG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">KONTAK</a>
+                </li>
+            </ul>
+            <div class="navbar-icons">
+                <a href="#" class="nav-icon"><i class="bi bi-search"></i></a>
+                <a href="#" class="nav-icon"><i class="bi bi-person"></i></a>
+                <a href="#" class="nav-icon"><i class="bi bi-bag"></i></a>
+            </div>
         </div>
 
-        <!-- Tulisan Welcome -->
-        <div class="col-lg-6 text-center text-lg-start">
-          <h1 class="display-3 fw-bold mb-4">Selamat Datang di<br><span class="text-primary">SMPN 2 Siborongborong</span></h1>
-          <p class="fs-4">Kami berkomitmen memberikan pendidikan yang berkualitas untuk membangun generasi masa depan yang cerdas, berkarakter, dan siap bersaing.</p>
-          <a href="#intro" class="btn btn-primary btn-lg px-5 py-3 mt-4">Pelajari Lebih Lanjut</a>
-        </div>
-      </div>
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-  </section>
+</nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 hero-content">
+                <h1>SMPN2 <br>Siborongborong</h1>
+                <p>Sekolah Unggulan yang Membangun Masa Depan Gemilang dengan Pendidikan Berkualitas dengan Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi di Bumi Pertiwi</p>
+                <a href="#" class="btn btn-primary apply-btn">READ MORE</a>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- Feature Boxes -->
+    <section class="campus-cards">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <h3 class="card-title">Mengapa Memilih SMPN 2 Siborongborong?</h3>
+                            <p class="card-content">
+                            Kami menawarkan pendidikan berkualitas dengan guru berdedikasi, fasilitas modern, dan lingkungan belajar yang mendukung pengembangan potensi siswa secara holistik.
+                            </p>
+                        </div>
+                        <div class="hidden-content">
+                            <p>Di SMPN 2 Siborongborong, setiap siswa mendapatkan pendampingan optimal untuk tumbuh menjadi pribadi cerdas, mandiri, dan bertanggung jawab. Ayo, wujudkan mimpi bersam kami!</p>
+                            <a href="#" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <h3 class="card-title">Kehidupan di SMPN 2 Siborongborong</h3>
+                            <p class="card-content">
+                            Kami menciptakan lingkungan yang dinamis melalui kegiatan akademik, ekstrakurikuler, dan pembinaan karakter, agar siswa tumbuh sebagai pribadi unggul dan percaya diri.
+                        </div>
+                        <div class="hidden-content">
+                            <p>Dari kelas hingga lapangan, kami mendorong siswa untuk aktif, kreatif, dan berkolaborasi dalam berbagai kegiatan yang mendukung perkembangan holistik.</p>
+                            <a href="#" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-icon">
+                                <i class="bi bi-newspaper"></i>
+                            </div>
+                            <h3 class="card-title">Berita & Kegiatan</h3>
+                            <p class="card-content">
+                            Kami tidak hanya memberikan pendidikan, tetapi juga pengalaman membentuk karakter dan kompetensi siswa untuk kesuksesan di sekolah maupun kehidupan.
+                            </p>
+                        </div>
+                        <div class="hidden-content">
+                            <p>Temukan berita terbaru dan acara-acara seru yang memperkaya pengalaman belajar sekaligus mempererat kebersamaan warga sekolah.</p>
+                            <a href="#" class="read-more">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </header>
+
 
 
     <main>
@@ -254,50 +365,7 @@
 
     </main>
 
-    <footer style="background-color:#006666; color: #fff; padding: 20px 0; font-family: 'Segoe UI', sans-serif; font-size: 16px;">
-    <div class="container" style="max-width: 1200px; margin: auto; padding: 0 20px;">
-    <div class="footer-columns" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
-      
-      <div class="footer-col" style="flex: 1; min-width: 220px;">
-        <h4 style="margin-bottom: 10px; color: #ffcc00;">Alamat Sekolah</h4>
-        <p>
-          <a href="https://www.google.com/maps/place/SMP+Negeri+2+Siborongborong" target="_blank" style="color: #fff; text-decoration: none;">
-            Jl. Raya KM. 1 Siborongborong, Tarutung
-          </a>
-        </p>
-        <p>Kabupaten Tapanuli Utara</p>
-        <p>Provinsi Sumatera Utara, Kode Pos</p>
-        <p>Telepon/Fax: 62476-XXXXX</p>
-      </div>
-
-      <div class="footer-col" style="flex: 1; min-width: 220px;">
-        <h4 style="margin-bottom: 10px; color: #ffcc00;">Jam Sekolah</h4>
-        <p>Sen - Jum: 07.30 - 15.00</p>
-        <p>Sab: 07.30 – 12.00</p>
-      </div>
-
-      <div class="footer-col" style="flex: 1; min-width: 220px;">
-        <h4 style="margin-bottom: 10px; color: #ffcc00;">Media Sosial</h4>
-        <div class="social-links" style="display: flex; gap: 10px; font-size: 35px;">
-          <a href="https://www.facebook.com/smpn2siborongborong/" style="color: #4267B2;" aria-label="Facebook">
-            <i class="fab fa-facebook-square"></i>
-          </a>
-          <a href="https://www.tiktok.com/@siborongborongsmpn2" style="color:rgb(0, 0, 0);" aria-label="Tiktok">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a href="https://wa.me/+6281370422455" style="color: #25D366;" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="copyright" style="text-align: center; margin-top: 20px; font-size: 13px; color: #ccc;">
-      <p>© 2024. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
+    
 
 <script src="{{ asset('js/jis-slider.js') }}"></script>
 <!-- Script pencarian -->
@@ -312,6 +380,55 @@
         });
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Deteksi scroll untuk mengubah tampilan navbar
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // Untuk tampilan mobile - mengatasi masalah dropdown
+    if (window.innerWidth < 992) {
+        const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
+        dropdownToggle.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const dropdownMenu = this.nextElementSibling;
+                if (dropdownMenu.style.display === 'block') {
+                    dropdownMenu.style.display = 'none';
+                } else {
+                    dropdownMenu.style.display = 'block';
+                }
+            });
+        });
+    }
+    
+    // Animasi untuk menu item saat hover
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach((item, index) => {
+        item.style.transitionDelay = (index * 0.05) + 's';
+    });
+    
+    // Tombol pencarian dengan animasi klik
+    const searchButton = document.querySelector('.search-button');
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            this.classList.add('clicked');
+            setTimeout(() => {
+                this.classList.remove('clicked');
+                // Di sini bisa ditambahkan kode untuk menampilkan modal pencarian
+                // atau redirect ke halaman pencarian
+                console.log('Search clicked');
+            }, 300);
+        });
+    }
+});
+</script>
 <!-- Script bagian hero content -->
 <script>
     // Saat dokumen sudah dimuat
@@ -321,8 +438,10 @@
     });
 </script>
 
+<!-- Bootstrap JS (via CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
