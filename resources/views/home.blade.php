@@ -493,6 +493,76 @@ document.addEventListener('DOMContentLoaded', function() {
   const dropdowns = document.querySelectorAll('.dropdown');
   
   dropdowns.forEach(dropdown => {
+    let timeout;
+    
+    dropdown.addEventListener('mouseenter', function() {
+      clearTimeout(timeout);
+      const dropdownMenu = this.querySelector('.dropdown-menu');
+      dropdownMenu.style.display = 'block';
+      
+      // Berikan sedikit delay agar transisi berjalan dengan baik
+      setTimeout(() => {
+        dropdownMenu.style.opacity = '1';
+        dropdownMenu.style.visibility = 'visible';
+        dropdownMenu.style.transform = 'translateY(0)';
+      }, 10);
+    });
+    
+    dropdown.addEventListener('mouseleave', function() {
+      const dropdownMenu = this.querySelector('.dropdown-menu');
+      dropdownMenu.style.opacity = '0';
+      dropdownMenu.style.visibility = 'hidden';
+      dropdownMenu.style.transform = 'translateY(10px)';
+      
+      // Delay sebelum menyembunyikan dropdown sepenuhnya
+      timeout = setTimeout(() => {
+        if (dropdownMenu.style.opacity === '0') {
+          dropdownMenu.style.display = 'none';
+        }
+      }, 300);
+    });
+  });
+  
+  // Efek hover untuk dropdown item - tambahkan class untuk animasi
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+  
+  dropdownItems.forEach(item => {
+    item.addEventListener('mouseenter', function() {
+      this.classList.add('hovered');
+    });
+    
+    item.addEventListener('mouseleave', function() {
+      this.classList.remove('hovered');
+    });
+  });
+  
+  // Highlight menu aktif berdasarkan halaman saat ini
+  const highlightActiveMenu = () => {
+    const currentPath = window.location.pathname;
+    
+    // Cek semua dropdown item dan tambahkan class active jika cocok dengan path
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      const href = item.getAttribute('href');
+      if (href && (href === currentPath || currentPath.includes(href))) {
+        item.classList.add('active');
+        
+        // Juga highlight parent dropdown-nya
+        const parentDropdown = item.closest('.dropdown');
+        if (parentDropdown) {
+          const dropdownToggle = parentDropdown.querySelector('.dropdown-toggle');
+          if (dropdownToggle) {
+            dropdownToggle.classList.add('active');
+          }
+        }
+      }
+    });
+  };
+  
+  // Jalankan highlightActiveMenu saat halaman dimuat
+  highlightActiveMenu();
+});
+</script>
+<script>
     const menu = dropdown.querySelector('.dropdown-menu');
     const link = dropdown.querySelector('.dropdown-toggle');
     
@@ -522,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
-  
+  </script>
   // Animasi smooth untuk navbar saat scroll
   let prevScrollpos = window.pageYOffset;
   
