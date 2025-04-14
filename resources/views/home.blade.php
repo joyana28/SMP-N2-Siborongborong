@@ -19,31 +19,6 @@
 <header>
     <!-- Top Contact Bar -->
     <!-- Top Contact Bar -->
-<div class="top-contact-bar">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="contact-info">
-                    <span>+01 123 456 789</span>
-                    <span>hello@skola.com</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="social-and-language">
-                    <div class="social-icons">
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-twitter"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </div>
-                    <div class="language-selector">
-                        <span>English <i class="bi bi-chevron-down"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Main Navigation -->
 <nav class="navbar navbar-expand-lg">
