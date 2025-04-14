@@ -184,11 +184,12 @@
     <section id="intro" class="section-intro">
     <div class="container">
         <div class="about-header">
-            <span class="about-tag">Sambutan Hangat </span>
+            <span class="about-tag">Sambutan Hangat</span>
             <h2 class="about-title">SMP Negeri 2 <br>Siborongborong</h2>
-            <p class="about-desc">Selamat datang di website resmi SMP Negeri 2 Siborongborong, tempat tumbuh kembangnya generasi unggul berkarakter. Kami menyediakan fasilitas pendidikan lengkap, seperti laboratorium sains, perpustakaan digital, dan beragam ekstrakurikuler untuk mendukung bakat siswa.
-
-Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkomitmen membentuk siswa yang cerdas, kreatif, dan berakhlak mulia.</p>
+            <div class="about-desc">
+                <p>Selamat datang di website resmi SMP Negeri 2 Siborongborong, tempat tumbuh kembangnya generasi unggul berkarakter. Kami menyediakan fasilitas pendidikan lengkap, seperti laboratorium sains, perpustakaan digital, dan beragam ekstrakurikuler untuk mendukung bakat siswa.</p>
+                <p>Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkomitmen membentuk siswa yang cerdas, kreatif, dan berakhlak mulia.</p>
+            </div>
             <a href="#" class="learn-more-btn">
                 <span>Learn more</span>
                 <div class="icon-circle">
@@ -557,7 +558,6 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.classList.toggle('show');
       }
     });
-  });
   
   // Tutup dropdown saat klik di luar
   document.addEventListener('click', function(e) {
