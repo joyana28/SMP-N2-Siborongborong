@@ -3,6 +3,7 @@
 /* ================= GENERAL STYLES ================= */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
+
 :root {
     --primary-color: #0c2e60;
     --secondary-color: #c49a63;
@@ -137,7 +138,7 @@ nav ul
   color: #c49a63;
 }
 
-/* Dropdown styles untuk menyesuaikan dengan warna navbar utama */
+/* Dropdown styles */
 .dropdown-menu {
   background-color: #0c2e60; /* Warna background sama dengan navbar */
   border: 1px solid rgba(196, 154, 99, 0.2); /* Border tipis dengan warna emas/coklat */
@@ -150,7 +151,7 @@ nav ul
 
 /* Item dropdown */
 .dropdown-item {
-  color: #ffffff; /* Text putih */
+  color: #ffffff !important; /* Text putih dengan !important untuk memastikan override */
   padding: 12px 20px;
   font-size: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -163,8 +164,8 @@ nav ul
 
 /* Hover effect pada dropdown item */
 .dropdown-item:hover, .dropdown-item:focus {
-  background-color: #143b78; /* Warna biru yang sedikit lebih terang dari navbar */
-  color: #c49a63; /* Warna emas/coklat sesuai dengan hover pada navbar */
+  background-color: #c49a63 !important; /* Warna emas saat hover dengan !important */
+  color: #ffffff !important; /* Tetap warna putih saat hover */
   text-indent: 5px; /* Efek indent saat hover */
 }
 
@@ -199,12 +200,12 @@ nav ul
   transform: rotate(180deg);
 }
 
-/* Optional: highlight pada menu saat dropdown terbuka */
+/* Highlight pada menu saat dropdown terbuka */
 .dropdown:hover > .nav-link {
   color: #c49a63 !important;
 }
 
-/* Optional: hover effect dengan garis bawah */
+/* Hover effect dengan garis bawah */
 .dropdown-item {
   position: relative;
 }
@@ -216,7 +217,7 @@ nav ul
   left: 20px;
   width: 0;
   height: 2px;
-  background-color: #c49a63;
+  background-color: #ffffff; /* Garis bawah putih */
   transition: width 0.3s ease;
 }
 
@@ -227,34 +228,29 @@ nav ul
 /* Penyesuaian untuk tampilan mobile */
 @media (max-width: 991.98px) {
   .dropdown-menu {
-    background-color: rgba(12, 46, 96, 0.9);
-    border: none;
-    box-shadow: none;
-    padding-left: 15px;
-    border-left: 2px solid #c49a63;
-    border-radius: 0;
-    margin-top: 0;
-    margin-bottom: 10px;
+      background-color: rgba(12, 46, 96, 0.9);
+      border: none;
+      box-shadow: none;
+      padding-left: 15px;
+      border-left: 2px solid #c49a63;
+      border-radius: 0;
+      margin-top: 0;
+      margin-bottom: 10px;
   }
   
   .dropdown-item {
-    padding: 8px 15px;
+      padding: 8px 15px;
   }
   
   .dropdown-item:hover {
-    background-color: rgba(196, 154, 99, 0.1);
+      background-color: #c49a63 !important;
   }
 }
-/* Highlight untuk first-child item - seperti "Kurikulum" pada screenshot */
+
+/* First-child item styling */
 .dropdown-menu .dropdown-item:first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-}
-
-/* Optional: tambahkan icon untuk dropdown item */
-.dropdown-item {
-  position: relative;
-  transition: all 0.3s ease;
 }
 
 /* Hover state dengan animasi slide-in */
@@ -262,14 +258,41 @@ nav ul
   padding-left: 25px; /* Geser text sedikit ke kanan saat hover */
 }
 
-/* Tambahkan background gradient untuk efek menarik */
+/* Background gradient untuk dropdown menu */
 .dropdown-menu {
   background: linear-gradient(to bottom, #0c2e60 0%, #0a2651 100%);
 }
 
-/* Tambahkan border top dengan warna aksen */
+/* Border top dengan warna aksen */
 .dropdown-menu {
   border-top: 3px solid #c49a63;
+}
+
+/* Efek hover pada dropdown items dengan overlay */
+.dropdown-item {
+  position: relative;
+}
+
+.dropdown-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: #c49a63;
+  transition: width 0.3s ease;
+  z-index: 0;
+}
+
+.dropdown-item:hover::before {
+  width: 100%;
+}
+
+/* Pastikan teks tetap terlihat di atas overlay */
+.dropdown-item span {
+  position: relative;
+  z-index: 1;
 }
 /* Animasi untuk mobile */
 @media (max-width: 991.98px) {
@@ -805,41 +828,189 @@ nav ul
 }
 
 /* Intro Section */
+/* CSS Styles */
 .section-intro {
-  padding: 60px 0;
+  padding: 80px 0;
   background-color: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
-.intro-content {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
   display: flex;
-  align-items: flex-start;
-  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.intro-image {
-  flex: 0 0 35%;
+.about-header {
+  width: 45%;
+  padding-right: 20px;
 }
 
-.intro-text {
-  flex: 1;
-}
-
-.section-tag {
-  display: inline-block;
-  color: #006666  ;
+.about-tag {
+  color: #e6b800;
+  font-size: 16px;
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  display: block;
 }
 
-.intro-text h2 {
+.about-title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  color: #000;
+}
+
+.about-desc {
+  color: #777;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.learn-more-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn span {
   color: #333;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+  font-weight: 500;
 }
 
-.intro-text p {
-  margin-bottom: 15px;
-  color: #666;
+.icon-circle {
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.icon-circle i {
+  color: #fff;
+}
+
+.learn-more-btn:hover .icon-circle {
+  transform: translateX(5px);
+  background-color: #0088a9;
+}
+
+.stats-container {
+  display: flex;
+  gap: 60px;
+}
+
+.stat-item h3 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.stat-item p {
+  color: #777;
+  font-size: 14px;
+}
+
+.swimming-cards {
+  width: 50%;
+  position: relative;
+  height: 500px;
+}
+
+.swim-card {
+  position: absolute;
+  width: 70%;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.swim-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.left-card {
+  left: 0;
+  top: 60px;
+  z-index: 1;
+  transform: translateY(0) scale(0.95);
+}
+
+.right-card {
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.swim-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .container {
+      flex-direction: column;
+  }
+  
+  .about-header, .swimming-cards {
+      width: 100%;
+  }
+  
+  .about-header {
+      margin-bottom: 50px;
+      padding-right: 0;
+  }
+  
+  .swimming-cards {
+      height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .swimming-cards {
+      height: 400px;
+  }
+  
+  .swim-card {
+      height: 350px;
+  }
+  
+  .about-title {
+      font-size: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .swimming-cards {
+      height: 350px;
+  }
+  
+  .swim-card {
+      height: 300px;
+  }
+  
+  .stats-container {
+      gap: 30px;
+  }
 }
 
 /* Features Grid */
