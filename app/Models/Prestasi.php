@@ -9,12 +9,16 @@ class Prestasi extends Model
 {
     use HasFactory;
 
+    protected $table = 'prestasi';
     protected $primaryKey = 'id_prestasi';
-    protected $fillable = ['id_admin', 'nama', 'tanggal', 'deskripsi'];
+    protected $fillable = ['id_admin', 'nama', 'deskripsi', 'tanggal', 'jenis', 'foto']; 
 
-    // Define relationship
+    protected $casts = [
+        'tanggal' => 'date',
+    ];
+
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin', 'id_admin');
+        return $this->belongsTo(Admin::class, 'id_admin');
     }
 }

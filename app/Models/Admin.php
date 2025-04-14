@@ -1,49 +1,62 @@
 <?php
+
+// Admin Model
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasFactory;
 
     protected $primaryKey = 'id_admin';
-    protected $fillable = ['username', 'email', 'password'];
+    protected $fillable = ['username', 'email', 'password', 'nama_lengkap'];
+    protected $hidden = ['password'];
 
-    // Define relationships
-    public function alumnis()
+    public function alumni()
     {
-        return $this->hasMany(Alumni::class, 'id_admin', 'id_admin');
+        return $this->hasMany(Alumni::class, 'id_admin');
     }
 
-    public function prestasis()
+    public function formulirPendaftaran()
     {
-        return $this->hasMany(Prestasi::class, 'id_admin', 'id_admin');
-    }
-    
-    public function siswas()
-    {
-        return $this->hasMany(Siswa::class, 'id_admin', 'id_admin');
+        return $this->hasMany(FormulirPendaftaran::class, 'id_admin');
     }
 
-    public function pengumumans()
+    public function pengumuman()
     {
-        return $this->hasMany(Pengumuman::class, 'id_admin', 'id_admin');
+        return $this->hasMany(Pengumuman::class, 'id_admin');
     }
 
-    public function ekstrakurikulers()
+    public function ekstrakurikuler()
     {
-        return $this->hasMany(Ekstrakurikuler::class, 'id_admin', 'id_admin');
+        return $this->hasMany(Ekstrakurikuler::class, 'id_admin');
+    }
+
+    public function kepalaSekolah()
+    {
+        return $this->hasMany(KepalaSekolah::class, 'id_admin');
+    }
+
+    public function prestasi()
+    {
+        return $this->hasMany(Prestasi::class, 'id_admin');
     }
 
     public function fasilitas()
     {
-        return $this->hasMany(Fasilitas::class, 'id_admin', 'id_admin');
+        return $this->hasMany(Fasilitas::class, 'id_admin');
     }
 
-    public function tenagaPengajars()
+    public function kelas()
     {
-        return $this->hasMany(TenagaPengajar::class, 'id_admin', 'id_admin');
+        return $this->hasMany(Kelas::class, 'id_admin');
+    }
+
+    public function guru()
+    {
+        return $this->hasMany(Guru::class, 'id_admin');
     }
 }

@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class AlumniController extends Controller
 {
     public function index()
     {
-        $alumnis = Alumni::with('admin')->get();
-        return response()->json([
-            'success' => true,
-            'data' => $alumnis
-        ]);
+        $alumni = Alumni::with('admin')->get();
+        return view('alumni.index', compact('alumni'));
+    }
+
+    public function create()
+    {
+        $admins = Admin::all();
+        return view('alumni.create', compact('admins'));
     }
 
     public function store(Request $request)
@@ -23,97 +28,105 @@ class AlumniController extends Controller
             'id_admin' => 'required|exists:admins,id_admin',
             'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk foto
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $alumni = Alumni::create([
-            'id_admin' => $request->id_admin,
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-        ]);
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('alumni', $fileName, 'public');
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Alumni berhasil ditambahkan',
-            'data' => $alumni
-        ], 201);
+            Alumni::create([
+                'id_admin' => $request->id_admin,
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+                'foto' => $filePath,
+            ]);
+
+            return redirect()->route('alumni.index')
+                ->with('success', 'Data alumni berhasil dibuat');
+        }
+
+        return redirect()->back()->with('error', 'Gagal mengunggah foto');
     }
 
     public function show($id)
     {
-        $alumni = Alumni::with('admin')->find($id);
-        
-        if (!$alumni) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Alumni tidak ditemukan'
-            ], 404);
-        }
+        $alumni = Alumni::findOrFail($id);
+        return view('alumni.show', compact('alumni'));
+    }
 
-        return response()->json([
-            'success' => true,
-            'data' => $alumni
-        ]);
+    public function edit($id)
+    {
+        $alumni = Alumni::findOrFail($id);
+        $admins = Admin::all();
+        return view('alumni.edit', compact('alumni', 'admins'));
     }
 
     public function update(Request $request, $id)
     {
-        $alumni = Alumni::find($id);
-        
-        if (!$alumni) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Alumni tidak ditemukan'
-            ], 404);
-        }
-
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'exists:admins,id_admin',
-            'nama' => 'string|max:100',
+            'id_admin' => 'required|exists:admins,id_admin',
+            'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk foto opsional saat update
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $alumni->id_admin = $request->id_admin ?? $alumni->id_admin;
-        $alumni->nama = $request->nama ?? $alumni->nama;
-        $alumni->deskripsi = $request->deskripsi ?? $alumni->deskripsi;
-        $alumni->save();
+        $alumni = Alumni::findOrFail($id);
+        
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama
+            if (Storage::disk('public')->exists($alumni->foto)) {
+                Storage::disk('public')->delete($alumni->foto);
+            }
+            
+            // Upload foto baru
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('alumni', $fileName, 'public');
+            
+            $alumni->update([
+                'id_admin' => $request->id_admin,
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+                'foto' => $filePath,
+            ]);
+        } else {
+            $alumni->update([
+                'id_admin' => $request->id_admin,
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+            ]);
+        }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Alumni berhasil diperbarui',
-            'data' => $alumni
-        ]);
+        return redirect()->route('alumni.index')
+            ->with('success', 'Data alumni berhasil diperbarui');
     }
 
     public function destroy($id)
     {
-        $alumni = Alumni::find($id);
+        $alumni = Alumni::findOrFail($id);
         
-        if (!$alumni) {
-            return response()->json([
-            'success' => false,
-            'message' => 'Alumni tidak ditemukan'
-        ], 404);
+        // Hapus foto
+        if (Storage::disk('public')->exists($alumni->foto)) {
+            Storage::disk('public')->delete($alumni->foto);
+        }
+        
+        $alumni->delete();
+
+        return redirect()->route('alumni.index')
+            ->with('success', 'Data alumni berhasil dihapus');
     }
-
-    $alumni->delete();
-
-    return response()->json([
-        'success' => true,
-        'message' => 'Alumni berhasil dihapus'
-    ]);
-}
 }

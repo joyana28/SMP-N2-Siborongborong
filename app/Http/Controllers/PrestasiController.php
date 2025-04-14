@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prestasi;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class PrestasiController extends Controller
 {
     public function index()
     {
-        $prestasis = Prestasi::with('admin')->get();
-        return response()->json([
-            'success' => true,
-            'data' => $prestasis
-        ]);
+        $prestasi = Prestasi::with('admin')->get();
+        return view('prestasi.index', compact('prestasi'));
+    }
+
+    public function create()
+    {
+        $admins = Admin::all();
+        return view('prestasi.create', compact('admins'));
     }
 
     public function store(Request $request)
@@ -22,102 +27,116 @@ class PrestasiController extends Controller
         $validator = Validator::make($request->all(), [
             'id_admin' => 'required|exists:admins,id_admin',
             'nama' => 'required|string|max:100',
-            'tanggal' => 'required|date',
             'deskripsi' => 'nullable|string',
+            'tanggal' => 'required|date',
+            'jenis' => 'required|in:akademik,non-akademik',
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk foto
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $prestasi = Prestasi::create([
-            'id_admin' => $request->id_admin,
-            'nama' => $request->nama,
-            'tanggal' => $request->tanggal,
-            'deskripsi' => $request->deskripsi,
-        ]);
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('prestasi', $fileName, 'public');
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Prestasi berhasil ditambahkan',
-            'data' => $prestasi
-        ], 201);
+            Prestasi::create([
+                'id_admin' => $request->id_admin,
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+                'tanggal' => $request->tanggal,
+                'jenis' => $request->jenis,
+                'foto' => $filePath,
+            ]);
+
+            return redirect()->route('prestasi.index')
+                ->with('success', 'Data prestasi berhasil dibuat');
+        }
+
+        return redirect()->back()->with('error', 'Gagal mengunggah foto');
     }
 
     public function show($id)
     {
-        $prestasi = Prestasi::with('admin')->find($id);
-        
-        if (!$prestasi) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Prestasi tidak ditemukan'
-            ], 404);
-        }
+        $prestasi = Prestasi::findOrFail($id);
+        return view('prestasi.show', compact('prestasi'));
+    }
 
-        return response()->json([
-            'success' => true,
-            'data' => $prestasi
-        ]);
+    public function edit($id)
+    {
+        $prestasi = Prestasi::findOrFail($id);
+        $admins = Admin::all();
+        return view('prestasi.edit', compact('prestasi', 'admins'));
     }
 
     public function update(Request $request, $id)
     {
-        $prestasi = Prestasi::find($id);
-        
-        if (!$prestasi) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Prestasi tidak ditemukan'
-            ], 404);
-        }
-
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'exists:admins,id_admin',
-            'nama' => 'string|max:100',
-            'tanggal' => 'date',
+            'id_admin' => 'required|exists:admins,id_admin',
+            'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
+            'tanggal' => 'required|date',
+            'jenis' => 'required|in:akademik,non-akademik',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validasi untuk foto opsional saat update
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $prestasi->id_admin = $request->id_admin ?? $prestasi->id_admin;
-        $prestasi->nama = $request->nama ?? $prestasi->nama;
-        $prestasi->tanggal = $request->tanggal ?? $prestasi->tanggal;
-        $prestasi->deskripsi = $request->deskripsi ?? $prestasi->deskripsi;
-        $prestasi->save();
+        $prestasi = Prestasi::findOrFail($id);
+        
+        if ($request->hasFile('foto')) {
+            // Hapus foto lama
+            if (Storage::disk('public')->exists($prestasi->foto)) {
+                Storage::disk('public')->delete($prestasi->foto);
+            }
+            
+            // Upload foto baru
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('prestasi', $fileName, 'public');
+            
+            $prestasi->update([
+                'id_admin' => $request->id_admin,
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+                'tanggal' => $request->tanggal,
+                'jenis' => $request->jenis,
+                'foto' => $filePath,
+            ]);
+        } else {
+            $prestasi->update([
+                'id_admin' => $request->id_admin,
+                'nama' => $request->nama,
+                'deskripsi' => $request->deskripsi,
+                'tanggal' => $request->tanggal,
+                'jenis' => $request->jenis,
+            ]);
+        }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Prestasi berhasil diperbarui',
-            'data' => $prestasi
-        ]);
+        return redirect()->route('prestasi.index')
+            ->with('success', 'Data prestasi berhasil diperbarui');
     }
 
     public function destroy($id)
     {
-        $prestasi = Prestasi::find($id);
+        $prestasi = Prestasi::findOrFail($id);
         
-        if (!$prestasi) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Prestasi tidak ditemukan'
-            ], 404);
+        // Hapus foto
+        if (Storage::disk('public')->exists($prestasi->foto)) {
+            Storage::disk('public')->delete($prestasi->foto);
         }
-
+        
         $prestasi->delete();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Prestasi berhasil dihapus'
-        ]);
+        return redirect()->route('prestasi.index')
+            ->with('success', 'Data prestasi berhasil dihapus');
     }
 }
