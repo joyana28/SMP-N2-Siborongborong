@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -9,109 +10,78 @@ class PengumumanController extends Controller
 {
     public function index()
     {
-        $pengumumans = Pengumuman::with('admin')->get();
-        return response()->json([
-            'success' => true,
-            'data' => $pengumumans
-        ]);
+        $pengumuman = Pengumuman::with('admin')->get();
+        return view('pengumuman.index', compact('pengumuman'));
+    }
+
+    public function create()
+    {
+        $admins = Admin::all();
+        return view('pengumuman.create', compact('admins'));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'id_admin' => 'required|exists:admins,id_admin',
+            'judul' => 'required|string|max:100',
             'isi' => 'required|string',
             'tanggal_terbit' => 'required|date',
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
-        $pengumuman = Pengumuman::create([
-            'id_admin' => $request->id_admin,
-            'isi' => $request->isi,
-            'tanggal_terbit' => $request->tanggal_terbit,
-        ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Pengumuman berhasil ditambahkan',
-            'data' => $pengumuman
-        ], 201);
+        Pengumuman::create($request->all());
+
+        return redirect()->route('pengumuman.index')
+            ->with('success', 'Pengumuman berhasil dibuat');
     }
 
     public function show($id)
     {
-        $pengumuman = Pengumuman::with('admin')->find($id);
-        
-        if (!$pengumuman) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Pengumuman tidak ditemukan'
-            ], 404);
-        }
-        return response()->json([
-            'success' => true,
-            'data' => $pengumuman
-        ]);
+        $pengumuman = Pengumuman::findOrFail($id);
+        return view('pengumuman.show', compact('pengumuman'));
+    }
+
+    public function edit($id)
+    {
+        $pengumuman = Pengumuman::findOrFail($id);
+        $admins = Admin::all();
+        return view('pengumuman.edit', compact('pengumuman', 'admins'));
     }
 
     public function update(Request $request, $id)
     {
-        $pengumuman = Pengumuman::find($id);
-        
-        if (!$pengumuman) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Pengumuman tidak ditemukan'
-            ], 404);
-        }
-
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'exists:admins,id_admin',
-            'isi' => 'string',
-            'tanggal_terbit' => 'date',
+            'id_admin' => 'required|exists:admins,id_admin',
+            'judul' => 'required|string|max:100',
+            'isi' => 'required|string',
+            'tanggal_terbit' => 'required|date',
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-         $pengumuman->id_admin = $request->id_admin ?? $pengumuman->id_admin;
-        $pengumuman->isi = $request->isi ?? $pengumuman->isi;
-        $pengumuman->tanggal_terbit = $request->tanggal_terbit ?? $pengumuman->tanggal_terbit;
-        $pengumuman->save();
+        $pengumuman = Pengumuman::findOrFail($id);
+        $pengumuman->update($request->all());
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Pengumuman berhasil diperbarui',
-            'data' => $pengumuman
-        ]);
+        return redirect()->route('pengumuman.index')
+            ->with('success', 'Pengumuman berhasil diperbarui');
     }
 
     public function destroy($id)
     {
-        $pengumuman = Pengumuman::find($id);
-        
-        if (!$pengumuman) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Pengumuman tidak ditemukan'
-            ], 404);
-        }
-
+        $pengumuman = Pengumuman::findOrFail($id);
         $pengumuman->delete();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Pengumuman berhasil dihapus'
-        ]);
+        return redirect()->route('pengumuman.index')
+            ->with('success', 'Pengumuman berhasil dihapus');
     }
 }
-

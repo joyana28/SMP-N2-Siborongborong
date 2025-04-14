@@ -1,4 +1,6 @@
 <?php
+
+// AdminController
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
@@ -11,111 +13,90 @@ class AdminController extends Controller
     public function index()
     {
         $admins = Admin::all();
-        return response()->json([
-            'success' => true,
-            'data' => $admins
-        ]);
+        return view('admin.index', compact('admins'));
+    }
+
+    public function create()
+    {
+        return view('admin.create');
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|max:50|unique:admins',
-            'email' => 'required|email|max:100|unique:admins',
-            'password' => 'required|string|min:6|max:255',
+            'email' => 'required|string|email|max:100|unique:admins',
+            'password' => 'required|string|min:6',
+            'nama_lengkap' => 'required|string|max:100',
         ]);
+
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $admin = Admin::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'nama_lengkap' => $request->nama_lengkap,
         ]);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Admin berhasil ditambahkan',
-            'data' => $admin
-        ], 201);
+        return redirect()->route('admin.index')
+            ->with('success', 'Admin berhasil dibuat');
     }
 
     public function show($id)
     {
-        $admin = Admin::find($id);
-        
-        if (!$admin) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Admin tidak ditemukan'
-            ], 404);
-        }
-        return response()->json([
-            'success' => true,
-            'data' => $admin
-        ]);
+        $admin = Admin::findOrFail($id);
+        return view('admin.show', compact('admin'));
+    }
+
+    public function edit($id)
+    {
+        $admin = Admin::findOrFail($id);
+        return view('admin.edit', compact('admin'));
     }
 
     public function update(Request $request, $id)
     {
-        $admin = Admin::find($id);
-        
-        if (!$admin) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Admin tidak ditemukan'
-            ], 404);
-        }
+        $admin = Admin::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
-            'username' => 'string|max:50|unique:admins,username,'.$id.',id_admin',
-            'email' => 'email|max:100|unique:admins,email,'.$id.',id_admin',
-            'password' => 'nullable|string|min:6|max:255',
+            'username' => 'required|string|max:50|unique:admins,username,' . $id . ',id_admin',
+            'email' => 'required|string|email|max:100|unique:admins,email,' . $id . ',id_admin',
+            'nama_lengkap' => 'required|string|max:100',
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()
-            ], 400);
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $admin->username = $request->username ?? $admin->username;
-        $admin->email = $request->email ?? $admin->email;
-        
-        if ($request->has('password')) {
-            $admin->password = Hash::make($request->password);
-        }
-        
-        $admin->save();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Admin berhasil diperbarui',
-            'data' => $admin
+        $admin->update([
+            'username' => $request->username,
+            'email' => $request->email,
+            'nama_lengkap' => $request->nama_lengkap,
         ]);
+
+        if ($request->filled('password')) {
+            $admin->update([
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+        return redirect()->route('admin.index')
+            ->with('success', 'Admin berhasil diperbarui');
     }
 
     public function destroy($id)
     {
-        $admin = Admin::find($id);
-        
-        if (!$admin) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Admin tidak ditemukan'
-            ], 404);
-        }
-
+        $admin = Admin::findOrFail($id);
         $admin->delete();
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Admin berhasil dihapus'
-        ]);
+        return redirect()->route('admin.index')
+            ->with('success', 'Admin berhasil dihapus');
     }
 }
