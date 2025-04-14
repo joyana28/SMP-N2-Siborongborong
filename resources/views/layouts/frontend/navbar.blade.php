@@ -1,131 +1,82 @@
-<div class="clever-main-menu">
-    <div class="classy-nav-container breakpoint-off">
-        <!-- Menu -->
-        <nav class="classy-navbar justify-content-between" id="cleverNav">
-
-            <!-- Logo -->
-            <a style="color: black;"class="nav-brand" href="/"><img src="{{ asset('img/icons/logo.jpeg') }}" width="50" alt=""> SMPN 1 SILAEN</a>
-
-            <!-- Navbar Toggler -->
-            <div class="classy-navbar-toggler">
-                <span class="navbarToggler"><span></span><span></span><span></span></span>
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" alt="Skola Logo" class="logo-img">
+            <div class="brand-text">
+                <span class="brand-name">SMPN2</span>
+                <span class="university-text">Siborongborong</span>
             </div>
-
-            <!-- Menu -->
-            <div class="classy-menu">
-
-                <!-- Close Button -->
-                <div class="classycloseIcon">
-                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                </div>
-
-                <!-- Nav Start -->
-                <div class="classynav">
-                    <ul>
-                        <li><a href="/" class="{{ Request::is('/') || Request::is('home') ? 'text-primary' : '' }}">Home</a></li>
-                        <a class="nav-link dropdown-toggle {{ Request::is('profil/*') ? 'text-primary' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item {{ Request::is('about') ? 'text-primary' : '' }}" href="{{ route('identitas') }}">Identitas</a>
-                                <a class="dropdown-item {{ Request::is('about') ? 'text-primary' : '' }}" href="{{ route('visimisi') }}">Visi Misi</a>
-                                <a class="dropdown-item {{ Request::is('about') ? 'text-primary' : '' }}" href="{{ route('tenagapengajar.index') }}">Tenaga Pengajar</a>
-                                <a class="dropdown-item {{ Request::is('about') ? 'text-primary' : '' }}" href="{{ route('ekstrakurikuler.index') }}">Ekstrakurikuler</a>
-                            </div>
-                        </li>
-                        <li><a href="{{ route('pengumuman.index') }}" class="{{ Request::segment(1) == 'pengumuman' ? 'text-primary' : '' }}">Pengumuman</a></li>
-                        <li><a href="{{ route('prestasi.index') }}" class="{{ Request::segment(1) == 'prestasi' ? 'text-primary' : '' }}">Prestasi</a></li>
-                        <li><a href="{{ route('jumlahsiswa.index') }}" class="{{ Request::segment(1) == 'jumlahsiswa' ? 'text-primary' : '' }}">Kelas</a></li>
-                        <li><a href="{{ route('fasilitas.index') }}" class="{{ Request::segment(1) == 'fasilitas' ? 'text-primary' : '' }}">Fasilitas</a></li>
-                        <li><a href="{{ route('galeri.index') }}" class="{{ Request::segment(1) == 'galeri' ? 'text-primary' : '' }}">Galeri</a></li>
+        </a>
+        
+        <!-- Navigation Items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto main-menu">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">HOME</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        PROFIL
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><span>Sejarah Sekolah</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Visi & Misi</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Struktur Organisasi</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Tenaga Pendidik</span></a></li>
                     </ul>
-                    <div style="margin-left:400px" class="follow-us">
-                        @auth
-                            <!-- Jika pengguna telah login, tombol login tidak ditampilkan -->
-                        @else
-                            <!-- Jika pengguna belum login, tampilkan tombol login -->
-                        @endauth
-                    </div>
-                    @auth
-                    <div class="login-state">
-                        <div class="user-name mr-30">
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" role="button" id="userName" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }}</a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userName">
-                                    <a class="dropdown-item" href="{{ route('admin.index') }}">Dashboard</a>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item">Logout</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endauth
-                </div>
-                <!-- Nav End -->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        AKADEMIK
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><span>Kurikulum</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Jadwal Pelajaran</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Ujian Sekolah</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>E-learning</span></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        NON AKADEMIK
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><span>Ekstrakurikuler</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Organisasi Siswa</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Prestasi</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Galeri Kegiatan</span></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        BERITA
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><span>Berita Sekolah</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Pengumuman</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Agenda</span></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">TENTANG</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">KONTAK</a>
+                </li>
+            </ul>
+            
+            <!-- Login Icon -->
+            <div class="login-icon-container">
+                <a href="#" class="login-icon-btn" title="Login">
+                    <i class="bi bi-person-fill"></i>
+                </a>
             </div>
-        </nav>
+        </div>
+
+        <!-- Toggle Button for Mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
-</div>
-<style>
-.classynav {
-    margin-right: 1px
-}
-.classynav li {
-    color: black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
-}
-
-.classynav li:hover {
-    background-color: #0099ff;
-    color: aliceblue !important;
-    border-radius: 20px;
-    transition: 0.4s;
-}
-
-.login {
-    color: black;
-    opacity: 0.2; /* Reduce opacity */
-    font-size: 0.9em; /* Smaller font size */
-}
-
-.login:hover {
-    color: aliceblue !important;
-    border-radius: 20px;
-    transition: 0.4s;
-    padding: 5px;
-    opacity: 1; /* Full opacity on hover */
-}
-
-.nav-link {
-    color: black;
-}
-
-.nav-link:hover {
-    background-color: #0099ff;
-    color: black !important;
-    border-radius: 20px;
-    transition: 0.4s;
-}
-
-.dropdown-item {
-    color: black;
-}
-
-.dropdown-item:hover {
-    background-color: #0099ff;
-    color: black !important;
-    border-radius: 20px;
-    transition: 0.4s;
-}
-
-/* Tambahkan CSS ini untuk menghilangkan kedipan pada navbar saat scroll */
-.classy-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    background-color: #fff; /* Ganti dengan warna latar belakang yang diinginkan */
-}
-
-</style>
+</nav>
