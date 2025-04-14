@@ -567,35 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   });
-  </script>
-  // Animasi smooth untuk navbar saat scroll
-  let prevScrollpos = window.pageYOffset;
   
-  window.addEventListener('scroll', function() {
-    let currentScrollPos = window.pageYOffset;
-    
-    if (prevScrollpos > currentScrollPos) {
-      // Scroll up - tampilkan navbar
-      document.querySelector('.navbar').style.top = "0";
-    } else {
-      // Scroll down - sembunyikan navbar (hanya pada halaman yang sudah di-scroll)
-      if (currentScrollPos > 100) {
-        document.querySelector('.navbar').style.top = "-100px";
-      }
-    }
-    
-    // Tambahkan class 'scrolled' untuk efek visual saat scroll
-    if (currentScrollPos > 50) {
-      document.querySelector('.navbar').classList.add('scrolled');
-    } else {
-      document.querySelector('.navbar').classList.remove('scrolled');
-    }
-    
-    prevScrollpos = currentScrollPos;
-  });
-});
-</script>
-
 <script>
 // JavaScript untuk animasi tambahan
 document.addEventListener('DOMContentLoaded', function() {
