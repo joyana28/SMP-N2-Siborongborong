@@ -23,7 +23,10 @@ body {
     padding: 0 15px;
 }
 
-/* ================= TOP CONTACT BAR ================= */
+a {
+  text-decoration: none;
+  color: #678fc0;
+}
 .top-contact-bar {
   background-color: #c49a63;
   padding: 8px 0;
@@ -41,6 +44,14 @@ body {
   align-items: center;
 }
 
+
+.logo h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #110f0f;
+}
+
+nav ul 
 .social-icons {
   display: flex;
   margin-right: 20px;
@@ -881,7 +892,7 @@ body {
 /* Profile Section */
 .profile-section {
   padding: 50px 0;
-  background-color: #fff;
+  background-color: #f9f8f8;
 }
 
 .profile-content {
