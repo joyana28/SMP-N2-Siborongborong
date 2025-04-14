@@ -21,88 +21,8 @@
     <!-- Top Contact Bar -->
 
 <!-- Main Navigation -->
-<nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <!-- Logo -->
-        <a class="navbar-brand" href="/">
-            <img src="/images/logo.png" alt="Skola Logo" class="logo-img">
-            <div class="brand-text">
-                <span class="brand-name">SMPN2</span>
-                <span class="university-text">Siborongborong</span>
-            </div>
-        </a>
-        
-        <!-- Navigation Items -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto main-menu">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">HOME</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        PROFIL
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Sejarah Sekolah</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Visi & Misi</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Struktur Organisasi</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Tenaga Pendidik</span></a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        AKADEMIK
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Kurikulum</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Jadwal Pelajaran</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Ujian Sekolah</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>E-learning</span></a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        NON AKADEMIK
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Ekstrakurikuler</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Organisasi Siswa</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Prestasi</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Galeri Kegiatan</span></a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        BERITA
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Berita Sekolah</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Pengumuman</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Agenda</span></a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">TENTANG</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">KONTAK</a>
-                </li>
-            </ul>
-            
-            <!-- Login Icon -->
-            <div class="login-icon-container">
-                <a href="#" class="login-icon-btn" title="Login">
-                    <i class="bi bi-person-fill"></i>
-                </a>
-            </div>
-        </div>
-
-        <!-- Toggle Button for Mobile -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</nav>
+<!-- Include navbar -->
+@include('layouts.frontend.navbar')
 
     <!-- Hero Section -->
     <div class="hero-section">
@@ -184,11 +104,12 @@
     <section id="intro" class="section-intro">
     <div class="container">
         <div class="about-header">
-            <span class="about-tag">Sambutan Hangat </span>
+            <span class="about-tag">Sambutan Hangat</span>
             <h2 class="about-title">SMP Negeri 2 <br>Siborongborong</h2>
-            <p class="about-desc">Selamat datang di website resmi SMP Negeri 2 Siborongborong, tempat tumbuh kembangnya generasi unggul berkarakter. Kami menyediakan fasilitas pendidikan lengkap, seperti laboratorium sains, perpustakaan digital, dan beragam ekstrakurikuler untuk mendukung bakat siswa.
-
-Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkomitmen membentuk siswa yang cerdas, kreatif, dan berakhlak mulia.</p>
+            <div class="about-desc">
+                <p>Selamat datang di website resmi SMP Negeri 2 Siborongborong, tempat tumbuh kembangnya generasi unggul berkarakter. Kami menyediakan fasilitas pendidikan lengkap, seperti laboratorium sains, perpustakaan digital, dan beragam ekstrakurikuler untuk mendukung bakat siswa.</p>
+                <p>Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkomitmen membentuk siswa yang cerdas, kreatif, dan berakhlak mulia.</p>
+            </div>
             <a href="#" class="learn-more-btn">
                 <span>Learn more</span>
                 <div class="icon-circle">
@@ -223,32 +144,27 @@ Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkom
 
         <!-- resources/views/components/profile-section.blade.php -->
 <!-- resources/views/components/profile-section.blade.php -->
-<div class="profile-section">
-    <!-- Navigation Menu -->
-    
-
-    <!-- Header Section -->
+<section class="profile-section">
     <div class="container main-container">
-        <div class="header-section">
-            <div class="row">
-                <div class="col-md-5">
-                    <h1 class="header-title">Profil Sekolah </h1>
-                </div>
-                <div class="col-md-7">
-                    <p class="header-description">
+        <!-- Header Section -->
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="header-title">Profil Sekolah</h1>
+            </div>
+            <div class="col-md-7">
+                <p class="header-description">
                     Jelajahi dunia pendidikan terbaik bersama kami, tempat di mana setiap siswa dibimbing untuk tumbuh, berinovasi, dan meraih masa depan gemilang
-                    </p>
-                    <div class="learn-more">
-                        <a href="#" class="learn-more-link">Learn More →</a>
-                    </div>
+                </p>
+                <div class="learn-more">
+                    <a href="#" class="learn-more-link">Learn More →</a>
                 </div>
             </div>
         </div>
 
-        
+        <!-- Sections Grid -->
         <div class="sections-grid">
             <div class="row no-gutters card-row">
-                
+                <!-- Fasilitas Card -->
                 <div class="col card-column">
                     <div class="card-container">
                         <div class="section-card">
@@ -265,7 +181,7 @@ Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkom
                     </div>
                 </div>
 
-                
+                <!-- Sejarah Card -->
                 <div class="col card-column">
                     <div class="card-container">
                         <div class="section-card">
@@ -278,12 +194,11 @@ Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkom
                         </div>
                         <div class="section-title">
                             <h3>Sejarah</h3>
-                            
                         </div>
                     </div>
                 </div>
 
-                
+                <!-- Prestasi Card -->
                 <div class="col card-column">
                     <div class="card-container">
                         <div class="section-card">
@@ -299,11 +214,10 @@ Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkom
                         </div>
                     </div>
                 </div>
-
-               
             </div>
         </div>
     </div>
+</section>
 
     @include('components.jis-slider-section')
     <section class="announcements py-5 bg-light">
@@ -557,7 +471,6 @@ document.addEventListener('DOMContentLoaded', function() {
         menu.classList.toggle('show');
       }
     });
-  });
   
   // Tutup dropdown saat klik di luar
   document.addEventListener('click', function(e) {
@@ -568,6 +481,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   </script>
+  <script>
   // Animasi smooth untuk navbar saat scroll
   let prevScrollpos = window.pageYOffset;
   
