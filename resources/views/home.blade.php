@@ -66,32 +66,58 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         PROFIL
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Sejarah Sekolah</a></li>
+                        <li><a class="dropdown-item" href="#">Visi & Misi</a></li>
+                        <li><a class="dropdown-item" href="#">Struktur Organisasi</a></li>
+                        <li><a class="dropdown-item" href="#">Tenaga Pendidik</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         AKADEMIK
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Kurikulum</a></li>
+                        <li><a class="dropdown-item" href="#">Jadwal Pelajaran</a></li>
+                        <li><a class="dropdown-item" href="#">Ujian Sekolah</a></li>
+                        <li><a class="dropdown-item" href="#">E-learning</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         NON AKADEMIK
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Ekstrakurikuler</a></li>
+                        <li><a class="dropdown-item" href="#">Organisasi Siswa</a></li>
+                        <li><a class="dropdown-item" href="#">Prestasi</a></li>
+                        <li><a class="dropdown-item" href="#">Galeri Kegiatan</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                         BERITA
                     </a>
-                    <li class="nav-item">
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Berita Sekolah</a></li>
+                        <li><a class="dropdown-item" href="#">Pengumuman</a></li>
+                        <li><a class="dropdown-item" href="#">Agenda</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">TENTANG</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">KONTAK</a>
                 </li>
             </ul>
-            <div class="navbar-icons">
-                <a href="#" class="nav-icon"><i class="bi bi-search"></i></a>
-                <a href="#" class="nav-icon"><i class="bi bi-person"></i></a>
-                <a href="#" class="nav-icon"><i class="bi bi-bag"></i></a>
+            
+            <!-- Login Icon -->
+            <div class="login-icon-container">
+                <a href="#" class="login-icon-btn" title="Login">
+                    <i class="bi bi-person-fill"></i>
+                </a>
             </div>
         </div>
 
@@ -180,21 +206,21 @@
 
     <main>
     <section id="intro" class="section-intro">
-            <div class="container">
-                <div class="intro-content">
-                    <div class="intro-image">
-                        <img src="../images/pp 2.png" alt="Taman Sekolah">
-                    </div>
-                    <div class="intro-text">
-                        <span class="section-tag">Selamat Datang di</span>
-                        <h2>Website SMP Negeri 2 Siborongborong</h2>
-                        <p>Selamat datang di Website & informasi resmi SMP Negeri 2 Siborongborong.</p>
-                        <p>SMP Negeri 2 Siborongborong merupakan salah satu lembaga pendidikan yang ada di kabupaten Tapanuli Utara kecamatan Siborongborong yang selalu berusaha memberikan pelayanan pendidikan yang terbaik untuk siswa-siswi kami.</p>
-                        <p>Guna memenulis tuntung kependidikan serta menciptakan cendekiawan dengan belajar yang berujualan dan berbudi pekerti luhur, serta menghasilkan SDM yang berdaya saing. Program pembelajaran kami ditekankan pada pembentukan karakter siswa yang baik tanpa mengabaikan hal akademis.</p>
-                    </div>
-                </div>
+    <div class="container">
+        <div class="intro-content">
+            <div class="intro-text">
+                <span class="section-tag">Selamat Datang di</span>
+                <h2>SMP Negeri 2 Siborongborong</h2>
+                <p>Selamat datang di Website & informasi resmi SMP Negeri 2 Siborongborong.</p>
+                <p>SMP Negeri 2 Siborongborong merupakan salah satu lembaga pendidikan yang ada di kabupaten Tapanuli Utara kecamatan Siborongborong yang selalu berusaha memberikan pelayanan pendidikan yang terbaik untuk siswa-siswi kami.</p>
+                <p>Guna memenuhi tuntutan kependidikan serta menciptakan cendekiawan dengan belajar yang berakhlak dan berbudi pekerti luhur, serta menghasilkan SDM yang berdaya saing. Program pembelajaran kami ditekankan pada pembentukan karakter siswa yang baik tanpa mengabaikan hal akademis.</p>
             </div>
-        </section>
+            <div class="intro-image">
+                <img src="../images/pp 2.png" alt="Taman Sekolah">
+            </div>
+        </div>
+    </div>
+</section>
 
         
 
@@ -437,6 +463,71 @@
         container.classList.add("animate__fadeInDown");
     });
 </script>
+
+<script>
+// Script untuk meningkatkan pengalaman interaktif dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  // Tambahkan efek hover untuk desktop
+  const dropdowns = document.querySelectorAll('.dropdown');
+  
+  dropdowns.forEach(dropdown => {
+    const menu = dropdown.querySelector('.dropdown-menu');
+    const link = dropdown.querySelector('.dropdown-toggle');
+    
+    // Handling untuk sentuhan pada perangkat mobile
+    link.addEventListener('click', function(e) {
+      if (window.innerWidth < 992) {
+        e.preventDefault();
+        
+        // Tutup dropdown lain yang terbuka
+        dropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            otherDropdown.querySelector('.dropdown-menu').classList.remove('show');
+          }
+        });
+        
+        // Toggle dropdown saat ini
+        menu.classList.toggle('show');
+      }
+    });
+  });
+  
+  // Tutup dropdown saat klik di luar
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.dropdown')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.remove('show');
+      });
+    }
+  });
+  
+  // Animasi smooth untuk navbar saat scroll
+  let prevScrollpos = window.pageYOffset;
+  
+  window.addEventListener('scroll', function() {
+    let currentScrollPos = window.pageYOffset;
+    
+    if (prevScrollpos > currentScrollPos) {
+      // Scroll up - tampilkan navbar
+      document.querySelector('.navbar').style.top = "0";
+    } else {
+      // Scroll down - sembunyikan navbar (hanya pada halaman yang sudah di-scroll)
+      if (currentScrollPos > 100) {
+        document.querySelector('.navbar').style.top = "-100px";
+      }
+    }
+    
+    // Tambahkan class 'scrolled' untuk efek visual saat scroll
+    if (currentScrollPos > 50) {
+      document.querySelector('.navbar').classList.add('scrolled');
+    } else {
+      document.querySelector('.navbar').classList.remove('scrolled');
+    }
+    
+    prevScrollpos = currentScrollPos;
+  });
+});
+</scipt>
 
 <!-- Bootstrap JS (via CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
