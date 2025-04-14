@@ -21,7 +21,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #e1e6ec;
+  color: #678fc0;
 }
 
 h1, h2, h3, h4 {
@@ -54,7 +54,7 @@ img {
 .logo h1 {
   font-size: 1.5rem;
   margin: 0;
-  color: #ebe4e4;
+  color: #110f0f;
 }
 
 nav ul {
@@ -218,7 +218,7 @@ nav ul li a.active {
 /* Profile Section */
 .profile-section {
   padding: 50px 0;
-  background-color: #fff;
+  background-color: #f9f8f8;
 }
 
 .profile-content {
