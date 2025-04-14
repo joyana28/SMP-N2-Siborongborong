@@ -29,6 +29,7 @@ class FormulirPendaftaranController extends Controller
             'deskripsi' => 'required|string|max:100',
             'formulir_pendaftaran' => 'required|file|mimes:pdf,doc,docx|max:2048',
             'tanggal_terbit' => 'required|date',
+            'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
         ]);
 
         if ($validator->fails()) {
@@ -47,6 +48,7 @@ class FormulirPendaftaranController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'formulir_pendaftaran' => $filePath,
                 'tanggal_terbit' => $request->tanggal_terbit,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
 
             return redirect()->route('formulir.index')
@@ -76,6 +78,7 @@ class FormulirPendaftaranController extends Controller
             'deskripsi' => 'required|string|max:100',
             'formulir_pendaftaran' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
             'tanggal_terbit' => 'required|date',
+            'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
         ]);
 
         if ($validator->fails()) {
@@ -102,12 +105,14 @@ class FormulirPendaftaranController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'formulir_pendaftaran' => $filePath,
                 'tanggal_terbit' => $request->tanggal_terbit,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
         } else {
             $formulir->update([
                 'id_admin' => $request->id_admin,
                 'deskripsi' => $request->deskripsi,
                 'tanggal_terbit' => $request->tanggal_terbit,
+                'tanggal_berakhir' => $request->tanggal_berakhir,
             ]);
         }
 

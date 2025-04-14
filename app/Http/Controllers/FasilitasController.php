@@ -24,10 +24,13 @@ class FasilitasController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admins,id',
             'nama' => 'required|string|max:100',
-            'deskripsi' => 'required|string',
+            'deskripsi' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'tahun' => 'required|string|max:100',
+            'kerusakan' => 'nullable|string|max:100',
+            'penambahan' => 'nullable|string|max:100',
         ]);
 
         if ($validator->fails()) {
@@ -41,11 +44,14 @@ class FasilitasController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('fasilitas', $fileName, 'public');
 
-            Fasilitas::create([
+            DataFasilitas::create([
                 'id_admin' => $request->id_admin,
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
-                'foto' => $filePath,
+                'foto' => $fotoPath,
+                'tahun' => $request->tahun,
+                'kerusakan' => $request->kerusakan,
+                'penambahan' => $request->penambahan,
             ]);
 
             return redirect()->route('fasilitas.index')
@@ -71,12 +77,15 @@ class FasilitasController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admins,id',
             'nama' => 'required|string|max:100',
-            'deskripsi' => 'required|string',
+            'deskripsi' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'tahun' => 'required|string|max:100',
+            'kerusakan' => 'nullable|string|max:100',
+            'penambahan' => 'nullable|string|max:100',
         ]);
-
+        
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
@@ -100,14 +109,19 @@ class FasilitasController extends Controller
                 'id_admin' => $request->id_admin,
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
-                'foto' => $filePath,
-            ]);
+                'tahun' => $request->tahun,
+                'kerusakan' => $request->kerusakan,
+                'penambahan' => $request->penambahan,
+                ]);
         } else {
             $fasilitas->update([
                 'id_admin' => $request->id_admin,
                 'nama' => $request->nama,
                 'deskripsi' => $request->deskripsi,
-            ]);
+                'tahun' => $request->tahun,
+                'kerusakan' => $request->kerusakan,
+                'penambahan' => $request->penambahan,
+                ]);
         }
 
         return redirect()->route('fasilitas.index')

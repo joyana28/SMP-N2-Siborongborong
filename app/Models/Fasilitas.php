@@ -10,7 +10,15 @@ class Fasilitas extends Model
 
     protected $table = 'fasilitas';
     protected $primaryKey = 'id_fasilitas';
-    protected $fillable = ['id_admin', 'nama', 'deskripsi', 'foto'];
+    protected $fillable = [
+        'id_admin',
+        'nama',
+        'deskripsi',
+        'foto',
+        'tahun',
+        'kerusakan',
+        'penambahan'
+    ];
 
     public function admin()
     {

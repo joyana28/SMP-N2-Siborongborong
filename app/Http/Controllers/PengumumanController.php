@@ -27,6 +27,7 @@ class PengumumanController extends Controller
             'judul' => 'required|string|max:100',
             'isi' => 'required|string',
             'tanggal_terbit' => 'required|date',
+            'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
         ]);
 
         if ($validator->fails()) {
@@ -61,6 +62,7 @@ class PengumumanController extends Controller
             'judul' => 'required|string|max:100',
             'isi' => 'required|string',
             'tanggal_terbit' => 'required|date',
+            'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
         ]);
 
         if ($validator->fails()) {

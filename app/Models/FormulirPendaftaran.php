@@ -12,12 +12,19 @@ class FormulirPendaftaran extends Model
 
     protected $table = 'formulir_pendaftaran';
     protected $primaryKey = 'id_pendaftaran';
-    protected $fillable = ['id_admin', 'deskripsi', 'formulir_pendaftaran', 'tanggal_terbit'];
-
+    protected $fillable = [
+        'id_admin',
+        'deskripsi',
+        'formulir_pendaftaran',
+        'tanggal_terbit',
+        'tanggal_berakhir'
+    ];
+    
     protected $casts = [
         'tanggal_terbit' => 'date',
+        'tanggal_berakhir' => 'date',
     ];
-
+    
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');

@@ -10,7 +10,16 @@ class Kelas extends Model
 
     protected $table = 'kelas';
     protected $primaryKey = 'id_kelas';
-    protected $fillable = ['id_admin', 'nama_kelas', 'jumlah_siswa', 'jumlah_siswa_l', 'jumlah_siswa_p', 'wali_kelas_id'];
+    protected $fillable = [
+        'id_admin',
+        'nama_kelas',
+        'jumlah_siswa',
+        'jumlah_siswa_L',
+        'jumlah_siswa_P',
+        'tahun',
+        'history',
+        'wali_kelas_id'
+    ];
 
     public function admin()
     {

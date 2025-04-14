@@ -59,6 +59,7 @@ class CreateFormulirPendaftaranTable extends Migration
             $table->string('deskripsi', 100);
             $table->string('formulir_pendaftaran', 100);
             $table->date('tanggal_terbit');
+            $table->date('tanggal_berakhir')->nullable();
             $table->timestamps();
 
             $table->foreign('id_admin')->references('id_admin')->on('admins');
@@ -82,6 +83,7 @@ class CreatePengumumanTable extends Migration
             $table->string('judul', 100);
             $table->text('isi');
             $table->date('tanggal_terbit');
+            $table->date('tanggal_berakhir');
             $table->timestamps();
 
             $table->foreign('id_admin')->references('id_admin')->on('admins');
@@ -180,6 +182,9 @@ class CreateFasilitasTable extends Migration
             $table->string('nama', 100);
             $table->text('deskripsi');
             $table->string('foto', 100);
+            $table->string('tahun', 100);
+            $table->string('kerusakan', 100)->nullable();
+            $table->string('penambahan', 100)->nullable();
             $table->timestamps();
 
             $table->foreign('id_admin')->references('id_admin')->on('admins');
@@ -202,8 +207,10 @@ class CreateKelasTable extends Migration
             $table->unsignedBigInteger('id_admin');
             $table->string('nama_kelas', 50);
             $table->integer('jumlah_siswa');
-            $table->integer('jumlah_siswa_l')->check('jumlah_siswa_l >= 0');
-            $table->integer('jumlah_siswa_p')->check('jumlah_siswa_p >= 0');
+            $table->integer('jumlah_siswa_L')->check('jumlah_siswa_L >= 0');
+            $table->integer('jumlah_siswa_P')->check('jumlah_siswa_P >= 0');
+            $table->year('tahun');
+            $table->text('history')->nullable();
             $table->unsignedBigInteger('wali_kelas_id');
             $table->timestamps();
 

@@ -25,12 +25,14 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admins,id',
             'nama_kelas' => 'required|string|max:50',
-            'jumlah_siswa' => 'required|integer|min:0',
-            'jumlah_siswa_l' => 'required|integer|min:0',
-            'jumlah_siswa_p' => 'required|integer|min:0',
-            'wali_kelas_id' => 'required|exists:guru,id_guru',
+            'jumlah_siswa' => 'required|integer',
+            'jumlah_siswa_L' => 'required|integer|min:0',
+            'jumlah_siswa_P' => 'required|integer|min:0',
+            'tahun' => 'required|date_format:Y',
+            'history' => 'nullable|string',
+            'wali_kelas_id' => 'required|exists:tenaga_pendidik,id',
         ]);
 
         if ($validator->fails()) {
@@ -40,7 +42,7 @@ class KelasController extends Controller
         }
 
         // Validasi jumlah siswa
-        $totalSiswa = $request->jumlah_siswa_l + $request->jumlah_siswa_p;
+        $totalSiswa = $request->jumlah_siswa_L + $request->jumlah_siswa_P;
         if ($totalSiswa != $request->jumlah_siswa) {
             return redirect()->back()
                 ->withErrors(['jumlah_siswa' => 'Jumlah siswa laki-laki dan perempuan tidak sesuai dengan total siswa'])
@@ -70,12 +72,14 @@ class KelasController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admins,id',
             'nama_kelas' => 'required|string|max:50',
-            'jumlah_siswa' => 'required|integer|min:0',
-            'jumlah_siswa_l' => 'required|integer|min:0',
-            'jumlah_siswa_p' => 'required|integer|min:0',
-            'wali_kelas_id' => 'required|exists:guru,id_guru',
+            'jumlah_siswa' => 'required|integer',
+            'jumlah_siswa_L' => 'required|integer|min:0',
+            'jumlah_siswa_P' => 'required|integer|min:0',
+            'tahun' => 'required|date_format:Y',
+            'history' => 'nullable|string',
+            'wali_kelas_id' => 'required|exists:tenaga_pendidik,id',
         ]);
 
         if ($validator->fails()) {
@@ -85,7 +89,7 @@ class KelasController extends Controller
         }
 
         // Validasi jumlah siswa
-        $totalSiswa = $request->jumlah_siswa_l + $request->jumlah_siswa_p;
+        $totalSiswa = $request->jumlah_siswa_L + $request->jumlah_siswa_P;
         if ($totalSiswa != $request->jumlah_siswa) {
             return redirect()->back()
                 ->withErrors(['jumlah_siswa' => 'Jumlah siswa laki-laki dan perempuan tidak sesuai dengan total siswa'])
