@@ -145,76 +145,122 @@
         <!-- resources/views/components/profile-section.blade.php -->
 <!-- resources/views/components/profile-section.blade.php -->
 <section class="profile-section">
-    <div class="container main-container">
+    <div class="container">
         <!-- Header Section -->
-        <div class="row">
-            <div class="col-md-5">
-                <h1 class="header-title">Profil Sekolah</h1>
-            </div>
-            <div class="col-md-7">
-                <p class="header-description">
-                    Jelajahi dunia pendidikan terbaik bersama kami, tempat di mana setiap siswa dibimbing untuk tumbuh, berinovasi, dan meraih masa depan gemilang
-                </p>
-                <div class="learn-more">
-                    <a href="#" class="learn-more-link">Learn More →</a>
-                </div>
-            </div>
+        <div class="section-header">
+            <h2 class="section-title">Profile Kami</h2>
+            <p class="section-description">
+            Kenali layanan pendidikan terbaik kami, dikemas untuk menciptakan pengalaman belajar berkualitas dengan fasilitas dan dukungan maksimal.
+            </p>
         </div>
 
-        <!-- Sections Grid -->
-        <div class="sections-grid">
-            <div class="row no-gutters card-row">
-                <!-- Fasilitas Card -->
-                <div class="col card-column">
-                    <div class="card-container">
-                        <div class="section-card">
-                            <div class="section-image visit-jis">
-                                <div class="overlay-content">
-                                    <h3>Fasilitas</h3>
-                                    <p>Fasilitas lengkap dan modern sebagai komitmen utama untuk mendukung proses belajar mengajar yang optimal.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section-title">
-                            <h3>Fasilitas</h3>
-                        </div>
-                    </div>
+        <!-- Service Cards -->
+        <div class="service-cards">
+            <!-- Quality Service Card -->
+            <div class="service-card blue">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
                 </div>
-
-                <!-- Sejarah Card -->
-                <div class="col card-column">
-                    <div class="card-container">
-                        <div class="section-card">
-                            <div class="section-image apply">
-                                <div class="overlay-content">
-                                    <h3>Sejarah</h3>
-                                    <p>Jejak langkah yang berdiri sebagai wujud nyata dari semangat pendidikan.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section-title">
-                            <h3>Sejarah</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Prestasi Card -->
-                <div class="col card-column">
-                    <div class="card-container">
-                        <div class="section-card">
-                            <div class="section-image faqs">
-                                <div class="overlay-content">
-                                    <h3>Prestasi</h3>
-                                    <p>Senantiasa menorehkan prestasi membanggakan sebagai wujud dedikasi dan daya juang tinggi.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="section-title">
-                            <h3>Prestasi</h3>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="card-title">Fasilitas</h3>
+                <p class="card-description">SMPN 2 Siborongborong dilengkapi fasilitas lengkap untuk mendukung proses belajar mengajar, seperti laboratorium sains dan komputer, perpustakaan digital, lapangan olahraga, ruang seni, serta lingkungan sekolah yang asri dan kondusif.</p>
             </div>
+
+            <!-- Online Booking Card -->
+            <div class="service-card navy">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                    </svg>
+                </div>
+                <h3 class="card-title">Ekstrakurikuler</h3>
+                <p class="card-description">Beragam pilihan ekstrakurikuler tersedia untuk mengasah potensi non-akademik siswa, mulai dari Pramuka, Paduan Suara, Olahraga (Bola Voli, Sepak Bola)</p>
+            </div>
+
+            <!-- Modern Machines Card -->
+            <div class="service-card blue">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                        <line x1="2" y1="10" x2="22" y2="10"></line>
+                    </svg>
+                </div>
+                <h3 class="card-title">Sejarah</h3>
+                <p class="card-description">Berdiri sejak 1955, SMPN 2 Siborongborong telah menjadi bagian penting dari sejarah pendidikan di [nama daerah]. Kami terus berinovasi dengan tetap memegang tradisi kebanggaan sebagai sekolah pencetak generasi berprestasi.</p>
+            </div>
+
+            <!-- Affordable Pricing Card -->
+            <div class="service-card navy">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                </div>
+                <h3 class="card-title">Prestasi</h3>
+                <p class="card-description">Siswa-siswi SMPN 2 Siborongborong terus mencatatkan torehan emas dalam berbagai kompetisi, membuktikan dedikasi kami sebagai kawah candradimuka talenta unggul.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="stats-container">
+        <div class="stat-item">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
+                </svg>
+            </div>
+            <div class="stat-number" data-count="500">0</div>
+            <div class="stat-label">+ Total Courses</div>
+        </div>
+        
+        <div class="stat-divider"></div>
+        
+        <div class="stat-item">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            </div>
+            <div class="stat-number" data-count="1900">0</div>
+            <div class="stat-label">+ Our Students</div>
+        </div>
+        
+        <div class="stat-divider"></div>
+        
+        <div class="stat-item">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                    <path d="M2 17l10 5 10-5"></path>
+                    <path d="M2 12l10 5 10-5"></path>
+                </svg>
+            </div>
+            <div class="stat-number" data-count="750">0</div>
+            <div class="stat-label">+ Skilled Lecturers</div>
+        </div>
+        
+        <div class="stat-divider"></div>
+        
+        <div class="stat-item">
+            <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="8" r="7"></circle>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+            </div>
+            <div class="stat-number" data-count="30">0</div>
+            <div class="stat-label">+ Win Awards</div>
         </div>
     </div>
 </section>
@@ -549,6 +595,68 @@ document.addEventListener('DOMContentLoaded', function() {
             swimmingCards.style.opacity = '1';
         }, 300);
     }, 300);
+});
+</script>
+
+<!-- javascipt for stats-->
+ <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    // Function to animate counting
+    function animateCounter(element) {
+        const target = parseInt(element.getAttribute('data-count'));
+        const duration = 2000; // 2 seconds
+        const step = target / 100;
+        let current = 0;
+        const startTime = performance.now();
+        
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Using easeOutQuad for smoother animation
+            const easeProgress = progress * (2 - progress);
+            current = Math.floor(easeProgress * target);
+            
+            element.textContent = current;
+            
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            } else {
+                element.textContent = target;
+            }
+        }
+        
+        requestAnimationFrame(updateCounter);
+    }
+    
+    // Start animation when scrolled into view
+    function checkScroll() {
+        statNumbers.forEach(stat => {
+            if (isInViewport(stat) && !stat.classList.contains('animated')) {
+                stat.classList.add('animated');
+                animateCounter(stat);
+            }
+        });
+    }
+    
+    // Initial check
+    checkScroll();
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkScroll);
 });
 </script>
 
