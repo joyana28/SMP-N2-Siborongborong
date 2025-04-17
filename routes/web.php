@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrestasiController;
@@ -8,8 +9,18 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\PendaftaranController;
 
-
-Route::get('/', function (){
-        return view('layouts.backend.main');
+// Halaman utama (sementara arahkan ke halaman backend dulu)
+Route::get('/', function () {
+    return view('layouts.backend.main');
 });
 
+// Halaman frontend (bisa diganti pakai controller jika sudah dibuat)
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('/visimisi', [AboutController::class, 'visimisi']);
+
+// Halaman berdasarkan controller yang kamu pakai
+Route::get('/prestasi', [PrestasiController::class, 'index']);
+Route::get('/tenagapengajar', [GuruController::class, 'index']);
+Route::get('/siswa', [SiswaController::class, 'index']);
+Route::get('/alumni', [AlumniController::class, 'index']);
+Route::get('/pendaftaran', [PendaftaranController::class, 'index']);
