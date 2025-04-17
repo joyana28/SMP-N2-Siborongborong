@@ -101,45 +101,68 @@
 
 
     <main>
-    <section id="intro" class="section-intro">
+    <!-- section-intro.blade.php -->
+<!-- section-intro.blade.php -->
+<section id="section-intro" class="section-intro">
     <div class="container">
-        <div class="about-header">
-            <span class="about-tag">Sambutan Hangat</span>
-            <h2 class="about-title">SMP Negeri 2 <br>Siborongborong</h2>
-            <div class="about-desc">
-                <p>Selamat datang di website resmi SMP Negeri 2 Siborongborong, tempat tumbuh kembangnya generasi unggul berkarakter. Kami menyediakan fasilitas pendidikan lengkap, seperti laboratorium sains, perpustakaan digital, dan beragam ekstrakurikuler untuk mendukung bakat siswa.</p>
-                <p>Dengan guru yang berdedikasi dan lingkungan belajar yang inspiratif, kami berkomitmen membentuk siswa yang cerdas, kreatif, dan berakhlak mulia.</p>
-            </div>
-            <a href="#" class="learn-more-btn">
-                <span>Learn more</span>
-                <div class="icon-circle">
-                    <i class="fas fa-arrow-right"></i>
+        <div class="intro-content">
+            <div class="intro-image-container animated fadeIn">
+                <div class="intro-image">
+                    <img src="{{ asset('images/upacara.png') }}" alt="Students">
+                    <!-- Decorative dots -->
+                    <div class="decorative-dots"></div>
+                    <!-- Decorative lines -->
+                    <div class="decorative-lines"></div>
                 </div>
-            </a>
+                <div class="contact-badge animated fadeInUp delay-800">
+                    <div class="icon-circle">
+                        <i class="fa fa-headset"></i>
+                    </div>
+                    <div class="contact-text">
+                        <span>Need to Know More Details?</span>
+                        <strong>+(684) 555-0102</strong>
+                    </div>
+                </div>
+            </div>
             
-            <div class="stats-container">
-                <div class="stat-item">
-                    <h3>16</h3>
-                    <p>Experience</p>
+            <div class="intro-text-container animated fadeInRight delay-300">
+                <div class="about-header">
+                    <span class="about-label">About Us</span>
+                    <h2 class="about-title">Creating a Lifelong Learning Best Community</h2>
+                    <p class="about-description">It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks.</p>
                 </div>
-                <div class="stat-item">
-                    <h3>46</h3>
-                    <p>Instructor</p>
+                
+                <div class="features">
+                    <div class="feature-card hover-effect animated fadeInUp delay-500">
+                        <div class="feature-icon">
+                            <i class="fa fa-book"></i>
+                        </div>
+                        <div class="feature-details">
+                            <h3>Flexible Classes</h3>
+                            <p>The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card hover-effect animated fadeInUp delay-700">
+                        <div class="feature-icon">
+                            <i class="fa fa-video"></i>
+                        </div>
+                        <div class="feature-details">
+                            <h3>Live Class from anywhere</h3>
+                            <p>The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="swimming-cards">
-            <div class="swim-card left-card">
-                <img src="../images/pp 2.png" alt="Swimmer with equipment">
-            </div>
-            <div class="swim-card right-card">
-                <img src="../images/pp 3.png" alt="Swimmer with gear">
+                
+                <div class="discover-more-container animated fadeInUp delay-900">
+                    <a href="#" class="discover-btn pulse-effect">
+                        Discover More <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
         
 
         <!-- resources/views/components/profile-section.blade.php -->
