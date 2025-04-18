@@ -11,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 
 </head>
@@ -30,7 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 hero-content">
-                <h1>SMPN2 <br>Siborongborong</h1>
+                <h1>SMP Negeri 2 <br>Siborongborong</h1>
                 <p>Sekolah Unggulan yang Membangun Masa Depan Gemilang dengan Pendidikan Berkualitas dengan Mewujudkan Generasi Cerdas, Berkarakter, dan Berprestasi di Bumi Pertiwi</p>
                 <a href="#" class="btn btn-primary apply-btn">READ MORE</a>
             </div>
@@ -687,6 +689,48 @@ document.addEventListener('DOMContentLoaded', function() {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<footer class="bg-light text-dark pt-5 pb-3 border-top">
+  <div class="container">
+    <div class="row text-center text-md-start">
+      <!-- Alamat Sekolah -->
+      <div class="col-md-4 mb-4">
+        <h5><i class="fas fa-map-marker-alt me-2"></i>Alamat Sekolah</h5>
+        <p class="mb-0">Jl. Balige Km. 1 Siborongborong, Pasar Siborong-Borong,</p>
+        <p class="mb-0">Silait-Lait, Siborong-Borong, Kabupaten Tapanuli Utara,</p>
+        <p>Sumatera Utara 22474, Indonesia</p>
+      </div>
+
+      <!-- Jam Sekolah -->
+      <div class="col-md-4 mb-4">
+        <h5>Jam Sekolah</h5>
+        <p class="mb-0">Telp: (0633) 41860</p>
+        <p>8:00 a.m. – 2:00 p.m.</p>
+      </div>
+
+      <!-- Media Sosial -->
+      <div class="col-md-4 mb-4">
+        <h5>Media Sosial</h5>
+        <div class="d-flex justify-content-center justify-content-md-start gap-2">
+          <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-outline-success rounded-circle">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://facebook.com" target="_blank" class="btn btn-outline-primary rounded-circle">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" class="btn btn-outline-dark rounded-circle">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <hr>
+    <div class="text-center">
+      <p class="mb-0">&copy; 2025 SMPN 2 SIBORONGBORONG.</p>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
