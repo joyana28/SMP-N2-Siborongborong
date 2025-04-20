@@ -22,47 +22,27 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#"><span>Sejarah Sekolah</span></a></li>
                         <li><a class="dropdown-item" href="#"><span>Visi & Misi</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Struktur Organisasi</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Tenaga Pendidik</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Fasilitas</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Ektrakurikuler</span></a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        AKADEMIK
+                        Prestasi
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Kurikulum</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Jadwal Pelajaran</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Ujian Sekolah</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>E-learning</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Akademik</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Non-Akademik</span></a></li>
                     </ul>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        NON AKADEMIK
+                        Tenaga Pengajar
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Ekstrakurikuler</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Organisasi Siswa</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Prestasi</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Galeri Kegiatan</span></a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        BERITA
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Berita Sekolah</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Pengumuman</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Agenda</span></a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">SIswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">TENTANG</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">KONTAK</a>
+                    <a class="nav-link" href="#">formulir pendaftaran</a>
                 </li>
             </ul>
             
