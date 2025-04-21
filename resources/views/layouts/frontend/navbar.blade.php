@@ -48,11 +48,10 @@
             
             <!-- Login Icon -->
             <div class="login-icon-container">
-                <a href="#" class="login-icon-btn" title="Login">
-                    <i class="bi bi-person-fill"></i>
-                </a>
-            </div>
-        </div>
+    <a href="{{ route('login') }}" class="login-icon-btn" title="Login">
+        <i class="bi bi-person-fill"></i>
+    </a>
+</div>
 
         <!-- Toggle Button for Mobile -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('layouts.backend.main');
 });
 
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+
 // Halaman frontend (bisa diganti pakai controller jika sudah dibuat)
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/visimisi', [AboutController::class, 'visimisi']);
