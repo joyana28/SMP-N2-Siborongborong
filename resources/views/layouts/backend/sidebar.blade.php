@@ -28,13 +28,63 @@
           </a>
         </li>
         
+        <!-- Alumni Menu -->
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="nav-icon bi bi-people-fill"></i>
-            <p>Users</p>
+            <i class="nav-icon bi bi-person-vcard"></i>
+            <p>Alumni</p>
           </a>
         </li>
         
+        <!-- Ekstrakurikuler Menu -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon bi bi-joystick"></i>
+            <p>Ekstrakurikuler</p>
+          </a>
+        </li>
+        
+        <!-- Fasilitas Menu -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon bi bi-building"></i>
+            <p>Fasilitas</p>
+          </a>
+        </li>
+        
+        <!-- Kelas Menu -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon bi bi-door-open"></i>
+            <p>Kelas</p>
+          </a>
+        </li>
+        
+        <!-- Kepala Sekolah Menu -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon bi bi-person-badge"></i>
+            <p>Kepala Sekolah</p>
+          </a>
+        </li>
+        
+        <!-- Pengumuman Menu -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon bi bi-megaphone"></i>
+            <p>Pengumuman</p>
+          </a>
+        </li>
+        
+        <!-- Tenaga Pengajar Menu -->
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon bi bi-people-fill"></i>
+            <p>Tenaga Pengajar</p>
+          </a>
+        </li>
+        
+        <!-- Original Menus (kept as is) -->
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon bi bi-file-earmark-text"></i>
