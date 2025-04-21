@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrestasiController;
@@ -15,18 +16,40 @@ Route::get('/', function () {
     return view('admin.dashboard');
 });
 
+// Route login Laravel default
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 
-// Halaman frontend (bisa diganti pakai controller jika sudah dibuat)
+// Route login khusus admin (hardcoded login)
+Route::view('/admin/login', 'admin.login')->name('admin.login');
+
+Route::post('/admin/login', function(Request $request) {
+    $validUsername = 'admin';
+    $validPassword = 'admin123';
+
+    if ($request->username === $validUsername && $request->password === $validPassword) {
+        session(['admin_logged_in' => true]);
+        return redirect('/admin/dashboard');
+    } else {
+        return redirect()->back()->withErrors(['login' => 'Username atau password salah.']);
+    }
+})->name('admin.login.submit');
+
+Route::get('/admin/dashboard', function () {
+    if (!session('admin_logged_in')) {
+        return redirect()->route('admin.login');
+    }
+    return view('admin.dashboard');
+});
+
+// Halaman frontend
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/visimisi', [AboutController::class, 'visimisi']);
 Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
 
-
-// Halaman berdasarkan controller yang kamu pakai
+// Halaman berdasarkan controller
 Route::get('/prestasi', [PrestasiController::class, 'index']);
 Route::get('/tenagapengajar', [GuruController::class, 'index']);
 Route::get('/siswa', [SiswaController::class, 'index']);
