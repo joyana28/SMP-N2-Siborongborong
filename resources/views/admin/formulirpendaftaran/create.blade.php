@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Tambah Alumni</h1>
+    <h1>Tambah Formulir Pendaftaran</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <form action="{{ route('alumni.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('formulir_pendaftaran.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label>Admin</label>
@@ -21,16 +21,20 @@
             </select>
         </div>
         <div class="form-group">
-            <label>Nama Alumni</label>
-            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">
-        </div>
-        <div class="form-group">
             <label>Deskripsi</label>
             <textarea name="deskripsi" class="form-control">{{ old('deskripsi') }}</textarea>
         </div>
         <div class="form-group">
-            <label>Foto</label>
-            <input type="file" name="foto" class="form-control-file">
+            <label>Upload Formulir (PDF)</label>
+            <input type="file" name="formulir_pendaftaran" class="form-control-file" accept=".pdf">
+        </div>
+        <div class="form-group">
+            <label>Tanggal Terbit</label>
+            <input type="date" name="tanggal_terbit" class="form-control" value="{{ old('tanggal_terbit') }}">
+        </div>
+        <div class="form-group">
+            <label>Tanggal Berakhir</label>
+            <input type="date" name="tanggal_berakhir" class="form-control" value="{{ old('tanggal_berakhir') }}">
         </div>
         <button class="btn btn-success">Simpan</button>
     </form>
