@@ -12,7 +12,7 @@ use App\Http\Controllers\EkstrakurikulerController;
 
 // Halaman utama (sementara arahkan ke halaman backend dulu)
 Route::get('/', function () {
-    return view('layouts.backend.main');
+    return view('admin.dashboard');
 });
 
 Route::get('/login', function () {
