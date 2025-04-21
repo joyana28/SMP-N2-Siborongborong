@@ -12,8 +12,13 @@ use App\Http\Controllers\EkstrakurikulerController;
 
 // Halaman utama (sementara arahkan ke halaman backend dulu)
 Route::get('/', function () {
-    return view('layouts.backend.main');
+    return view('admin.dashboard');
 });
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
 
 // Halaman frontend (bisa diganti pakai controller jika sudah dibuat)
 Route::get('/home', [HomeController::class, 'index']);
