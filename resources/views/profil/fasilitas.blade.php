@@ -26,11 +26,10 @@
     <header>
     <div class="header-wrapper">
         <div class="content-area">
-            <div class="small-text" data-aos="fade-up" data-aos-delay="100">WELCOME TO CREATIVE AGENCY</div>
+            <div class="small-text" data-aos="fade-up" data-aos-delay="100">SARANA LENGKAP, PRESTASI HEBAT</div>
             <h1 class="header-title" data-aos="fade-up" data-aos-delay="200">
-                WE'RE DIGITAL<br>
-                MARKETING<br>
-                AGENCY
+            FASILITAS UNGGULAN<br>
+            EDUKASI OPTIMAL<br>
             </h1>
             <a href="#services" class="cta-button" data-aos="fade-up" data-aos-delay="300">EXPLORE NOW</a>
             <div class="arrow-icon" data-aos="fade-up" data-aos-delay="400">←</div>
