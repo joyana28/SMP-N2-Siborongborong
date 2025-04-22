@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+
+// Controllers
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrestasiController;
@@ -14,62 +16,28 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\KelasController;
-use App\Http\Controllers\PengumumanController; // Pastikan pengumuman controller ada jika diperlukan
+use App\Http\Controllers\PengumumanController;
 
-// Halaman utama (sementara arahkan ke halaman backend dulu)
-Route::get('/', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+// =====================================================================================
+// 🏠 Halaman Utama
+// =====================================================================================
+Route::get('/', fn () => view('admin.dashboard'))->name('dashboard');
 
-
-// Autentikasi (sementara login manual)
-// Route login Laravel default
-Route::get('/login', function () {
-    return view('auth.login');  
-})->name('login');
-
+// =====================================================================================
+// 🔐 Autentikasi (Login Default dan Admin Sementara)
+// =====================================================================================
+// Login Laravel default
+Route::get('/login', fn () => view('auth.login'))->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
-// Frontend
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/visimisi', [AboutController::class, 'visimisi'])->name('visimisi');
-Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
-
-// Konten dinamis
-Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni.index');
-Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi.index');
-Route::get('/tenagapengajar', [GuruController::class, 'index'])->name('guru.index');
-Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
-
-// Rute formulir pendaftaran
-Route::get('/formulir', [FormulirPendaftaranController::class, 'index'])->name('formulir.index');
-
-// Pendaftaran dan fasilitas
-Route::get('/pendaftaran', [FormulirPendaftaranController::class, 'index'])->name('pendaftaran.index');
-Route::get('/fasilitas', [FasilitasController::class, 'index'])->name('fasilitas.index');
-
-// Kepala Sekolah
-Route::get('/kepalasekolah', [KepalaSekolahController::class, 'index'])->name('kepalasekolah.index');
-
-// Kelas
-Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
-
-// Pengumuman - Pastikan Anda memiliki PengumumanController
-Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index'); // Tambahkan ini jika pengumuman diperlukan
-
-// Route login khusus admin (hardcoded login)
+// Login admin sementara (hardcoded)
 Route::view('/admin/login', 'admin.login')->name('admin.login');
-
 Route::post('/admin/login', function(Request $request) {
-    $validUsername = 'admin';
-    $validPassword = 'admin123';
-
-    if ($request->username === $validUsername && $request->password === $validPassword) {
+    if ($request->username === 'admin' && $request->password === 'admin123') {
         session(['admin_logged_in' => true]);
         return redirect('/admin/dashboard');
-    } else {
-        return redirect()->back()->withErrors(['login' => 'Username atau password salah.']);
     }
+    return redirect()->back()->withErrors(['login' => 'Username atau password salah.']);
 })->name('admin.login.submit');
 
 Route::get('/admin/dashboard', function () {
@@ -79,19 +47,37 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 });
 
-// Halaman frontend
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
-Route::get('/profil/visimisi', function () {
-    return view('profil.visimisi');
-})->name('profil.visimisi');
+// =====================================================================================
+// 🌐 Halaman Frontend
+// =====================================================================================
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/profil/visimisi', [AboutController::class, 'visimisi'])->name('profil.visimisi');
 Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
+Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi.index');
+Route::get('/tenagapengajar', [GuruController::class, 'index'])->name('guru.index');
+Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
+Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni.index');
+Route::get('/kepalasekolah', [KepalaSekolahController::class, 'index'])->name('kepalasekolah.index');
+Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
+Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 
-// Halaman berdasarkan controller
-Route::get('/prestasi', [PrestasiController::class, 'index']);
-Route::get('/tenagapengajar', [GuruController::class, 'index']);
-Route::get('/siswa', [SiswaController::class, 'index']);
-Route::get('/alumni', [AlumniController::class, 'index']);
-Route::get('/pendaftaran', [PendaftaranController::class, 'index']);
+// =====================================================================================
+// 📄 Formulir dan Informasi
+// =====================================================================================
+Route::get('/formulir', [FormulirPendaftaranController::class, 'index'])->name('formulir.index');
+Route::get('/pendaftaran', [FormulirPendaftaranController::class, 'index'])->name('pendaftaran.index');
+Route::get('/fasilitas', [FasilitasController::class, 'index'])->name('fasilitas.index');
+
+// =====================================================================================
+// 🔧 Admin Panel (Dengan Middleware auth)
+// =====================================================================================
+Route::prefix('admin')->group(function() {
+    // CRUD Alumni
+    Route::get('/alumni', [AlumniController::class, 'index'])->name('admin.alumni.index');
+    Route::get('/alumni/create', [AlumniController::class, 'create'])->name('admin.alumni.create');
+    Route::post('/alumni', [AlumniController::class, 'store'])->name('admin.alumni.store');
+    Route::get('/alumni/{alumni}/edit', [AlumniController::class, 'edit'])->name('admin.alumni.edit');
+    Route::put('/alumni/{alumni}', [AlumniController::class, 'update'])->name('admin.alumni.update');
+    Route::delete('/alumni/{alumni}', [AlumniController::class, 'destroy'])->name('admin.alumni.destroy');
+});
 
