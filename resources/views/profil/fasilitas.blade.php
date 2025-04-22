@@ -22,15 +22,27 @@
 
 @include('layouts.frontend.navbar')
     <!-- Header Section -->
+
     <header>
-        <div class="container">
-            <div class="header-content" data-aos="fade-up">
-                <div class="small-text">Your Trusted IT Partner</div>
-                <h1 class="header-title">Empower Your <br>Business Journey <br>With IT Expertise</h1>
-                <a href="#services" class="cta-button animate-pulse">Explore Our Service <i class="fas fa-arrow-right"></i></a>
-            </div>
+    <div class="header-wrapper">
+        <div class="content-area">
+            <div class="small-text" data-aos="fade-up" data-aos-delay="100">WELCOME TO CREATIVE AGENCY</div>
+            <h1 class="header-title" data-aos="fade-up" data-aos-delay="200">
+                WE'RE DIGITAL<br>
+                MARKETING<br>
+                AGENCY
+            </h1>
+            <a href="#services" class="cta-button" data-aos="fade-up" data-aos-delay="300">EXPLORE NOW</a>
+            <div class="arrow-icon" data-aos="fade-up" data-aos-delay="400">←</div>
         </div>
-    </header>
+        <div class="image-area">
+            <!-- This is where the image would go in a real implementation -->
+        </div>
+        <div class="diagonal-divider"></div>
+    </div>
+    
+    
+</header>
 
     <!-- Services Section -->
     <section class="services-section" id="services">
@@ -178,5 +190,46 @@
             });
         });
     </script>
+    <script>
+// Animation initialization
+document.addEventListener('DOMContentLoaded', function() {
+    // Simple AOS (Animate On Scroll) implementation
+    const animateElements = document.querySelectorAll('[data-aos]');
+    
+    function checkInView() {
+        animateElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('aos-animate');
+            }
+        });
+    }
+    
+    // Initial check
+    setTimeout(checkInView, 100);
+    
+    // Check on scroll
+    window.addEventListener('scroll', checkInView);
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
