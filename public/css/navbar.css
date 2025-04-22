@@ -1,0 +1,393 @@
+.navbar {
+    background-color: #0c2e60;
+    padding: 15px 0;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .logo-img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  
+  .brand-name {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .university-text {
+    color: #959eb0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  
+  .main-menu {
+    margin-right: 20px;
+  }
+  
+  .nav-link {
+    color: white !important;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 15px !important;
+    text-transform: uppercase;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    color: #c49a63 !important;
+  }
+  
+  .navbar-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-icon {
+    color: white;
+    font-size: 18px;
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  
+  .nav-icon:hover {
+    color: #c49a63;
+  }
+  
+  /* Dropdown styles */
+  .dropdown-menu {
+    background-color: #0c2e60; /* Warna background sama dengan navbar */
+    border: 1px solid rgba(196, 154, 99, 0.2); /* Border tipis dengan warna emas/coklat */
+    border-radius: 4px;
+    margin-top: 5px;
+    padding: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+  }
+  
+  /* Item dropdown */
+  .dropdown-item {
+    color: #ffffff !important; /* Text putih dengan !important untuk memastikan override */
+    padding: 12px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .dropdown-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Hover effect pada dropdown item */
+  .dropdown-item:hover, .dropdown-item:focus {
+    background-color: #c49a63 !important; /* Warna emas saat hover dengan !important */
+    color: #ffffff !important; /* Tetap warna putih saat hover */
+    text-indent: 5px; /* Efek indent saat hover */
+  }
+  
+  /* Active state untuk dropdown item */
+  .dropdown-item.active, .dropdown-item:active {
+    background-color: #c49a63;
+    color: #ffffff;
+  }
+  
+  /* Animasi dropdown menu */
+  .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    display: block;
+  }
+  
+  .dropdown:hover > .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  /* Styling dropdown arrow */
+  .dropdown-toggle::after {
+    color: #c49a63;
+    transition: transform 0.3s ease;
+  }
+  
+  .dropdown:hover .dropdown-toggle::after {
+    transform: rotate(180deg);
+  }
+  
+  /* Highlight pada menu saat dropdown terbuka */
+  .dropdown:hover > .nav-link {
+    color: #c49a63 !important;
+  }
+  
+  /* Hover effect dengan garis bawah */
+  .dropdown-item {
+    position: relative;
+  }
+  
+  .dropdown-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff; /* Garis bawah putih */
+    transition: width 0.3s ease;
+  }
+  
+  .dropdown-item:hover::after {
+    width: calc(100% - 40px);
+  }
+  
+  /* Penyesuaian untuk tampilan mobile */
+  @media (max-width: 991.98px) {
+    .dropdown-menu {
+        background-color: rgba(12, 46, 96, 0.9);
+        border: none;
+        box-shadow: none;
+        padding-left: 15px;
+        border-left: 2px solid #c49a63;
+        border-radius: 0;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    
+    .dropdown-item {
+        padding: 8px 15px;
+    }
+    
+    .dropdown-item:hover {
+        background-color: #c49a63 !important;
+    }
+  }
+  
+  /* First-child item styling */
+  .dropdown-menu .dropdown-item:first-child {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  
+  /* Hover state dengan animasi slide-in */
+  .dropdown-item:hover {
+    padding-left: 25px; /* Geser text sedikit ke kanan saat hover */
+  }
+  
+  /* Background gradient untuk dropdown menu */
+  .dropdown-menu {
+    background: linear-gradient(to bottom, #0c2e60 0%, #0a2651 100%);
+  }
+  
+  /* Border top dengan warna aksen */
+  .dropdown-menu {
+    border-top: 3px solid #c49a63;
+  }
+  
+  /* Efek hover pada dropdown items dengan overlay */
+  .dropdown-item {
+    position: relative;
+  }
+  
+  .dropdown-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #c49a63;
+    transition: width 0.3s ease;
+    z-index: 0;
+  }
+  
+  .dropdown-item:hover::before {
+    width: 100%;
+  }
+  
+  /* Pastikan teks tetap terlihat di atas overlay */
+  .dropdown-item span {
+    position: relative;
+    z-index: 1;
+  }
+  /* Animasi untuk mobile */
+  @media (max-width: 991.98px) {
+    .dropdown-menu {
+      background-color: rgba(12, 46, 96, 0.8);
+      border: none;
+      padding-left: 15px;
+      box-shadow: none;
+      margin-top: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+    }
+    
+    .dropdown-menu.show {
+      max-height: 300px;
+    }
+    
+    .dropdown-item {
+      padding: 8px 15px;
+    }
+    
+    .dropdown-item:hover {
+      background-color: transparent;
+    }
+  }
+  
+  /* Perbaikan untuk tampilan mobile */
+  @media (max-width: 767.98px) {
+    .navbar-collapse {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .navbar-brand {
+      max-width: 80%;
+    }
+    
+    .logo-img {
+      height: 35px;
+    }
+    
+    .brand-name {
+      font-size: 20px;
+    }
+    
+    .university-text {
+      font-size: 14px;
+    }
+  }
+  
+  /* Transisi warna saat hover pada menu utama lebih smooth */
+  .nav-link {
+    transition: color 0.3s ease;
+  }
+  
+  /* Efek hover pada dropdown items */
+  .dropdown-item {
+    position: relative;
+  }
+  
+  .dropdown-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: #c49a63;
+    opacity: 0.1;
+    transition: width 0.3s ease;
+  }
+  
+  .dropdown-item:hover::before {
+    width: 100%;
+  }
+  
+  /* Login Button Styling */
+  * Login Icon Styling */
+  .login-icon-container {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+  }
+  
+  .login-icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      text-decoration: none;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      overflow: hidden;
+  }
+  
+  .login-icon-btn i {
+      font-size: 18px;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+  }
+  
+  /* Circle effect on hover */
+  .login-icon-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background-color: #c49a63;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+      z-index: 1;
+  }
+  
+  /* Hover effects */
+  .login-icon-btn:hover {
+      box-shadow: 0 0 15px rgba(196, 154, 99, 0.5);
+  }
+  
+  .login-icon-btn:hover::before {
+      width: 100%;
+      height: 100%;
+  }
+  
+  .login-icon-btn:hover i {
+      transform: scale(1.1);
+  }
+  
+  /* Active state */
+  .login-icon-btn:active {
+      transform: scale(0.95);
+  }
+  
+  /* Pulse animation on hover */
+  @keyframes pulse {
+      0% {
+          box-shadow: 0 0 0 0 rgba(196, 154, 99, 0.7);
+      }
+      70% {
+          box-shadow: 0 0 0 10px rgba(196, 154, 99, 0);
+      }
+      100% {
+          box-shadow: 0 0 0 0 rgba(196, 154, 99, 0);
+      }
+  }
+  
+  .login-icon-btn:hover {
+      animation: pulse 1.5s infinite;
+  }
+  
+  /* Mobile responsive adjustments */
+  @media (max-width: 991.98px) {
+      .login-icon-container {
+          margin: 15px 0 10px;
+      }
+      
+      .login-icon-btn {
+          margin: 0 auto;
+      }
+  }
