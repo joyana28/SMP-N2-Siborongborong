@@ -1,0 +1,248 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.header {
+    background-color: #0c3b54;
+    padding: 60px 0 30px;
+    text-align: center;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.breadcrumb {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.about-content {
+    background-color: #1e1e1e;
+    padding: 50px 0;
+    position: relative;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.about-text {
+    padding: 20px;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.orange-dots {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ff7f00;
+    border-radius: 50%;
+}
+
+.about-text p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-btn {
+    display: inline-block;
+    background-color: #ff7f00;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.yellow-strip {
+    background-color: #ffc107;
+    height: 80px;
+    position: relative;
+    transform: skewY(-2deg);
+    margin-top: -30px;
+    margin-bottom: -30px;
+    z-index: 1;
+}
+
+.history-section {
+    background-color: #1e1e1e;
+    padding: 70px 0 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.history-container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.history-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.history-text p {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.vision-mission {
+    background-color: #1e1e1e;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.vision-mission-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vm-box {
+    background-color: #fff;
+    color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.vm-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #0c3b54;
+}
+
+.vm-box p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.achievement-section {
+    background-color: #1e1e1e;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.achievement-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.achievement-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.achievement-text {
+    color: #ccc;
+    width: 60%;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.awards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.award-icon {
+    width: 70px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.7rem;
+}
+
+.person-img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Images styling with overlay */
+.image-container {
+    position: relative;
+    height: 100%;
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.image-stack {
+    position: relative;
+    height: 300px;
+}
+
+.image-stack img:nth-child(1) {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.image-stack img:nth-child(2) {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+    border-radius: 5px;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}

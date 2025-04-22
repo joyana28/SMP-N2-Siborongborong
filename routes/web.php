@@ -45,8 +45,12 @@ Route::get('/admin/dashboard', function () {
 });
 
 // Halaman frontend
-Route::get('/home', [HomeController::class, 'index']);
-Route::get('/visimisi', [AboutController::class, 'visimisi']);
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+Route::get('/profil/visimisi', function () {
+    return view('profil.visimisi');
+})->name('profil.visimisi');
 Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
 
 // Halaman berdasarkan controller

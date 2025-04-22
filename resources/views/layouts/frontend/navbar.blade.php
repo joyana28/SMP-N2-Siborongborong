@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <!-- Logo -->
@@ -13,15 +14,14 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto main-menu">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">HOME</a>
+                    <a class="nav-link active" href="{{ route('home') }}">HOME</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        PROFIL
+                        ABOUT
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#"><span>Sejarah Sekolah</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Visi & Misi</span></a></li>
+                        <li><a class="dropdown-item" href="{{ route('profil.visimisi') }}"><span>Visi & Misi</span></a></li>
                         <li><a class="dropdown-item" href="#"><span>Fasilitas</span></a></li>
                         <li><a class="dropdown-item" href="#"><span>Ektrakurikuler</span></a></li>
                     </ul>
