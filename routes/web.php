@@ -86,6 +86,9 @@ Route::get('/home', function () {
 Route::get('/profil/visimisi', function () {
     return view('profil.visimisi');
 })->name('profil.visimisi');
+Route::get('/profil/fasilitas', function () {
+    return view('profil.fasilitas');
+})->name('profil.fasilitas');
 Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
 
 // Halaman berdasarkan controller

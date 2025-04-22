@@ -22,7 +22,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('profil.visimisi') }}"><span>Visi & Misi</span></a></li>
-                        <li><a class="dropdown-item" href="#"><span>Fasilitas</span></a></li>
+                        <li><a class="dropdown-item" href="{{ route('profil.fasilitas') }}"><span>Fasilitas</span></a></li>
                         <li><a class="dropdown-item" href="#"><span>Ektrakurikuler</span></a></li>
                     </ul>
                 </li>

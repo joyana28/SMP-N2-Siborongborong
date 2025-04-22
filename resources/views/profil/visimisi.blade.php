@@ -17,9 +17,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     @include('layouts.frontend.navbar')
-    <style>
-       
-    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -27,9 +24,9 @@
         <div class="container">
             <h1>About Us</h1>
             <div class="breadcrumb">
-                <span>Home</span>
-                <span>></span>
-                <span>About Us</span>
+                <span>Visi</span>
+                <span>&</span>
+                <span>Misi</span>
             </div>
         </div>
     </div>
