@@ -91,10 +91,5 @@ Route::get('/profil/fasilitas', function () {
 })->name('profil.fasilitas');
 Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
 
-// Halaman berdasarkan controller
-Route::get('/prestasi', [PrestasiController::class, 'index']);
-Route::get('/tenagapengajar', [GuruController::class, 'index']);
-Route::get('/siswa', [SiswaController::class, 'index']);
-Route::get('/alumni', [AlumniController::class, 'index']);
-Route::get('/pendaftaran', [PendaftaranController::class, 'index']);
+
 
