@@ -16,7 +16,7 @@ class AlumniController extends Controller
     public function index()
     {
         $alumni = Alumni::with('admin')->get();
-        return view('admin.alumni.index', compact('alumni'));
+        return view('alumni.index', compact('alumni'));
     }
 
     /**
@@ -25,7 +25,7 @@ class AlumniController extends Controller
     public function create()
     {
         $admins = Admin::all();
-        return view('admin.alumni.create', compact('admins'));
+        return view('alumni.create', compact('admins'));
     }
 
     /**
@@ -33,34 +33,36 @@ class AlumniController extends Controller
      */
     public function store(Request $request)
     {
-        // Validasi data yang dimasukkan
-        $validated = $request->validate([
-            'id_admin' => 'required|exists:admins,id_admin',
+        $validator = Validator::make($request->all(), [
+            'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Menyiapkan data yang akan disimpan
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $data = [
-            'id_admin' => $validated['id_admin'],
-            'nama' => $validated['nama'],
-            'deskripsi' => $validated['deskripsi'],
+            'id_admin' => $request->id_admin,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
         ];
 
-        // Menangani upload foto jika ada
+        // Handle file upload
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             $fotoName = time() . '.' . $foto->getClientOriginalExtension();
             $foto->storeAs('public/alumni', $fotoName);
-            $data['foto'] = $fotoName; // Menambahkan nama foto ke data
+            $data['foto'] = $fotoName;
         }
 
-        // Menyimpan data alumni
         Alumni::create($data);
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.alumni.index')
+        return redirect()->route('alumni.index')
             ->with('success', 'Data alumni berhasil ditambahkan');
     }
 
@@ -69,7 +71,7 @@ class AlumniController extends Controller
      */
     public function show(Alumni $alumni)
     {
-        return view('admin.alumni.show', compact('alumni'));
+        return view('alumni.show', compact('alumni'));
     }
 
     /**
@@ -78,7 +80,7 @@ class AlumniController extends Controller
     public function edit(Alumni $alumni)
     {
         $admins = Admin::all();
-        return view('admin.alumni.edit', compact('alumni', 'admins'));
+        return view('alumni.edit', compact('alumni', 'admins'));
     }
 
     /**
@@ -86,39 +88,41 @@ class AlumniController extends Controller
      */
     public function update(Request $request, Alumni $alumni)
     {
-        // Validasi data yang dimasukkan
-        $validated = $request->validate([
-            'id_admin' => 'required|exists:admins,id_admin',
+        $validator = Validator::make($request->all(), [
+            'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Menyiapkan data untuk update
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         $data = [
-            'id_admin' => $validated['id_admin'],
-            'nama' => $validated['nama'],
-            'deskripsi' => $validated['deskripsi'],
+            'id_admin' => $request->id_admin,
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
         ];
 
-        // Menangani upload foto baru jika ada
+        // Handle file upload
         if ($request->hasFile('foto')) {
-            // Menghapus foto lama jika ada
+            // Delete old file if exists
             if ($alumni->foto) {
                 Storage::delete('public/alumni/' . $alumni->foto);
             }
-
+            
             $foto = $request->file('foto');
             $fotoName = time() . '.' . $foto->getClientOriginalExtension();
             $foto->storeAs('public/alumni', $fotoName);
-            $data['foto'] = $fotoName; // Menambahkan nama foto baru ke data
+            $data['foto'] = $fotoName;
         }
 
-        // Update data alumni
         $alumni->update($data);
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.alumni.index')
+        return redirect()->route('alumni.index')
             ->with('success', 'Data alumni berhasil diperbarui');
     }
 
@@ -127,16 +131,14 @@ class AlumniController extends Controller
      */
     public function destroy(Alumni $alumni)
     {
-        // Menghapus foto jika ada
+        // Delete file if exists
         if ($alumni->foto) {
             Storage::delete('public/alumni/' . $alumni->foto);
         }
-
-        // Menghapus data alumni
+        
         $alumni->delete();
 
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.alumni.index')
+        return redirect()->route('alumni.index')
             ->with('success', 'Data alumni berhasil dihapus');
     }
 }

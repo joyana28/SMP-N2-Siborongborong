@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags Must come first in the head; any other head content must come after these tags -->
 
     <!-- Title -->
-    <title>SMP Negeri 2 Siborongborong | {{ $title ?? '' }}</title>
+    <title>SMPN 2 SIBORONGBORONG | {{ $title ?? '' }}</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('templates/frontend/clever') }}/img/core-img/logo.jpeg">
