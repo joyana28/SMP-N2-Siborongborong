@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    {{-- <script src="{{ asset('js/login.js') }}"></script> --}}
+    <script src="{{ asset('js/login.js') }}"></script>
 </head>
 <body>
     <!-- Background gradients for depth effect -->
@@ -16,17 +16,14 @@
 
     <div class="login-container">
         <div class="left-panel">
-            <!-- Light effect for the glow -->
             <div class="light-effect"></div>
 
-            <!-- Stars background effect -->
             <div class="stars">
                 <?php for ($i = 0; $i < 30; $i++) { ?>
                     <div class="star" style="top: <?php echo rand(5, 95); ?>%; left: <?php echo rand(5, 95); ?>%; animation-delay: <?php echo rand(0, 5000) / 1000; ?>s;"></div>
                 <?php } ?>
             </div>
 
-            <!-- Diagonal lines animation -->
             <div class="diagonal-lines">
                 <?php for ($i = 0; $i < 50; $i++) { ?>
                     <div class="line" style="left: <?php echo rand(0, 100); ?>%; animation-delay: <?php echo rand(0, 5000) / 1000; ?>s; width: <?php echo (rand(0, 100) > 80) ? '2px' : '1px'; ?>; opacity: <?php echo rand(10, 30) / 100; ?>;"></div>
@@ -50,28 +47,38 @@
 
         <div class="right-panel">
             <div class="form-container">
-                <div class="input-field" style="animation-delay: 0.2s;">
-                    <div class="input-icon"></div>
-                    <input type="email" placeholder="Email address name@mail.com">
-                </div>
+                <form method="POST" action="{{ route('admin.login.submit') }}">
+                    @csrf
 
-                <div class="input-field" style="animation-delay: 0.4s;">
-                    <div class="input-icon"></div>
-                    <input type="password" placeholder="Password" value="">
-                </div>
-
-                <div class="checkbox-container">
-                    <div class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
+                    <div class="input-field" style="animation-delay: 0.2s;">
+                        <div class="input-icon"></div>
+                        <input type="text" name="username" placeholder="Username">
                     </div>
-                    <a href="#" class="forgot-password">Forgot password?</a>
-                </div>
 
-                <button class="login-btn">Login</button>
+                    <div class="input-field" style="animation-delay: 0.4s;">
+                        <div class="input-icon"></div>
+                        <input type="password" name="password" placeholder="Password">
+                    </div>
 
-                <div class="signup-text">Not a member yet?</div>
-                <button class="signup-btn">Sign up</button>
+                    <div class="checkbox-container">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+
+                    <button class="login-btn" type="submit">Login</button>
+
+                    @if($errors->has('login'))
+                        <div style="color: red; text-align: center; margin-top: 10px;">
+                            {{ $errors->first('login') }}
+                        </div>
+                    @endif
+
+                    <div class="signup-text">Not a member yet?</div>
+                    <button class="signup-btn" type="button">Sign up</button>
+                </form>
             </div>
         </div>
     </div>

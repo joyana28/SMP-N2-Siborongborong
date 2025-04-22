@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrestasiController;
@@ -20,9 +21,11 @@ Route::get('/', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
+
 // Autentikasi (sementara login manual)
+// Route login Laravel default
 Route::get('/login', function () {
-    return view('auth.login');
+    return view('auth.login');  
 })->name('login');
 
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
@@ -53,3 +56,38 @@ Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
 
 // Pengumuman - Pastikan Anda memiliki PengumumanController
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index'); // Tambahkan ini jika pengumuman diperlukan
+
+// Route login khusus admin (hardcoded login)
+Route::view('/admin/login', 'admin.login')->name('admin.login');
+
+Route::post('/admin/login', function(Request $request) {
+    $validUsername = 'admin';
+    $validPassword = 'admin123';
+
+    if ($request->username === $validUsername && $request->password === $validPassword) {
+        session(['admin_logged_in' => true]);
+        return redirect('/admin/dashboard');
+    } else {
+        return redirect()->back()->withErrors(['login' => 'Username atau password salah.']);
+    }
+})->name('admin.login.submit');
+
+Route::get('/admin/dashboard', function () {
+    if (!session('admin_logged_in')) {
+        return redirect()->route('admin.login');
+    }
+    return view('admin.dashboard');
+});
+
+// Halaman frontend
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('/visimisi', [AboutController::class, 'visimisi']);
+Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
+
+// Halaman berdasarkan controller
+Route::get('/prestasi', [PrestasiController::class, 'index']);
+Route::get('/tenagapengajar', [GuruController::class, 'index']);
+Route::get('/siswa', [SiswaController::class, 'index']);
+Route::get('/alumni', [AlumniController::class, 'index']);
+Route::get('/pendaftaran', [PendaftaranController::class, 'index']);
+
