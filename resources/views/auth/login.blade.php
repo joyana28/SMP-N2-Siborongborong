@@ -57,7 +57,17 @@
 
                     <div class="input-field" style="animation-delay: 0.4s;">
                         <div class="input-icon"></div>
+                        <input type="email" name="email" placeholder="Email">
+                    </div>
+
+                    <div class="input-field" style="animation-delay: 0.6s;">
+                        <div class="input-icon"></div>
                         <input type="password" name="password" placeholder="Password">
+                    </div>
+
+                    <div class="input-field" style="animation-delay: 0.8s;">
+                        <div class="input-icon"></div>
+                        <input type="text" name="full_name" placeholder="FullName">
                     </div>
 
                     <div class="checkbox-container">

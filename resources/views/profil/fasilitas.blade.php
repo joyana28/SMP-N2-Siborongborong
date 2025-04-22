@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Expertise Services</title>
+    <title>SMPN 2 SIBORONGBORONG</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -47,10 +47,10 @@
     <section class="services-section" id="services">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>WHAT WE'RE OFFERING TO<br>OUR CUSTOMERS</h2>
+                <h2>BERIKUT KAMI HADIRKAN <br>FASILITAS UNGGULAN UNTUK PRESTASI</h2>
             </div>
             <div class="section-description" data-aos="fade-up" data-aos-delay="100">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam fermentum tellus.
+            Setiap ruang dan sarana yang kami sediakan dirancang dengan penuh perhatian untuk menciptakan lingkungan belajar yang aman, nyaman, dan inspiratif. Mulai dari ruang kelas yang dilengkapi teknologi pembelajaran modern, laboratorium yang mendukung eksplorasi ilmiah, hingga area olahraga dan ruang kreatif yang mendorong keseimbangan antara akademik dan pengembangan diri siswa.
             </div>
             <div class="services-grid">
                 <div class="service-card web-dev" data-aos="fade-up" data-aos-delay="150">
@@ -92,14 +92,28 @@
         <div class="container">
             <div class="features-container">
                 <div class="features-image" data-aos="fade-right">
-                    <img src="https://via.placeholder.com/500x350/f5f5f5/cccccc" alt="IT Team Working">
+                    <div class="x-collage">
+                        <div class="collage-item item-1">
+                            <img src="{{ asset('images/pp 7.png') }}" alt="Interior workspace with plants">
+                        </div>
+                        <div class="collage-item item-2">
+                            <img src="/api/placeholder/300/300" alt="Modern office design">
+                        </div>
+                        <div class="collage-item item-3">
+                            <img src="/api/placeholder/300/300" alt="Cozy workspace corner">
+                        </div>
+                        <div class="collage-item item-4">
+                            <img src="/api/placeholder/300/300" alt="Office desk with equipment">
+                        </div>
+                        <div class="collage-center"></div>
+                    </div>
                 </div>
                 <div class="features-content" data-aos="fade-left">
                     <div class="counter-item">
-                        <div class="counter-number" id="projectCounter">13</div>
-                        <div class="counter-text">YEARS IN THE INDUSTRY</div>
+                        <div class="counter-number" id="projectCounter">46</div>
+                        <div class="counter-text">TAHUN TELAH BERDIRI DAN MENGABDI</div>
                     </div>
-                    <h2>WHAT WE'RE OFFERING<br>TO OUR CUSTOMERS</h2>
+                    <h2>WHAT WE'RE OFFERING<br>TO OUR CUSTOMER</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -168,7 +182,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     if (entry.target.id === 'projectCounter') {
-                        animateCounter('projectCounter', 0, 13, 2000);
+                        animateCounter('projectCounter', 0, 46, 2000);
                     }
                     observer.unobserve(entry.target);
                 }
@@ -230,5 +244,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
+<script>
+// Simple counter animation
+        const counterElement = document.getElementById('projectCounter');
+        const targetValue = 46;
+        let currentValue = 0;
+        
+        const interval = setInterval(() => {
+            if (currentValue >= targetValue) {
+                clearInterval(interval);
+            } else {
+                currentValue++;
+                counterElement.textContent = currentValue;
+            }
+        }, 60);
+    </script>
 </body>
 </html>

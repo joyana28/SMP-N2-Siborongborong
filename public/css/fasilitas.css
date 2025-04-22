@@ -293,26 +293,123 @@ header {
     background-color: #f9f9f9;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 .features-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .features-image {
     flex: 1;
     text-align: center;
+    min-width: 300px;
+    position: relative;
 }
 
-.features-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+/* X-shaped image collage */
+.x-collage {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.collage-item {
+    position: absolute;
+    width: 45%;
+    height: 45%;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collage-item:hover {
+    z-index: 10;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.collage-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Positioning items in X formation */
+.item-1 {
+    top: 0;
+    left: 0;
+    border-radius: 10px 0 0 0;
+}
+
+.item-2 {
+    top: 0;
+    right: 0;
+    border-radius: 0 10px 0 0;
+}
+
+.item-3 {
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 0 10px;
+}
+
+.item-4 {
+    bottom: 0;
+    right: 0;
+    border-radius: 0 0 10px 0;
+}
+
+/* Center blue shape */
+.collage-center {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    background-color: #0e3b79;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 5;
+    transition: all 0.4s ease;
+}
+
+.collage-center:hover {
+    background-color: #0a2654;
+    transform: translate(-50%, -50%) rotate(135deg);
 }
 
 .features-content {
     flex: 1;
     padding-left: 50px;
+    min-width: 300px;
+    margin-top: 30px;
+}
+
+.counter-item {
+    margin-bottom: 25px;
+}
+
+.counter-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.counter-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
 }
 
 .features-content h2 {
@@ -320,6 +417,17 @@ header {
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.features-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.feature-list {
+    margin-bottom: 25px;
 }
 
 .feature-item {
@@ -348,6 +456,7 @@ header {
     margin-right: 10px;
     text-decoration: none;
     display: inline-block;
+    margin-bottom: 10px;
 }
 
 .btn-primary {
@@ -371,6 +480,18 @@ header {
     color: var(--white);
 }
 
+@media (max-width: 768px) {
+    .features-container {
+        flex-direction: column;
+    }
+    .features-content {
+        padding-left: 0;
+        margin-top: 50px;
+    }
+    .x-collage {
+        height: 400px;
+    }
+}
 /* Counter Section */
 .counter-section {
     background-color: var(--primary-color);
