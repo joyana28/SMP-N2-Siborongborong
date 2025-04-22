@@ -11,8 +11,15 @@ class Alumni extends Model
 
     protected $table = 'alumni';
     protected $primaryKey = 'id_alumni';
-    protected $fillable = ['id_admin', 'nama', 'deskripsi', 'foto']; 
+    
+    protected $fillable = [
+        'id_admin',
+        'nama',
+        'deskripsi',
+        'foto',
+    ];
 
+    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');

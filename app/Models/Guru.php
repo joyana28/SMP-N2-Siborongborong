@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,8 +11,18 @@ class Guru extends Model
 
     protected $table = 'guru';
     protected $primaryKey = 'id_guru';
-    protected $fillable = ['id_admin', 'nama', 'nip', 'golongan', 'bidang', 'no_telp', 'foto'];
+    
+    protected $fillable = [
+        'id_admin',
+        'nama',
+        'nip',
+        'golongan',
+        'bidang',
+        'no_telp',
+        'foto',
+    ];
 
+    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');
@@ -19,6 +30,6 @@ class Guru extends Model
 
     public function kelasWali()
     {
-        return $this->hasOne(Kelas::class, 'wali_kelas_id');
+        return $this->hasMany(Siswa::class, 'wali_kelas_id');
     }
 }

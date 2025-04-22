@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profil_alumni', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->year('tahun_lulus');
-            $table->string('pekerjaan')->nullable();
-            $table->string('tempat_kerja')->nullable();
-            $table->text('kesan_pesan')->nullable();
+        Schema::create('alumni', function (Blueprint $table) {
+            $table->id('id_alumni');
+            $table->unsignedBigInteger('id_admin');
+            $table->string('nama', 100);
+            $table->text('deskripsi')->nullable();
+            $table->string('foto', 100)->nullable();
             $table->timestamps();
-        });        
+
+            $table->foreign('id_admin')->references('id_admin')->on('admin');
+        });
     }
 
     /**
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profil_alumni');
+        Schema::dropIfExists('alumni');
     }
 };

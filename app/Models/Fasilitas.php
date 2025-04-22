@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,6 +11,7 @@ class Fasilitas extends Model
 
     protected $table = 'fasilitas';
     protected $primaryKey = 'id_fasilitas';
+    
     protected $fillable = [
         'id_admin',
         'nama',
@@ -17,9 +19,10 @@ class Fasilitas extends Model
         'foto',
         'tahun',
         'kerusakan',
-        'penambahan'
+        'penambahan',
     ];
 
+    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');

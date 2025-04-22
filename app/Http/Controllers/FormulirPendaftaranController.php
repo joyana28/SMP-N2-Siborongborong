@@ -1,33 +1,42 @@
 <?php
-// FormulirPendaftaranController
+
 namespace App\Http\Controllers;
 
 use App\Models\FormulirPendaftaran;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class FormulirPendaftaranController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $formulir = FormulirPendaftaran::with('admin')->get();
-        return view('formulir.index', compact('formulir'));
+        return view('formulir-pendaftaran.index', compact('formulir'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         $admins = Admin::all();
-        return view('formulir.create', compact('admins'));
+        return view('formulir-pendaftaran.create', compact('admins'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admin,id_admin',
             'deskripsi' => 'required|string|max:100',
-            'formulir_pendaftaran' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'formulir_file' => 'required|file|mimes:pdf,doc,docx|max:2048',
             'tanggal_terbit' => 'required|date',
             'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
         ]);
@@ -38,100 +47,102 @@ class FormulirPendaftaranController extends Controller
                 ->withInput();
         }
 
-        if ($request->hasFile('formulir_pendaftaran')) {
-            $file = $request->file('formulir_pendaftaran');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('formulir', $fileName, 'public');
+        $data = [
+            'id_admin' => $request->id_admin,
+            'deskripsi' => $request->deskripsi,
+            'tanggal_terbit' => $request->tanggal_terbit,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
+        ];
 
-            FormulirPendaftaran::create([
-                'id_admin' => $request->id_admin,
-                'deskripsi' => $request->deskripsi,
-                'formulir_pendaftaran' => $filePath,
-                'tanggal_terbit' => $request->tanggal_terbit,
-                'tanggal_berakhir' => $request->tanggal_berakhir,
-            ]);
-
-            return redirect()->route('formulir.index')
-                ->with('success', 'Formulir pendaftaran berhasil dibuat');
+        // Handle file upload
+        if ($request->hasFile('formulir_file')) {
+            $file = $request->file('formulir_file');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/formulir', $fileName);
+            $data['formulir_pendaftaran'] = $fileName;
         }
 
-        return redirect()->back()->with('error', 'Gagal mengunggah file');
+        FormulirPendaftaran::create($data);
+
+        return redirect()->route('formulir-pendaftaran.index')
+            ->with('success', 'Formulir pendaftaran berhasil ditambahkan');
     }
 
-    public function show($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(FormulirPendaftaran $formulirPendaftaran)
     {
-        $formulir = FormulirPendaftaran::findOrFail($id);
-        return view('formulir.show', compact('formulir'));
+        return view('formulir-pendaftaran.show', compact('formulirPendaftaran'));
     }
 
-    public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(FormulirPendaftaran $formulirPendaftaran)
     {
-        $formulir = FormulirPendaftaran::findOrFail($id);
         $admins = Admin::all();
-        return view('formulir.edit', compact('formulir', 'admins'));
+        return view('formulir-pendaftaran.edit', compact('formulirPendaftaran', 'admins'));
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, FormulirPendaftaran $formulirPendaftaran)
     {
-    $validator = Validator::make($request->all(), [
-        'id_admin' => 'required|exists:admins,id',
-        'deskripsi' => 'required|string|max:100',
-        'formulir_pendaftaran' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
-        'tanggal_terbit' => 'required|date',
-        'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
-    ]);
+        $validator = Validator::make($request->all(), [
+            'id_admin' => 'required|exists:admin,id_admin',
+            'deskripsi' => 'required|string|max:100',
+            'formulir_file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'tanggal_terbit' => 'required|date',
+            'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
+        ]);
 
-    if ($validator->fails()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
-    }
-
-    $formulir = FormulirPendaftaran::findOrFail($id);
-
-    $data = $request->only([
-        'id_admin',
-        'deskripsi',
-        'tanggal_terbit',
-        'tanggal_berakhir'
-    ]);
-
-    if ($request->hasFile('formulir_pendaftaran')) {
-        if ($formulir->formulir_pendaftaran && Storage::disk('public')->exists($formulir->formulir_pendaftaran)) {
-            Storage::disk('public')->delete($formulir->formulir_pendaftaran);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
         }
 
-        $file = $request->file('formulir_pendaftaran');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $file->storeAs('formulir', $fileName, 'public');
+        $data = [
+            'id_admin' => $request->id_admin,
+            'deskripsi' => $request->deskripsi,
+            'tanggal_terbit' => $request->tanggal_terbit,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
+        ];
 
-        $data['formulir_pendaftaran'] = $filePath;
+        // Handle file upload
+        if ($request->hasFile('formulir_file')) {
+            // Delete old file if exists
+            if ($formulirPendaftaran->formulir_pendaftaran) {
+                Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
+            }
+            
+            $file = $request->file('formulir_file');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $file->storeAs('public/formulir', $fileName);
+            $data['formulir_pendaftaran'] = $fileName;
+        }
+
+        $formulirPendaftaran->update($data);
+
+        return redirect()->route('formulir-pendaftaran.index')
+            ->with('success', 'Formulir pendaftaran berhasil diperbarui');
     }
 
-    $formulir->update($data);
-
-    return redirect()->route('formulir.index')
-        ->with('success', 'Formulir pendaftaran berhasil diperbarui');
-    }
-
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(FormulirPendaftaran $formulirPendaftaran)
     {
-        $formulir = FormulirPendaftaran::findOrFail($id);
-        
-        // Delete file
-        if (Storage::disk('public')->exists($formulir->formulir_pendaftaran)) {
-            Storage::disk('public')->delete($formulir->formulir_pendaftaran);
+        // Delete file if exists
+        if ($formulirPendaftaran->formulir_pendaftaran) {
+            Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
         }
         
-        $formulir->delete();
+        $formulirPendaftaran->delete();
 
-        return redirect()->route('formulir.index')
+        return redirect()->route('formulir-pendaftaran.index')
             ->with('success', 'Formulir pendaftaran berhasil dihapus');
-    }
-
-    public function download($id)
-    {
-        $formulir = FormulirPendaftaran::findOrFail($id);
-        return Storage::disk('public')->download($formulir->formulir_pendaftaran);
     }
 }

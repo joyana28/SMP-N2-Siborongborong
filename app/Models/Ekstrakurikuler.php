@@ -1,5 +1,5 @@
 <?php
-// Ekstrakurikuler Model
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,8 +11,17 @@ class Ekstrakurikuler extends Model
 
     protected $table = 'ekstrakurikuler';
     protected $primaryKey = 'id_eskul';
-    protected $fillable = ['id_admin', 'nama', 'deskripsi', 'pembina', 'jadwal', 'foto'];
+    
+    protected $fillable = [
+        'id_admin',
+        'nama',
+        'deskripsi',
+        'pembina',
+        'jadwal',
+        'foto',
+    ];
 
+    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');

@@ -1,6 +1,5 @@
 <?php
 
-// KepalaSekolah Model
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,8 +11,17 @@ class KepalaSekolah extends Model
 
     protected $table = 'kepala_sekolah';
     protected $primaryKey = 'id_kepsek';
-    protected $fillable = ['id_admin', 'nama', 'nip', 'golongan', 'periode', 'foto'];
+    
+    protected $fillable = [
+        'id_admin',
+        'nama',
+        'nip',
+        'golongan',
+        'periode',
+        'foto',
+    ];
 
+    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');
