@@ -12,11 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('formulir_pendaftaran', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_file');
-            $table->string('path'); // lokasi penyimpanan file
+            $table->id('id_pendaftaran');
+            $table->unsignedBigInteger('id_admin');
+            $table->string('deskripsi', 100);
+            $table->string('formulir_pendaftaran', 100);
+            $table->date('tanggal_terbit');
+            $table->date('tanggal_berakhir')->nullable();
             $table->timestamps();
-        });        
+
+            $table->foreign('id_admin')->references('id_admin')->on('admin');
+        });
     }
 
     /**

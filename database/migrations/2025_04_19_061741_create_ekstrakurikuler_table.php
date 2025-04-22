@@ -9,19 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
+            $table->id('id_eskul');
+            $table->unsignedBigInteger('id_admin');
+            $table->string('nama', 100);
             $table->text('deskripsi')->nullable();
-            $table->text('pembina')->nullable();
-            $table->text('jadwal')->nullable();
-            $table->text('foto')->nullable();
+            $table->string('pembina', 100);
+            $table->string('jadwal', 100);
+            $table->string('foto', 100);
             $table->timestamps();
+
+            $table->foreign('id_admin')
+                  ->references('id_admin')
+                  ->on('admin')
+                  ->onDelete('cascade');
         });
     }
-    
 
     /**
      * Reverse the migrations.

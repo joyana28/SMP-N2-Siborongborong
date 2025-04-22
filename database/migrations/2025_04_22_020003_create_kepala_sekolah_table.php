@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prestasi', function (Blueprint $table) {
-            $table->id('id_prestasi');
+        Schema::create('kepala_sekolah', function (Blueprint $table) {
+            $table->id('id_kepsek');
             $table->unsignedBigInteger('id_admin');
             $table->string('nama', 100);
-            $table->text('deskripsi')->nullable();
-            $table->date('tanggal');
-            $table->enum('jenis', ['akademik', 'non-akademik']);
-            $table->string('foto', 100)->nullable();
+            $table->string('nip', 50)->unique();
+            $table->string('golongan', 50);
+            $table->string('periode', 50);
+            $table->string('foto', 100);
             $table->timestamps();
 
             $table->foreign('id_admin')->references('id_admin')->on('admin');
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prestasi');
+        Schema::dropIfExists('kepala_sekolah');
     }
 };

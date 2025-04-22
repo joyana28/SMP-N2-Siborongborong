@@ -1,6 +1,5 @@
 <?php
 
-// FormulirPendaftaran Model
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,19 +11,16 @@ class FormulirPendaftaran extends Model
 
     protected $table = 'formulir_pendaftaran';
     protected $primaryKey = 'id_pendaftaran';
+    
     protected $fillable = [
         'id_admin',
         'deskripsi',
         'formulir_pendaftaran',
         'tanggal_terbit',
-        'tanggal_berakhir'
+        'tanggal_berakhir',
     ];
-    
-    protected $casts = [
-        'tanggal_terbit' => 'date',
-        'tanggal_berakhir' => 'date',
-    ];
-    
+
+    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');

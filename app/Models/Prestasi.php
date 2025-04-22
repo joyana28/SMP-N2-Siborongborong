@@ -11,12 +11,17 @@ class Prestasi extends Model
 
     protected $table = 'prestasi';
     protected $primaryKey = 'id_prestasi';
-    protected $fillable = ['id_admin', 'nama', 'deskripsi', 'tanggal', 'jenis', 'foto']; 
-
-    protected $casts = [
-        'tanggal' => 'date',
+    
+    protected $fillable = [
+        'id_admin',
+        'nama',
+        'deskripsi',
+        'tanggal',
+        'jenis',
+        'foto',
     ];
 
+    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');
