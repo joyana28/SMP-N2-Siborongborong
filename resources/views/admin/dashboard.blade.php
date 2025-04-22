@@ -12,10 +12,6 @@
       @include('layouts.backend.navbar')
       {{-- ini file navbar --}}
       <!--end::Header-->
-      <!--begin::Sidebar-->
-      @include('layouts.backend.sidebar')
-      {{-- ini file sidebar --}}
-      <!--end::Sidebar-->
       <!--begin::App Main-->
       @include('layouts.backend.content')
       {{-- ini file content --}}
