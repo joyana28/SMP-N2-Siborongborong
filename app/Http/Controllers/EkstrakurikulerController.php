@@ -11,14 +11,14 @@ class EkstrakurikulerController extends Controller
 {
     public function index()
     {
-        $eskul = Ekstrakurikuler::with('admin')->get();
-        return view('eskul.index', compact('eskul'));
+        $ekstrakurikuler = Ekstrakurikuler::with('admin')->get();
+        return view('admin.ekstrakurikuler.index', compact('ekstrakurikuler'));
     }
-
+    
     public function create()
     {
         $admins = Admin::all();
-        return view('eskul.create', compact('admins'));
+        return view('admin.ekstrakurikuler.create', compact('admins'));
     }
 
     public function store(Request $request)
@@ -62,14 +62,14 @@ class EkstrakurikulerController extends Controller
     public function show($id)
     {
         $eskul = Ekstrakurikuler::findOrFail($id);
-        return view('eskul.show', compact('eskul'));
+        return view('admin.ekstrakurikuler.show', compact('eskul'));
     }
 
     public function edit($id)
     {
         $eskul = Ekstrakurikuler::findOrFail($id);
         $admins = Admin::all();
-        return view('eskul.edit', compact('eskul', 'admins'));
+        return view('admin.ekstrakurikuler.edit', compact('eskul', 'admins'));
     }
 
     public function update(Request $request, $id)

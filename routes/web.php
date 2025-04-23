@@ -115,5 +115,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     // Rute untuk Alumni
     Route::resource('alumni', AlumniController::class);
+    Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
 });
 
