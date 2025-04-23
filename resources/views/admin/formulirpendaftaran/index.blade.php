@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
     <h1>Daftar Formulir Pendaftaran</h1>
-    <a href="{{ route('formulir_pendaftaran.create') }}" class="btn btn-primary mb-3">Tambah Formulir</a>
+    <a href="{{ route('admin.formulirpendaftaran.create') }}" class="btn btn-primary mb-3">Tambah Formulir</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -31,8 +31,8 @@
                 <td>{{ $f->tanggal_terbit->format('d-m-Y') }}</td>
                 <td>{{ $f->tanggal_berakhir->format('d-m-Y') }}</td>
                 <td>
-                    <a href="{{ route('formulir_pendaftaran.edit', $f->id_pendaftaran) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('formulir_pendaftaran.destroy', $f->id_pendaftaran) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
+                    <a href="{{ route('admin.formulirpendaftaran.edit', $f->id_pendaftaran) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('admin.formulirpendaftaran.destroy', $f->id_pendaftaran) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm">Hapus</button>
