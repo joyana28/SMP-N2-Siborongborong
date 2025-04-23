@@ -59,9 +59,9 @@
         </li>
         
         <li class="nav-item">
-          <a href="{{ route('kelas.index') }}" class="nav-link">
+          <a href="{{ route('siswa.index') }}" class="nav-link">
             <i class="nav-icon bi bi-mortarboard"></i>
-            <p>kelas</p>
+            <p>siswa</p>
           </a>
         </li>
         

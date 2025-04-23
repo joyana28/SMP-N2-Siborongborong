@@ -12,13 +12,13 @@ class GuruController extends Controller
     public function index()
     {
         $guru = Guru::with('admin')->get();
-        return view('guru.index', compact('guru'));
+        return view('admin.guru.index', compact('guru'));
     }
 
     public function create()
     {
         $admins = Admin::all();
-        return view('guru.create', compact('admins'));
+        return view('admin.guru.create', compact('admins'));
     }
 
     public function store(Request $request)
@@ -54,7 +54,7 @@ class GuruController extends Controller
                 'foto' => $filePath,
             ]);
 
-            return redirect()->route('guru.index')
+            return redirect()->route('admin.guru.index')
                 ->with('success', 'Data guru berhasil dibuat');
         }
 
@@ -64,14 +64,14 @@ class GuruController extends Controller
     public function show($id)
     {
         $guru = Guru::with(['admin', 'kelasWali'])->findOrFail($id);
-        return view('guru.show', compact('guru'));
+        return view('admin.guru.show', compact('guru'));
     }
 
     public function edit($id)
     {
         $guru = Guru::findOrFail($id);
         $admins = Admin::all();
-        return view('guru.edit', compact('guru', 'admins'));
+        return view('admin.guru.edit', compact('guru', 'admins'));
     }
 
     public function update(Request $request, $id)
@@ -125,7 +125,7 @@ class GuruController extends Controller
             ]);
         }
 
-        return redirect()->route('guru.index')
+        return redirect()->route('admin.guru.index')
             ->with('success', 'Data guru berhasil diperbarui');
     }
 
@@ -140,7 +140,7 @@ class GuruController extends Controller
         
         $guru->delete();
 
-        return redirect()->route('guru.index')
+        return redirect()->route('admin.guru.index')
             ->with('success', 'Data guru berhasil dihapus');
     }
 }

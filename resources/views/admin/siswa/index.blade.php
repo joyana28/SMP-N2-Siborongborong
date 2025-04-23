@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4">Data Kelas</h2>
-    <a href="{{ route('kelas.create') }}" class="btn btn-primary mb-3">Tambah Kelas</a>
+    <h2 class="mb-4">Data Siswa</h2>
+    <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary mb-3">Tambah Data Siswa</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -25,7 +25,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($kelas as $index => $k)
+            @foreach($siswa as $siswa => $s)
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $k->nama_kelas }}</td>
@@ -37,8 +37,8 @@
                 <td>{{ $k->waliKelas->nama ?? '-' }}</td>
                 <td>{{ $k->history }}</td>
                 <td>
-                    <a href="{{ route('kelas.edit', $k->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('kelas.destroy', $k->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ route('admin.siswa.edit', $k->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <form action="{{ route('admin.siswa.destroy', $k->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-sm btn-danger"

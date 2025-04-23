@@ -113,9 +113,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.dashboard');
     })->name('dashboard');  // Nama route admin.dashboard
 
-    // Rute untuk Alumni
+    // Rute
     Route::resource('alumni', AlumniController::class);
     Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
     Route::resource('formulirpendaftaran', FormulirPendaftaranController::class);
+    Route::resource('guru', GuruController::class);
+    Route::resource('siswa', SiswaController::class);
 });
 

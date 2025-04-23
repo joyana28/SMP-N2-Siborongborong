@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <form action="{{ route('guru.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.guru.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label>Admin</label>

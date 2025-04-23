@@ -13,14 +13,14 @@ class SiswaController extends Controller
     public function index()
     {
         $siswa = Siswa::with(['admin', 'kelas'])->get();
-        return view('siswa.index', compact('siswa'));
+        return view('admin.siswa.index', compact('siswa'));
     }
 
     public function create()
     {
         $admins = Admin::all();
         $kelas = Kelas::all();
-        return view('siswa.create', compact('admins', 'kelas'));
+        return view('admin.siswa.create', compact('admins', 'kelas'));
     }
 
     public function store(Request $request)
@@ -44,14 +44,14 @@ class SiswaController extends Controller
 
         Siswa::create($request->all());
 
-        return redirect()->route('siswa.index')
+        return redirect()->route('admin.siswa.index')
             ->with('success', 'Data siswa berhasil ditambahkan');
     }
 
     public function show($id)
     {
         $siswa = Siswa::with(['admin', 'kelas'])->findOrFail($id);
-        return view('siswa.show', compact('siswa'));
+        return view('admin.siswa.show', compact('siswa'));
     }
 
     public function edit($id)
@@ -59,7 +59,7 @@ class SiswaController extends Controller
         $siswa = Siswa::findOrFail($id);
         $admins = Admin::all();
         $kelas = Kelas::all();
-        return view('siswa.edit', compact('siswa', 'admins', 'kelas'));
+        return view('admin.siswa.edit', compact('siswa', 'admins', 'kelas'));
     }
 
     public function update(Request $request, $id)
@@ -85,7 +85,7 @@ class SiswaController extends Controller
 
         $siswa->update($request->all());
 
-        return redirect()->route('siswa.index')
+        return redirect()->route('admin.siswa.index')
             ->with('success', 'Data siswa berhasil diperbarui');
     }
 
@@ -94,7 +94,7 @@ class SiswaController extends Controller
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
 
-        return redirect()->route('siswa.index')
+        return redirect()->route('admin.siswa.index')
             ->with('success', 'Data siswa berhasil dihapus');
     }
 }
