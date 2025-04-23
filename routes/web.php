@@ -61,14 +61,23 @@ Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumu
 Route::view('/admin/login', 'admin.login')->name('admin.login');
 
 Route::post('/admin/login', function(Request $request) {
+    // Data login yang valid
     $validUsername = 'admin';
     $validPassword = 'admin123';
+    $validNama = 'Admin Satu';
+    $validEmail = 'admin@example.com';
 
-    if ($request->username === $validUsername && $request->password === $validPassword) {
+    // Cek semua input sesuai
+    if (
+        $request->username === $validUsername &&
+        $request->password === $validPassword &&
+        $request->nama === $validNama &&
+        $request->email === $validEmail
+    ) {
         session(['admin_logged_in' => true]);
         return redirect('/admin/dashboard');
     } else {
-        return redirect()->back()->withErrors(['login' => 'Username atau password salah.']);
+        return redirect()->back()->withErrors(['login' => 'Data login tidak sesuai.']);
     }
 })->name('admin.login.submit');
 
