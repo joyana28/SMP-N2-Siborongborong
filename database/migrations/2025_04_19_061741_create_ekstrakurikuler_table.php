@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
             $table->id('id_eskul');
             $table->unsignedBigInteger('id_admin');
+            $table->foreign('id_admin')->references('id_admin')->on('admin')->onDelete('cascade');
             $table->string('nama', 100);
             $table->text('deskripsi')->nullable();
             $table->string('pembina', 100);
@@ -21,6 +22,10 @@ return new class extends Migration
             $table->string('foto', 100);
             $table->timestamps();
 
+            // Tambahkan index dulu sebelum foreign key (optional tapi aman)
+            $table->index('id_admin');
+
+            // Foreign key constraint
             $table->foreign('id_admin')
                   ->references('id_admin')
                   ->on('admin')

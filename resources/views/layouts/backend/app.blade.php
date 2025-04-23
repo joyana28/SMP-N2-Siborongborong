@@ -9,38 +9,30 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Tambahan CSS -->
-    <style>
-        body {
-            padding-top: 70px;
-        }
-    </style>
+
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('dashboard') }}">Admin Panel</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="{{ route('admin.alumni.index') }}" class="nav-link">Alumni</a></li>
-                    <li class="nav-item"><a href="{{ route('admin.dashboard') }}" class="nav-link">Dashboard</a></li>
-                    <li class="nav-item">
-                        
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+@include('layouts.backend.header')
 
-    <!-- Content -->
-    <main class="container">
-        @yield('content')
-    </main>
+@include('layouts.backend.navbar')
+
+
+<div class="wrapper">
+        <div class="sidebar">
+            @include('layouts.backend.sidebar')
+        </div>
+
+        <div class="content">
+            @yield('content')
+        </div>
+    </div>
+
+@include('layouts.backend.footer')
+
+@include('layouts.backend.mainfooter')
+
+    
 
     <!-- Bootstrap JS (pakai CDN atau lokal) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

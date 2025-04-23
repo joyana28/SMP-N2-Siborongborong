@@ -13,7 +13,7 @@
       {{-- ini file navbar --}}
       <!--end::Header-->
       <!--begin::App Main-->
-      @include('layouts.backend.content')
+      @include('layouts.backend.sidebar')
       {{-- ini file content --}}
       <!--end::App Main-->
       <!--begin::Footer-->
