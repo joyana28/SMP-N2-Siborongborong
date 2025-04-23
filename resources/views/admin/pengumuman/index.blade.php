@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
@@ -10,7 +10,7 @@
 
     <div class="mb-3 text-right">
         <input type="text" id="search" class="form-control w-50 d-inline-block" placeholder="Search:">
-        <a href="{{ route('pengumuman.create') }}" class="btn btn-primary">+ Tambah Pengumuman</a>
+        <a href="{{ route('admin.pengumuman.create') }}" class="btn btn-primary">+ Tambah Pengumuman</a>
     </div>
 
     <table class="table table-bordered">
@@ -33,8 +33,8 @@
                 <td>{{ $item->tanggal_terbit }}</td>
                 <td>{{ $item->tanggal_berakhir }}</td>
                 <td>
-                    <a href="{{ route('pengumuman.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('pengumuman.destroy', $item->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ route('admin.pengumuman.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <form action="{{ route('admin.pengumuman.destroy', $item->id) }}" method="POST" style="display:inline;">
                         @csrf @method('DELETE')
                         <button onclick="return confirm('Yakin hapus?')" class="btn btn-sm btn-danger">Hapus</button>
                     </form>

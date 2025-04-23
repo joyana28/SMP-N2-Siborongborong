@@ -11,13 +11,13 @@ class PengumumanController extends Controller
     public function index()
     {
         $pengumuman = Pengumuman::with('admin')->get();
-        return view('pengumuman.index', compact('pengumuman'));
+        return view('admin.pengumuman.index', compact('pengumuman'));
     }
 
     public function create()
     {
         $admins = Admin::all();
-        return view('pengumuman.create', compact('admins'));
+        return view('admin.pengumuman.create', compact('admins'));
     }
 
     public function store(Request $request)
@@ -38,21 +38,21 @@ class PengumumanController extends Controller
 
         Pengumuman::create($request->all());
 
-        return redirect()->route('pengumuman.index')
+        return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil dibuat');
     }
 
     public function show($id)
     {
         $pengumuman = Pengumuman::findOrFail($id);
-        return view('pengumuman.show', compact('pengumuman'));
+        return view('admin.pengumuman.show', compact('pengumuman'));
     }
 
     public function edit($id)
     {
         $pengumuman = Pengumuman::findOrFail($id);
         $admins = Admin::all();
-        return view('pengumuman.edit', compact('pengumuman', 'admins'));
+        return view('admin.pengumuman.edit', compact('pengumuman', 'admins'));
     }
 
     public function update(Request $request, $id)
@@ -74,7 +74,7 @@ class PengumumanController extends Controller
         $pengumuman = Pengumuman::findOrFail($id);
         $pengumuman->update($request->all());
 
-        return redirect()->route('pengumuman.index')
+        return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil diperbarui');
     }
 
@@ -83,7 +83,7 @@ class PengumumanController extends Controller
         $pengumuman = Pengumuman::findOrFail($id);
         $pengumuman->delete();
 
-        return redirect()->route('pengumuman.index')
+        return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil dihapus');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <form action="{{ route('pengumuman.update', $pengumuman->id) }}" method="POST">
+    <form action="{{ route('admin.pengumuman.update', $pengumuman->id) }}" method="POST">
         @csrf @method('PUT')
         <div class="form-group">
             <label>Admin</label>

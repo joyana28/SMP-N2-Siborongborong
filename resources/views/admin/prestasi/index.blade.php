@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
     <h1>Data Prestasi</h1>
-    <a href="{{ route('prestasi.create') }}" class="btn btn-primary mb-3">Tambah Prestasi</a>
+    <a href="{{ route('admin.prestasi.create') }}" class="btn btn-primary mb-3">Tambah Prestasi</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -33,8 +33,8 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('prestasi.edit', $p->id_prestasi) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('prestasi.destroy', $p->id_prestasi) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
+                    <a href="{{ route('admin.prestasi.edit', $p->id_prestasi) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <form action="{{ route('admin.prestasi.destroy', $p->id_prestasi) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus?')">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger">Hapus</button>

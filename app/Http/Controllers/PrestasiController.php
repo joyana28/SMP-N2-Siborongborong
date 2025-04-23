@@ -16,7 +16,7 @@ class PrestasiController extends Controller
     public function index()
     {
         $prestasi = Prestasi::with('admin')->get();
-        return view('prestasi.index', compact('prestasi'));
+        return view('admin.prestasi.index', compact('prestasi'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PrestasiController extends Controller
     public function create()
     {
         $admins = Admin::all();
-        return view('prestasi.create', compact('admins'));
+        return view('admin.prestasi.create', compact('admins'));
     }
 
     /**
@@ -66,7 +66,7 @@ class PrestasiController extends Controller
 
         Prestasi::create($data);
 
-        return redirect()->route('prestasi.index')
+        return redirect()->route('admin.prestasi.index')
             ->with('success', 'Data prestasi berhasil ditambahkan');
     }
 
@@ -75,7 +75,7 @@ class PrestasiController extends Controller
      */
     public function show(Prestasi $prestasi)
     {
-        return view('prestasi.show', compact('prestasi'));
+        return view('admin.prestasi.show', compact('prestasi'));
     }
 
     /**
@@ -84,7 +84,7 @@ class PrestasiController extends Controller
     public function edit(Prestasi $prestasi)
     {
         $admins = Admin::all();
-        return view('prestasi.edit', compact('prestasi', 'admins'));
+        return view('admin.prestasi.edit', compact('prestasi', 'admins'));
     }
 
     /**
@@ -130,7 +130,7 @@ class PrestasiController extends Controller
 
         $prestasi->update($data);
 
-        return redirect()->route('prestasi.index')
+        return redirect()->route('admin.prestasi.index')
             ->with('success', 'Data prestasi berhasil diperbarui');
     }
 
@@ -146,7 +146,7 @@ class PrestasiController extends Controller
         
         $prestasi->delete();
 
-        return redirect()->route('prestasi.index')
+        return redirect()->route('admin.prestasi.index')
             ->with('success', 'Data prestasi berhasil dihapus');
     }
 }
