@@ -1,7 +1,9 @@
-<footer class="app-footer">
-  <!--begin::Copyright-->
-  <div class="text-center">
-    <strong>Admin Dashboard</strong> &copy; 2025
-  </div>
-  <!--end::Copyright-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p class="mb-0">&copy; {{ date('Y') }} Sistem Informasi Sekolah. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
 </footer>

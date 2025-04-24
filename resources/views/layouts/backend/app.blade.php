@@ -1,40 +1,66 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - @yield('title', 'Dashboard')</title>
-
-    <!-- Bootstrap CSS (pakai CDN atau lokal) -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title', 'Dashboard Admin')</title>
+    
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Tambahan CSS -->
-
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            min-height: 100%;
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+    
+    @stack('styles')
 </head>
 <body>
-
-@include('layouts.backend.header')
-
-@include('layouts.backend.navbar')
-
-
-<div class="wrapper">
-        <div class="sidebar">
-            @include('layouts.backend.sidebar')
-        </div>
-
-        <div class="content">
+    <div class="content-wrapper">
+        @include('layouts.backend.sidebar')
+        
+        <div class="main-content">
             @yield('content')
         </div>
     </div>
-
-@include('layouts.backend.footer')
-
-@include('layouts.backend.mainfooter')
-
     
-
-    <!-- Bootstrap JS (pakai CDN atau lokal) -->
+    @include('layouts.backend.footer')
+    
+    <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    @stack('scripts')
 </body>
 </html>
