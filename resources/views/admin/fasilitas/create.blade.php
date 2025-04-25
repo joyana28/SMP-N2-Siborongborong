@@ -1,125 +1,121 @@
-@extends('layouts.backend.app',[
-	'title' => 'Tambah Fasilitas',
-	'contentTitle' => 'Tambah Fasilitas',
-])
+@extends('layouts.backend.app')
 
-@push('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('plugins/summernote') }}/summernote-bs4.min.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dropify') }}/dist/css/dropify.min.css">
-@endpush
 @section('content')
-<div class="row">
-	<div class="col">
-		<div class="card">
-			<div class="card-header">
-				<a href="{{ route('admin.fasilitas.index') }}" class="btn btn-success btn-sm">Kembali</a>
-			</div>
-			<div class="card-body">
-				<form method="POST" action="{{ route('admin.fasilitas.store') }}" enctype="multipart/form-data" id="form-fasilitas">
-					@csrf
-					<div class="form-group">
-						<label for="nama_fasilitas">Nama Fasilitas</label>
-						<input required="" class="form-control" type="text" name="nama_fasilitas" id="nama_fasilitas" placeholder="">
-					</div>
-					<div class="form-group">
-						<label for="deskripsi">Deskripsi</label>
-						<textarea required="" name="deskripsi_fasilitas" id="deskripsi" class="text-dark form-control summernote"></textarea>
-					</div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>Gambar</label>
-                                <input type="file" name="gambar_fasilitas" class="dropify form-control" data-height="190" data-allowed-file-extensions="png jpg gif jpeg svg webp jfif" required>
-                            </div>
-                        </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tambah Fasilitas</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('admin.fasilitas.index') }}" class="btn btn-default">
+                            <i class="fas fa-arrow-left"></i> Kembali
+                        </a>
                     </div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-sm">SIMPAN</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Error!</h5>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('admin.fasilitas.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="id_admin">Admin</label>
+                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
+                                <option value="">Pilih Admin</option>
+                                @foreach($admins as $admin)
+                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                                        {{ $admin->nama ?? $admin->username }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_admin')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Nama Fasilitas</label>
+                            <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" required>
+                            @error('nama')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control @error('deskripsi') is-invalid @enderror" required>{{ old('deskripsi') }}</textarea>
+                            @error('deskripsi')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tahun">Tahun</label>
+                            <input type="text" name="tahun" id="tahun" class="form-control @error('tahun') is-invalid @enderror" value="{{ old('tahun') }}" required>
+                            @error('tahun')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kerusakan">Kerusakan</label>
+                            <input type="text" name="kerusakan" id="kerusakan" class="form-control @error('kerusakan') is-invalid @enderror" value="{{ old('kerusakan') }}">
+                            <small class="form-text text-muted">Opsional. Deskripsi kerusakan fasilitas jika ada.</small>
+                            @error('kerusakan')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="penambahan">Penambahan</label>
+                            <input type="text" name="penambahan" id="penambahan" class="form-control @error('penambahan') is-invalid @enderror" value="{{ old('penambahan') }}">
+                            <small class="form-text text-muted">Opsional. Deskripsi penambahan fasilitas jika ada.</small>
+                            @error('penambahan')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <div class="custom-file">
+                                <input type="file" name="foto" id="foto" class="custom-file-input @error('foto') is-invalid @enderror" required>
+                                <label class="custom-file-label" for="foto">Pilih foto</label>
+                                @error('foto')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <small class="form-text text-muted">Format: JPG, PNG, GIF. Maks: 2MB</small>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
 </div>
-@stop
-@push('js')
-<script type="text/javascript" src="{{ asset('plugins/summernote') }}/summernote-bs4.min.js"></script>
-<script type="text/javascript" src="{{ asset('plugins/dropify') }}/dist/js/dropify.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript">
+@endsection
+
+@push('scripts')
+<script>
+    // Script untuk menampilkan nama file yang dipilih
     $(document).ready(function() {
-        $(".summernote").summernote({
-            height:500,
-            callbacks: {
-                onPaste: function (e) {
-                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
-                    e.preventDefault();
-                    bufferText = bufferText.replace(/\r?\n/g, '<br>');
-                    document.execCommand('insertHtml', false, bufferText);
-                }
-            }
-        });
-
-        $(".summernote").on("summernote.enter", function(we, e) {
-            $(this).summernote("pasteHTML", "<br><br>");
-            e.preventDefault();
-        });
-
-        $('.dropify').dropify({
-            messages: {
-                default: 'Drag atau Drop untuk memilih gambar',
-                replace: 'Ganti',
-                remove:  'Hapus',
-                error:   'error'
-            }
-        });
-
-        $('.title').keyup(function(){
-            var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g,'-');
-            $('.slug').val(title);
-        });
-
-        $("#nama_fasilitas").on("change", function() {
-            var nama_fasilitas = $("#nama_fasilitas").val();
-
-            // Check for unique Nama Fasilitas
-            $.ajax({
-                url: '{{ route("admin.fasilitas.checkName") }}', // Adjust the route name as necessary
-                method: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    nama_fasilitas: nama_fasilitas
-                },
-                success: function(response) {
-                    if (response.exists) {
-                        Swal.fire({
-                            title: 'Perhatian!',
-                            text: 'Nama Fasilitas tidak boleh sama.',
-                            icon: 'warning',
-                            confirmButtonText: 'OK'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $("#nama_fasilitas").val("");
-                            }
-                        });
-                    }
-                }
-            });
-        });
-
-        $("form#form-fasilitas").submit(function(e) {
-            var nama_fasilitas = $("#nama_fasilitas").val();
-
-            if (nama_fasilitas == "") {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Perhatian!',
-                    text: 'Nama Fasilitas tidak boleh sama.',
-                    icon: 'warning',
-                    confirmButtonText: 'OK'
-                });
-            }
-        });
+        bsCustomFileInput.init();
     });
 </script>
 @endpush

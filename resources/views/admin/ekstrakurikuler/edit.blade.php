@@ -1,111 +1,118 @@
-@extends('layouts.backend.app',[
-    'title' => 'Edit Ekstrakurikuler',
-    'contentTitle' => 'Edit Ekstrakurikuler',
-])
+@extends('layouts.backend.app')
+
 @section('content')
-@push('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('plugins/summernote') }}/summernote-bs4.min.css">
-<link rel="stylesheet" type="text/css" href="{{ asset('plugins/dropify') }}/dist/css/dropify.min.css">
-@endpush
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <a href="{{ route('admin.ekstrakurikuler.index') }}" class="btn btn-success btn-sm">Kembali</a>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{ route('admin.ekstrakurikuler.edit.update', $ekstrakurikuler->id_ekstrakurikuler) }}" enctype="multipart/form-data" id="form-ekstrakurikuler">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group">
-                        <label for="judul_ekstrakurikuler">Nama Ekstrakurikuler</label>
-                        <input required="" class="form-control" type="text" name="judul_ekstrakurikuler" id="judul_ekstrakurikuler" placeholder="" value="{{ $ekstrakurikuler->judul_ekstrakurikuler }}">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Ekstrakurikuler</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('admin.ekstrakurikuler.index') }}" class="btn btn-default">
+                            <i class="fas fa-arrow-left"></i> Kembali
+                        </a>
                     </div>
-                    <div class="form-group">
-                        <label for="deskripsi_ekstrakurikuler">Deskripsi</label>
-                        <textarea required="" name="deskripsi_ekstrakurikuler" id="deskripsi_ekstrakurikuler" class="text-dark form-control summernote">{{ $ekstrakurikuler->deskripsi_ekstrakurikuler }}</textarea>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>Gambar</label>
-                            <input type="file" name="gambar_ekstrakurikuler" class="dropify form-control" data-height="190" data-allowed-file-extensions="png jpg gif jpeg svg webp jfif" value="{{ $ekstrakurikuler->gambar_ekstrakurikuler }}">
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Error!</h5>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-sm">UPDATE</button>
-                    </div>
-                </form>
+                    @endif
+
+                    <form action="{{ route('admin.ekstrakurikuler.update', $ekstrakurikuler->id_eskul) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        
+                        <div class="form-group">
+                            <label for="id_admin">Admin</label>
+                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
+                                <option value="">Pilih Admin</option>
+                                @foreach($admins as $admin)
+                                    <option value="{{ $admin->id_admin }}" {{ (old('id_admin', $ekstrakurikuler->id_admin) == $admin->id_admin) ? 'selected' : '' }}>
+                                        {{ $admin->nama ?? $admin->username }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_admin')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Nama Ekstrakurikuler</label>
+                            <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $ekstrakurikuler->nama) }}" required>
+                            @error('nama')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi</label>
+                            <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $ekstrakurikuler->deskripsi) }}</textarea>
+                            @error('deskripsi')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pembina">Pembina</label>
+                            <input type="text" name="pembina" id="pembina" class="form-control @error('pembina') is-invalid @enderror" value="{{ old('pembina', $ekstrakurikuler->pembina) }}" required>
+                            @error('pembina')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="jadwal">Jadwal</label>
+                            <input type="text" name="jadwal" id="jadwal" class="form-control @error('jadwal') is-invalid @enderror" value="{{ old('jadwal', $ekstrakurikuler->jadwal) }}" required>
+                            @error('jadwal')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            @if($ekstrakurikuler->foto)
+                                <div class="mb-2">
+                                    <img src="{{ asset('storage/ekstrakurikuler/'.$ekstrakurikuler->foto) }}" alt="{{ $ekstrakurikuler->nama }}" width="200" class="img-thumbnail">
+                                </div>
+                            @endif
+                            <div class="custom-file">
+                                <input type="file" name="foto" id="foto" class="custom-file-input @error('foto') is-invalid @enderror">
+                                <label class="custom-file-label" for="foto">Pilih foto baru (opsional)</label>
+                                @error('foto')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <small class="form-text text-muted">Format: JPG, PNG, GIF. Maks: 2MB. Biarkan kosong jika tidak ingin mengubah foto.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card-body -->
             </div>
+            <!-- /.card -->
         </div>
     </div>
 </div>
-@stop
-@push('js')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript" src="{{ asset('plugins/summernote') }}/summernote-bs4.min.js"></script>
-<script type="text/javascript" src="{{ asset('plugins/dropify') }}/dist/js/dropify.min.js"></script>
-<script type="text/javascript">
+@endsection
+
+@push('scripts')
+<script>
+    // Script untuk menampilkan nama file yang dipilih
     $(document).ready(function() {
-        $("#judul_ekstrakurikuler").on("change", function() {
-            var judulEkstrakurikuler = $(this).val();
-            var idEkstrakurikuler = "{{ $ekstrakurikuler->id_ekstrakurikuler }}";
-
-            $.ajax({
-                url: '{{ route("admin.ekstrakurikuler.checkTitle") }}',
-                method: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    judul_ekstrakurikuler: judulEkstrakurikuler,
-                    id_ekstrakurikuler: idEkstrakurikuler
-                },
-                success: function(response) {
-                    if (response.exists) {
-                        Swal.fire({
-                            title: 'Perhatian!',
-                            text: 'Nama Ekstrakurikuler tidak boleh sama.',
-                            icon: 'warning',
-                            confirmButtonText: 'OK'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $("#judul_ekstrakurikuler").val("");
-                            }
-                        });
-                    }
-                }
-            });
-        });
-
-        $(".summernote").summernote({
-            height: 500,
-            callbacks: {
-                // callback for pasting text only (no formatting)
-                onPaste: function(e) {
-                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
-                    e.preventDefault();
-                    bufferText = bufferText.replace(/\r?\n/g, '<br>');
-                    document.execCommand('insertHtml', false, bufferText);
-                }
-            }
-        });
-
-        $(".summernote").on("summernote.enter", function(we, e) {
-            $(this).summernote("pasteHTML", "<br><br>");
-            e.preventDefault();
-        });
-
-        $('.dropify').dropify({
-            messages: {
-                default: 'Drag atau Drop untuk memilih gambar',
-                replace: 'Ganti',
-                remove: 'Hapus',
-                error: 'error'
-            }
-        });
-
-        $('.title').keyup(function() {
-            var title = $(this).val().toLowerCase().replace(/[&\/\\#^, +()$~%.'":*?<>{}]/g, '-');
-            $('.slug').val(title);
-        });
+        bsCustomFileInput.init();
     });
 </script>
 @endpush

@@ -9,9 +9,25 @@ class Fasilitas extends Model
 {
     use HasFactory;
 
+    /**
+     * Nama tabel yang terkait dengan model
+     *
+     * @var string
+     */
     protected $table = 'fasilitas';
+
+    /**
+     * Primary key tabel
+     *
+     * @var string
+     */
     protected $primaryKey = 'id_fasilitas';
-    
+
+    /**
+     * Atribut yang dapat diisi (mass assignable)
+     *
+     * @var array
+     */
     protected $fillable = [
         'id_admin',
         'nama',
@@ -22,9 +38,11 @@ class Fasilitas extends Model
         'penambahan',
     ];
 
-    // Relationships
+    /**
+     * Relasi dengan model Admin
+     */
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin');
+        return $this->belongsTo(Admin::class, 'id_admin', 'id_admin');
     }
 }
