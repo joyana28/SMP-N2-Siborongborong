@@ -37,8 +37,6 @@ Route::get('/ekstrakurikuler/{slug}', [EkstrakurikulerController::class, 'show']
 Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi.index');
 Route::get('/prestasi/{slug}', [PrestasiController::class, 'show'])->name('prestasi.show');
 
-Route::get('/tenagapengajar', [GuruController::class, 'index'])->name('guru.index');
-Route::get('/tenagapengajar/{slug}', [GuruController::class, 'show'])->name('guru.show');
 
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 
@@ -52,6 +50,8 @@ Route::get('/fasilitas/{slug}', [FasilitasController::class, 'show'])->name('fas
 
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 Route::get('/pengumuman/{slug}', [PengumumanController::class, 'show'])->name('pengumuman.show');
+
+Route::get('/guru', [GuruController::class, 'index'])->name('admin.guru.index');
 
 Route::get('/kepalasekolah', [KepalaSekolahController::class, 'index'])->name('kepalasekolah.index');
 
@@ -75,7 +75,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 | ADMIN LOGIN KHUSUS (MANUAL - SEDERHANA)
 |--------------------------------------------------------------------------
 */
-Route::view('/admin/login', 'admin.login')->name('admin.login');
+Route::view('/admin/login', 'auth.login')->name('auth.login');
 
 // Proses Login Admin
 Route::post('/admin/login', function (Request $request) {
@@ -122,5 +122,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('kepalasekolah', KepalaSekolahController::class);
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('prestasi', PrestasiController::class);
+    Route::resource('fasilitas', FasilitasController::class);
 });
 

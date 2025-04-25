@@ -1,77 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>404 Not Found</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 - Halaman tidak ditemukan</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff512f, #dd2476);
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: #555;
+    }
 
-        .error-container {
-            text-align: center;
-            padding: 60px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-        }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        h1 {
-            font-size: 72px;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-            animation: glow 2s ease-in-out infinite alternate;
-        }
+    .image {
+      width: 120px;
+      margin-bottom: 24px;
+    }
 
-        p {
-            font-size: 24px;
-            color: #ddd;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
-            margin-bottom: 40px;
-        }
+    h1 {
+      font-size:95px;
+      margin: 0;
+      font-weight: bold;
+      color: #333;
+    }
 
-        a {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #ffba3d;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 30px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
+    p {
+      font-size: 24px;
+      margin: 10px 0 30px;
+      color: #777;
+    }
 
-        a:hover {
-            background-color: #ffc600;
-            box-shadow: 0 0 30px rgba(255, 198, 0, 0.8);
-            transform: scale(1.1);
-        }
+    .btn {
+      display: inline-block;
+      padding: 8px 20px;
+      font-size: 14px;
+      color: #222;
+      background: none;
+      border: 2px solid #222;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
 
-        @keyframes glow {
-            from {
-                text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
-            }
-            to {
-                text-shadow: 2px 2px 20px rgba(255, 198, 0, 0.8);
-            }
-        }
-    </style>
+    .btn:hover {
+      background-color: #000;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 48px;
+      }
+
+      .image {
+        width: 90px;
+      }
+
+      .btn {
+        font-size: 13px;
+        padding: 6px 18px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="error-container">
-        <h1>404 Not Found</h1>
-        <p>Oops! The page you're looking for cannot be found.</p>
-        <a href="/">Go Back</a>
-    </div>
+  <div class="container">
+    <img src="https://i.pinimg.com/736x/9d/9a/82/9d9a8284750f5e9e7276817e5172fb76.jpg" alt="404 Sad Face" class="image" />
+    <h1>404</h1>
+    <p>Halaman tidak ditemukan</p>
+    <a href="/" class="btn">Kembali ke Beranda</a>
+  </div>
 </body>
 </html>

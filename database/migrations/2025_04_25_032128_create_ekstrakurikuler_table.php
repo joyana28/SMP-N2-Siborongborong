@@ -4,28 +4,26 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateEkstrakurikulerTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
-            $table->id('id_eskul');
-            $table->unsignedBigInteger('id_admin');
-            $table->foreign('id_admin')->references('id_admin')->on('admin')->onDelete('cascade');
-            $table->string('nama', 100);
+            $table->increments('id_eskul');
+            $table->integer('id_admin')->unsigned();
+            $table->string('nama', 100)->nullable(false);
             $table->text('deskripsi')->nullable();
-            $table->string('pembina', 100);
-            $table->string('jadwal', 100);
-            $table->string('foto', 100);
+            $table->string('pembina', 100)->nullable(false);
+            $table->string('jadwal', 100)->nullable(false);
+            $table->string('foto', 100)->nullable(false);
             $table->timestamps();
-
-            // Tambahkan index dulu sebelum foreign key (optional tapi aman)
-            $table->index('id_admin');
-
-            // Foreign key constraint
+            
+            // Asumsikan ada tabel admin dengan primary key id_admin
             $table->foreign('id_admin')
                   ->references('id_admin')
                   ->on('admin')
@@ -35,9 +33,11 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('ekstrakurikuler');
     }
-};
+}

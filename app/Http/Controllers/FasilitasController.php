@@ -12,24 +12,31 @@ class FasilitasController extends Controller
 {
     /**
      * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $fasilitas = Fasilitas::with('admin')->get();
-        return view('fasilitas.index', compact('fasilitas'));
+        $fasilitas = Fasilitas::with('admin')->paginate(10);
+        return view('admin.fasilitas.index', compact('fasilitas'));
     }
 
     /**
      * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function create()
     {
         $admins = Admin::all();
-        return view('fasilitas.create', compact('admins'));
+        return view('admin.fasilitas.create', compact('admins'));
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -49,50 +56,61 @@ class FasilitasController extends Controller
                 ->withInput();
         }
 
-        $data = [
+        // Proses upload foto
+        if ($request->hasFile('foto')) {
+            $fotoFile = $request->file('foto');
+            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
+            $fotoPath = $fotoFile->storeAs('public/fasilitas', $fotoName);
+            $foto = $fotoName;
+        }
+
+        Fasilitas::create([
             'id_admin' => $request->id_admin,
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
+            'foto' => $foto ?? null,
             'tahun' => $request->tahun,
             'kerusakan' => $request->kerusakan,
             'penambahan' => $request->penambahan,
-        ];
+        ]);
 
-        // Handle file upload
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $fotoName = time() . '.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('public/fasilitas', $fotoName);
-            $data['foto'] = $fotoName;
-        }
-
-        Fasilitas::create($data);
-
-        return redirect()->route('fasilitas.index')
-            ->with('success', 'Data fasilitas berhasil ditambahkan');
+        return redirect()->route('admin.fasilitas.index')
+            ->with('success', 'Fasilitas berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show(Fasilitas $fasilitas)
+    public function show($id)
     {
-        return view('fasilitas.show', compact('fasilitas'));
+        $fasilitas = Fasilitas::with('admin')->findOrFail($id);
+        return view('admin.fasilitas.show', compact('fasilitas'));
     }
 
     /**
      * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function edit(Fasilitas $fasilitas)
+    public function edit($id)
     {
+        $fasilitas = Fasilitas::findOrFail($id);
         $admins = Admin::all();
-        return view('fasilitas.edit', compact('fasilitas', 'admins'));
+        return view('admin.fasilitas.edit', compact('fasilitas', 'admins'));
     }
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fasilitas $fasilitas)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'id_admin' => 'required|exists:admin,id_admin',
@@ -110,47 +128,51 @@ class FasilitasController extends Controller
                 ->withInput();
         }
 
-        $data = [
-            'id_admin' => $request->id_admin,
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'tahun' => $request->tahun,
-            'kerusakan' => $request->kerusakan,
-            'penambahan' => $request->penambahan,
-        ];
+        $fasilitas = Fasilitas::findOrFail($id);
 
-        // Handle file upload
+        // Proses upload foto baru jika ada
         if ($request->hasFile('foto')) {
-            // Delete old file if exists
-            if ($fasilitas->foto) {
+            // Hapus foto lama jika ada
+            if ($fasilitas->foto && Storage::exists('public/fasilitas/' . $fasilitas->foto)) {
                 Storage::delete('public/fasilitas/' . $fasilitas->foto);
             }
             
-            $foto = $request->file('foto');
-            $fotoName = time() . '.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('public/fasilitas', $fotoName);
-            $data['foto'] = $fotoName;
+            $fotoFile = $request->file('foto');
+            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
+            $fotoPath = $fotoFile->storeAs('public/fasilitas', $fotoName);
+            $fasilitas->foto = $fotoName;
         }
 
-        $fasilitas->update($data);
+        $fasilitas->id_admin = $request->id_admin;
+        $fasilitas->nama = $request->nama;
+        $fasilitas->deskripsi = $request->deskripsi;
+        $fasilitas->tahun = $request->tahun;
+        $fasilitas->kerusakan = $request->kerusakan;
+        $fasilitas->penambahan = $request->penambahan;
+        $fasilitas->save();
 
-        return redirect()->route('fasilitas.index')
-            ->with('success', 'Data fasilitas berhasil diperbarui');
+        return redirect()->route('admin.fasilitas.index')
+            ->with('success', 'Fasilitas berhasil diperbarui!');
     }
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Fasilitas $fasilitas)
+    public function destroy($id)
     {
-        // Delete file if exists
-        if ($fasilitas->foto) {
+        $fasilitas = Fasilitas::findOrFail($id);
+        
+        // Hapus foto jika ada
+        if ($fasilitas->foto && Storage::exists('public/fasilitas/' . $fasilitas->foto)) {
             Storage::delete('public/fasilitas/' . $fasilitas->foto);
         }
         
         $fasilitas->delete();
 
-        return redirect()->route('fasilitas.index')
-            ->with('success', 'Data fasilitas berhasil dihapus');
+        return redirect()->route('admin.fasilitas.index')
+            ->with('success', 'Fasilitas berhasil dihapus!');
     }
 }
