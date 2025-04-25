@@ -15,4 +15,9 @@ class AboutController extends Controller
         // Tetap kirim view meskipun datanya null (ditangani di Blade)
         return view('about', compact('about'));
     }
+    public function visimisi()
+{
+    return view('about.visimisi');
+}
+
 }
