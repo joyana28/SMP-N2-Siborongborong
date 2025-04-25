@@ -75,7 +75,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 | ADMIN LOGIN KHUSUS (MANUAL - SEDERHANA)
 |--------------------------------------------------------------------------
 */
-Route::view('/admin/login', 'admin.login')->name('admin.login');
+Route::view('/admin/login', 'auth.login')->name('auth.login');
 
 // Proses Login Admin
 Route::post('/admin/login', function (Request $request) {

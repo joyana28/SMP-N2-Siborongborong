@@ -1,4 +1,3 @@
-<!-- Contoh file blade untuk pesan kesalahan 500 -->
 <!DOCTYPE html>
 <html>
 <head>
