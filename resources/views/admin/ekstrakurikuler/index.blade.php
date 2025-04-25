@@ -1,138 +1,86 @@
-@extends('layouts.backend.app',[
-	'title' => 'Manage Ekstrakurikuler',
-	'contentTitle' => 'Manage Ekstrakurikuler',
-])
-@push('css')
-<!-- DataTables -->
-<link rel="stylesheet" href="{{ asset('templates/backend/AdminLTE-3.0.1') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-@endpush
+@extends('layouts.backend.app')
+
 @section('content')
-<x-alert></x-alert>
-<div class="row">
-	<div class="col">
-		<div class="card">
-			<div class="card-header">
-				<a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Daftar Ekstrakurikuler</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Tambah Ekstrakurikuler
+                        </a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-check"></i> Sukses!</h5>
+                            {{ session('success') }}
+                        </div>
+                    @endif
 
-			</div>
-			<div class="card-body table-responsive">
-				<table id="dataTable1" class="table table-bordered table-hover">
-				<thead>
-				<tr>
-				  <th>No</th>
-				  <th>Nama Ektrakurikuler</th>
-				  <th>Deskripsi</th>
-                  <th>Gambar</th>
-				  <th>Action</th>
-				</tr>
-				</thead>
-				<tbody>
-				@php 
-					$no=1;
-				@endphp
-
-				@foreach($ekstrakurikuler as $ekstrakurikulers)
-				<tr>
-				  <td>{{ $no++ }}</td>
-				  <td>{{ $ekstrakurikulers->judul_ekstrakurikuler }}</td>
-				  <td>{{ $ekstrakurikulers->deskripsi_ekstrakurikuler }}</td>
-                  <td><img width ="270rem" src="{{ asset('folderimage/' . $ekstrakurikulers->gambar_ekstrakurikuler) }}" alt=""></td>
-				  <td>
-					<div class="row ml-2">
-						<a href="{{ route('admin.ekstrakurikuler.edit', ['id' => $ekstrakurikulers->id_ekstrakurikuler]) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit fa-fw"></i></a>
-						<button class="btn btn-danger btn-sm ml-2 delete-button" data-url="{{ route('admin.ekstrakurikuler.index.delete', ['id' => $ekstrakurikulers->id_ekstrakurikuler]) }}">
-							<i class="fas fa-trash fa-fw"></i>
-						</button>
-					</div>
-						
-				  </td>
-				</tr>
-				@endforeach
-				</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Pembina</th>
+                                <th>Jadwal</th>
+                                <th>Foto</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($ekstrakurikuler as $key => $eskul)
+                            <tr>
+                                <td>{{ $ekstrakurikuler->firstItem() + $key }}</td>
+                                <td>{{ $eskul->nama }}</td>
+                                <td>{{ $eskul->pembina }}</td>
+                                <td>{{ $eskul->jadwal }}</td>
+                                <td>
+                                    @if($eskul->foto)
+                                        <img src="{{ asset('storage/ekstrakurikuler/'.$eskul->foto) }}" alt="{{ $eskul->nama }}" width="100" class="img-thumbnail">
+                                    @else
+                                        <span class="badge badge-secondary">Tidak ada foto</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="{{ route('admin.ekstrakurikuler.show', $eskul->id_eskul) }}" class="btn btn-info btn-sm">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                        <a href="{{ route('admin.ekstrakurikuler.edit', $eskul->id_eskul) }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('admin.ekstrakurikuler.destroy', $eskul->id_eskul) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            @empty
+                            <tr>
+                                <td colspan="6" class="text-center">Tidak ada data ekstrakurikuler</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix">
+                    {{ $ekstrakurikuler->links() }}
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
 </div>
-@stop
-@push('js')
-<!-- DataTables -->
-<script src="{{ asset('templates/backend/AdminLTE-3.0.1') }}/plugins/datatables/jquery.dataTables.js"></script>
-<script src="{{ asset('templates/backend/AdminLTE-3.0.1') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script>
-  $(function () {
-    $("#dataTable1").DataTable();
-    $('#dataTable2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-    });
-  });
-</script>
-<script src="{{ mix('js/app.js') }}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        @if(session('success'))
-            Swal.fire({
-                title: 'Berhasil!',
-                text: '{{ session('success') }}',
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
-        @endif
-
-        @if(session('error'))
-            Swal.fire({
-                title: 'Gagal!',
-                text: '{{ session('error') }}',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        @endif
-
-        // SweetAlert for delete confirmation
-        document.querySelectorAll('.delete-button').forEach(button => {
-            button.addEventListener('click', function (event) {
-                event.preventDefault(); // Prevent default link behavior
-                const url = this.dataset.url;
-
-                Swal.fire({
-                    title: 'Apakah anda yakin?',
-                    text: "Anda tidak akan bisa mengembalikan ini!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'OK',
-                    cancelButtonText: 'Cancel'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        axios.delete(url)
-                            .then(response => {
-                                Swal.fire({
-                                    title: 'Berhasil!',
-                                    text: response.data.success,
-                                    icon: 'success',
-                                    confirmButtonText: 'OK'
-                                }).then(() => {
-                                    window.location.href = "{{ route('admin.ekstrakurikuler.index') }}";
-                                });
-                            })
-                            .catch(error => {
-                                Swal.fire({
-                                    title: 'Gagal!',
-                                    text: 'Terjadi kesalahan saat menghapus data.',
-                                    icon: 'error',
-                                    confirmButtonText: 'OK'
-                                });
-                            });
-                    }
-                });
-            });
-        });
-    });
-    </script>
-@endpush
+@endsection
