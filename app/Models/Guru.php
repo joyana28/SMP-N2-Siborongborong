@@ -9,9 +9,25 @@ class Guru extends Model
 {
     use HasFactory;
 
+    /**
+     * Nama tabel yang terkait dengan model.
+     *
+     * @var string
+     */
     protected $table = 'guru';
+
+    /**
+     * Primary key untuk tabel.
+     *
+     * @var string
+     */
     protected $primaryKey = 'id_guru';
-    
+
+    /**
+     * Atribut yang dapat diisi.
+     *
+     * @var array
+     */
     protected $fillable = [
         'id_admin',
         'nama',
@@ -22,14 +38,11 @@ class Guru extends Model
         'foto',
     ];
 
-    // Relationships
+    /**
+     * Mendapatkan admin yang terkait dengan guru ini.
+     */
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin');
-    }
-
-    public function kelasWali()
-    {
-        return $this->hasMany(Siswa::class, 'wali_kelas_id');
+        return $this->belongsTo(Admin::class, 'id_admin', 'id');
     }
 }

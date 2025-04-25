@@ -1,51 +1,70 @@
+<!-- resources/views/formulir_pendaftaran/edit.blade.php -->
 @extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
-    <h1>Edit Formulir Pendaftaran</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Edit Formulir Pendaftaran
+                        <a href="{{ route('admin.formulirpendaftaran.index') }}" class="btn btn-danger float-end">Kembali</a>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
-        </div>
-    @endif
+                    <form action="{{ route('formulirpendaftaran.update', $formulir->id_pendaftaran) }}" method="POST">
+                        @csrf
+                        @method('PUT')
 
-    <form action="{{ route('admin.formulirpendaftaran.update', $formulir->id_pendaftaran) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="form-group">
-            <label>Admin</label>
-            <select name="id_admin" class="form-control">
-                @foreach($admins as $admin)
-                    <option value="{{ $admin->id_admin }}" {{ $formulir->id_admin == $admin->id_admin ? 'selected' : '' }}>
-                        {{ $admin->nama }}
-                    </option>
-                @endforeach
-            </select>
+                        <div class="mb-3">
+                            <label for="id_admin">Admin</label>
+                            <select name="id_admin" id="id_admin" class="form-select">
+                                <option value="">Pilih Admin</option>
+                                @foreach ($admins as $admin)
+                                    <option value="{{ $admin->id }}" {{ (old('id_admin') ?? $formulir->id_admin) == $admin->id ? 'selected' : '' }}>
+                                        {{ $admin->name ?? 'Admin #' . $admin->id }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="deskripsi">Deskripsi</label>
+                            <input type="text" name="deskripsi" id="deskripsi" value="{{ old('deskripsi', $formulir->deskripsi) }}" class="form-control" maxlength="100" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formulir_pendaftaran">Nama Formulir</label>
+                            <input type="text" name="formulir_pendaftaran" id="formulir_pendaftaran" value="{{ old('formulir_pendaftaran', $formulir->formulir_pendaftaran) }}" class="form-control" maxlength="100" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tanggal_terbit">Tanggal Terbit</label>
+                            <input type="date" name="tanggal_terbit" id="tanggal_terbit" value="{{ old('tanggal_terbit', $formulir->tanggal_terbit->format('Y-m-d')) }}" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tanggal_berakhir">Tanggal Berakhir (Opsional)</label>
+                            <input type="date" name="tanggal_berakhir" id="tanggal_berakhir" value="{{ old('tanggal_berakhir', $formulir->tanggal_berakhir ? $formulir->tanggal_berakhir->format('Y-m-d') : '') }}" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Deskripsi</label>
-            <textarea name="deskripsi" class="form-control">{{ old('deskripsi', $formulir->deskripsi) }}</textarea>
-        </div>
-        <div class="form-group">
-            <label>Formulir Saat Ini</label><br>
-            @if($formulir->formulir_pendaftaran)
-                <a href="{{ asset('storage/' . $formulir->formulir_pendaftaran) }}" target="_blank">Lihat File</a>
-            @endif
-        </div>
-        <div class="form-group">
-            <label>Ganti Formulir (PDF)</label>
-            <input type="file" name="formulir_pendaftaran" class="form-control-file" accept=".pdf">
-        </div>
-        <div class="form-group">
-            <label>Tanggal Terbit</label>
-            <input type="date" name="tanggal_terbit" class="form-control" value="{{ old('tanggal_terbit', $formulir->tanggal_terbit->format('Y-m-d')) }}">
-        </div>
-        <div class="form-group">
-            <label>Tanggal Berakhir</label>
-            <input type="date" name="tanggal_berakhir" class="form-control" value="{{ old('tanggal_berakhir', $formulir->tanggal_berakhir->format('Y-m-d')) }}">
-        </div>
-        <button class="btn btn-primary">Update</button>
-    </form>
+    </div>
 </div>
 @endsection

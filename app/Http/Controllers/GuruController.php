@@ -1,32 +1,49 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class GuruController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $guru = Guru::with('admin')->get();
         return view('admin.guru.index', compact('guru'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         $admins = Admin::all();
-        return view('admin.guru.create', compact('admins'));
+        return view('guru.create', compact('admins'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admins,id',
             'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:50|unique:guru,nip',
+            'nip' => 'required|string|max:30|unique:guru,nip',
             'golongan' => 'required|string|max:50',
             'bidang' => 'required|string|max:100',
             'no_telp' => 'required|string|max:15',
@@ -39,49 +56,62 @@ class GuruController extends Controller
                 ->withInput();
         }
 
+        $data = $request->all();
+        
+        // Upload foto
         if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('guru', $fileName, 'public');
-
-            Guru::create([
-                'id_admin' => $request->id_admin,
-                'nama' => $request->nama,
-                'nip' => $request->nip,
-                'golongan' => $request->golongan,
-                'bidang' => $request->bidang,
-                'no_telp' => $request->no_telp,
-                'foto' => $filePath,
-            ]);
-
-            return redirect()->route('admin.guru.index')
-                ->with('success', 'Data guru berhasil dibuat');
+            $foto = $request->file('foto');
+            $filename = time() . '.' . $foto->getClientOriginalExtension();
+            $path = $foto->storeAs('public/guru', $filename);
+            $data['foto'] = $filename;
         }
 
-        return redirect()->back()->with('error', 'Gagal mengunggah foto');
+        Guru::create($data);
+
+        return redirect()->route('admin.guru.index')
+            ->with('success', 'Data guru berhasil ditambahkan.');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show($id)
     {
-        $guru = Guru::with(['admin', 'kelasWali'])->findOrFail($id);
-        return view('admin.guru.show', compact('guru'));
+        $guru = Guru::with('admin')->findOrFail($id);
+        return view('guru.show', compact('guru'));
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function edit($id)
     {
         $guru = Guru::findOrFail($id);
         $admins = Admin::all();
-        return view('admin.guru.edit', compact('guru', 'admins'));
+        return view('guru.edit', compact('guru', 'admins'));
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         $guru = Guru::findOrFail($id);
-
+        
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admins,id',
             'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:50|unique:guru,nip,' . $id . ',id_guru',
+            'nip' => 'required|string|max:30|unique:guru,nip,' . $id . ',id_guru',
             'golongan' => 'required|string|max:50',
             'bidang' => 'required|string|max:100',
             'no_telp' => 'required|string|max:15',
@@ -93,54 +123,47 @@ class GuruController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
+        $data = $request->all();
         
+        // Upload foto baru jika ada
         if ($request->hasFile('foto')) {
             // Hapus foto lama
-            if (Storage::disk('public')->exists($guru->foto)) {
-                Storage::disk('public')->delete($guru->foto);
+            if ($guru->foto) {
+                Storage::delete('public/guru/' . $guru->foto);
             }
             
             // Upload foto baru
-            $file = $request->file('foto');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('guru', $fileName, 'public');
-            
-            $guru->update([
-                'id_admin' => $request->id_admin,
-                'nama' => $request->nama,
-                'nip' => $request->nip,
-                'golongan' => $request->golongan,
-                'bidang' => $request->bidang,
-                'no_telp' => $request->no_telp,
-                'foto' => $filePath,
-            ]);
-        } else {
-            $guru->update([
-                'id_admin' => $request->id_admin,
-                'nama' => $request->nama,
-                'nip' => $request->nip,
-                'golongan' => $request->golongan,
-                'bidang' => $request->bidang,
-                'no_telp' => $request->no_telp,
-            ]);
+            $foto = $request->file('foto');
+            $filename = time() . '.' . $foto->getClientOriginalExtension();
+            $path = $foto->storeAs('public/guru', $filename);
+            $data['foto'] = $filename;
         }
 
+        $guru->update($data);
+
         return redirect()->route('admin.guru.index')
-            ->with('success', 'Data guru berhasil diperbarui');
+            ->with('success', 'Data guru berhasil diperbarui.');
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id)
     {
         $guru = Guru::findOrFail($id);
         
         // Hapus foto
-        if (Storage::disk('public')->exists($guru->foto)) {
-            Storage::disk('public')->delete($guru->foto);
+        if ($guru->foto) {
+            Storage::delete('public/guru/' . $guru->foto);
         }
         
         $guru->delete();
 
         return redirect()->route('admin.guru.index')
-            ->with('success', 'Data guru berhasil dihapus');
+            ->with('success', 'Data guru berhasil dihapus.');
     }
 }

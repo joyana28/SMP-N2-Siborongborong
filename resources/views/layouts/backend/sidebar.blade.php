@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('guru.index') }}" class="nav-link text-white {{ request()->routeIs('admin.guru') ? 'active bg-primary' : '' }}">
+                <a href="{{ route('admin.guru.index') }}" class="nav-link text-white {{ request()->routeIs('admin.guru') ? 'active bg-primary' : '' }}">
                     <i class="fas fa-chalkboard-teacher me-2"></i> Guru
                 </a>
             </li>
