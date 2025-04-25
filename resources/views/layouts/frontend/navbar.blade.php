@@ -34,15 +34,19 @@
                         <li><a class="dropdown-item" href="#"><span>Akademik</span></a></li>
                         <li><a class="dropdown-item" href="#"><span>Non-Akademik</span></a></li>
                     </ul>
-                <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        Tenaga Pengajar
+                        Tenaga Pendidik
                     </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><span>Kepala Sekolah</span></a></li>
+                        <li><a class="dropdown-item" href="#"><span>Guru</span></a></li>
+                    </ul>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">SIswa</a>
+                    <a class="nav-link" href="#">Siswa</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">formulir pendaftaran</a>
+                    <a class="nav-link" href="#">Formulir Pendaftaran</a>
                 </li>
             </ul>
             
