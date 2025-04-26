@@ -6,27 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('alumni', function (Blueprint $table) {
-            $table->id('id_alumni');
-            $table->unsignedBigInteger('id_admin');
+            $table->increments('id_alumni');
+            $table->integer('id_admin')->unsigned();
             $table->string('nama', 100);
             $table->text('deskripsi')->nullable();
+            $table->year('tahun_lulus')->nullable();
             $table->string('foto', 100)->nullable();
             $table->timestamps();
-
-            $table->foreign('id_admin')->references('id_admin')->on('admin');
+            
+            $table->foreign('id_admin')
+                  ->references('id_admin')
+                  ->on('admin')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('alumni');
     }

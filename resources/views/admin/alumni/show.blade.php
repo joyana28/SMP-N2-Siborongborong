@@ -12,7 +12,7 @@
                     <i class="fas fa-arrow-left me-1"></i> Kembali
                 </a>
             </div>
-        </div>
+        </div>  
     </div>
 
     <div class="card">
@@ -44,12 +44,10 @@
                         </tr>
                         <tr>
                             <th>Ditambahkan pada</th>
-                            <td>{{ $alumni->created_at->format('d F Y H:i') }}</td>
-                        </tr>
+                            <td>{{ $alumni->created_at ? $alumni->created_at->format('d F Y H:i') : '-' }}</td>                        </tr>
                         <tr>
                             <th>Terakhir diupdate</th>
-                            <td>{{ $alumni->updated_at->format('d F Y H:i') }}</td>
-                        </tr>
+                            <td>{{ $alumni->updated_at ? $alumni->updated_at->format('d F Y H:i') : '-' }}</td>                        </tr>
                     </table>
 
                     <div class="d-flex gap-2 mt-3">

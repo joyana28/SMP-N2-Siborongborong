@@ -16,7 +16,6 @@ class Admin extends Model
         'username',
         'email',
         'password',
-        'nama_lengkap',
     ];
 
     // Relationships

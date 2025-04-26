@@ -5,11 +5,12 @@ use Illuminate\Http\Request;
 
 // Controller
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AlumniController;
+use App\Models\Alumni;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\SiswaController;
-use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\FormulirPendaftaranController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\FasilitasController;
@@ -55,8 +56,6 @@ Route::get('/guru', [GuruController::class, 'index'])->name('admin.guru.index');
 
 Route::get('/kepalasekolah', [KepalaSekolahController::class, 'index'])->name('kepalasekolah.index');
 
-Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
-
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +67,6 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 /*
 |--------------------------------------------------------------------------
@@ -113,9 +111,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.dashboard');
     })->name('dashboard');  // Nama route admin.dashboard
 
-    // Rute
-    Route::resource('alumni', AlumniController::class);
+// Rute
+    Route::get('alumni', [AlumniController::class, 'index'])->name('alumni.index');
+    Route::get('alumni/create', [AlumniController::class, 'create'])->name('alumni.create');
+    Route::post('alumni', [AlumniController::class, 'store'])->name('alumni.store');
+    Route::get('alumni/{alumni}', [AlumniController::class, 'show'])->name('alumni.show');
+    Route::get('alumni/{alumni}/edit', [AlumniController::class, 'edit'])->name('alumni.edit');
+    Route::put('alumni/{alumni}', [AlumniController::class, 'update'])->name('alumni.update');
+    Route::delete('alumni/{alumni}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
+
     Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
+
     Route::resource('formulirpendaftaran', FormulirPendaftaranController::class);
     Route::resource('guru', GuruController::class);
     Route::resource('siswa', SiswaController::class);

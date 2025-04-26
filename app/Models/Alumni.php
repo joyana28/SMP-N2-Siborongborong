@@ -9,14 +9,22 @@ class Alumni extends Model
 {
     use HasFactory;
 
-    // Nama tabel
     protected $table = 'alumni';
-
-    // Kolom yang dapat diisi (mass assignment)
+    protected $primaryKey = 'id_alumni';
+    
     protected $fillable = [
+        'id_admin',
         'nama',
         'deskripsi',
-        'foto',
         'tahun_lulus',
+        'foto'
     ];
+    
+    // Make sure no attribute is guarded to allow mass assignment
+    protected $guarded = [];
+    
+    public function admin()
+    {
+        return $this->belongsTo(Admin::class, 'id_admin', 'id_admin');
+    }
 }

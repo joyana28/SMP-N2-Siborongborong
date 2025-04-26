@@ -53,13 +53,13 @@
                             <td>{{ Str::limit($item->deskripsi, 150) }}</td>
                             <td>
                                 <div class="d-flex gap-1">
-                                    <a href="{{ route('admin.alumni.show', $item->id) }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('admin.alumni.show', $item) }}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{ route('admin.alumni.edit', $item->id) }}" class="btn btn-warning btn-sm">
+                                    <a href="{{ route('admin.alumni.edit', $item) }}" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form action="{{ route('admin.alumni.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                    <form action="{{ route('admin.alumni.destroy', $item) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">

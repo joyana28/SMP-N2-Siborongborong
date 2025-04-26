@@ -23,7 +23,6 @@
             <form action="{{ route('admin.alumni.update', $alumni->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Alumni <span class="text-danger">*</span></label>
                     <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama', $alumni->nama) }}" required>

@@ -20,8 +20,10 @@
             <i class="fas fa-plus-circle me-1"></i> Form Tambah Alumni
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.alumni.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
+        <form action="{{ route('admin.alumni.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <!-- Add a hidden field for admin ID -->
+            <input type="hidden" name="id_admin" value="{{ Auth::id() }}">
 
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Alumni <span class="text-danger">*</span></label>

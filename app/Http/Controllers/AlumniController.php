@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Alumni;
 use Illuminate\Http\Request;
+use App\Models\Alumni;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AlumniController extends Controller
@@ -14,7 +16,7 @@ class AlumniController extends Controller
      */
     public function index()
     {
-        $alumni = Alumni::latest()->paginate(10);
+        $alumni = Alumni::latest()->paginate(10); 
         return view('admin.alumni.index', compact('alumni'));
     }
 
@@ -32,26 +34,33 @@ class AlumniController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'tahun_lulus' => 'nullable|numeric|min:1900|max:' . date('Y'),
+            'nama' => 'required|string|max:100',
+            'tahun_lulus' => 'nullable|date_format:Y',
+            'deskripsi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $data = $request->all();
-
-        // Handle file upload
+        // Get the current admin ID - assuming you have authentication set up
+        // If using default Laravel auth
+        $adminId = 1; // Set a default admin ID for testing, or use Auth::id() if you have auth set up
+        
+        // Create the alumni record with all required fields
+        $alumni = new Alumni();
+        $alumni->nama = $request->nama;
+        $alumni->tahun_lulus = $request->tahun_lulus;
+        $alumni->deskripsi = $request->deskripsi;
+        $alumni->id_admin = $adminId; // Set the admin ID explicitly
+        
         if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('alumni', $fileName, 'public');
-            $data['foto'] = $filePath;
+            $foto = $request->file('foto');
+            $filename = time() . '_' . $foto->getClientOriginalName();
+            $foto->storeAs('public/alumni', $filename);
+            $alumni->foto = 'alumni/' . $filename;
         }
-
-        Alumni::create($data);
-
-        return redirect()->route('admin.alumni.index')
-            ->with('success', 'Data alumni berhasil ditambahkan.');
+        
+        $alumni->save();
+        
+        return redirect()->route('admin.alumni.index')->with('success', 'Data alumni berhasil ditambahkan');
     }
 
     /**
@@ -59,63 +68,69 @@ class AlumniController extends Controller
      */
     public function show(Alumni $alumni)
     {
-        return view('admin.alumni.show', compact('alumni'));
+    return view('admin.alumni.show', ['alumni' => $alumni]);
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Alumni $alumni)
-    {
-        return view('admin.alumni.edit', compact('alumni'));
-    }
+public function edit(Alumni $alumni)
+{
+    return view('admin.alumni.edit', compact('alumni'));
+}
+
+
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Alumni $alumni)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'tahun_lulus' => 'nullable|numeric|min:1900|max:' . date('Y'),
+            'nama' => 'required|string|max:100',
+            'tahun_lulus' => 'nullable|date_format:Y',
+            'deskripsi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        $data = $request->all();
-
-        // Handle file upload
+        $alumni = Alumni::findOrFail($id);
+        $alumni->nama = $request->nama;
+        $alumni->tahun_lulus = $request->tahun_lulus;
+        $alumni->deskripsi = $request->deskripsi;
+        
+        // No need to update id_admin as it shouldn't change
+        
         if ($request->hasFile('foto')) {
-            // Delete old file if exists
+            // Delete old photo if exists
             if ($alumni->foto) {
-                Storage::disk('public')->delete($alumni->foto);
+                Storage::delete('public/' . $alumni->foto);
             }
-
-            $file = $request->file('foto');
-            $fileName = time() . '_' . $file->getClientOriginalName();
-            $filePath = $file->storeAs('alumni', $fileName, 'public');
-            $data['foto'] = $filePath;
+            
+            $foto = $request->file('foto');
+            $filename = time() . '_' . $foto->getClientOriginalName();
+            $foto->storeAs('public/alumni', $filename);
+            $alumni->foto = 'alumni/' . $filename;
         }
-
-        $alumni->update($data);
-
-        return redirect()->route('admin.alumni.index')
-            ->with('success', 'Data alumni berhasil diperbarui.');
+        
+        $alumni->save();
+        
+        return redirect()->route('admin.alumni.index')->with('success', 'Data alumni berhasil diperbarui');
     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Alumni $alumni)
-    {
-        // Delete file if exists
-        if ($alumni->foto) {
-            Storage::disk('public')->delete($alumni->foto);
-        }
+{
+    // Hapus foto jika ada
+    if ($alumni->foto) {
+        Storage::delete('public/' . $alumni->foto);
+    }
 
-        $alumni->delete();
+    $alumni->delete();
 
-        return redirect()->route('admin.alumni.index')
-            ->with('success', 'Data alumni berhasil dihapus.');
+    return redirect()->route('admin.alumni.index')->with('success', 'Data alumni berhasil dihapus');
     }
 }
