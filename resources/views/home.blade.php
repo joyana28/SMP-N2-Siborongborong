@@ -687,37 +687,168 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Bootstrap JS (via CDN) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-<footer class="bg-light text-dark pt-5 pb-3 border-top">
+
+<style>
+  footer a.btn {
+    transition: all 0.3s ease;
+  }
+  footer a.btn:hover {
+    transform: scale(1.1);
+    background-color: white !important;
+    color: #0c2e60 !important;
+  }
+  footer h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  footer p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+</style>
+
+<!-- Bootstrap JS (via CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<style>
+  footer a.btn {
+    transition: all 0.3s ease;
+  }
+  footer a.btn:hover {
+    transform: scale(1.1);
+    background-color: white !important;
+    color: #0c2e60 !important;
+  }
+  footer h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  footer p, footer a.address-link {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: white;
+    text-decoration: none;
+  }
+  footer a.address-link:hover {
+    text-decoration: underline;
+    color: #f0f0f0;
+  }
+</style>
+
+<!-- Bootstrap JS (via CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<style>
+  footer a.btn {
+    transition: all 0.3s ease;
+  }
+  footer a.btn:hover {
+    transform: scale(1.1);
+    background-color: white !important;
+    color: #0c2e60 !important;
+  }
+  footer h5 {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  footer p, footer a.address-link {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: white;
+    text-decoration: none; /* Ini yang menghilangkan garis bawah */
+  }
+  footer a.address-link:hover {
+    text-decoration: underline; /* Bisa tetap underline saat hover kalau mau */
+    color: #f0f0f0;
+  }
+</style>
+<!-- Bootstrap JS (via CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<style>
+  footer {
+    background-color: #0c2e60;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+  }
+  footer h5 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  footer p, footer a.address-link {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  footer a.address-link:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+  }
+  footer a.address-link {
+    cursor: pointer;
+  }
+  .social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 18px;
+  }
+  .social-icons a:hover {
+    background-color: white;
+    color: #0c2e60;
+    transform: scale(1.15);
+  }
+  hr {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .footer-bottom {
+    font-size: 0.85rem;
+    margin-top: 20px;
+  }
+</style>
+
+<footer class="pt-5 pb-3 border-top">
   <div class="container">
     <div class="row text-center text-md-start">
       <!-- Alamat Sekolah -->
       <div class="col-md-4 mb-4">
         <h5><i class="fas fa-map-marker-alt me-2"></i>Alamat Sekolah</h5>
-        <p class="mb-0">Jl. Balige Km. 1 Siborongborong, Pasar Siborong-Borong,</p>
-        <p class="mb-0">Silait-Lait, Siborong-Borong, Kabupaten Tapanuli Utara,</p>
-        <p>Sumatera Utara 22474, Indonesia</p>
+        <a href="https://www.google.com/maps?q=Jl.+Balige+Km.+1+Siborongborong,+Sumatera+Utara+22474" target="_blank" class="address-link">
+          <p class="mb-0">Jl. Balige Km. 1 Siborongborong, Pasar Siborong-Borong,</p>
+          <p class="mb-0">Silait-Lait, Siborong-Borong, Kabupaten Tapanuli Utara,</p>
+          <p>Sumatera Utara 22474, Indonesia</p>
+        </a>
       </div>
 
       <!-- Jam Sekolah -->
       <div class="col-md-4 mb-4">
-        <h5>Jam Sekolah</h5>
+        <h5><i class="fas fa-clock me-2"></i>Jam Sekolah</h5>
         <p class="mb-0">Telp: (0633) 41860</p>
-        <p>8:00 a.m. – 2:00 p.m.</p>
+        <p>Senin - Jumat: 8:00 a.m. – 2:00 p.m.</p>
       </div>
 
       <!-- Media Sosial -->
       <div class="col-md-4 mb-4">
-        <h5>Media Sosial</h5>
-        <div class="d-flex justify-content-center justify-content-md-start gap-2">
-          <a href="https://wa.me/6281234567890" target="_blank" class="btn btn-outline-success rounded-circle">
+        <h5><i class="fas fa-share-alt me-2"></i>Media Sosial</h5>
+        <div class="d-flex justify-content-center justify-content-md-start gap-3 social-icons">
+          <a href="https://wa.me/6281234567890" target="_blank" title="WhatsApp">
             <i class="fab fa-whatsapp"></i>
           </a>
-          <a href="https://facebook.com" target="_blank" class="btn btn-outline-primary rounded-circle">
+          <a href="https://facebook.com" target="_blank" title="Facebook">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="https://tiktok.com" target="_blank" class="btn btn-outline-dark rounded-circle">
+          <a href="https://tiktok.com" target="_blank" title="TikTok">
             <i class="fab fa-tiktok"></i>
           </a>
         </div>
@@ -726,11 +857,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Copyright -->
     <hr>
-    <div class="text-center">
-      <p class="mb-0">&copy; 2025 SMPN 2 SIBORONGBORONG.</p>
+    <div class="text-center footer-bottom">
+      <p class="mb-0">&copy; 2025 SMPN 2 SIBORONGBORONG. All rights reserved.</p>
     </div>
   </div>
 </footer>
+
 
 </body>
 </html>
