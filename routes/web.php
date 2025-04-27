@@ -86,7 +86,7 @@ Route::post('/admin/login', function (Request $request) {
     if (
         $request->username === $validUsername &&
         $request->password === $validPassword &&
-        $request->nama === $validNama &&
+        $request->full_name === $validNama &&
         $request->email === $validEmail
     ) {
         // Menyimpan session untuk login
