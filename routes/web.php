@@ -112,16 +112,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     })->name('dashboard');  // Nama route admin.dashboard
 
 // Rute
-    Route::get('alumni', [AlumniController::class, 'index'])->name('alumni.index');
-    Route::get('alumni/create', [AlumniController::class, 'create'])->name('alumni.create');
-    Route::post('alumni', [AlumniController::class, 'store'])->name('alumni.store');
-    Route::get('alumni/{alumni}', [AlumniController::class, 'show'])->name('alumni.show');
-    Route::get('alumni/{alumni}/edit', [AlumniController::class, 'edit'])->name('alumni.edit');
-    Route::put('alumni/{alumni}', [AlumniController::class, 'update'])->name('alumni.update');
-    Route::delete('alumni/{alumni}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
-
+    Route::resource('alumni', AlumniController::class);
     Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
-
     Route::resource('formulirpendaftaran', FormulirPendaftaranController::class);
     Route::resource('guru', GuruController::class);
     Route::resource('siswa', SiswaController::class);

@@ -1,16 +1,18 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PengumumanController extends Controller
 {
     public function index()
     {
-        $pengumuman = Pengumuman::with('admin')->get();
+        $pengumuman = Pengumuman::with('admin')->paginate(10);
         return view('admin.pengumuman.index', compact('pengumuman'));
     }
 
@@ -23,11 +25,12 @@ class PengumumanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admin,id_admin',
             'judul' => 'required|string|max:100',
             'isi' => 'required|string',
             'tanggal_terbit' => 'required|date',
             'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -36,7 +39,21 @@ class PengumumanController extends Controller
                 ->withInput();
         }
 
-        Pengumuman::create($request->all());
+        if ($request->hasFile('foto')) {
+            $fotoFile = $request->file('foto');
+            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
+            $fotoPath = $fotoFile->storeAs('public/pengumuman', $fotoName);
+            $foto = $fotoName;
+        }
+
+        Pengumuman::create([
+            'id_admin' => $request->id_admin,
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'tanggal_terbit' => $request->tanggal_terbit,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
+            'foto' => $foto ?? null,
+        ]);
 
         return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil dibuat');
@@ -44,7 +61,7 @@ class PengumumanController extends Controller
 
     public function show($id)
     {
-        $pengumuman = Pengumuman::findOrFail($id);
+        $pengumuman = Pengumuman::with('admin')->findOrFail($id);
         return view('admin.pengumuman.show', compact('pengumuman'));
     }
 
@@ -58,11 +75,12 @@ class PengumumanController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id_admin',
+            'id_admin' => 'required|exists:admin,id_admin',
             'judul' => 'required|string|max:100',
             'isi' => 'required|string',
             'tanggal_terbit' => 'required|date',
             'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -72,7 +90,24 @@ class PengumumanController extends Controller
         }
 
         $pengumuman = Pengumuman::findOrFail($id);
-        $pengumuman->update($request->all());
+
+        if ($request->hasFile('foto')) {
+            if ($pengumuman->foto && Storage::exists('public/pengumuman/' . $pengumuman->foto)) {
+                Storage::delete('public/pengumuman/' . $pengumuman->foto);
+            }
+
+            $fotoFile = $request->file('foto');
+            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
+            $fotoPath = $fotoFile->storeAs('public/pengumuman', $fotoName);
+            $pengumuman->foto = $fotoName;
+        }
+
+        $pengumuman->id_admin = $request->id_admin;
+        $pengumuman->judul = $request->judul;
+        $pengumuman->isi = $request->isi;
+        $pengumuman->tanggal_terbit = $request->tanggal_terbit;
+        $pengumuman->tanggal_berakhir = $request->tanggal_berakhir;
+        $pengumuman->save();
 
         return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil diperbarui');
@@ -81,6 +116,11 @@ class PengumumanController extends Controller
     public function destroy($id)
     {
         $pengumuman = Pengumuman::findOrFail($id);
+
+        if ($pengumuman->foto && Storage::exists('public/pengumuman/' . $pengumuman->foto)) {
+            Storage::delete('public/pengumuman/' . $pengumuman->foto);
+        }
+
         $pengumuman->delete();
 
         return redirect()->route('admin.pengumuman.index')

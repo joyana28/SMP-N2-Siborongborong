@@ -18,6 +18,7 @@ class Pengumuman extends Model
         'isi',
         'tanggal_terbit',
         'tanggal_berakhir',
+        'foto',
     ];
 
     // Relationships

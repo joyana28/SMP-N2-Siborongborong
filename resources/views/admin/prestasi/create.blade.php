@@ -13,13 +13,19 @@
     <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label>Admin</label>
-            <select name="id_admin" class="form-control">
-                @foreach($admins as $admin)
-                    <option value="{{ $admin->id_admin }}">{{ $admin->nama }}</option>
-                @endforeach
-            </select>
-        </div>
+                            <label for="id_admin">Admin</label>
+                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
+                                <option value="">Pilih Admin</option>
+                                @foreach($admins as $admin)
+                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                                        {{ $admin->nama ?? $admin->username }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_admin')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
         <div class="form-group">
             <label>Nama Prestasi</label>
             <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">

@@ -30,15 +30,11 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <th style="width: 30%">ID Ekstrakurikuler</th>
-                                    <td>{{ $ekstrakurikuler->id_eskul }}</td>
+                                    <td>{{ $ekstrakurikuler->id_ekstrakurikuler }}</td>
                                 </tr>
                                 <tr>
                                     <th>Nama Ekstrakurikuler</th>
                                     <td>{{ $ekstrakurikuler->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Admin</th>
-                                    <td>{{ $ekstrakurikuler->admin->nama ?? $ekstrakurikuler->admin->username ?? 'Admin tidak ditemukan' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Pembina</th>
@@ -63,10 +59,10 @@
                             </table>
                             
                             <div class="mt-3">
-                                <a href="{{ route('admin.ekstrakurikuler.edit', $ekstrakurikuler->id_eskul) }}" class="btn btn-primary">
+                                <a href="{{ route('admin.ekstrakurikuler.edit', $ekstrakurikuler->id_ekstrakurikuler) }}" class="btn btn-primary">
                                     <i class="fas fa-edit"></i> Edit
                                 </a>
-                                <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstrakurikuler->id_eskul) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?');">
+                                <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstrakurikuler->id_ekstrakurikuler) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">

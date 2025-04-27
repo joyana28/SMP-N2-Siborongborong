@@ -10,17 +10,22 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.pengumuman.store') }}" method="POST">
+    <form action="{{ route('admin.pengumuman.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label>Admin</label>
-            <select name="id_admin" class="form-control" required>
-                <option value="">Pilih Admin</option>
-                @foreach($admins as $admin)
-                    <option value="{{ $admin->id_admin }}">{{ $admin->nama }}</option>
-                @endforeach
-            </select>
-        </div>
+                            <label for="id_admin">Admin</label>
+                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
+                                <option value="">Pilih Admin</option>
+                                @foreach($admins as $admin)
+                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                                        {{ $admin->nama ?? $admin->username }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_admin')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
         <div class="form-group">
             <label>Judul</label>
             <input type="text" name="judul" class="form-control" required>
@@ -36,6 +41,10 @@
         <div class="form-group">
             <label>Tanggal Berakhir</label>
             <input type="date" name="tanggal_berakhir" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Foto</label>
+            <input type="file" name="foto" class="form-control-file" accept="image/*">
         </div>
         <button type="submit" class="btn btn-success mt-3">Simpan</button>
     </form>

@@ -8,13 +8,14 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('formulir_pendaftaran', function (Blueprint $table) {
-            $table->increments('id_pendaftaran');
+        Schema::create('prestasi', function (Blueprint $table) {
+            $table->increments('id_prestasi');
             $table->integer('id_admin')->unsigned();
-            $table->string('deskripsi', 100);
-            $table->string('formulir_pendaftaran', 100);
-            $table->date('tanggal_terbit');
-            $table->date('tanggal_berakhir')->nullable();
+            $table->string('nama', 100);
+            $table->text('deskripsi')->nullable();
+            $table->date('tanggal');
+            $table->enum('jenis', ['akademik', 'non-akademik']);
+            $table->string('foto', 100)->nullable();
             $table->timestamps();
             
             $table->foreign('id_admin')
@@ -27,6 +28,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('formulir_pendaftaran');
+        Schema::dropIfExists('prestasi');
     }
 };

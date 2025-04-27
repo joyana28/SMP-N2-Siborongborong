@@ -1,49 +1,43 @@
 <?php
-// Auth/AdminAuthController
-namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class AdminAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.admin-login');
+        return view('auth.login'); // Pastikan ada view login.blade.php
     }
 
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'username' => 'required|string',
-            'password' => 'required|string',
+        // Validasi input
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput($request->except('password'));
+        // Cari admin berdasarkan email
+        $admin = Admin::where('email', $request->email)->first();
+
+        if ($admin && Hash::check($request->password, $admin->password)) {
+            // Login berhasil, set session
+            session(['admin_logged_in' => true, 'admin_id' => $admin->id]);
+
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->back()->withErrors(['login' => 'Data login tidak sesuai.']);
         }
-
-        $credentials = $request->only('username', 'password');
-
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->intended('/admin/dashboard');
-        }
-
-        return redirect()->back()
-            ->withErrors(['login' => 'Username atau password salah'])
-            ->withInput($request->except('password'));
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        Auth::guard('admin')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect('/admin/login');
+        session()->forget('admin_logged_in');
+        session()->forget('admin_id');
+        return redirect()->route('admin.login');
     }
 }

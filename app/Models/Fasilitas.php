@@ -34,7 +34,7 @@ class Fasilitas extends Model
         'deskripsi',
         'foto',
         'tahun',
-        'kerusakan',
+        'perhatian_teknis',
         'penambahan',
     ];
 

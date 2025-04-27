@@ -21,7 +21,7 @@ class Ekstrakurikuler extends Model
      *
      * @var string
      */
-    protected $primaryKey = 'id_eskul';
+    protected $primaryKey = 'id_ekstrakurikuler';
 
     /**
      * Atribut yang dapat diisi (mass assignable)

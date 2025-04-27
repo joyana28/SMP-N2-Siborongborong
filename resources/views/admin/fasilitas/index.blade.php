@@ -29,7 +29,7 @@
                                 <th>No</th>
                                 <th>Nama</th>
                                 <th>Tahun</th>
-                                <th>Kerusakan</th>
+                                <th>Perhatian Teknis</th>
                                 <th>Penambahan</th>
                                 <th>Foto</th>
                                 <th>Aksi</th>
@@ -41,7 +41,7 @@
                                 <td>{{ $fasilitas->firstItem() + $key }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->tahun }}</td>
-                                <td>{{ $item->kerusakan ?? 'Tidak ada' }}</td>
+                                <td>{{ $item->perhatian_teknis ?? 'Tidak ada' }}</td>
                                 <td>{{ $item->penambahan ?? 'Tidak ada' }}</td>
                                 <td>
                                     @if($item->foto)

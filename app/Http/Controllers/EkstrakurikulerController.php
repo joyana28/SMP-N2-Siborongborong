@@ -40,8 +40,9 @@ class EkstrakurikulerController extends Controller
      */
     public function store(Request $request)
     {
+        // Validasi data yang dikirimkan
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admin,id_admin',
+            'id_admin' => 'required|exists:admin,id',
             'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'pembina' => 'required|string|max:100',
@@ -55,7 +56,7 @@ class EkstrakurikulerController extends Controller
                 ->withInput();
         }
 
-        // Proses upload foto
+        // Proses upload foto jika ada
         if ($request->hasFile('foto')) {
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
@@ -63,13 +64,14 @@ class EkstrakurikulerController extends Controller
             $foto = $fotoName;
         }
 
+        // Menyimpan data ke database
         Ekstrakurikuler::create([
-            'id_admin' => $request->id_admin,
+            'id_admin' => $request->id_admin,  // Menggunakan id admin yang dipilih
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
             'pembina' => $request->pembina,
             'jadwal' => $request->jadwal,
-            'foto' => $foto ?? null,
+            'foto' => $foto ?? null,  // Menyimpan foto jika ada
         ]);
 
         return redirect()->route('admin.ekstrakurikuler.index')
@@ -79,39 +81,40 @@ class EkstrakurikulerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Ekstrakurikuler  $ekstrakurikuler
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $ekstrakurikuler = Ekstrakurikuler::with('admin')->findOrFail($id);
-        return view('admin.ekstrakurikuler.show', compact('ekstrakurikuler'));
+    $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
+    return view('admin.ekstrakurikuler.show', compact('ekstrakurikuler'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Ekstrakurikuler  $ekstrakurikuler
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
-        $admins = Admin::all();
-        return view('admin.ekstrakurikuler.edit', compact('ekstrakurikuler', 'admins'));
+    $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
+    $admins = Admin::all();
+    return view('admin.ekstrakurikuler.edit', compact('ekstrakurikuler', 'admins'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Ekstrakurikuler  $ekstrakurikuler
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ekstrakurikuler $ekstrakurikuler)
     {
+        // Validasi input
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admin,id_admin',
+            'id_admin' => 'required|exists:admin,id',
             'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'pembina' => 'required|string|max:100',
@@ -125,21 +128,20 @@ class EkstrakurikulerController extends Controller
                 ->withInput();
         }
 
-        $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
-
         // Proses upload foto baru jika ada
         if ($request->hasFile('foto')) {
             // Hapus foto lama jika ada
             if ($ekstrakurikuler->foto && Storage::exists('public/ekstrakurikuler/' . $ekstrakurikuler->foto)) {
                 Storage::delete('public/ekstrakurikuler/' . $ekstrakurikuler->foto);
             }
-            
+
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
             $fotoPath = $fotoFile->storeAs('public/ekstrakurikuler', $fotoName);
             $ekstrakurikuler->foto = $fotoName;
         }
 
+        // Update data Ekstrakurikuler
         $ekstrakurikuler->id_admin = $request->id_admin;
         $ekstrakurikuler->nama = $request->nama;
         $ekstrakurikuler->deskripsi = $request->deskripsi;
@@ -154,21 +156,23 @@ class EkstrakurikulerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Ekstrakurikuler  $ekstrakurikuler
      * @return \Illuminate\Http\Response
      */
+    // Untuk method destroy
     public function destroy($id)
     {
-        $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
-        
-        // Hapus foto jika ada
-        if ($ekstrakurikuler->foto && Storage::exists('public/ekstrakurikuler/' . $ekstrakurikuler->foto)) {
-            Storage::delete('public/ekstrakurikuler/' . $ekstrakurikuler->foto);
-        }
-        
-        $ekstrakurikuler->delete();
+    $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
 
-        return redirect()->route('admin.ekstrakurikuler.index')
-            ->with('success', 'Ekstrakurikuler berhasil dihapus!');
+    // Hapus foto jika ada
+    if ($ekstrakurikuler->foto && Storage::exists('public/ekstrakurikuler/' . $ekstrakurikuler->foto)) {
+        Storage::delete('public/ekstrakurikuler/' . $ekstrakurikuler->foto);
+    }
+
+    // Hapus data ekstrakurikuler
+    $ekstrakurikuler->delete();
+
+    return redirect()->route('admin.ekstrakurikuler.index')
+        ->with('success', 'Ekstrakurikuler berhasil dihapus!');
     }
 }

@@ -46,7 +46,7 @@ class FasilitasController extends Controller
             'deskripsi' => 'required|string',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'tahun' => 'required|string|max:100',
-            'kerusakan' => 'nullable|string|max:100',
+            'perhatian_teknis' => 'nullable|string|max:100',
             'penambahan' => 'nullable|string|max:100',
         ]);
 
@@ -70,7 +70,7 @@ class FasilitasController extends Controller
             'deskripsi' => $request->deskripsi,
             'foto' => $foto ?? null,
             'tahun' => $request->tahun,
-            'kerusakan' => $request->kerusakan,
+            'perhatian_teknis' => $request->perhatian_teknis,
             'penambahan' => $request->penambahan,
         ]);
 
@@ -118,7 +118,7 @@ class FasilitasController extends Controller
             'deskripsi' => 'required|string',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'tahun' => 'required|string|max:100',
-            'kerusakan' => 'nullable|string|max:100',
+            'perhatian_teknis' => 'nullable|string|max:100',
             'penambahan' => 'nullable|string|max:100',
         ]);
 
@@ -147,7 +147,7 @@ class FasilitasController extends Controller
         $fasilitas->nama = $request->nama;
         $fasilitas->deskripsi = $request->deskripsi;
         $fasilitas->tahun = $request->tahun;
-        $fasilitas->kerusakan = $request->kerusakan;
+        $fasilitas->perhatian_teknis = $request->perhatian_teknis;
         $fasilitas->penambahan = $request->penambahan;
         $fasilitas->save();
 

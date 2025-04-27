@@ -34,7 +34,7 @@
                             <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
                                 <option value="">Pilih Admin</option>
                                 @foreach($admins as $admin)
-                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                                    <option value="{{ $admin->id }}" {{ old('id_admin') == $admin->id ? 'selected' : '' }}>
                                         {{ $admin->nama ?? $admin->username }}
                                     </option>
                                 @endforeach

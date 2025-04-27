@@ -35,28 +35,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse($ekstrakurikuler as $key => $eskul)
+                            @forelse($ekstrakurikuler as $key => $item)
                             <tr>
                                 <td>{{ $ekstrakurikuler->firstItem() + $key }}</td>
-                                <td>{{ $eskul->nama }}</td>
-                                <td>{{ $eskul->pembina }}</td>
-                                <td>{{ $eskul->jadwal }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->pembina }}</td>
+                                <td>{{ $item->jadwal }}</td>
                                 <td>
-                                    @if($eskul->foto)
-                                        <img src="{{ asset('storage/ekstrakurikuler/'.$eskul->foto) }}" alt="{{ $eskul->nama }}" width="100" class="img-thumbnail">
+                                    @if($item->foto)
+                                        <img src="{{ asset('storage/ekstrakurikuler/'.$item->foto) }}" alt="{{ $item->nama }}" width="100" class="img-thumbnail">
                                     @else
                                         <span class="badge badge-secondary">Tidak ada foto</span>
                                     @endif
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="{{ route('admin.ekstrakurikuler.show', $eskul->id_eskul) }}" class="btn btn-info btn-sm">
+                                        <a href="{{ route('admin.ekstrakurikuler.show', $item->id_ekstrakurikuler) }}" class="btn btn-info btn-sm">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <a href="{{ route('admin.ekstrakurikuler.edit', $eskul->id_eskul) }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ route('admin.ekstrakurikuler.edit', $item->id_ekstrakurikuler) }}" class="btn btn-primary btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('admin.ekstrakurikuler.destroy', $eskul->id_eskul) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?');">
+                                        <form action="{{ route('admin.ekstrakurikuler.destroy', $item->id_ekstrakurikuler) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus ekstrakurikuler ini?');">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm">

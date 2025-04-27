@@ -45,8 +45,8 @@
                                     <td>{{ $fasilitas->tahun }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Kerusakan</th>
-                                    <td>{{ $fasilitas->kerusakan ?? 'Tidak ada' }}</td>
+                                    <th>Perhatian Teknis</th>
+                                    <td>{{ $fasilitas->perhatian_teknis ?? 'Tidak ada' }}</td>
                                 </tr>
                                 <tr>
                                     <th>Penambahan</th>

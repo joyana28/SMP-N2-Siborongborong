@@ -1,76 +1,95 @@
 @extends('layouts.backend.app')
 
-@section('title', 'Tambah Alumni')
-
 @section('content')
 <div class="container-fluid">
-    <div class="row mb-4">
+    <div class="row">
         <div class="col-12">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Tambah Alumni</h2>
-                <a href="{{ route('admin.alumni.index') }}" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left me-1"></i> Kembali
-                </a>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tambah Alumni</h3>
+                    <div class="card-tools">
+                        <a href="{{ route('admin.alumni.index') }}" class="btn btn-default">
+                            <i class="fas fa-arrow-left"></i> Kembali
+                        </a>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    @if($errors->any())
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Error!</h5>
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <form action="{{ route('admin.alumni.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <!-- Admin ID -->
+                        <div class="form-group">
+                            <label for="id_admin">Admin</label>
+                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
+                                <option value="">Pilih Admin</option>
+                                @foreach($admins as $admin)
+                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                                        {{ $admin->nama ?? $admin->username }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_admin')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nama">Nama Alumni <span class="text-danger">*</span></label>
+                            <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" required>
+                            @error('nama')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tahun_lulus">Tahun Lulus</label>
+                            <input type="number" name="tahun_lulus" id="tahun_lulus" class="form-control @error('tahun_lulus') is-invalid @enderror" value="{{ old('tahun_lulus') }}" min="1900" max="{{ date('Y') }}">
+                            @error('tahun_lulus')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deskripsi">Deskripsi <span class="text-danger">*</span></label>
+                            <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control @error('deskripsi') is-invalid @enderror" required>{{ old('deskripsi') }}</textarea>
+                            @error('deskripsi')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="foto">Foto Alumni</label>
+                            <div class="custom-file">
+                                <input type="file" name="foto" id="foto" class="custom-file-input @error('foto') is-invalid @enderror" accept="image/*">
+                                <label class="custom-file-label" for="foto">Pilih Foto</label>
+                                @error('foto')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <small class="form-text text-muted">Format: JPG, JPEG, PNG, GIF. Maks: 2MB</small>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="reset" class="btn btn-secondary">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card-body -->
             </div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <i class="fas fa-plus-circle me-1"></i> Form Tambah Alumni
-        </div>
-        <div class="card-body">
-        <form action="{{ route('admin.alumni.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <!-- Add a hidden field for admin ID -->
-            <input type="hidden" name="id_admin" value="{{ Auth::id() }}">
-
-                <div class="mb-3">
-                    <label for="nama" class="form-label">Nama Alumni <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}" required>
-                    @error('nama')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="tahun_lulus" class="form-label">Tahun Lulus</label>
-                    <input type="number" class="form-control @error('tahun_lulus') is-invalid @enderror" id="tahun_lulus" name="tahun_lulus" value="{{ old('tahun_lulus') }}" min="1900" max="{{ date('Y') }}">
-                    @error('tahun_lulus')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="foto" class="form-label">Foto Alumni</label>
-                    <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto" name="foto" accept="image/*">
-                    <small class="text-muted">Format: JPG, JPEG, PNG, GIF. Maksimal 2MB.</small>
-                    @error('foto')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label for="deskripsi" class="form-label">Deskripsi <span class="text-danger">*</span></label>
-                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="5" required>{{ old('deskripsi') }}</textarea>
-                    @error('deskripsi')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                    @enderror
-                </div>
-
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button type="reset" class="btn btn-secondary me-md-2">Reset</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                </div>
-            </form>
+            <!-- /.card -->
         </div>
     </div>
 </div>
@@ -78,13 +97,9 @@
 
 @push('scripts')
 <script>
-    // Preview image before upload
-    document.getElementById('foto').onchange = function(evt) {
-        const [file] = this.files;
-        if (file) {
-            // You can add preview image functionality here if needed
-            console.log('File selected:', file.name);
-        }
-    };
+    // Menampilkan nama file yang dipilih
+    $(document).ready(function() {
+        bsCustomFileInput.init();
+    });
 </script>
 @endpush

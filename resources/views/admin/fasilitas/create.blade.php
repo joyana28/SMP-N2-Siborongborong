@@ -69,10 +69,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="kerusakan">Kerusakan</label>
-                            <input type="text" name="kerusakan" id="kerusakan" class="form-control @error('kerusakan') is-invalid @enderror" value="{{ old('kerusakan') }}">
+                            <label for="perhatian_teknis">Perhatian Teknis</label>
+                            <input type="text" name="perhatian_teknis" id="perhatian_teknis" class="form-control @error('perhatian_teknis') is-invalid @enderror" value="{{ old('perhatian_teknis') }}">
                             <small class="form-text text-muted">Opsional. Deskripsi kerusakan fasilitas jika ada.</small>
-                            @error('kerusakan')
+                            @error('perhatian_teknis')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>
