@@ -46,4 +46,9 @@ class Admin extends Model
     {
         return $this->hasMany(Siswa::class, 'id_admin', 'id_admin');
     }
+
+    public function formulirPendaftaran()
+{
+    return $this->hasMany(FormulirPendaftaran::class, 'id_admin', 'id_admin');
+}
 }

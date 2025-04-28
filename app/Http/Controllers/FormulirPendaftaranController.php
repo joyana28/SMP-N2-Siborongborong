@@ -5,87 +5,88 @@ namespace App\Http\Controllers;
 use App\Models\FormulirPendaftaran;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-
-// ... (bagian atas tetap sama)
 
 class FormulirPendaftaranController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $formulir = FormulirPendaftaran::with('admin')->get();
-        return view('admin.formulirpendaftaran.index', compact('formulir'));
+        $formulirs = FormulirPendaftaran::with('admin')->get();
+        return view('admin.formulirpendaftaran.index', compact('formulirs'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         $admins = Admin::all();
         return view('admin.formulirpendaftaran.create', compact('admins'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id',
+        $request->validate([
             'deskripsi' => 'required|string|max:100',
             'formulir_pendaftaran' => 'required|string|max:100',
             'tanggal_terbit' => 'required|date',
-            'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
+            'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
+            'id_admin' => 'required|exists:admin,id_admin',
         ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
 
         FormulirPendaftaran::create($request->all());
 
         return redirect()->route('admin.formulirpendaftaran.index')
-            ->with('success', 'Formulir pendaftaran berhasil dibuat.');
+            ->with('success', 'Formulir pendaftaran berhasil ditambahkan.');
     }
 
-    public function show($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(FormulirPendaftaran $formulirPendaftaran)
     {
-        $formulir = FormulirPendaftaran::with('admin')->findOrFail($id);
-        return view('formulir_pendaftaran.show', compact('formulir'));
+        return view('admin.formulirpendaftaran.show', compact('formulirPendaftaran'));
     }
 
-    public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(FormulirPendaftaran $formulirPendaftaran)
     {
-        $formulir = FormulirPendaftaran::findOrFail($id);
         $admins = Admin::all();
-        return view('formulir_pendaftaran.edit', compact('formulir', 'admins'));
+        return view('admin.formulirpendaftaran.edit', compact('formulirPendaftaran', 'admins'));
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, FormulirPendaftaran $formulirPendaftaran)
     {
-        $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id',
+        $request->validate([
             'deskripsi' => 'required|string|max:100',
             'formulir_pendaftaran' => 'required|string|max:100',
             'tanggal_terbit' => 'required|date',
-            'tanggal_berakhir' => 'nullable|date|after_or_equal:tanggal_terbit',
+            'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
+            'id_admin' => 'required|exists:admin,id_admin',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $formulir = FormulirPendaftaran::findOrFail($id);
-        $formulir->update($request->all());
+        $formulirPendaftaran->update($request->all());
 
         return redirect()->route('admin.formulirpendaftaran.index')
             ->with('success', 'Formulir pendaftaran berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(FormulirPendaftaran $formulirPendaftaran)
     {
-        $formulir = FormulirPendaftaran::findOrFail($id);
-        $formulir->delete();
+        $formulirPendaftaran->delete();
 
         return redirect()->route('admin.formulirpendaftaran.index')
             ->with('success', 'Formulir pendaftaran berhasil dihapus.');

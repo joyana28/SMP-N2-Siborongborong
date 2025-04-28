@@ -4,99 +4,95 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use App\Models\Admin;
-use App\Models\Guru;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $siswa = Siswa::with('admin')->get();
         return view('admin.siswa.index', compact('siswa'));
     }
-    
+
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         $admins = Admin::all();
-        $guru = Guru::all();
-        return view('admin.siswa.create', compact('admins', 'guru'));
+        return view('admin.siswa.create', compact('admins'));
     }
-    
+
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $request->validate([
-            'id_admin' => 'required|exists:admin,id_admin',
             'nama_kelas' => 'required|string|max:50',
-            'jumlah_siswa' => 'required|integer|min:0',
-            'jumlah_siswa_l' => 'required|integer|min:0',
-            'jumlah_siswa_p' => 'required|integer|min:0',
-            'tahun' => 'required|date_format:Y',
-            'history' => 'nullable|string',
-            'wali_kelas' => 'required|string|max:50',
+            'jumlah_siswa' => 'required|integer',
+            'jumlah_siswa_l' => 'required|integer',
+            'jumlah_siswa_p' => 'required|integer',
+            'tahun' => 'required',
+            'wali_kelas' => 'nullable|string|max:50',
+            'id_admin' => 'required|exists:admin,id_admin',
         ]);
-        
-        // Validasi jumlah siswa
-        $total = $request->jumlah_siswa_l + $request->jumlah_siswa_p;
-        if ($total != $request->jumlah_siswa) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors(['jumlah_siswa' => 'Jumlah siswa laki-laki dan perempuan tidak sesuai dengan total siswa.']);
-        }
-        
+
         Siswa::create($request->all());
-        
+
         return redirect()->route('admin.siswa.index')
-                        ->with('success', 'Data Siswa berhasil ditambahkan.');
+            ->with('success', 'Data kelas berhasil ditambahkan.');
     }
-    
-    public function show($id)
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Siswa $siswa)
     {
-        $siswa = Siswa::with('admin')->findOrFail($id);
-        return view('siswa.show', compact('siswa'));
+        return view('admin.siswa.show', compact('siswa'));
     }
-    
-    public function edit($id)
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Siswa $siswa)
     {
-        $siswa = Siswa::findOrFail($id);
         $admins = Admin::all();
-        $guru = Guru::all();
-        return view('siswa.edit', compact('siswa', 'admins', 'guru'));
+        return view('admin.siswa.edit', compact('siswa', 'admins'));
     }
-    
-    public function update(Request $request, $id)
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Siswa $siswa)
     {
         $request->validate([
-            'id_admin' => 'required|exists:admin,id_admin',
             'nama_kelas' => 'required|string|max:50',
-            'jumlah_siswa' => 'required|integer|min:0',
-            'jumlah_siswa_l' => 'required|integer|min:0',
-            'jumlah_siswa_p' => 'required|integer|min:0',
-            'tahun' => 'required|date_format:Y',
-            'history' => 'nullable|string',
-            'wali_kelas' => 'required|string|max:50',
+            'jumlah_siswa' => 'required|integer',
+            'jumlah_siswa_l' => 'required|integer',
+            'jumlah_siswa_p' => 'required|integer',
+            'tahun' => 'required',
+            'wali_kelas' => 'nullable|string|max:50',
+            'id_admin' => 'required|exists:admin,id_admin',
         ]);
-        
-        // Validasi jumlah siswa
-        $total = $request->jumlah_siswa_l + $request->jumlah_siswa_p;
-        if ($total != $request->jumlah_siswa) {
-            return redirect()->back()
-                ->withInput()
-                ->withErrors(['jumlah_siswa' => 'Jumlah siswa laki-laki dan perempuan tidak sesuai dengan total siswa.']);
-        }
-        
-        $siswa = Siswa::findOrFail($id);
+
         $siswa->update($request->all());
-        
+
         return redirect()->route('admin.siswa.index')
-                        ->with('success', 'Data Siswa berhasil diperbarui.');
+            ->with('success', 'Data kelas berhasil diperbarui.');
     }
-    
-    public function destroy($id)
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Siswa $siswa)
     {
-        $siswa = Siswa::findOrFail($id);
         $siswa->delete();
-        
+
         return redirect()->route('admin.siswa.index')
-                        ->with('success', 'Data Siswa berhasil dihapus.');
+            ->with('success', 'Data kelas berhasil dihapus.');
     }
 }
