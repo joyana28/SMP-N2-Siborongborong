@@ -40,8 +40,7 @@
 
             <div class="welcome-text">
                 <h1>Hello,<br>welcome!</h1>
-                <p>TUNG TUNG TUNG TUNG TUNG SAHUR</p>
-                <button class="view-more-btn">View more</button>
+                <p>SMP NEGERI 2 SIBORONGBORONG</p>
             </div>
         </div>
 
@@ -65,17 +64,12 @@
                         <input type="password" name="password" placeholder="Password">
                     </div>
 
-                    <div class="input-field" style="animation-delay: 0.8s;">
-                        <div class="input-icon"></div>
-                        <input type="text" name="full_name" placeholder="FullName">
-                    </div>
-
                     <div class="checkbox-container">
                         <div class="remember-me">
                             <input type="checkbox" id="remember">
                             <label for="remember">Remember me</label>
                         </div>
-                        <a href="#" class="forgot-password">Forgot password?</a>
+                       
                     </div>
 
                     <button class="login-btn" type="submit">Login</button>
@@ -85,9 +79,6 @@
                             {{ $errors->first('login') }}
                         </div>
                     @endif
-
-                    <div class="signup-text">Not a member yet?</div>
-                    <button class="signup-btn" type="button">Sign up</button>
                 </form>
             </div>
         </div>
