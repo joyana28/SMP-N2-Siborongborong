@@ -60,7 +60,7 @@ class GuruController extends Controller
         $admins = Admin::whereDoesntHave('guru')
                 ->orWhere('id_admin', $guru->id_admin)
                 ->get();
-        return view('guru.edit', compact('guru', 'admins'));
+        return view('admin.guru.edit', compact('guru', 'admins'));
     }
     
     public function update(Request $request, $id)

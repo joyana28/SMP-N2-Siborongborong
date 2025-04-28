@@ -8,7 +8,7 @@
                 <div class="card-header">Edit Guru</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('guru.update', $guru->id_guru) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('admin.guru.update', $guru->id_guru) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
 
