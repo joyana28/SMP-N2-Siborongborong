@@ -1,75 +1,114 @@
-<!-- resources/views/guru/create.blade.php -->
 @extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    <h4>Tambah Data Guru
-                        <a href="{{ route('admin.guru.index') }}" class="btn btn-danger float-end">Kembali</a>
-                    </h4>
-                </div>
-                <div class="card-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                <div class="card-header">Tambah Guru</div>
 
-                    <form action="{{ route('guru.store') }}" method="POST" enctype="multipart/form-data">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('admin.guru.store') }}" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="mb-3">
-                            <label for="id_admin">Admin</label>
-                            <select name="id_admin" id="id_admin" class="form-select">
-                                <option value="">Pilih Admin</option>
-                                @foreach ($admins as $admin)
-                                    <option value="{{ $admin->id }}" {{ old('id_admin') == $admin->id ? 'selected' : '' }}>
-                                        {{ $admin->name ?? 'Admin #' . $admin->id }}
-                                    </option>
-                                @endforeach
-                            </select>
+                        <div class="form-group row mb-3">
+                            <label for="id_admin" class="col-md-4 col-form-label text-md-right">Akun Admin</label>
+                            <div class="col-md-6">
+                                <select id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" name="id_admin" required>
+                                    <option value="">Pilih Akun Admin</option>
+                                    @foreach ($admins as $admin)
+                                        <option value="{{ $admin->id_admin }}">{{ $admin->username }} ({{ $admin->email }})</option>
+                                    @endforeach
+                                </select>
+                                @error('id_admin')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="nama">Nama Lengkap</label>
-                            <input type="text" name="nama" id="nama" value="{{ old('nama') }}" class="form-control" maxlength="100" required>
+                        <div class="form-group row mb-3">
+                            <label for="nama" class="col-md-4 col-form-label text-md-right">Nama Lengkap</label>
+                            <div class="col-md-6">
+                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required>
+                                @error('nama')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="nip">NIP</label>
-                            <input type="text" name="nip" id="nip" value="{{ old('nip') }}" class="form-control" maxlength="30" required>
+                        <div class="form-group row mb-3">
+                            <label for="nip" class="col-md-4 col-form-label text-md-right">NIP</label>
+                            <div class="col-md-6">
+                                <input id="nip" type="text" class="form-control @error('nip') is-invalid @enderror" name="nip" value="{{ old('nip') }}" required>
+                                @error('nip')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="golongan">Golongan</label>
-                            <input type="text" name="golongan" id="golongan" value="{{ old('golongan') }}" class="form-control" maxlength="50" required>
+                        <div class="form-group row mb-3">
+                            <label for="golongan" class="col-md-4 col-form-label text-md-right">Golongan</label>
+                            <div class="col-md-6">
+                                <input id="golongan" type="text" class="form-control @error('golongan') is-invalid @enderror" name="golongan" value="{{ old('golongan') }}" required>
+                                @error('golongan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="bidang">Bidang</label>
-                            <input type="text" name="bidang" id="bidang" value="{{ old('bidang') }}" class="form-control" maxlength="100" required>
+                        <div class="form-group row mb-3">
+                            <label for="bidang" class="col-md-4 col-form-label text-md-right">Bidang</label>
+                            <div class="col-md-6">
+                                <input id="bidang" type="text" class="form-control @error('bidang') is-invalid @enderror" name="bidang" value="{{ old('bidang') }}" required>
+                                @error('bidang')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="no_telp">Nomor Telepon</label>
-                            <input type="text" name="no_telp" id="no_telp" value="{{ old('no_telp') }}" class="form-control" maxlength="15" required>
+                        <div class="form-group row mb-3">
+                            <label for="no_telp" class="col-md-4 col-form-label text-md-right">No Telepon</label>
+                            <div class="col-md-6">
+                                <input id="no_telp" type="text" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" value="{{ old('no_telp') }}" required>
+                                @error('no_telp')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="foto">Foto</label>
-                            <input type="file" name="foto" id="foto" class="form-control" required>
-                            <small class="text-muted">Format: JPG, JPEG, PNG (Max: 2MB)</small>
+                        <div class="form-group row mb-3">
+                            <label for="foto" class="col-md-4 col-form-label text-md-right">Foto</label>
+                            <div class="col-md-6">
+                                <input id="foto" type="file" class="form-control @error('foto') is-invalid @enderror" name="foto">
+                                @error('foto')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
 
-                        <div class="mb-3">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Simpan
+                                </button>
+                                <a href="{{ route('admin.guru.index') }}" class="btn btn-secondary">
+                                    Kembali
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>

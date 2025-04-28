@@ -8,26 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Guru extends Model
 {
     use HasFactory;
-
-    /**
-     * Nama tabel yang terkait dengan model.
-     *
-     * @var string
-     */
+    
     protected $table = 'guru';
-
-    /**
-     * Primary key untuk tabel.
-     *
-     * @var string
-     */
     protected $primaryKey = 'id_guru';
-
-    /**
-     * Atribut yang dapat diisi.
-     *
-     * @var array
-     */
+    
     protected $fillable = [
         'id_admin',
         'nama',
@@ -35,14 +19,11 @@ class Guru extends Model
         'golongan',
         'bidang',
         'no_telp',
-        'foto',
+        'foto'
     ];
-
-    /**
-     * Mendapatkan admin yang terkait dengan guru ini.
-     */
+    
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin', 'id');
+        return $this->belongsTo(Admin::class, 'id_admin', 'id_admin');
     }
 }

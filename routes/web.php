@@ -117,7 +117,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('formulirpendaftaran', FormulirPendaftaranController::class);
     Route::resource('guru', GuruController::class);
     Route::resource('siswa', SiswaController::class);
-    Route::resource('kepalasekolah', KepalaSekolahController::class);
+    Route::resource('kepala_sekolah', KepalaSekolahController::class);
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('prestasi', PrestasiController::class);
     Route::resource('fasilitas', FasilitasController::class);

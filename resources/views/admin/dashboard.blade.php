@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a href="{{ route('siswa.index') }}" class="text-white text-decoration-none">Lihat Detail</a>
+                    <a href="{{ route('admin.siswa.index') }}" class="text-white text-decoration-none">Lihat Detail</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>

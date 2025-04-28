@@ -4,97 +4,99 @@ namespace App\Http\Controllers;
 
 use App\Models\Siswa;
 use App\Models\Admin;
-use App\Models\Kelas;
+use App\Models\Guru;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class SiswaController extends Controller
 {
     public function index()
     {
-        $siswa = Siswa::with(['admin', 'kelas'])->get();
+        $siswa = Siswa::with('admin')->get();
         return view('admin.siswa.index', compact('siswa'));
     }
-
+    
     public function create()
     {
         $admins = Admin::all();
-        $kelas = Kelas::all();
-        return view('admin.siswa.create', compact('admins', 'kelas'));
+        $guru = Guru::all();
+        return view('admin.siswa.create', compact('admins', 'guru'));
     }
-
+    
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id',
-            'nama' => 'required|string|max:100',
-            'jenis_kelamin' => 'required|in:L,P',
-            'nisn' => 'required|string|max:20|unique:siswa,nisn',
-            'kelas_id' => 'required|exists:kelas,id_kelas',
-            'tahun_masuk' => 'required|date_format:Y',
-            'alamat' => 'nullable|string',
-            'tanggal_lahir' => 'required|date',
+        $request->validate([
+            'id_admin' => 'required|exists:admin,id_admin',
+            'nama_kelas' => 'required|string|max:50',
+            'jumlah_siswa' => 'required|integer|min:0',
+            'jumlah_siswa_l' => 'required|integer|min:0',
+            'jumlah_siswa_p' => 'required|integer|min:0',
+            'tahun' => 'required|date_format:Y',
+            'history' => 'nullable|string',
+            'wali_kelas' => 'required|string|max:50',
         ]);
-
-        if ($validator->fails()) {
+        
+        // Validasi jumlah siswa
+        $total = $request->jumlah_siswa_l + $request->jumlah_siswa_p;
+        if ($total != $request->jumlah_siswa) {
             return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->withErrors(['jumlah_siswa' => 'Jumlah siswa laki-laki dan perempuan tidak sesuai dengan total siswa.']);
         }
-
+        
         Siswa::create($request->all());
-
+        
         return redirect()->route('admin.siswa.index')
-            ->with('success', 'Data siswa berhasil ditambahkan');
+                        ->with('success', 'Data Siswa berhasil ditambahkan.');
     }
-
+    
     public function show($id)
     {
-        $siswa = Siswa::with(['admin', 'kelas'])->findOrFail($id);
-        return view('admin.siswa.show', compact('siswa'));
+        $siswa = Siswa::with('admin')->findOrFail($id);
+        return view('siswa.show', compact('siswa'));
     }
-
+    
     public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
         $admins = Admin::all();
-        $kelas = Kelas::all();
-        return view('admin.siswa.edit', compact('siswa', 'admins', 'kelas'));
+        $guru = Guru::all();
+        return view('siswa.edit', compact('siswa', 'admins', 'guru'));
     }
-
+    
     public function update(Request $request, $id)
     {
-        $siswa = Siswa::findOrFail($id);
-
-        $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admins,id',
-            'nama' => 'required|string|max:100',
-            'jenis_kelamin' => 'required|in:L,P',
-            'nisn' => 'required|string|max:20|unique:siswa,nisn,' . $siswa->id_siswa . ',id_siswa',
-            'kelas_id' => 'required|exists:kelas,id_kelas',
-            'tahun_masuk' => 'required|date_format:Y',
-            'alamat' => 'nullable|string',
-            'tanggal_lahir' => 'required|date',
+        $request->validate([
+            'id_admin' => 'required|exists:admin,id_admin',
+            'nama_kelas' => 'required|string|max:50',
+            'jumlah_siswa' => 'required|integer|min:0',
+            'jumlah_siswa_l' => 'required|integer|min:0',
+            'jumlah_siswa_p' => 'required|integer|min:0',
+            'tahun' => 'required|date_format:Y',
+            'history' => 'nullable|string',
+            'wali_kelas' => 'required|string|max:50',
         ]);
-
-        if ($validator->fails()) {
+        
+        // Validasi jumlah siswa
+        $total = $request->jumlah_siswa_l + $request->jumlah_siswa_p;
+        if ($total != $request->jumlah_siswa) {
             return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->withErrors(['jumlah_siswa' => 'Jumlah siswa laki-laki dan perempuan tidak sesuai dengan total siswa.']);
         }
-
+        
+        $siswa = Siswa::findOrFail($id);
         $siswa->update($request->all());
-
+        
         return redirect()->route('admin.siswa.index')
-            ->with('success', 'Data siswa berhasil diperbarui');
+                        ->with('success', 'Data Siswa berhasil diperbarui.');
     }
-
+    
     public function destroy($id)
     {
         $siswa = Siswa::findOrFail($id);
         $siswa->delete();
-
+        
         return redirect()->route('admin.siswa.index')
-            ->with('success', 'Data siswa berhasil dihapus');
+                        ->with('success', 'Data Siswa berhasil dihapus.');
     }
 }

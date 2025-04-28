@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class KepalaSekolah extends Model
 {
     use HasFactory;
-
+    
     protected $table = 'kepala_sekolah';
     protected $primaryKey = 'id_kepsek';
     
@@ -18,12 +18,11 @@ class KepalaSekolah extends Model
         'nip',
         'golongan',
         'periode',
-        'foto',
+        'foto'
     ];
-
-    // Relationships
+    
     public function admin()
     {
-        return $this->belongsTo(Admin::class, 'id_admin');
+        return $this->belongsTo(Admin::class, 'id_admin', 'id_admin');
     }
 }

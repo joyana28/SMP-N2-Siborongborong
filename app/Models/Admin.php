@@ -19,15 +19,31 @@ class Admin extends Model
     ];
 
     // Relationships
+
+    // Admin punya banyak Alumni
     public function alumni()
     {
         return $this->hasMany(Alumni::class, 'id_admin');
     }
 
+    // Admin punya banyak Ekstrakurikuler
     public function ekstrakurikuler()
     {
         return $this->hasMany(Ekstrakurikuler::class, 'id_admin');
     }
+
+    // Admin punya banyak Kepala Sekolah
+    public function kepalaSekolah()
+    {
+        return $this->hasMany(KepalaSekolah::class, 'id_admin');
+    }
+    public function guru()
+    {
+        return $this->hasOne(Guru::class, 'id_admin', );
+    }
+
+    public function siswa()
+    {
+        return $this->hasMany(Siswa::class, 'id_admin', 'id_admin');
+    }
 }
-    
-    

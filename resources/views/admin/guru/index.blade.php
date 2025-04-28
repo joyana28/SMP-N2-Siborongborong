@@ -1,62 +1,65 @@
-<!-- resources/views/guru/index.blade.php -->
 @extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">
-                    <h4>Daftar Guru
-                        <a href="{{ route('admin.guru.create') }}" class="btn btn-primary float-end">Tambah Guru</a>
-                    </h4>
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Data Guru</h5>
+                    <a href="{{ route('admin.guru.create') }}" class="btn btn-primary">Tambah Guru</a>
                 </div>
+
                 <div class="card-body">
                     @if (session('success'))
-                        <div class="alert alert-success">
+                        <div class="alert alert-success" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Foto</th>
+                                    <th>No</th>
                                     <th>Nama</th>
                                     <th>NIP</th>
                                     <th>Golongan</th>
                                     <th>Bidang</th>
-                                    <th>No. Telepon</th>
+                                    <th>No Telepon</th>
+                                    <th>Foto</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($guru as $item)
+                                @forelse ($guru as $index => $g)
                                     <tr>
-                                        <td>{{ $item->id_guru }}</td>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $g->nama }}</td>
+                                        <td>{{ $g->nip }}</td>
+                                        <td>{{ $g->golongan }}</td>
+                                        <td>{{ $g->bidang }}</td>
+                                        <td>{{ $g->no_telp }}</td>
                                         <td>
-                                            <img src="{{ asset('storage/guru/' . $item->foto) }}" alt="{{ $item->nama }}" width="50">
+                                            @if ($g->foto)
+                                                <img src="{{ asset('storage/guru/' . $g->foto) }}" alt="Foto Guru" width="50">
+                                            @else
+                                                Tidak ada foto
+                                            @endif
                                         </td>
-                                        <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->nip }}</td>
-                                        <td>{{ $item->golongan }}</td>
-                                        <td>{{ $item->bidang }}</td>
-                                        <td>{{ $item->no_telp }}</td>
                                         <td>
-                                            <a href="{{ route('admin.guru.show', $item->id_guru) }}" class="btn btn-sm btn-info">Detail</a>
-                                            <a href="{{ route('admin.guru.edit', $item->id_guru) }}" class="btn btn-sm btn-warning">Edit</a>
-                                            <form action="{{ route('guru.destroy', $item->id_guru) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data guru ini?')">
+                                            <a href="{{ route('admin.guru.show', $g->id_guru) }}" class="btn btn-info btn-sm">Lihat</a>
+                                            <a href="{{ route('admin.guru.edit', $g->id_guru) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <form action="{{ route('admin.guru.destroy', $g->id_guru) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
                                             </form>
                                         </td>
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center">Tidak ada data guru.</td>
+                                        <td colspan="8" class="text-center">Tidak ada data Guru</td>
                                     </tr>
                                 @endforelse
                             </tbody>

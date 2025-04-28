@@ -6,96 +6,107 @@ use App\Models\KepalaSekolah;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class KepalaSekolahController extends Controller
 {
     public function index()
     {
-        $kepalasekolah = KepalaSekolah::with('admin')->get();
-        $kepsekCount = $kepalasekolah->count();
-
-        return view('admin.kepalasekolah.index', compact('kepalasekolah', 'kepsekCount'));
+        $kepalaSekolah = KepalaSekolah::with('admin')->get();
+        return view('admin.kepala_sekolah.index', compact('kepalaSekolah'));
     }
-
+    
     public function create()
     {
-        $admins = Admin::all();
-        return view('admin.kepalasekolah.create', compact('admins'));
+        $admins = Admin::whereDoesntHave('kepalaSekolah')->get();
+        return view('admin.kepala_sekolah.create', compact('admins'));
     }
-
+    
     public function store(Request $request)
     {
         $request->validate([
             'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:30',
-            'golongan' => 'required|string|max:10',
+            'nip' => 'required|string|max:50',
+            'golongan' => 'required|string|max:50',
             'periode' => 'required|string|max:50',
-            'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'foto' => 'nullable|image|max:2048',
         ]);
-
-        $data = $request->except('foto');
-
+        
+        $data = $request->all();
+        
         if ($request->hasFile('foto')) {
-            $file = $request->file('foto');
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/foto_kepsek', $fileName);
-            $data['foto'] = $fileName;
+            $foto = $request->file('foto');
+            $fotoName = time() . '.' . $foto->getClientOriginalExtension();
+            $foto->storeAs('public/kepala_sekolah', $fotoName);
+            $data['foto'] = $fotoName;
         }
-
+        
         KepalaSekolah::create($data);
-
-        return redirect()->route('admin.kepalasekolah.index')->with('success', 'Data berhasil ditambahkan.');
+        
+        return redirect()->route('admin.kepala_sekolah.index')
+                        ->with('success', 'Data Kepala Sekolah berhasil ditambahkan.');
     }
-
+    
+    public function show($id)
+    {
+        $kepalaSekolah = KepalaSekolah::with('admin')->findOrFail($id);
+        return view('kepala_sekolah.show', compact('kepalaSekolah'));
+    }
+    
     public function edit($id)
     {
-        $kepsek = KepalaSekolah::findOrFail($id);
-        $admins = Admin::all();
-
-        return view('admin.kepalasekolah.edit', compact('kepsek', 'admins'));
+        $kepalaSekolah = KepalaSekolah::findOrFail($id);
+        $admins = Admin::whereDoesntHave('kepalaSekolah')
+                ->orWhere('id_admin', $kepalaSekolah->id_admin)
+                ->get();
+        return view('admin.kepala_sekolah.edit', compact('kepalaSekolah', 'admins'));
     }
-
+    
     public function update(Request $request, $id)
     {
-        $kepsek = KepalaSekolah::findOrFail($id);
-
         $request->validate([
             'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:30',
-            'golongan' => 'required|string|max:10',
+            'nip' => 'required|string|max:50',
+            'golongan' => 'required|string|max:50',
             'periode' => 'required|string|max:50',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'foto' => 'nullable|image|max:2048',
         ]);
-
-        $data = $request->except('foto');
-
+        
+        $kepalaSekolah = KepalaSekolah::findOrFail($id);
+        $data = $request->all();
+        
         if ($request->hasFile('foto')) {
-            if ($kepsek->foto) {
-                Storage::delete('public/foto_kepsek/' . $kepsek->foto);
+            // Hapus foto lama jika ada
+            if ($kepalaSekolah->foto) {
+                Storage::delete('public/kepala_sekolah/' . $kepalaSekolah->foto);
             }
-            $file = $request->file('foto');
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/foto_kepsek', $fileName);
-            $data['foto'] = $fileName;
+            
+            $foto = $request->file('foto');
+            $fotoName = time() . '.' . $foto->getClientOriginalExtension();
+            $foto->storeAs('public/kepala_sekolah', $fotoName);
+            $data['foto'] = $fotoName;
         }
-
-        $kepsek->update($data);
-
-        return redirect()->route('admin.kepalasekolah.index')->with('success', 'Data berhasil diperbarui.');
+        
+        $kepalaSekolah->update($data);
+        
+        return redirect()->route('admin.kepala_sekolah.index')
+                        ->with('success', 'Data Kepala Sekolah berhasil diperbarui.');
     }
-
+    
     public function destroy($id)
     {
-        $kepsek = KepalaSekolah::findOrFail($id);
-
-        if ($kepsek->foto) {
-            Storage::delete('public/foto_kepsek/' . $kepsek->foto);
+        $kepalaSekolah = KepalaSekolah::findOrFail($id);
+        
+        // Hapus foto jika ada
+        if ($kepalaSekolah->foto) {
+            Storage::delete('public/kepala_sekolah/' . $kepalaSekolah->foto);
         }
-
-        $kepsek->delete();
-
-        return response()->json(['success' => 'Data berhasil dihapus.']);
+        
+        $kepalaSekolah->delete();
+        
+        return redirect()->route('admin.kepala_sekolah.index')
+                        ->with('success', 'Data Kepala Sekolah berhasil dihapus.');
     }
 }
