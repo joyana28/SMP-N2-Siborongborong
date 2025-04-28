@@ -86,7 +86,7 @@ class EkstrakurikulerController extends Controller
      */
     public function show($id)
     {
-    $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
+    $ekstrakurikuler = Ekstrakurikuler::with('admin')->findOrFail($id);
     return view('admin.ekstrakurikuler.show', compact('ekstrakurikuler'));
     }
 
