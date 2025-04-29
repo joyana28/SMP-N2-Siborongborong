@@ -3,7 +3,7 @@
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand" href="/">
-            <img src="/images/logo.png" alt="Skola Logo" class="logo-img">
+            <img src="/images/LOGO.png" alt="Skola Logo" class="logo-img">
             <div class="brand-text">
                 <span class="brand-name">SMPN2</span>
                 <span class="university-text">Siborongborong</span>
