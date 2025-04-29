@@ -76,28 +76,7 @@ Route::get('/login', function () {
 Route::view('/admin/login', 'auth.login')->name('auth.login');
 
 // Proses Login Admin
-Route::post('/admin/login', function (Request $request) {
-    $validUsername = 'admin';
-    $validPassword = 'admin123';
-    $validNama     = 'Admin Satu';
-    $validEmail    = 'admin@example.com';
 
-    // Validasi login
-    if (
-        $request->username === $validUsername &&
-        $request->password === $validPassword &&
-        $request->full_name === $validNama &&
-        $request->email === $validEmail
-    ) {
-        // Menyimpan session untuk login
-        session(['admin_logged_in' => true]);
-        // Redirect ke admin dashboard
-        return redirect()->route('admin.dashboard');
-    } else {
-        // Jika login gagal
-        return redirect()->back()->withErrors(['login' => 'Data login tidak sesuai.']);
-    }
-})->name('admin.login.submit');
 
 // Grup Rute Admin (tanpa middleware)
 Route::prefix('admin')->name('admin.')->group(function () {
