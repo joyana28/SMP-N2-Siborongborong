@@ -31,13 +31,11 @@
             </div>
 
             <div class="logo">
-                <div class="logo-icon"></div>
-                <div>
-                    <div class="logo-text">YOUR</div>
-                    <div class="logo-subtext">LOGO</div>
-                </div>
-            </div>
-
+    <div class="logo-icon">
+        <img src="{{ asset('images/LOGO.png') }}" alt="Logo" style="width: 50px; height: 50px;">
+    </div>
+    
+</div>
             <div class="welcome-text">
                 <h1>Hello,<br>welcome!</h1>
                 <p>SMP NEGERI 2 SIBORONGBORONG</p>
