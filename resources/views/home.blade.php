@@ -172,8 +172,8 @@
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Why You'll Choose Us For Tech/Web Solutions?</h2>
-                <p>We combine innovative thinking with technical expertise to deliver exceptional results for our clients.</p>
+                <h2>"Mengapa memilih kami"</h2>
+                <p>Tidak hanya berbekal ilmu, kami ikut serta membekali siswa dengan keterampilan hidup, nilai moral, dan jiwa kepemimpinan untuk masa depan yang cerah.</p>
                 <a href="#" class="btn-primary">Learn More</a>
             </div>
         </div>
@@ -183,7 +183,7 @@
     <section class="testimonials-section">
         <div class="container">
             <div class="section-title">
-                <h2>Most Appreciated People Said</h2>
+                <h2>Mereka Berawal di Sini, Sekarang Menginspirasi Dunia</h2>
             </div>
             <div class="testimonials-slider">
                 <div class="testimonial-item">
@@ -225,44 +225,60 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="team-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Recently Completed Latest Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="images/project1.jpg" alt="Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>E-commerce Platform</h3>
-                        <p>Full-stack development with secure payment processing</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="images/project2.jpg" alt="Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>Hospital Management System</h3>
-                        <p>Integrated solution for healthcare providers</p>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-image">
-                        <img src="images/project3.jpg" alt="Project">
-                    </div>
-                    <div class="project-info">
-                        <h3>Finance App Development</h3>
-                        <p>Secure mobile banking solution with real-time analysis</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Statistic - Section -->
 
+    <section class="statistics-section">
+  <div class="statistics-grid">
+    <!-- Total Courses -->
+    <div class="statistic-item">
+      <div class="stat-icon-wrapper">
+        <i class="fas fa-chalkboard"></i>
+      </div>
+      <div class="stat-number-wrapper">
+        <span class="stat-number" data-target="500">0</span>
+        <span class="stat-number-plus">+</span>
+      </div>
+      <div class="stat-label">Total Courses</div>
+    </div>
+    
+    <!-- Our Students -->
+    <div class="statistic-item">
+      <div class="stat-icon-wrapper">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <div class="stat-number-wrapper">
+        <span class="stat-number" data-target="1900">0</span>
+        <span class="stat-number-plus">+</span>
+      </div>
+      <div class="stat-label">Our Students</div>
+    </div>
+    
+    <!-- Skilled Lecturers -->
+    <div class="statistic-item">
+      <div class="stat-icon-wrapper">
+        <i class="fas fa-chalkboard-teacher"></i>
+      </div>
+      <div class="stat-number-wrapper">
+        <span class="stat-number" data-target="750">0</span>
+        <span class="stat-number-plus">+</span>
+      </div>
+      <div class="stat-label">Skilled Lecturers</div>
+    </div>
+    
+    <!-- Win Awards -->
+    <div class="statistic-item">
+      <div class="stat-icon-wrapper">
+        <i class="fas fa-trophy"></i>
+      </div>
+      <div class="stat-number-wrapper">
+        <span class="stat-number" data-target="30">0</span>
+        <span class="stat-number-plus">+</span>
+      </div>
+      <div class="stat-label">Win Awards</div>
+    </div>
+  </div>
+</section>
+    
     <!-- Pricing Section -->
     <section class="pricing-section">
         <div class="container">
