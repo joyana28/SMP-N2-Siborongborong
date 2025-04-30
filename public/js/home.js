@@ -327,3 +327,100 @@ document.addEventListener('DOMContentLoaded', function() {
     // so it can be called from outside this script
     window.setHeroImage = setHeroImage;
 });
+
+/* services-section */
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceBoxes = document.querySelectorAll('.service-box');
+    
+    serviceBoxes.forEach(box => {
+        const readMoreBtn = box.querySelector('.read-more');
+        
+        // Expand card on click
+        box.addEventListener('click', function(e) {
+            // Don't toggle if clicking on read more button (handled separately)
+            if (e.target === readMoreBtn || readMoreBtn.contains(e.target)) {
+                return;
+            }
+            
+            // Toggle current box
+            this.classList.toggle('expanded');
+            
+            // Update read more text
+            const readMore = this.querySelector('.read-more');
+            if (this.classList.contains('expanded')) {
+                readMore.textContent = 'Tutup';
+            } else {
+                readMore.textContent = 'Baca selengkapnya';
+            }
+            
+            // Close other boxes
+            serviceBoxes.forEach(otherBox => {
+                if (otherBox !== this && otherBox.classList.contains('expanded')) {
+                    otherBox.classList.remove('expanded');
+                    otherBox.querySelector('.read-more').textContent = 'Baca selengkapnya';
+                }
+            });
+        });
+        
+        // Handle read more button click
+        readMoreBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent triggering the card click event
+            const parentBox = this.closest('.service-box');
+            
+            parentBox.classList.toggle('expanded');
+            
+            if (parentBox.classList.contains('expanded')) {
+                this.textContent = 'Tutup';
+            } else {
+                this.textContent = 'Baca selengkapnya';
+            }
+            
+            // Close other boxes
+            serviceBoxes.forEach(otherBox => {
+                if (otherBox !== parentBox && otherBox.classList.contains('expanded')) {
+                    otherBox.classList.remove('expanded');
+                    otherBox.querySelector('.read-more').textContent = 'Baca selengkapnya';
+                }
+            });
+        });
+        
+        // Add hover effects and animations
+        box.addEventListener('mouseenter', function() {
+            // Add subtle animation to icon
+            const icon = this.querySelector('.service-icon i');
+            icon.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                icon.style.transform = 'scale(1)';
+            }, 300);
+        });
+        
+        box.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('.service-icon i');
+            icon.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Add particlesJS background effect to service icons (optional - requires particles.js library)
+    // Uncomment if you have particles.js included in your project
+    /*
+    document.querySelectorAll('.service-icon').forEach((icon, index) => {
+        const particlesId = `particles-${index}`;
+        const particlesDiv = document.createElement('div');
+        particlesDiv.id = particlesId;
+        particlesDiv.className = 'particles-background';
+        icon.appendChild(particlesDiv);
+        
+        particlesJS(particlesId, {
+            particles: {
+                number: { value: 10, density: { enable: true, value_area: 100 } },
+                color: { value: "#ffffff" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: { enable: false },
+                move: { enable: true, speed: 2, direction: "none", random: true, out_mode: "out" }
+            }
+        });
+    });
+    */
+});

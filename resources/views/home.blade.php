@@ -81,43 +81,92 @@
 </section>
 
     <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Profil Sekolah</h2>
+
+<section class="services-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Profil Sekolah</h2>
+        </div>
+        <div class="services-grid">
+            <!-- Service Box 1 - Visi & Misi -->
+            <div class="service-box">
+                <div class="service-content service-front">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Visi & Misi</h3>
+                    <p>Mengembangkan potensi siswa untuk menjadi generasi unggul berprestasi dan berakhlak mulia.</p>
+                    <a href="#" class="read-more">SELENGKAPNYA <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-content service-back">
+                    <h4>Visi</h4>
+                    <p>Mewujudkan sekolah yang unggul dalam prestasi, berkarakter, dan berwawasan lingkungan.</p>
+                    <h4>Misi</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Meningkatkan kualitas pembelajaran</li>
+                        <li><i class="fas fa-check"></i> Mengembangkan potensi siswa</li>
+                        <li><i class="fas fa-check"></i> Menanamkan nilai-nilai moral</li>
+                        <li><i class="fas fa-check"></i> Menciptakan lingkungan belajar kondusif</li>
+                    </ul>
+                </div>
             </div>
-            <div class="services-grid">
-                <div class="service-box">
+
+            <!-- Service Box 2 - Fasilitas -->
+            <div class="service-box">
+                <div class="service-content service-front">
                     <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+                        <i class="fas fa-school"></i>
                     </div>
-                    <h3>Web Development</h3>
-                    <p>Creating responsive, user-friendly websites</p>
+                    <h3>Fasilitas</h3>
+                    <p>Fasilitas modern dan lengkap untuk menunjang proses pembelajaran dan pengembangan peserta didik.</p>
+                    <a href="#" class="read-more">SELENGKAPNYA <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-box">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Mobile Apps</h3>
-                    <p>Developing innovative applications for all platforms</p>
+                <div class="service-content service-back">
+                    <h4>Fasilitas Sekolah</h4>
+                    <ul class="facilities-list">
+                        <li><i class="fas fa-flask"></i> Laboratorium IPA</li>
+                        <li><i class="fas fa-desktop"></i> Lab Komputer</li>
+                        <li><i class="fas fa-book"></i> Perpustakaan</li>
+                        <li><i class="fas fa-futbol"></i> Lapangan Olahraga</li>
+                        <li><i class="fas fa-pray"></i> Ruang Ibadah</li>
+                        <li><i class="fas fa-music"></i> Studio Musik</li>
+                    </ul>
                 </div>
-                <div class="service-box">
+            </div>
+
+            <!-- Service Box 3 - Ekstrakurikuler -->
+            <div class="service-box">
+                <div class="service-content service-front">
                     <div class="service-icon">
-                        <i class="fas fa-server"></i>
+                        <i class="fas fa-star"></i>
                     </div>
-                    <h3>Cloud Services</h3>
-                    <p>Secure and scalable cloud solutions</p>
+                    <h3>Ekstrakurikuler</h3>
+                    <p>Berbagai kegiatan ekstrakurikuler untuk mengembangkan minat dan bakat siswa.</p>
+                    <a href="#" class="read-more">SELENGKAPNYA <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="service-box">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="service-content service-back">
+                    <div class="ekskul-categories">
+                        <div class="ekskul-category">
+                            <i class="fas fa-running"></i>
+                            <h4>Olahraga</h4>
+                            <p>Futsal, Basket, Voli, Badminton</p>
+                        </div>
+                        <div class="ekskul-category">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>Seni</h4>
+                            <p>Paduan Suara, Tari, Seni Lukis</p>
+                        </div>
+                        <div class="ekskul-category">
+                            <i class="fas fa-brain"></i>
+                            <h4>Akademik</h4>
+                            <p>Robotik, Karya Ilmiah, Jurnalistik</p>
+                        </div>
                     </div>
-                    <h3>Cybersecurity</h3>
-                    <p>Protecting your data with advanced security measures</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- CTA Section -->
     <section class="cta-section">
