@@ -492,3 +492,125 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    /* gallery-section */
+
+    // Get all gallery items
+const galleryItems = document.querySelectorAll('.gallery-item');
+const body = document.body;
+
+// Create lightbox elements
+const lightbox = document.createElement('div');
+lightbox.className = 'lightbox';
+
+const lightboxContent = document.createElement('div');
+lightboxContent.className = 'lightbox-content';
+
+const lightboxImage = document.createElement('img');
+lightboxImage.className = 'lightbox-image';
+
+const closeButton = document.createElement('div');
+closeButton.className = 'lightbox-close';
+closeButton.innerHTML = '<i class="fas fa-times"></i>';
+
+// Append elements
+lightboxContent.appendChild(lightboxImage);
+lightboxContent.appendChild(closeButton);
+lightbox.appendChild(lightboxContent);
+body.appendChild(lightbox);
+
+// Add click event to gallery items
+galleryItems.forEach(item => {
+    const expandIcon = item.querySelector('.gallery-icon');
+    const image = item.querySelector('.gallery-image');
+    
+    expandIcon.addEventListener('click', (e) => {
+        e.preventDefault();
+        lightboxImage.src = image.src;
+        lightbox.classList.add('active');
+        body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+    });
+});
+
+// Close lightbox when clicking close button
+closeButton.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    body.style.overflow = ''; // Restore scrolling
+});
+
+// Close lightbox when clicking outside the image
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+        body.style.overflow = '';
+    }
+});
+
+// Close lightbox with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+        body.style.overflow = '';
+    }
+});
+
+// Navigation
+let currentIndex = 0;
+
+lightbox.querySelector('.lightbox-prev').addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    lightboxImage.src = galleryItems[currentIndex].querySelector('.gallery-image').src;
+});
+
+lightbox.querySelector('.lightbox-next').addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    lightboxImage.src = galleryItems[currentIndex].querySelector('.gallery-image').src;
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        lightboxImage.src = galleryItems[currentIndex].querySelector('.gallery-image').src;
+    } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % galleryItems.length;
+        lightboxImage.src = galleryItems[currentIndex].querySelector('.gallery-image').src;
+    }
+});
+
+// Touch swipe support
+let touchStartX = 0;
+let touchEndX = 0;
+
+lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeLength = touchEndX - touchStartX;
+
+    if (Math.abs(swipeLength) > swipeThreshold) {
+        if (swipeLength > 0) {
+            // Swipe right - show previous
+            currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+        } else {
+            // Swipe left - show next
+            currentIndex = (currentIndex + 1) % galleryItems.length;
+        }
+        lightboxImage.src = galleryItems[currentIndex].querySelector('.gallery-image').src;
+    }
+}
+
+// Initialize currentIndex
+currentIndex = 0;
+lightboxImage.src = galleryItems[currentIndex].querySelector('.gallery-image').src; 

@@ -402,8 +402,8 @@
                         <div class="blog-meta">
                             <span><i class="far fa-calendar"></i> April 25, 2025</span>
                         </div>
-                        <h3>The Future of AI in Business Operations</h3>
-                        <p>Exploring how artificial intelligence is transforming modern business processes and workflows.</p>
+                        <h3>Pelestarian Budaya Melalui Pakaian Adat</h3>
+                        <p>Siswa dan guru SMPN 2 Siborongborong mengenakan pakaian adat Batak dalam rangka memperingati Hari Kartini, sebagai bentuk pelestarian budaya lokal di lingkungan sekolah.</p>
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
@@ -415,8 +415,9 @@
                         <div class="blog-meta">
                             <span><i class="far fa-calendar"></i> April 20, 2025</span>
                         </div>
-                        <h3>Cybersecurity Best Practices for 2025</h3>
-                        <p>Essential security measures every business should implement to protect sensitive data.</p>
+                        <h3>Apel Pagi dan Pembinaan Karakter Siswa</h3>
+                        <p>Seluruh warga sekolah mengikuti apel pagi yang diisi dengan pembinaan karakter serta penyampaian informasi penting oleh kepala sekolah di lapangan utama SMPN 2 Siborongborong.
+                        </p>
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
@@ -428,8 +429,8 @@
                         <div class="blog-meta">
                             <span><i class="far fa-calendar"></i> April 15, 2025</span>
                         </div>
-                        <h3>Cloud Migration Strategies for Enterprises</h3>
-                        <p>Step-by-step guide to successfully moving your infrastructure to the cloud.</p>
+                        <h3> Perayaan Natal Bersama Keluarga Besar SMPN 2 Siborongborong</h3>
+                        <p>Perayaan Natal berlangsung khidmat dan meriah di gereja sekitar, melibatkan siswa, guru, dan orang tua sebagai bentuk kebersamaan dan toleransi antarumat beragama.</p>
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
