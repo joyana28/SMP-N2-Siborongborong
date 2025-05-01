@@ -279,108 +279,113 @@
   </div>
 </section>
     
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Recently Completed Latest Team</h2>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-box">
-                    <div class="pricing-header">
-                        <h3>Basic</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">99</span>
-                            <span class="period">/mo</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>Web Development</li>
-                            <li>5 Pages</li>
-                            <li>3 Months Support</li>
-                            <li>Limited Features</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="#" class="btn-secondary">Get Started</a>
-                    </div>
-                </div>
-                <div class="pricing-box featured">
-                    <div class="pricing-header">
-                        <h3>Standard</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">199</span>
-                            <span class="period">/mo</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>Web Development</li>
-                            <li>10 Pages</li>
-                            <li>6 Months Support</li>
-                            <li>Standard Features</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="#" class="btn-primary">Get Started</a>
-                    </div>
-                </div>
-                <div class="pricing-box">
-                    <div class="pricing-header">
-                        <h3>Premium</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">299</span>
-                            <span class="period">/mo</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>Web Development</li>
-                            <li>Unlimited Pages</li>
-                            <li>12 Months Support</li>
-                            <li>Premium Features</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="#" class="btn-secondary">Get Started</a>
-                    </div>
-                </div>
-            </div>
+<!-- Gallery Section -->
+<section class="gallery-section">
+    <div class="gallery-container">
+        <div class="section-title">
+            <h2>Galeri <span>Sekolah</span></h2>
+            <p>Jelajahi berbagai momen dan aktivitas di sekolah kami</p>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Let's Discuss Your Project</h2>
-                    <p>Fill out the form and our team will get back to you within 24 hours.</p>
+        <!-- Loading Animation -->
+        <div class="gallery-loading"></div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <!-- Featured Item -->
+            <div class="gallery-item featured" data-category="events">
+                <img src="images/cosplay.png" alt="Upacara Bendera" class="gallery-image">
+                <div class="gallery-content">
+                    <span class="gallery-category">Acara Sekolah</span>
+                    <h3 class="gallery-title">Upacara Bendera</h3>
+                    <p class="gallery-description">Kegiatan rutin upacara bendera setiap hari Senin untuk menumbuhkan jiwa nasionalisme.</p>
                 </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message"></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
+                <div class="gallery-overlay">
+                    <div class="gallery-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regular Items -->
+            <div class="gallery-item" data-category="academic">
+                <img src="images/games.png" alt="Kegiatan Pembelajaran" class="gallery-image">
+                <div class="gallery-content">
+                    <span class="gallery-category">Akademik</span>
+                    <h3 class="gallery-title">Kegiatan Pembelajaran</h3>
+                    <p class="gallery-description">Suasana belajar yang interaktif dan menyenangkan di dalam kelas.</p>
+                </div>
+                <div class="gallery-overlay">
+                    <div class="gallery-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="activities">
+                <img src="images/games2.png" alt="Ekstrakurikuler" class="gallery-image">
+                <div class="gallery-content">
+                    <span class="gallery-category">Kegiatan</span>
+                    <h3 class="gallery-title">Ekstrakurikuler</h3>
+                    <p class="gallery-description">Berbagai kegiatan ekstrakurikuler untuk mengembangkan bakat siswa.</p>
+                </div>
+                <div class="gallery-overlay">
+                    <div class="gallery-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="facilities">
+                <img src="images/bola2.png" alt="Perpustakaan" class="gallery-image">
+                <div class="gallery-content">
+                    <span class="gallery-category">Fasilitas</span>
+                    <h3 class="gallery-title">Perpustakaan</h3>
+                    <p class="gallery-description">Perpustakaan modern dengan koleksi buku yang lengkap.</p>
+                </div>
+                <div class="gallery-overlay">
+                    <div class="gallery-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="events">
+                <img src="images/upacara.png" alt="Pentas Seni" class="gallery-image">
+                <div class="gallery-content">
+                    <span class="gallery-category">Acara</span>
+                    <h3 class="gallery-title">Pentas Seni</h3>
+                    <p class="gallery-description">Pertunjukan bakat dan kreativitas siswa dalam bidang seni.</p>
+                </div>
+                <div class="gallery-overlay">
+                    <div class="gallery-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="facilities">
+                <img src="images/games3.png" alt="Laboratorium" class="gallery-image">
+                <div class="gallery-content">
+                    <span class="gallery-category">Fasilitas</span>
+                    <h3 class="gallery-title">Laboratorium</h3>
+                    <p class="gallery-description">Fasilitas laboratorium lengkap untuk praktikum siswa.</p>
+                </div>
+                <div class="gallery-overlay">
+                    <div class="gallery-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+
+
+
+    
 
     <!-- Blog Section -->
     <section class="blog-section">
@@ -391,7 +396,7 @@
             <div class="blog-grid">
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="images/blog1.jpg" alt="Blog">
+                        <img src="images/ulos.png" alt="Blog">
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -404,7 +409,7 @@
                 </div>
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="images/blog2.jpg" alt="Blog">
+                        <img src="images/bola.png" alt="Blog">
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -417,7 +422,7 @@
                 </div>
                 <div class="blog-card">
                     <div class="blog-image">
-                        <img src="images/blog3.jpg" alt="Blog">
+                        <img src="images/ibadah.png" alt="Blog">
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
