@@ -1,212 +1,178 @@
+/**
+ * Logistics & Transport Website JavaScript
+ * Adds animations, interactivity and smooth scrolling
+ */
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS (Animate On Scroll)
+    // Initialize AOS (Animate on Scroll)
     AOS.init({
         duration: 800,
-        easing: 'ease',
+        easing: 'ease-in-out',
         once: true,
-        offset: 100,
-    });
-    
-    // Back to top button
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            backToTopButton.classList.add('active');
-        } else {
-            backToTopButton.classList.remove('active');
-        }
-    });
-    
-    backToTopButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        mirror: false
     });
 
     // Smooth scrolling for anchor links
-    const smoothScroll = function(target, duration) {
-        const targetElement = document.querySelector(target);
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        let startTime = null;
-
-        function animation(currentTime) {
-            if (startTime === null) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const run = ease(timeElapsed, startPosition, distance, duration);
-            window.scrollTo(0, run);
-            if (timeElapsed < duration) requestAnimationFrame(animation);
-        }
-
-        function ease(t, b, c, d) {
-            t /= d / 2;
-            if (t < 1) return c / 2 * t * t + b;
-            t--;
-            return -c / 2 * (t * (t - 2) - 1) + b;
-        }
-
-        requestAnimationFrame(animation);
-    };
-
-    // Apply smooth scroll to all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = this.getAttribute('href');
-            if (target !== '#') {
-                smoothScroll(target, 800);
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             }
         });
     });
 
-    // Navbar scroll effect
-    const navbar = document.querySelector('.navbar');
-    if (navbar) {
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
+    // Fade in elements as they come into view
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeInObserver.unobserve(entry.target);
             }
         });
-    }
+    }, {
+        threshold: 0.3
+    });
+    
+    fadeElements.forEach(element => {
+        fadeInObserver.observe(element);
+    });
 
-    // Product card hover effect
-    const productCards = document.querySelectorAll('.product-card');
-    productCards.forEach(card => {
+    // Add fade-in class to sections
+    document.querySelectorAll('section').forEach(section => {
+        if (!section.classList.contains('hero-section')) {
+            section.classList.add('fade-in');
+        }
+    });
+
+    // Add animation to feature items
+    const featureItems = document.querySelectorAll('.feature-item');
+    featureItems.forEach((item, index) => {
+        item.style.animationDelay = `${index * 0.2}s`;
+        item.classList.add('fade-in');
+    });
+
+    // Service cards hover effect
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.classList.add('hovered');
+            this.querySelector('.service-icon').style.transform = 'rotateY(360deg)';
+            this.querySelector('.service-icon').style.transition = 'transform 0.8s ease';
         });
         
         card.addEventListener('mouseleave', function() {
-            this.classList.remove('hovered');
-            setTimeout(() => {
-                this.classList.remove('hovered-out');
-            }, 300);
-            this.classList.add('hovered-out');
+            this.querySelector('.service-icon').style.transform = 'rotateY(0)';
         });
     });
 
-    // Counter animation for stats
-    function animateCounter(el, start, end, duration) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            el.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
+    // Parallax effect for hero section
+    window.addEventListener('scroll', function() {
+        const heroSection = document.querySelector('.hero-section');
+        const scrollPosition = window.pageYOffset;
+        
+        if (heroSection) {
+            heroSection.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        }
+    });
+
+    // Add dynamic triangle shapes to service cards
+    serviceCards.forEach(card => {
+        const triangle = document.createElement('div');
+        triangle.classList.add('card-triangle');
+        triangle.style.position = 'absolute';
+        triangle.style.top = '0';
+        triangle.style.right = '0';
+        triangle.style.width = '0';
+        triangle.style.height = '0';
+        triangle.style.borderStyle = 'solid';
+        triangle.style.borderWidth = '0 50px 50px 0';
+        triangle.style.borderColor = 'transparent #1a56a7 transparent transparent';
+        triangle.style.opacity = '0.2';
+        triangle.style.transition = 'opacity 0.3s ease';
+        
+        card.appendChild(triangle);
+        
+        card.addEventListener('mouseenter', function() {
+            triangle.style.opacity = '0.5';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            triangle.style.opacity = '0.2';
+        });
+    });
+
+    // Dynamic counter animation for stats (if added later)
+    function animateCounter(element, target, duration) {
+        let start = 0;
+        const increment = target / (duration / 16);
+        
+        const timer = setInterval(() => {
+            start += increment;
+            element.textContent = Math.floor(start);
+            
+            if (start >= target) {
+                element.textContent = target;
+                clearInterval(timer);
             }
-        };
-        window.requestAnimationFrame(step);
+        }, 16);
     }
 
-    // Initialize counters when they come into view
+    // Apply counter animation if stats are added
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const counterElement = entry.target.querySelector('.counter-value');
-                if (counterElement && !counterElement.classList.contains('counted')) {
-                    const endValue = parseInt(counterElement.getAttribute('data-count'));
-                    animateCounter(counterElement, 0, endValue, 2000);
-                    counterElement.classList.add('counted');
-                }
+                const countTarget = parseInt(entry.target.getAttribute('data-count'));
+                animateCounter(entry.target, countTarget, 2000);
+                counterObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.stat-item').forEach(counter => {
+    }, {
+        threshold: 0.7
+    });
+    
+    document.querySelectorAll('.counter').forEach(counter => {
         counterObserver.observe(counter);
     });
 
-    // Lazy loading for images
-    const lazyImages = document.querySelectorAll('img.lazy');
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        lazyImages.forEach(img => {
-            imageObserver.observe(img);
-        });
-    } else {
-        // Fallback for browsers that don't support IntersectionObserver
-        lazyImages.forEach(img => {
-            img.src = img.dataset.src;
-            img.classList.remove('lazy');
-        });
-    }
-
-    // Testimonial carousel if there are multiple testimonials
-    const testimonialCarousel = document.querySelector('.testimonial-carousel');
-    if (testimonialCarousel) {
-        new Swiper(testimonialCarousel, {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
-    }
-    
-    // Add floating effect to hero image
-    const heroImage = document.querySelector('.hero-image img');
-    if (heroImage) {
+    // Add floating animation to phone icon
+    const phoneIcon = document.querySelector('.phone-icon');
+    if (phoneIcon) {
         setInterval(() => {
-            heroImage.classList.toggle('float');
+            phoneIcon.classList.toggle('pulse');
         }, 2000);
     }
-});
 
-// Add CSS for floating animation
-document.addEventListener('DOMContentLoaded', function() {
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-        .hero-image img.float {
-            animation: float 4s ease-in-out infinite;
-        }
-        .product-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .product-card.hovered {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-        .product-card.hovered-out {
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-        }
-    `;
-    document.head.appendChild(style);
+    // Add hover effect to partner logos
+    const partnerLogos = document.querySelectorAll('.partner-logo');
+    partnerLogos.forEach(logo => {
+        logo.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+            this.style.opacity = '1';
+        });
+        
+        logo.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.style.opacity = '0.7';
+        });
+    });
+
+    // Add preloader animation
+    const body = document.body;
+    body.classList.add('loaded');
+    
+    // Initialize any tooltips
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 });

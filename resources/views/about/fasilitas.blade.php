@@ -1,211 +1,235 @@
 @extends('layouts.frontend.app')
 
-@section('title', 'Fasilitas - SMPN 2 Siborongborong')
+@section('title', 'SMPN 2 Siborongborong')
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/fasilitas.css') }}">
-@endsection
 
 @section('content')
-<!-- Hero Section -->
-<section class="facilities-hero">
-    <div class="hero-shape"></div>
-    <div class="container">
-        <div class="hero-content">
-            <h1><br>FASILITAS<br></h1>
-        </div>
-    </div>
-</section>
 
-<!-- Overview Section -->
-<section class="overview-section">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="overview-images">
-                    <div class="image-group">
-                        <img src="{{ asset('images/facilities/overview-1.jpg') }}" alt="Facility Overview" class="main-image">
-                        <img src="{{ asset('images/facilities/overview-2.jpg') }}" alt="Additional View" class="secondary-image">
-                    </div>
-                    <div class="blue-circle"></div>
-                </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="title">Fasilitas Sekolah</h1>
+                <p class="hero-description">Menyediakan fasilitas modern dan lengkap untuk mendukung kegiatan belajar mengajar yang optimal dan pengembangan bakat siswa</p>
             </div>
-            <div class="col-lg-6">
-                <div class="overview-content">
-                    <div class="overview-header">
-                        <div class="overview-title">
-                            <img src="{{ asset('images/facilities/facility-icon.png') }}" alt="Facility Icon" class="facility-placeholder">
-                            <div class="title-text">
-                                <div class="section-subtitle">FACILITY OVERVIEW</div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="services-overview-grid">
+                <!-- Left Image Column -->
+                <div class="overview-image" data-aos="fade-right">
+                    <div class="image-container">
+                        <img src="{{ asset('images/pp 2.png') }}" alt="School Facilities">
+                    </div>
+                </div>
+                
+                <!-- Right Content Column -->
+                <div class="overview-content" data-aos="fade-left">
+                    <div class="section-label">
+                        <span>TENTANG FASILITAS</span>
+                    </div>
+                    <h2 class="section-title">Fasilitas Modern dan Lengkap untuk Mendukung Pembelajaran</h2>
+                    
+                    <div class="features-list">
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="feature-icon">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Lingkungan Belajar yang Nyaman</h3>
+                                <p>Fasilitas yang kami sediakan dirancang untuk menunjang proses belajar yang nyaman, aman, dan berkualitas bagi seluruh warga sekolah.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Penunjang Kegiatan Siswa yang Lengkap</h3>
+                                <p>Dari ruang kelas modern hingga area pendukung kegiatan ekstrakurikuler, kami berkomitmen menghadirkan lingkungan terbaik demi tumbuh kembang peserta didik.</p>
                             </div>
                         </div>
                     </div>
-                    <h2>We Strive To Provide The Best School Facilities</h2>
-                    <p>Kami berkomitmen untuk menyediakan fasilitas sekolah terbaik yang mendukung pengembangan akademik dan non-akademik siswa. Dengan fasilitas modern dan lingkungan yang nyaman, kami menciptakan suasana belajar yang optimal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leading Agency Section -->
+    <section class="leading-agency">
+        <div class="container">
+            <div class="agency-content">
+                <div class="agency-images">
+                    <div class="image-container primary-image">
+                        <img src="{{ asset('assets/images/shipping-port.jpg') }}" alt="Shipping Port" class="img-fluid">
+                    </div>
+                    <div class="image-container secondary-image">
+                        <img src="{{ asset('assets/images/logistics-truck.jpg') }}" alt="Logistics Truck" class="img-fluid">
+                    </div>
+                </div>
+                <div class="agency-text">
+                    <div class="section-label">
+                        <span>ABOUT COMPANY</span>
+                    </div>
+                    <h2 class="section-title">Leading global logistic and transport agency</h2>
+                    <p class="section-description">We provide the best logistics and transportation services worldwide with our dedicated support in multimodal freight, portfolio management with best-in-class service & transportation across continents.</p>
                     
                     <div class="features-grid">
                         <div class="feature-item">
                             <div class="feature-icon">
                                 <i class="fas fa-check-circle"></i>
                             </div>
-                            <div class="feature-text">
-                                <h4>Fasilitas Lengkap</h4>
-                                <p>Mendukung pembelajaran optimal</p>
-                            </div>
+                            <div class="feature-text">International Shipping</div>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">
-                                <i class="fas fa-headset"></i>
+                                <i class="fas fa-check-circle"></i>
                             </div>
-                            <div class="feature-text">
-                                <h4>24/7 Support</h4>
-                                <p>Pelayanan setiap saat</p>
+                            <div class="feature-text">Quality Control System</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
                             </div>
+                            <div class="feature-text">Highly Professional Staff</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">Supply Chain Solutions</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">24/7 Support</div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="feature-text">Supply Chain Solutions</div>
                         </div>
                     </div>
 
-                    <div class="cta-group">
-                        <a href="#facilities" class="btn-explore">
-                            Explore More
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <div class="profile-info">
-                            <img src="{{ asset('images/facilities/principal.jpg') }}" alt="Principal">
-                            <div class="profile-text">
-                                <h4>Kepala Sekolah</h4>
-                                <p>SMPN 2 Siborongborong</p>
+                    <div class="cta-container">
+                        <a href="#quote" class="btn-primary">REQUEST A QUOTE</a>
+                        <div class="phone-cta">
+                            <div class="phone-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="phone-details">
+                                <span>Call Us 24/7</span>
+                                <h4>+123 (4567) 8910</h4>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Facilities Section -->
-<section id="facilities" class="facilities-section">
-    <div class="container">
-        <div class="row">
-            <!-- Ruang Kelas -->
-            <div class="col-md-4">
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="{{ asset('images/facilities/classroom.jpg') }}" alt="Ruang Kelas">
-                    </div>
-                    <div class="facility-content">
-                        <div class="facility-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <h3>Ruang Kelas Modern</h3>
-                        <p>Ruang kelas yang nyaman dan dilengkapi dengan teknologi modern untuk mendukung proses pembelajaran yang efektif.</p>
-                    </div>
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="partners-logos">
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/images/logo-express.png') }}" alt="Express" class="img-fluid">
                 </div>
-            </div>
-
-            <!-- Laboratorium -->
-            <div class="col-md-4">
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="{{ asset('images/facilities/lab.jpg') }}" alt="Laboratorium">
-                    </div>
-                    <div class="facility-content">
-                        <div class="facility-icon">
-                            <i class="fas fa-flask"></i>
-                        </div>
-                        <h3>Laboratorium Sains</h3>
-                        <p>Laboratorium yang lengkap dengan peralatan modern untuk mendukung praktikum dan penelitian siswa.</p>
-                    </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/images/logo-transport.png') }}" alt="Transport" class="img-fluid">
                 </div>
-            </div>
-
-            <!-- Perpustakaan -->
-            <div class="col-md-4">
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="{{ asset('images/facilities/library.jpg') }}" alt="Perpustakaan">
-                    </div>
-                    <div class="facility-content">
-                        <div class="facility-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h3>Perpustakaan Digital</h3>
-                        <p>Perpustakaan modern dengan koleksi buku yang lengkap dan akses digital untuk mendukung pembelajaran.</p>
-                    </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/images/logo-logistics1.png') }}" alt="Logistics" class="img-fluid">
                 </div>
-            </div>
-
-            <!-- Lapangan Olahraga -->
-            <div class="col-md-4">
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="{{ asset('images/facilities/sports.jpg') }}" alt="Lapangan Olahraga">
-                    </div>
-                    <div class="facility-content">
-                        <div class="facility-icon">
-                            <i class="fas fa-running"></i>
-                        </div>
-                        <h3>Lapangan Olahraga</h3>
-                        <p>Fasilitas olahraga yang lengkap untuk mendukung kegiatan ekstrakurikuler dan pengembangan fisik siswa.</p>
-                    </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/images/logo-logistics2.png') }}" alt="Logistics" class="img-fluid">
                 </div>
-            </div>
-
-            <!-- Ruang Komputer -->
-            <div class="col-md-4">
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="{{ asset('images/facilities/computer.jpg') }}" alt="Ruang Komputer">
-                    </div>
-                    <div class="facility-content">
-                        <div class="facility-icon">
-                            <i class="fas fa-laptop"></i>
-                        </div>
-                        <h3>Laboratorium Komputer</h3>
-                        <p>Ruang komputer dengan perangkat modern untuk mendukung pembelajaran teknologi informasi.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kantin -->
-            <div class="col-md-4">
-                <div class="facility-card">
-                    <div class="facility-image">
-                        <img src="{{ asset('images/facilities/canteen.jpg') }}" alt="Kantin">
-                    </div>
-                    <div class="facility-content">
-                        <div class="facility-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <h3>Kantin Sehat</h3>
-                        <p>Kantin yang menyediakan makanan sehat dan bergizi untuk mendukung kesehatan siswa.</p>
-                    </div>
+                <div class="partner-logo">
+                    <img src="{{ asset('assets/images/logo-delivery.png') }}" alt="Delivery" class="img-fluid">
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animate facility cards on scroll
-    const cards = document.querySelectorAll('.facility-card');
-    cards.forEach((card, index) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: "top bottom-=100",
-                toggleActions: "play none none reverse"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            delay: index * 0.2
-        });
-    });
-});
-</script>
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-label">
+                    <span>WHAT WE DO</span>
+                </div>
+                <h2 class="section-title">We offers cost efficient transport shipping</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="service-title">Road Freight</h3>
+                    <p class="service-description">We provide excellent transportation services across highways and roads globally.</p>
+                    <div class="service-image">
+                        <img src="{{ asset('assets/images/road-freight.jpg') }}" alt="Road Freight" class="img-fluid">
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3 class="service-title">Airplane Freight</h3>
+                    <p class="service-description">Fast air freight transport for urgent and valuable shipments worldwide.</p>
+                    <div class="service-image">
+                        <img src="{{ asset('assets/images/air-freight.jpg') }}" alt="Air Freight" class="img-fluid">
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3 class="service-title">Ship Freight</h3>
+                    <p class="service-description">We offer bulk ocean freight services for large cargo transportation.</p>
+                    <div class="service-image">
+                        <img src="{{ asset('assets/images/ship-freight.jpg') }}" alt="Ship Freight" class="img-fluid">
+                    </div>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-train"></i>
+                    </div>
+                    <h3 class="service-title">Train Freight</h3>
+                    <p class="service-description">We provide reliable train transportation for long-haul freight delivery.</p>
+                    <div class="service-image">
+                        <img src="{{ asset('assets/images/train-freight.jpg') }}" alt="Train Freight" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="services-footer text-center">
+                <p>We Provide Full Assistance in Freight and Warehousing. <strong>Request A Quote</strong></p>
+            </div>
+        </div>
+    </section>
 @endsection
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/logistics.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+@endpush
+
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="{{ asset('assets/js/fasilitas.js') }}"></script>
+@endpush
