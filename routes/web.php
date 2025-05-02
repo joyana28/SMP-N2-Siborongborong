@@ -30,7 +30,8 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/profil/visimisi', [AboutController::class, 'visimisi'])->name('profil.visimisi');
-Route::get('/profil/identitas', [AboutController::class, 'identitas'])->name('profil.identitas');
+
+Route::get('/profil/fasilitas', [AboutController::class, 'fasilitas'])->name('profil.fasilitas');
 Route::get('/profil/fasilitas', function () {
     return view('about.fasilitas');
 })->name('profil.fasilitas');
@@ -40,7 +41,6 @@ Route::get('/ekstrakurikuler/{slug}', [EkstrakurikulerController::class, 'show']
 
 Route::get('/prestasi', [PrestasiController::class, 'index'])->name('prestasi.index');
 Route::get('/prestasi/{slug}', [PrestasiController::class, 'show'])->name('prestasi.show');
-
 
 Route::get('/siswa', [SiswaController::class, 'index'])->name('siswa.index');
 

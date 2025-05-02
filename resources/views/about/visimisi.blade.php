@@ -1,23 +1,9 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="{{ asset('css/visimisi.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/jis-slider.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-<!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+@extends('layouts.frontend.app')
 
-    @include('layouts.frontend.navbar')
-</head>
-<body>
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/visimisi.css') }}">
+@section('content')
     <!-- Header Section -->
     <div class="header">
         <div class="container">
@@ -145,5 +131,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+

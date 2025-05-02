@@ -8,12 +8,12 @@
 
         <div class="nav-menu">
             <ul class="nav-list">
-                <li><a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a></li>
+                <li><a href="{{ route('home') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a></li>
                 
                 <li class="nav-item-dropdown">
                     <a href="#" class="nav-link">About</a>
                     <ul class="dropdown-menu">
-                        <li><a href="/visi-misi">
+                        <li><a href="{{ route('profil.visimisi') }}">
                             <i class="fas fa-bullseye"></i> Visi dan Misi
                         </a></li>
                         <li><a href="{{ route('profil.fasilitas') }}">
