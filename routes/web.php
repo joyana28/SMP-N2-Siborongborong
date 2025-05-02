@@ -31,6 +31,9 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/profil/visimisi', [AboutController::class, 'visimisi'])->name('profil.visimisi');
 Route::get('/profil/identitas', [AboutController::class, 'identitas'])->name('profil.identitas');
+Route::get('/profil/fasilitas', function () {
+    return view('about.fasilitas');
+})->name('profil.fasilitas');
 
 Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
 Route::get('/ekstrakurikuler/{slug}', [EkstrakurikulerController::class, 'show'])->name('ekstrakurikuler.show');

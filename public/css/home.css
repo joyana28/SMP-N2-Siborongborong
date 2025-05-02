@@ -190,10 +190,13 @@ img {
   background-size: cover;
   background-position: center;
   color: var(--light-color);
-  padding: 150px 0 200px;
+  padding: 150px 0 0;
   position: relative;
-  min-height: 600px;
-  margin-bottom: 100px;
+  min-height: 100vh;
+  margin-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .hero-image-container {
@@ -225,8 +228,7 @@ img {
 
 .hero-content {
   max-width: 600px;
-  position: relative;
-  z-index: 2;
+  padding-top: 50px;
 }
 
 .hero-content h1 {
@@ -271,8 +273,11 @@ img {
 .cards-container {
   display: flex;
   justify-content: center;
-  position: relative;
-  margin-top: -100px;
+  position: absolute;
+  bottom: -150px;
+  left: 0;
+  right: 0;
+  padding: 0 15px;
   z-index: 100;
 }
 
@@ -451,20 +456,20 @@ img {
 /* Responsive styles */
 @media (max-width: 992px) {
   .hero-section {
-    padding: 120px 0 180px;
-    min-height: 500px;
+    min-height: 100vh;
+    margin-bottom: 300px;
   }
   
   .cards-container {
     flex-direction: column;
     align-items: center;
-    margin-top: -60px;
+    bottom: -300px;
   }
   
   .card {
     width: 90%;
     max-width: 350px;
-    margin: 15px 0;
+    margin: 15px auto;
   }
   
   .spacer {
@@ -489,11 +494,11 @@ img {
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 100px 0 160px;
+    margin-bottom: 350px;
   }
   
   .cards-container {
-    margin-top: -40px;
+    bottom: -350px;
   }
 }
 
