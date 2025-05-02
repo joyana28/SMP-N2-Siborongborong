@@ -11,35 +11,16 @@
         </div>
 
         <div class="row">
-            <!-- Fasilitas 1: Ruang Kelas Nyaman -->
-            <div class="col-lg-6 col-md-6 mb-4">
-                <div class="facility-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Ruang Kelas Nyaman</h5>
-                        <p class="card-text">Ruang kelas yang bersih, rapi, dan dilengkapi dengan pencahayaan serta ventilasi yang baik untuk kenyamanan belajar siswa.</p>
+            @foreach($facilities as $facility)
+                <div class="col-lg-6 col-md-6 mb-4">
+                    <div class="facility-card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $facility->title }}</h5>
+                            <p class="card-text">{{ $facility->description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Fasilitas 2: Laboratorium Komputer -->
-            <div class="col-lg-6 col-md-6 mb-4">
-                <div class="facility-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Laboratorium Komputer</h5>
-                        <p class="card-text">Laboratorium komputer dengan perangkat yang memadai untuk mendukung pembelajaran teknologi dan keterampilan digital siswa.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fasilitas 3: Perpustakaan -->
-            <div class="col-lg-6 col-md-6 mb-4">
-                <div class="facility-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Perpustakaan</h5>
-                        <p class="card-text">Perpustakaan tempat siswa-siswi untuk menghabiskan waktu luangnya.</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

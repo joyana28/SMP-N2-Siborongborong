@@ -1,23 +1,23 @@
-@extends('layouts.frontend.app',[
+@extends('layouts.frontend.app', [
     'title' => 'Baca Fasilitas',
 ])
-@section('content')
-</div>
-<!-- ##### Catagory Area End ##### -->
 
+@section('content')
 <!-- ##### Blog Details Content ##### -->
 <div class="blog-details-content section-padding-100">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
-                <!-- Blog Details Text -->
+                <!-- Blog Details Box -->
                 <div class="blog-details-box">
                     <div class="blog-details-headline text-center mb-4">
                         <h2>{{ $fasilitas->judul }}</h2>
                     </div>
                     <div class="blog-details-text">
                         <div class="blog-details-image mb-4">
-                            <img src="{{ asset('folderimage/' . $fasilitas->gambar_fasilitas) }}" alt="{{ $fasilitas->judul }}" class="img-fluid">
+                            <img src="{{ asset('storage/fasilitas/' . $fasilitas->gambar_fasilitas) }}" 
+                                 alt="{{ $fasilitas->judul }}" 
+                                 class="img-fluid">
                         </div>
                         <div class="blog-details-description">
                             {!! $fasilitas->deskripsi_fasilitas !!}
@@ -28,15 +28,9 @@
         </div>
     </div>
 </div>
-@stop
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@300&display=swap");
-
-.clever-catagory.blog-details {
-    height: 70vh; /* Sesuaikan ketinggian */
-    width: 100%; /* Full width */
-}
 
 .blog-details-box {
     background-color: #fff;
@@ -68,7 +62,6 @@
     background-color: aliceblue;
 }
 
-/* Style untuk tampilan responsif */
 @media (max-width: 768px) {
     .blog-details-headline h2 {
         font-size: 2rem;
@@ -78,3 +71,4 @@
     }
 }
 </style>
+@endsection

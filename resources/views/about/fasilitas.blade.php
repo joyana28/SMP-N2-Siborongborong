@@ -12,11 +12,7 @@
     <div class="hero-shape"></div>
     <div class="container">
         <div class="hero-content">
-            <h1>WE'RE SCHOOL<br>FACILITIES<br>INFORMATION</h1>
-            <a href="#facilities" class="explore-btn">
-                <span>EXPLORE NOW</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <h1><br>FASILITAS<br></h1>
         </div>
     </div>
 </section>
