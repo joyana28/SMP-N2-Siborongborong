@@ -10,6 +10,196 @@ body {
     color: #fff;
 }
 
+/* ===== HERO SECTION STYLES (copied from fasilitas.css) ===== */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes revealFromSides {
+    0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 100% 100%, 100% 100%, 100% 0); transform: scaleX(0); }
+    40% { clip-path: polygon(0 0, 15% 0, 15% 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 85% 100%, 85% 100%, 100% 0); transform: scaleX(0.5); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0); transform: scaleX(1); }
+}
+
+@keyframes slideTextFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    50% { transform: translateX(-50%); opacity: 0.5; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideButtonFromRight {
+    0% { transform: translateX(100%); opacity: 0; }
+    50% { transform: translateX(50%); opacity: 0.5; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.hero-section {
+    background: linear-gradient(
+        135deg,
+        #0a2744 0%,
+        #1a56a7 25%,
+        #0d3158 50%,
+        #1a56a7 75%,
+        #0a2744 100%
+    );
+    background-size: 400% 400%;
+    animation: 
+        gradientFlow 15s ease infinite,
+        revealFromSides 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+    transform-origin: center;
+    perspective: 1000px;
+    height: 600px;
+    position: relative;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(10, 39, 68, 0.95) 0%,
+        rgba(26, 86, 167, 0.8) 100%
+    );
+    z-index: 1;
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle, 
+        rgba(26, 86, 167, 0.2) 0%,
+        rgba(10, 39, 68, 0) 70%
+    );
+    transform: rotate(30deg);
+    animation: pulseGradient 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes pulseGradient {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.3; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 15px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 0.8s;
+}
+
+.hero-text {
+    max-width: 600px;
+    padding-left: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 80%;
+    background-color: #f3b11f;
+    animation: slideTextFromLeft 0.8s ease-out forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+
+.hero-text .subtitle {
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    animation: slideTextFromLeft 1.2s ease-out forwards;
+    animation-delay: 0.7s;
+    opacity: 0;
+}
+
+.hero-text .title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-transform: capitalize;
+    animation: slideTextFromLeft 1.2s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+.hero-text .hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 500px;
+    margin-top: 20px;
+    padding-left: 2px;
+    position: relative;
+    overflow: hidden;
+    animation: slideTextFromBottom 1.2s ease-out forwards;
+    animation-delay: 1.1s;
+    opacity: 0;
+}
+
+@keyframes slideTextFromBottom {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.hero-text .hero-description::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background: #f3b11f;
+    animation: expandLine 1.5s ease-out forwards;
+    animation-delay: 1.8s;
+}
+
+@keyframes expandLine {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+.hero-text .hero-description:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+}
+
+.hero-text .hero-description:hover::after {
+    background: #fff;
+    transition: background-color 0.3s ease;
+}
+/* ===== END HERO SECTION STYLES ===== */
+
 .header {
     background-color: #0c3b54;
     padding: 60px 0 30px;

@@ -1,23 +1,20 @@
-
 @extends('layouts.frontend.app')
 
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/visimisi.css') }}">
 @section('content')
-    <!-- Header Section -->
-    <div class="header">
-        <div class="container">
-            <h1>Visi dan Misi</h1>
-            <div class="breadcrumb">
-                <span>Home</span>
-                <span>></span>
-                <span>Visi dan Misi</span>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="title">Visi & Misi Sekolah</h1>
+                <p class="hero-description">Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global melalui pendidikan yang inovatif dan inklusif.</p>
             </div>
         </div>
-    </div>
+    </section>
     
     <!-- About Content Section -->
-    <div class="about-content">
+    <div class="about-content ">
         <div class="container">
             <div class="about-grid">
                 <div class="image-stack">
