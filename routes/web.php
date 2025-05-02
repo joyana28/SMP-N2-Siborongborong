@@ -17,7 +17,6 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminAuthController;
-use App\Http\Controllers\Frontend\FacilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,7 +55,7 @@ Route::get('/fasilitas/{fasilitas:slug}',[FasilitasController::class,'show'])->n
 Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
 Route::get('/pengumuman/{slug}', [PengumumanController::class, 'show'])->name('pengumuman.show');
 
-Route::get('/guru', [GuruController::class, 'index'])->name('admin.guru.index');
+Route::get('/guru', [App\Http\Controllers\GuruController::class, 'daftarGuru'])->name('guru.index');
 
 Route::get('/kepalasekolah', [KepalaSekolahController::class, 'index'])->name('kepalasekolah.index');
 
@@ -103,11 +102,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('kepala_sekolah', KepalaSekolahController::class);
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('prestasi', PrestasiController::class);
+
     Route::get('/fasilitas', [FasilitasController::class,'index'])->name('fasilitas.index');
-		Route::get('/fasilitas/create', [FasilitasController::class, 'create'])->name('fasilitas.create');
-		Route::post('/fasilitas', [FasilitasController::class, 'store'])->name('fasilitas.store');
-		Route::get('/fasilitas/edit/{id}', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
-		Route::put('/fasilitas/edit/{id}', [FasilitasController::class, 'update'])->name('fasilitas.edit.update');
-		Route::delete('fasilitas/{id}/delete', [FasilitasController::class, 'delete'])->name('fasilitas.index.delete');
+    Route::get('/fasilitas/create', [FasilitasController::class, 'create'])->name('fasilitas.create');
+    Route::post('/fasilitas', [FasilitasController::class, 'store'])->name('fasilitas.store');
+    Route::get('/fasilitas/edit/{id}', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
+    Route::put('/fasilitas/edit/{id}', [FasilitasController::class, 'update'])->name('fasilitas.edit.update');
+    Route::delete('fasilitas/{id}/delete', [FasilitasController::class, 'delete'])->name('fasilitas.index.delete');
 });
 

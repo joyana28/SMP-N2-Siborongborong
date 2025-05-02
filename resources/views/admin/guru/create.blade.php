@@ -11,22 +11,21 @@
                     <form method="POST" action="{{ route('admin.guru.store') }}" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="form-group row mb-3">
-                            <label for="id_admin" class="col-md-4 col-form-label text-md-right">Akun Admin</label>
-                            <div class="col-md-6">
-                                <select id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" name="id_admin" required>
-                                    <option value="">Pilih Akun Admin</option>
-                                    @foreach ($admins as $admin)
-                                        <option value="{{ $admin->id_admin }}">{{ $admin->username }} ({{ $admin->email }})</option>
-                                    @endforeach
-                                </select>
-                                @error('id_admin')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                        @csrf
+                        <div class="form-group">
+                            <label for="id_admin">Admin</label>
+                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
+                                <option value="">Pilih Admin</option>
+                                @foreach($admins as $admin)
+                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
+                                        {{ $admin->nama ?? $admin->username }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('id_admin')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>  
 
                         <div class="form-group row mb-3">
                             <label for="nama" class="col-md-4 col-form-label text-md-right">Nama Lengkap</label>

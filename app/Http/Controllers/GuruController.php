@@ -14,6 +14,12 @@ class GuruController extends Controller
         $guru = Guru::with('admin')->get();
         return view('admin.guru.index', compact('guru'));
     }
+
+    public function daftarGuru()
+    {
+        $guru = Guru::orderBy('nama', 'asc')->get();
+        return view('guru.index', compact('guru'));
+    }
     
     public function create()
     {

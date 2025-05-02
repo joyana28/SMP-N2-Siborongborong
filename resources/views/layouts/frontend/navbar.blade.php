@@ -34,7 +34,7 @@
                 </li>
 
                 <li><a href="/kepala-sekolah" class="nav-link {{ request()->is('kepala-sekolah') ? 'active' : '' }}">Kepala Sekolah</a></li>
-                <li><a href="/guru" class="nav-link {{ request()->is('guru') ? 'active' : '' }}">Guru</a></li>
+                <li><a href="{{ route('guru.index') }}" class="nav-link {{ request()->is('guru') ? 'active' : '' }}">Guru</a></li>
                 <li><a href="/siswa" class="nav-link {{ request()->is('siswa') ? 'active' : '' }}">Siswa</a></li>
                 <li><a href="/profil-alumni" class="nav-link {{ request()->is('profil-alumni') ? 'active' : '' }}">Profil Alumni</a></li>
                 <li><a href="/formulir-pendaftaran" class="nav-link {{ request()->is('formulir-pendaftaran') ? 'active' : '' }}">Formulir Pendaftaran</a></li>
