@@ -32,7 +32,7 @@
                             <th>Foto</th>
                             <th>Nama</th>
                             <th>Tahun Lulus</th>
-                            <th>Ditambahkan Oleh</th>
+                            <th>Deskripsi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -49,7 +49,7 @@
                                 </td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->tahun_lulus ?? '-' }}</td>
-                                <td>{{ $item->admin->name ?? 'Admin' }}</td>
+                                <td>{{ $item->deskripsi ? \Illuminate\Support\Str::limit($item->deskripsi, 60) : '-' }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
                                         <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm">

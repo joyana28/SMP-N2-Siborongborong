@@ -1,52 +1,48 @@
 @extends('layouts.backend.app')
 
 @section('content')
-<div class="container">
-    <h2 class="mb-4">Tambah Pengumuman</h2>
+<div class="container mt-4">
+    <h4>Tambah Pengumuman</h4>
 
     @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>@foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach</ul>
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
 
     <form action="{{ route('admin.pengumuman.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="form-group">
-                            <label for="id_admin">Admin</label>
-                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
-                                <option value="">Pilih Admin</option>
-                                @foreach($admins as $admin)
-                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
-                                        {{ $admin->nama ?? $admin->username }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('id_admin')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div>
-        <div class="form-group">
+        <div class="mb-3">
             <label>Judul</label>
-            <input type="text" name="judul" class="form-control" required>
+            <input type="text" name="judul" class="form-control" value="{{ old('judul') }}" required>
         </div>
-        <div class="form-group">
+
+        <div class="mb-3">
             <label>Isi</label>
-            <textarea name="isi" class="form-control" required></textarea>
+            <textarea name="isi" class="form-control" rows="4" required>{{ old('isi') }}</textarea>
         </div>
-        <div class="form-group">
+
+        <div class="mb-3">
             <label>Tanggal Terbit</label>
-            <input type="date" name="tanggal_terbit" class="form-control" required>
+            <input type="date" name="tanggal_terbit" class="form-control" value="{{ old('tanggal_terbit') }}" required>
         </div>
-        <div class="form-group">
+
+        <div class="mb-3">
             <label>Tanggal Berakhir</label>
-            <input type="date" name="tanggal_berakhir" class="form-control" required>
+            <input type="date" name="tanggal_berakhir" class="form-control" value="{{ old('tanggal_berakhir') }}" required>
         </div>
-        <div class="form-group">
-            <label>Foto</label>
-            <input type="file" name="foto" class="form-control-file" accept="image/*">
+
+        <div class="mb-3">
+            <label>Foto (opsional)</label>
+            <input type="file" name="foto" class="form-control">
         </div>
-        <button type="submit" class="btn btn-success mt-3">Simpan</button>
+
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection

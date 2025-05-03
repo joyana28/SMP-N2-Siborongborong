@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -12,20 +11,18 @@ class PengumumanController extends Controller
 {
     public function index()
     {
-        $pengumuman = Pengumuman::with('admin')->paginate(10);
+        $pengumuman = Pengumuman::latest()->paginate(10);
         return view('admin.pengumuman.index', compact('pengumuman'));
     }
 
     public function create()
     {
-        $admins = Admin::all();
-        return view('admin.pengumuman.create', compact('admins'));
+        return view('admin.pengumuman.create');
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admin,id_admin',
             'judul' => 'required|string|max:100',
             'isi' => 'required|string',
             'tanggal_terbit' => 'required|date',
@@ -39,43 +36,36 @@ class PengumumanController extends Controller
                 ->withInput();
         }
 
+        $foto = null;
         if ($request->hasFile('foto')) {
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoPath = $fotoFile->storeAs('public/pengumuman', $fotoName);
+            $fotoFile->storeAs('public/pengumuman', $fotoName);
             $foto = $fotoName;
         }
 
         Pengumuman::create([
-            'id_admin' => $request->id_admin,
+            'id_admin' => session('admin_id'), // Tarik dari session login
             'judul' => $request->judul,
             'isi' => $request->isi,
             'tanggal_terbit' => $request->tanggal_terbit,
             'tanggal_berakhir' => $request->tanggal_berakhir,
-            'foto' => $foto ?? null,
+            'foto' => $foto,
         ]);
 
         return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil dibuat');
     }
 
-    public function show($id)
-    {
-        $pengumuman = Pengumuman::with('admin')->findOrFail($id);
-        return view('admin.pengumuman.show', compact('pengumuman'));
-    }
-
     public function edit($id)
     {
         $pengumuman = Pengumuman::findOrFail($id);
-        $admins = Admin::all();
-        return view('admin.pengumuman.edit', compact('pengumuman', 'admins'));
+        return view('admin.pengumuman.edit', compact('pengumuman'));
     }
 
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admin,id_admin',
             'judul' => 'required|string|max:100',
             'isi' => 'required|string',
             'tanggal_terbit' => 'required|date',
@@ -98,11 +88,11 @@ class PengumumanController extends Controller
 
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoPath = $fotoFile->storeAs('public/pengumuman', $fotoName);
+            $fotoFile->storeAs('public/pengumuman', $fotoName);
             $pengumuman->foto = $fotoName;
         }
 
-        $pengumuman->id_admin = $request->id_admin;
+        $pengumuman->id_admin = session('admin_id'); // Update juga dengan admin yang login saat ini
         $pengumuman->judul = $request->judul;
         $pengumuman->isi = $request->isi;
         $pengumuman->tanggal_terbit = $request->tanggal_terbit;

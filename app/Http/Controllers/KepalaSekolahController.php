@@ -6,26 +6,24 @@ use App\Models\KepalaSekolah;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class KepalaSekolahController extends Controller
 {
     public function index()
     {
-        $kepalaSekolah = KepalaSekolah::with('admin')->get();
+        $kepalaSekolah = KepalaSekolah::all(); // Tidak perlu relasi dengan admin
         return view('admin.kepala_sekolah.index', compact('kepalaSekolah'));
     }
     
     public function create()
     {
-        $admins = Admin::whereDoesntHave('kepalaSekolah')->get();
-        return view('admin.kepala_sekolah.create', compact('admins'));
+        return view('admin.kepala_sekolah.create');
     }
     
     public function store(Request $request)
     {
         $request->validate([
-            'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
             'nip' => 'required|string|max:50',
             'golongan' => 'required|string|max:50',
@@ -34,6 +32,8 @@ class KepalaSekolahController extends Controller
         ]);
         
         $data = $request->all();
+        $data['id_admin'] = session('admin_id');
+        
         
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
@@ -48,25 +48,15 @@ class KepalaSekolahController extends Controller
                         ->with('success', 'Data Kepala Sekolah berhasil ditambahkan.');
     }
     
-    public function show($id)
-    {
-        $kepalaSekolah = KepalaSekolah::with('admin')->findOrFail($id);
-        return view('kepala_sekolah.show', compact('kepalaSekolah'));
-    }
-    
     public function edit($id)
     {
         $kepalaSekolah = KepalaSekolah::findOrFail($id);
-        $admins = Admin::whereDoesntHave('kepalaSekolah')
-                ->orWhere('id_admin', $kepalaSekolah->id_admin)
-                ->get();
-        return view('admin.kepala_sekolah.edit', compact('kepalaSekolah', 'admins'));
+        return view('admin.kepala_sekolah.edit', compact('kepalaSekolah'));
     }
     
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
             'nip' => 'required|string|max:50',
             'golongan' => 'required|string|max:50',

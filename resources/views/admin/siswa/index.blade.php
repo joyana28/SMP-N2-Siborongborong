@@ -16,7 +16,7 @@
                 <th>Nama Kelas</th>
                 <th>Jumlah Siswa (L)</th>
                 <th>Jumlah Siswa (P)</th>
-                <th>Total</th>
+                <th>Total Siswa</th>
                 <th>Tahun</th>
                 <th>Wali Kelas</th>
                 <th>Aksi</th>

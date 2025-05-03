@@ -3,38 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prestasi;
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PrestasiController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $prestasi = Prestasi::with('admin')->get();
+        $prestasi = Prestasi::with('admin')->paginate(10);
         return view('admin.prestasi.index', compact('prestasi'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $admins = Admin::all();
-        return view('admin.prestasi.create', compact('admins'));
+        return view('admin.prestasi.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'tanggal' => 'required|date',
@@ -48,52 +36,36 @@ class PrestasiController extends Controller
                 ->withInput();
         }
 
-        $data = [
-            'id_admin' => $request->id_admin,
+        $foto = null;
+        if ($request->hasFile('foto')) {
+            $fotoFile = $request->file('foto');
+            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
+            $fotoFile->storeAs('public/prestasi', $fotoName);
+            $foto = $fotoName;
+        }
+
+        Prestasi::create([
+            'id_admin' => session('admin_id'),
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
             'tanggal' => $request->tanggal,
             'jenis' => $request->jenis,
-        ];
-
-        // Handle file upload
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $fotoName = time() . '.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('public/prestasi', $fotoName);
-            $data['foto'] = $fotoName;
-        }
-
-        Prestasi::create($data);
+            'foto' => $foto,
+        ]);
 
         return redirect()->route('admin.prestasi.index')
             ->with('success', 'Data prestasi berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Prestasi $prestasi)
+    public function edit($id)
     {
-        return view('admin.prestasi.show', compact('prestasi'));
+        $prestasi = Prestasi::findOrFail($id);
+        return view('admin.prestasi.edit', compact('prestasi'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Prestasi $prestasi)
-    {
-        $admins = Admin::all();
-        return view('admin.prestasi.edit', compact('prestasi', 'admins'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Prestasi $prestasi)
+    public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'id_admin' => 'required|exists:admin,id_admin',
             'nama' => 'required|string|max:100',
             'deskripsi' => 'nullable|string',
             'tanggal' => 'required|date',
@@ -107,43 +79,38 @@ class PrestasiController extends Controller
                 ->withInput();
         }
 
-        $data = [
-            'id_admin' => $request->id_admin,
-            'nama' => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'tanggal' => $request->tanggal,
-            'jenis' => $request->jenis,
-        ];
+        $prestasi = Prestasi::findOrFail($id);
 
-        // Handle file upload
         if ($request->hasFile('foto')) {
-            // Delete old file if exists
-            if ($prestasi->foto) {
+            if ($prestasi->foto && Storage::exists('public/prestasi/' . $prestasi->foto)) {
                 Storage::delete('public/prestasi/' . $prestasi->foto);
             }
-            
-            $foto = $request->file('foto');
-            $fotoName = time() . '.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('public/prestasi', $fotoName);
-            $data['foto'] = $fotoName;
+
+            $fotoFile = $request->file('foto');
+            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
+            $fotoFile->storeAs('public/prestasi', $fotoName);
+            $prestasi->foto = $fotoName;
         }
 
-        $prestasi->update($data);
+        $prestasi->id_admin = session('admin_id');
+        $prestasi->nama = $request->nama;
+        $prestasi->deskripsi = $request->deskripsi;
+        $prestasi->tanggal = $request->tanggal;
+        $prestasi->jenis = $request->jenis;
+        $prestasi->save();
 
         return redirect()->route('admin.prestasi.index')
             ->with('success', 'Data prestasi berhasil diperbarui');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Prestasi $prestasi)
+    public function destroy($id)
     {
-        // Delete file if exists
-        if ($prestasi->foto) {
+        $prestasi = Prestasi::findOrFail($id);
+
+        if ($prestasi->foto && Storage::exists('public/prestasi/' . $prestasi->foto)) {
             Storage::delete('public/prestasi/' . $prestasi->foto);
         }
-        
+
         $prestasi->delete();
 
         return redirect()->route('admin.prestasi.index')

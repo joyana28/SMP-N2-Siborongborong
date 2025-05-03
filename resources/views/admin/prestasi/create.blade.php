@@ -1,56 +1,47 @@
-@extends('layouts.backend.app') 
+@extends('layouts.backend.app')
 
 @section('content')
 <div class="container">
     <h1>Tambah Prestasi</h1>
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>@foreach ($errors->all() as $error)<li>{{ $error }}</li>@endforeach</ul>
-        </div>
-    @endif
-
     <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        <div class="form-group">
-                            <label for="id_admin">Admin</label>
-                            <select name="id_admin" id="id_admin" class="form-control @error('id_admin') is-invalid @enderror" required>
-                                <option value="">Pilih Admin</option>
-                                @foreach($admins as $admin)
-                                    <option value="{{ $admin->id_admin }}" {{ old('id_admin') == $admin->id_admin ? 'selected' : '' }}>
-                                        {{ $admin->nama ?? $admin->username }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('id_admin')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                            @enderror
-                        </div>
-        <div class="form-group">
-            <label>Nama Prestasi</label>
-            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">
+
+        <div class="mb-3">
+            <label for="nama" class="form-label">Nama Prestasi</label>
+            <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}">
+            @error('nama') <div class="text-danger">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group">
-            <label>Deskripsi</label>
-            <textarea name="deskripsi" class="form-control">{{ old('deskripsi') }}</textarea>
+
+        <div class="mb-3">
+            <label for="tanggal" class="form-label">Tanggal</label>
+            <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ old('tanggal') }}">
+            @error('tanggal') <div class="text-danger">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group">
-            <label>Tanggal</label>
-            <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal') }}">
-        </div>
-        <div class="form-group">
-            <label>Jenis</label>
-            <select name="jenis" class="form-control">
-                <option value="akademik">Akademik</option>
-                <option value="non-akademik">Non-Akademik</option>
+
+        <div class="mb-3">
+            <label for="jenis" class="form-label">Jenis Prestasi</label>
+            <select class="form-select" id="jenis" name="jenis">
+                <option value="">-- Pilih Jenis --</option>
+                <option value="akademik" {{ old('jenis') == 'akademik' ? 'selected' : '' }}>Akademik</option>
+                <option value="non-akademik" {{ old('jenis') == 'non-akademik' ? 'selected' : '' }}>Non-Akademik</option>
             </select>
+            @error('jenis') <div class="text-danger">{{ $message }}</div> @enderror
         </div>
-        <div class="form-group">
-            <label>Foto</label>
-            <input type="file" name="foto" class="form-control-file">
+
+        <div class="mb-3">
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
+            @error('deskripsi') <div class="text-danger">{{ $message }}</div> @enderror
         </div>
-        <button class="btn btn-success">Simpan</button>
+
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto (opsional)</label>
+            <input class="form-control" type="file" id="foto" name="foto">
+            @error('foto') <div class="text-danger">{{ $message }}</div> @enderror
+        </div>
+
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection
-    

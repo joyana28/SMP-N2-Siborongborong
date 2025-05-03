@@ -1,62 +1,58 @@
 @extends('layouts.backend.app')
-
 @section('content')
-<div class="container">
-    <h2 class="mb-4">Edit Pengumuman</h2>
+<div class="container mt-4">
+    <h4>Edit Pengumuman</h4>
 
     @if ($errors->any())
         <div class="alert alert-danger">
-            <ul>@foreach ($errors->all() as $error) <li>{{ $error }}</li> @endforeach</ul>
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
     @endif
 
     <form action="{{ route('admin.pengumuman.update', $pengumuman->id_pengumuman) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        
-        <div class="form-group">
-            <label>Admin</label>
-            <select name="id_admin" class="form-control" required>
-                @foreach($admins as $admin)
-                    <option value="{{ $admin->id_admin }}" {{ $pengumuman->id_admin == $admin->id_admin ? 'selected' : '' }}>
-                        {{ $admin->nama }}
-                    </option>
-                @endforeach
-            </select>
-        </div>
 
-        <div class="form-group">
+        <div class="mb-3">
             <label>Judul</label>
-            <input type="text" name="judul" class="form-control" value="{{ $pengumuman->judul }}" required>
+            <input type="text" name="judul" class="form-control" value="{{ old('judul', $pengumuman->judul) }}" required>
         </div>
 
-        <div class="form-group">
+        <div class="mb-3">
             <label>Isi</label>
-            <textarea name="isi" class="form-control" required>{{ $pengumuman->isi }}</textarea>
+            <textarea name="isi" class="form-control" rows="4" required>{{ old('isi', $pengumuman->isi) }}</textarea>
         </div>
 
-        <div class="form-group">
+        <div class="mb-3">
             <label>Tanggal Terbit</label>
-            <input type="date" name="tanggal_terbit" class="form-control" value="{{ $pengumuman->tanggal_terbit }}" required>
+            <input type="date" name="tanggal_terbit" class="form-control" value="{{ old('tanggal_terbit', $pengumuman->tanggal_terbit) }}" required>
         </div>
 
-        <div class="form-group">
+        <div class="mb-3">
             <label>Tanggal Berakhir</label>
-            <input type="date" name="tanggal_berakhir" class="form-control" value="{{ $pengumuman->tanggal_berakhir }}" required>
+            <input type="date" name="tanggal_berakhir" class="form-control" value="{{ old('tanggal_berakhir', $pengumuman->tanggal_berakhir) }}" required>
         </div>
 
-        <div class="form-group">
-            <label>Foto</label>
-            @if($pengumuman->foto)
-                <div class="mb-2">
-                    <img src="{{ asset('storage/pengumuman/'.$pengumuman->foto) }}" alt="Foto Pengumuman" width="200" class="img-thumbnail">
-                </div>
+        <div class="mb-3">
+            <label>Foto Saat Ini</label><br>
+            @if ($pengumuman->foto)
+                <img src="{{ asset('storage/pengumuman/' . $pengumuman->foto) }}" width="100">
+            @else
+                Tidak ada foto
             @endif
-            <input type="file" name="foto" class="form-control-file" accept="image/*">
-            <small class="form-text text-muted">Kosongkan jika tidak ingin mengubah foto. Format: JPG, PNG. Max: 2MB.</small>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Update</button>
+        <div class="mb-3">
+            <label>Ganti Foto (opsional)</label>
+            <input type="file" name="foto" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Perbarui</button>
+        <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>
 @endsection

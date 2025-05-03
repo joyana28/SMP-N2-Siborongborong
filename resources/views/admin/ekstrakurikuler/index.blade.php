@@ -17,7 +17,7 @@
                 <th>Pembina</th>
                 <th>Jadwal</th>
                 <th>Foto</th>
-                <th>Action</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
