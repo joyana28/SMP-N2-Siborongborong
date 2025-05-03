@@ -9,20 +9,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('ekstrakurikuler', function (Blueprint $table) {
-            $table->increments('id_ekstrakurikuler');
-            $table->integer('id_admin')->unsigned();
+            $table->id('id_ekstrakurikuler');
+            $table->foreignId('id_admin')
+                  ->constrained('admin', 'id_admin')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->string('nama', 100);
             $table->text('deskripsi')->nullable();
             $table->string('pembina', 100);
             $table->string('jadwal', 100);
-            $table->string('foto', 100);
+            $table->string('foto', 100)->nullable(); 
             $table->timestamps();
-            
-            $table->foreign('id_admin')
-                  ->references('id_admin')
-                  ->on('admin')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
         });
     }
 

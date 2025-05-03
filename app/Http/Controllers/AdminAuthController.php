@@ -15,18 +15,25 @@ class AdminAuthController extends Controller
 
     public function login(Request $request)
     {
-        // Validasi input
+        // Validasi input dengan tambahan username
         $validated = $request->validate([
+            'username' => 'required|string',
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
         // Cari admin berdasarkan email
-        $admin = Admin::where('email', $request->email)->first();
+        $admin = Admin::where('email', $request->email)
+                      ->where('username', $request->username)
+                      ->first();
 
         if ($admin && Hash::check($request->password, $admin->password)) {
-            // Login berhasil, set session
-            session(['admin_logged_in' => true, 'admin_id' => $admin->id]);
+
+            session([
+                'admin_logged_in' => true, 
+                'admin_id' => $admin->id_admin,
+                'admin_username' => $admin->username
+            ]);
 
             return redirect()->route('admin.dashboard');
         } else {
@@ -36,8 +43,7 @@ class AdminAuthController extends Controller
 
     public function logout()
     {
-        session()->forget('admin_logged_in');
-        session()->forget('admin_id');
+        session()->forget(['admin_logged_in', 'admin_id', 'admin_username']);
         return redirect()->route('admin.login');
     }
 }

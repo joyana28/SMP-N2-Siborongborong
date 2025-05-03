@@ -9,21 +9,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('alumni', function (Blueprint $table) {
-            $table->increments('id_alumni');
-            $table->integer('id_admin')->unsigned();
+            $table->id('id_alumni');
+            $table->foreignId('id_admin') // ganti ini
+                  ->constrained('admin', 'id_admin')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->string('nama', 100);
             $table->text('deskripsi')->nullable();
             $table->year('tahun_lulus')->nullable();
             $table->string('foto', 100)->nullable();
             $table->timestamps();
-            
-            $table->foreign('id_admin')
-                  ->references('id_admin')
-                  ->on('admin')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
         });
-    }
+    }        
 
     public function down()
     {

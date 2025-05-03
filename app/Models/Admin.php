@@ -11,6 +11,7 @@ class Admin extends Model
 
     protected $table = 'admin';
     protected $primaryKey = 'id_admin';
+    public $incrementing = true;
     
     protected $fillable = [
         'username',

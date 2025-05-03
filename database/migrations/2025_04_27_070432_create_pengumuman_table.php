@@ -9,20 +9,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pengumuman', function (Blueprint $table) {
-            $table->increments('id_pengumuman');
-            $table->integer('id_admin')->unsigned();
+            $table->id('id_pengumuman');
+            $table->foreignId('id_admin')
+                  ->constrained('admin', 'id_admin')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
             $table->string('judul', 100);
             $table->text('isi');
             $table->date('tanggal_terbit');
             $table->date('tanggal_berakhir');
             $table->string('foto', 100)->nullable();
             $table->timestamps();
-            
-            $table->foreign('id_admin')
-                  ->references('id_admin')
-                  ->on('admin')
-                  ->onDelete('cascade')
-                  ->onUpdate('cascade');
         });
     }
 

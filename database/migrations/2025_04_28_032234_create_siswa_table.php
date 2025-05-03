@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('siswa', function (Blueprint $table) {
-            $table->increments('id_siswa');
+            $table->id('id_siswa');
             $table->string('nama_kelas', 50);
             $table->integer('jumlah_siswa');
             $table->integer('jumlah_siswa_l');
@@ -17,8 +17,10 @@ return new class extends Migration
             $table->year('tahun');
             $table->text('history')->nullable();
             $table->string('wali_kelas', 50)->nullable();
-            $table->unsignedInteger('id_admin');
-            $table->foreign('id_admin')->references('id_admin')->on('admin')->onDelete('cascade');
+            $table->foreignId('id_admin')
+                  ->constrained('admin', 'id_admin')
+                  ->onDelete('cascade');
+
             $table->timestamps();
         });
     }

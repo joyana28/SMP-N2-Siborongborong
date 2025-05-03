@@ -9,16 +9,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('kepala_sekolah', function (Blueprint $table) {
-            $table->increments('id_kepsek');
-            $table->unsignedInteger('id_admin');
+            $table->id('id_kepsek');
+            $table->foreignId('id_admin')
+                  ->constrained('admin', 'id_admin')
+                  ->onDelete('cascade');
+
             $table->string('nama', 100);
             $table->string('nip', 50);
             $table->string('golongan', 50);
             $table->string('periode', 50);
             $table->string('foto', 100)->nullable();
             $table->timestamps();
-            
-            $table->foreign('id_admin')->references('id_admin')->on('admin')->onDelete('cascade');
         });
     }
 

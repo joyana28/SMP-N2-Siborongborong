@@ -48,7 +48,6 @@ Route::get('/alumni', [AlumniController::class, 'index'])->name('alumni.index');
 
 Route::get('/formulir', [FormulirPendaftaranController::class, 'index'])->name('formulir.index');
 Route::get('/pendaftaran', [FormulirPendaftaranController::class, 'index'])->name('pendaftaran.index');
-
 Route::get('/fasilitas', [FasilitasController::class,'view'])->name('fasilitas.index');
 Route::get('/fasilitas/{fasilitas:slug}',[FasilitasController::class,'show'])->name('fasilitas.show');
 
@@ -66,32 +65,17 @@ Route::get('/kepalasekolah', [KepalaSekolahController::class, 'index'])->name('k
 |--------------------------------------------------------------------------
 */
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/adminlogin', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-
-/*
-|--------------------------------------------------------------------------
-| ADMIN LOGIN KHUSUS (MANUAL - SEDERHANA)
-|--------------------------------------------------------------------------
-*/
-Route::view('/admin/login', 'auth.login')->name('auth.login');
-
-// Proses Login Admin
-
-
-// Grup Rute Admin (tanpa middleware)
 Route::prefix('admin')->name('admin.')->group(function () {
-
-    // Dashboard Admin
     Route::get('/dashboard', function () {
-        // Cek jika admin belum login
         if (!session('admin_logged_in')) {
             return redirect()->route('admin.login');
         }
         return view('admin.dashboard');
-    })->name('dashboard');  // Nama route admin.dashboard
+    })->name('dashboard');
 
 // Rute
     Route::resource('alumni', AlumniController::class);
@@ -102,12 +86,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('kepala_sekolah', KepalaSekolahController::class);
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('prestasi', PrestasiController::class);
+    Route::resource('fasilitas', FasilitasController::class);
 
-    Route::get('/fasilitas', [FasilitasController::class,'index'])->name('fasilitas.index');
-    Route::get('/fasilitas/create', [FasilitasController::class, 'create'])->name('fasilitas.create');
-    Route::post('/fasilitas', [FasilitasController::class, 'store'])->name('fasilitas.store');
-    Route::get('/fasilitas/edit/{id}', [FasilitasController::class, 'edit'])->name('fasilitas.edit');
-    Route::put('/fasilitas/edit/{id}', [FasilitasController::class, 'update'])->name('fasilitas.edit.update');
-    Route::delete('fasilitas/{id}/delete', [FasilitasController::class, 'delete'])->name('fasilitas.index.delete');
 });
 
