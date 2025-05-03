@@ -3,92 +3,118 @@
 namespace App\Http\Controllers;
 
 use App\Models\FormulirPendaftaran;
-use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FormulirPendaftaranController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Menampilkan daftar formulir pendaftaran dengan pagination.
      */
     public function index()
     {
-        $formulirs = FormulirPendaftaran::with('admin')->get();
-        return view('admin.formulirpendaftaran.index', compact('formulirs'));
+        $formulir = FormulirPendaftaran::paginate(10);
+        return view('admin.formulirpendaftaran.index', compact('formulir'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Menampilkan form untuk menambah formulir pendaftaran baru.
      */
     public function create()
     {
-        $admins = Admin::all();
-        return view('admin.formulirpendaftaran.create', compact('admins'));
+        return view('admin.formulirpendaftaran.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Menyimpan data formulir pendaftaran baru.
      */
     public function store(Request $request)
     {
         $request->validate([
             'deskripsi' => 'required|string|max:100',
-            'formulir_pendaftaran' => 'required|string|max:100',
+            'formulir_pendaftaran' => 'required|mimes:pdf,doc,docx|max:5000',
             'tanggal_terbit' => 'required|date',
             'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
-            'id_admin' => 'required|exists:admin,id_admin',
         ]);
 
-        FormulirPendaftaran::create($request->all());
+        // Simpan file
+        $fileName = null;
+        if ($request->hasFile('formulir_pendaftaran')) {
+            $file = $request->file('formulir_pendaftaran');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/formulir', $fileName);
+        }
+
+        // Simpan ke database
+        FormulirPendaftaran::create([
+            'deskripsi' => $request->deskripsi,
+            'formulir_pendaftaran' => $fileName,
+            'tanggal_terbit' => $request->tanggal_terbit,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
+            'id_admin' => session('admin_id'),
+        ]);
 
         return redirect()->route('admin.formulirpendaftaran.index')
             ->with('success', 'Formulir pendaftaran berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(FormulirPendaftaran $formulirPendaftaran)
+    public function edit($id)
     {
-        return view('admin.formulirpendaftaran.show', compact('formulirPendaftaran'));
+    $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
+    return view('admin.formulirpendaftaran.edit', compact('formulirPendaftaran'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Memperbarui data formulir pendaftaran.
      */
-    public function edit(FormulirPendaftaran $formulirPendaftaran)
+    public function update(Request $request, $id)
     {
-        $admins = Admin::all();
-        return view('admin.formulirpendaftaran.edit', compact('formulirPendaftaran', 'admins'));
+    $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
+
+    $request->validate([
+        'deskripsi' => 'required|string|max:100',
+        'formulir_pendaftaran' => 'nullable|mimes:pdf,doc,docx|max:5000',
+        'tanggal_terbit' => 'required|date',
+        'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
+    ]);
+
+    if ($request->hasFile('formulir_pendaftaran')) {
+        if ($formulirPendaftaran->formulir_pendaftaran) {
+            Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
+        }
+
+        $file = $request->file('formulir_pendaftaran');
+        $fileName = time() . '_' . $file->getClientOriginalName();
+        $file->storeAs('public/formulir', $fileName);
+        $formulirPendaftaran->formulir_pendaftaran = $fileName;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, FormulirPendaftaran $formulirPendaftaran)
-    {
-        $request->validate([
-            'deskripsi' => 'required|string|max:100',
-            'formulir_pendaftaran' => 'required|string|max:100',
-            'tanggal_terbit' => 'required|date',
-            'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
-            'id_admin' => 'required|exists:admin,id_admin',
-        ]);
+    $formulirPendaftaran->update([
+        'deskripsi' => $request->deskripsi,
+        'formulir_pendaftaran' => $formulirPendaftaran->formulir_pendaftaran,
+        'tanggal_terbit' => $request->tanggal_terbit,
+        'tanggal_berakhir' => $request->tanggal_berakhir,
+    ]);
 
-        $formulirPendaftaran->update($request->all());
-
-        return redirect()->route('admin.formulirpendaftaran.index')
-            ->with('success', 'Formulir pendaftaran berhasil diperbarui.');
+    return redirect()->route('admin.formulirpendaftaran.index')
+        ->with('success', 'Formulir pendaftaran berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(FormulirPendaftaran $formulirPendaftaran)
-    {
-        $formulirPendaftaran->delete();
 
-        return redirect()->route('admin.formulirpendaftaran.index')
-            ->with('success', 'Formulir pendaftaran berhasil dihapus.');
+    /**
+     * Menghapus data formulir pendaftaran.
+     */
+    public function destroy($id)
+    {
+    $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
+
+    if ($formulirPendaftaran->formulir_pendaftaran) {
+        Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
+    }
+
+    $formulirPendaftaran->delete();
+
+    return redirect()->route('admin.formulirpendaftaran.index')
+        ->with('success', 'Formulir pendaftaran berhasil dihapus.');
     }
 }

@@ -3,32 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Siswa;
-use App\Models\Admin;
+use App\Models\Guru;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $siswa = Siswa::with('admin')->get();
+        $siswa = Siswa::with('admin')->get(); // boleh dihapus relasi admin kalau sudah tidak dipakai
         return view('admin.siswa.index', compact('siswa'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $admins = Admin::all();
-        return view('admin.siswa.create', compact('admins'));
+        $guru = Guru::orderBy('nama', 'asc')->get();
+        return view('admin.siswa.create', compact('guru'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -37,36 +28,32 @@ class SiswaController extends Controller
             'jumlah_siswa_l' => 'required|integer',
             'jumlah_siswa_p' => 'required|integer',
             'tahun' => 'required',
-            'wali_kelas' => 'nullable|string|max:50',
-            'id_admin' => 'required|exists:admin,id_admin',
+            'wali_kelas' => 'nullable|exists:guru,nama', // Mengambil nama wali dari guru
         ]);
 
-        Siswa::create($request->all());
+        $data = $request->only([
+            'nama_kelas',
+            'jumlah_siswa',
+            'jumlah_siswa_l',
+            'jumlah_siswa_p',
+            'tahun',
+            'wali_kelas',
+        ]);
+
+        $data['id_admin'] = session('admin_id');
+
+        Siswa::create($data);
 
         return redirect()->route('admin.siswa.index')
             ->with('success', 'Data kelas berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Siswa $siswa)
-    {
-        return view('admin.siswa.show', compact('siswa'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Siswa $siswa)
     {
-        $admins = Admin::all();
-        return view('admin.siswa.edit', compact('siswa', 'admins'));
+        $guru = Guru::orderBy('nama', 'asc')->get();
+        return view('admin.siswa.edit', compact('siswa', 'guru'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Siswa $siswa)
     {
         $request->validate([
@@ -75,19 +62,24 @@ class SiswaController extends Controller
             'jumlah_siswa_l' => 'required|integer',
             'jumlah_siswa_p' => 'required|integer',
             'tahun' => 'required',
-            'wali_kelas' => 'nullable|string|max:50',
-            'id_admin' => 'required|exists:admin,id_admin',
+            'wali_kelas' => 'nullable|exists:guru,nama',
         ]);
 
-        $siswa->update($request->all());
+        $data = $request->only([
+            'nama_kelas',
+            'jumlah_siswa',
+            'jumlah_siswa_l',
+            'jumlah_siswa_p',
+            'tahun',
+            'wali_kelas',
+        ]);
+
+        $siswa->update($data);
 
         return redirect()->route('admin.siswa.index')
             ->with('success', 'Data kelas berhasil diperbarui.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Siswa $siswa)
     {
         $siswa->delete();
