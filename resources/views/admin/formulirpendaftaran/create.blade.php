@@ -1,5 +1,3 @@
-<!-- resources/views/admin/formulirpendaftaran/create.blade.php -->
-
 @extends('layouts.backend.app')
 
 @section('content')

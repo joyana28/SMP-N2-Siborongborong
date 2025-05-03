@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('alumni', function (Blueprint $table) {
             $table->id('id_alumni');
-            $table->foreignId('id_admin') // ganti ini
+            $table->foreignId('id_admin')
                   ->constrained('admin', 'id_admin')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');

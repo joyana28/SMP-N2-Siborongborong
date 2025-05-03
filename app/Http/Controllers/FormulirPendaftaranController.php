@@ -8,26 +8,17 @@ use Illuminate\Support\Facades\Storage;
 
 class FormulirPendaftaranController extends Controller
 {
-    /**
-     * Menampilkan daftar formulir pendaftaran dengan pagination.
-     */
     public function index()
     {
         $formulir = FormulirPendaftaran::paginate(10);
         return view('admin.formulirpendaftaran.index', compact('formulir'));
     }
 
-    /**
-     * Menampilkan form untuk menambah formulir pendaftaran baru.
-     */
     public function create()
     {
         return view('admin.formulirpendaftaran.create');
     }
 
-    /**
-     * Menyimpan data formulir pendaftaran baru.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -37,7 +28,6 @@ class FormulirPendaftaranController extends Controller
             'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
         ]);
 
-        // Simpan file
         $fileName = null;
         if ($request->hasFile('formulir_pendaftaran')) {
             $file = $request->file('formulir_pendaftaran');
@@ -45,7 +35,6 @@ class FormulirPendaftaranController extends Controller
             $file->storeAs('public/formulir', $fileName);
         }
 
-        // Simpan ke database
         FormulirPendaftaran::create([
             'deskripsi' => $request->deskripsi,
             'formulir_pendaftaran' => $fileName,
@@ -60,61 +49,65 @@ class FormulirPendaftaranController extends Controller
 
     public function edit($id)
     {
-    $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
-    return view('admin.formulirpendaftaran.edit', compact('formulirPendaftaran'));
+        $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
+        return view('admin.formulirpendaftaran.edit', compact('formulirPendaftaran'));
     }
 
-    /**
-     * Memperbarui data formulir pendaftaran.
-     */
     public function update(Request $request, $id)
     {
-    $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
+        $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
 
-    $request->validate([
-        'deskripsi' => 'required|string|max:100',
-        'formulir_pendaftaran' => 'nullable|mimes:pdf,doc,docx|max:5000',
-        'tanggal_terbit' => 'required|date',
-        'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
-    ]);
+        $request->validate([
+            'deskripsi' => 'required|string|max:100',
+            'formulir_pendaftaran' => 'nullable|mimes:pdf,doc,docx|max:5000',
+            'tanggal_terbit' => 'required|date',
+            'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
+        ]);
 
-    if ($request->hasFile('formulir_pendaftaran')) {
+        if ($request->hasFile('formulir_pendaftaran')) {
+            if ($formulirPendaftaran->formulir_pendaftaran) {
+                Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
+            }
+
+            $file = $request->file('formulir_pendaftaran');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/formulir', $fileName);
+            $formulirPendaftaran->formulir_pendaftaran = $fileName;
+        }
+
+        $formulirPendaftaran->update([
+            'deskripsi' => $request->deskripsi,
+            'formulir_pendaftaran' => $formulirPendaftaran->formulir_pendaftaran,
+            'tanggal_terbit' => $request->tanggal_terbit,
+            'tanggal_berakhir' => $request->tanggal_berakhir,
+        ]);
+
+        return redirect()->route('admin.formulirpendaftaran.index')
+            ->with('success', 'Formulir pendaftaran berhasil diperbarui.');
+    }
+
+    public function showFrontend()
+    {
+        $formulir = FormulirPendaftaran::latest()->first();
+
+        if (!$formulir) {
+            return redirect()->route('formulir.index')->with('error', 'Formulir pendaftaran tidak ditemukan');
+        }
+
+        return view('formulirpendaftaran.show', compact('formulir'));
+    }
+
+    public function destroy($id)
+    {
+        $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
+
         if ($formulirPendaftaran->formulir_pendaftaran) {
             Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
         }
 
-        $file = $request->file('formulir_pendaftaran');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $file->storeAs('public/formulir', $fileName);
-        $formulirPendaftaran->formulir_pendaftaran = $fileName;
-    }
+        $formulirPendaftaran->delete();
 
-    $formulirPendaftaran->update([
-        'deskripsi' => $request->deskripsi,
-        'formulir_pendaftaran' => $formulirPendaftaran->formulir_pendaftaran,
-        'tanggal_terbit' => $request->tanggal_terbit,
-        'tanggal_berakhir' => $request->tanggal_berakhir,
-    ]);
-
-    return redirect()->route('admin.formulirpendaftaran.index')
-        ->with('success', 'Formulir pendaftaran berhasil diperbarui.');
-    }
-
-
-    /**
-     * Menghapus data formulir pendaftaran.
-     */
-    public function destroy($id)
-    {
-    $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
-
-    if ($formulirPendaftaran->formulir_pendaftaran) {
-        Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
-    }
-
-    $formulirPendaftaran->delete();
-
-    return redirect()->route('admin.formulirpendaftaran.index')
-        ->with('success', 'Formulir pendaftaran berhasil dihapus.');
+        return redirect()->route('admin.formulirpendaftaran.index')
+            ->with('success', 'Formulir pendaftaran berhasil dihapus.');
     }
 }

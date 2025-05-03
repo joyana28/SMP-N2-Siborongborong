@@ -43,4 +43,3 @@ class VisiMisiController extends Controller
         return response()->json(['message' => 'Deleted']);
     }
 }
-

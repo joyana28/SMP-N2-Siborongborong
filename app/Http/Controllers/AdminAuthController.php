@@ -10,27 +10,24 @@ class AdminAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login'); // Pastikan ada view login.blade.php
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
-        // Validasi input dengan tambahan username
         $validated = $request->validate([
             'username' => 'required|string',
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Cari admin berdasarkan email
         $admin = Admin::where('email', $request->email)
                       ->where('username', $request->username)
                       ->first();
 
         if ($admin && Hash::check($request->password, $admin->password)) {
-
             session([
-                'admin_logged_in' => true, 
+                'admin_logged_in' => true,
                 'admin_id' => $admin->id_admin,
                 'admin_username' => $admin->username
             ]);

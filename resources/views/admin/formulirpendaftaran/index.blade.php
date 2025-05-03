@@ -1,5 +1,3 @@
-<!-- resources/views/admin/formulirpendaftaran/index.blade.php -->
-
 @extends('layouts.backend.app')
 
 @section('content')
@@ -42,6 +40,5 @@
         </tbody>
     </table>
 
-    <!-- Pagination Links -->
     {{ $formulir->links() }}
 @endsection

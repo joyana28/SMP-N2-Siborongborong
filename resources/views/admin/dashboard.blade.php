@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a href="{{ route('ekstrakurikuler.index') }}" class="text-white text-decoration-none">Lihat Detail</a>
+                    <a href="{{ route('admin.ekstrakurikuler.index') }}" class="text-white text-decoration-none">Lihat Detail</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a href="{{ route('prestasi.index') }}" class="text-white text-decoration-none">Lihat Detail</a>
+                    <a href="{{ route('admin.prestasi.index') }}" class="text-white text-decoration-none">Lihat Detail</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('pengumuman.index') }}" class="btn btn-primary btn-sm">Lihat Semua</a>
+                    <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-primary btn-sm">Lihat Semua</a>
                 </div>
             </div>
         </div>

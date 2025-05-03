@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container-fluid">
-    <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tambah Alumni</h1>
         <a href="{{ route('admin.alumni.index') }}" class="btn btn-secondary">
@@ -106,7 +105,6 @@
     }
 
     $(document).ready(function() {
-        // Initialize any plugins or additional functionality here
         if (typeof bsCustomFileInput !== 'undefined') {
             bsCustomFileInput.init();
         }

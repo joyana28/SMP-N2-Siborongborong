@@ -12,7 +12,7 @@ class Admin extends Model
     protected $table = 'admin';
     protected $primaryKey = 'id_admin';
     public $incrementing = true;
-    
+
     protected $fillable = [
         'username',
         'email',
@@ -38,18 +38,22 @@ class Admin extends Model
     {
         return $this->hasMany(KepalaSekolah::class, 'id_admin');
     }
+
+    // Admin punya satu Guru
     public function guru()
     {
-        return $this->hasOne(Guru::class, 'id_admin', );
+        return $this->hasOne(Guru::class, 'id_admin');
     }
 
+    // Admin punya banyak Siswa
     public function siswa()
     {
         return $this->hasMany(Siswa::class, 'id_admin', 'id_admin');
     }
 
+    // Admin punya banyak Formulir Pendaftaran
     public function formulirPendaftaran()
-{
-    return $this->hasMany(FormulirPendaftaran::class, 'id_admin', 'id_admin');
-}
+    {
+        return $this->hasMany(FormulirPendaftaran::class, 'id_admin', 'id_admin');
+    }
 }

@@ -1,4 +1,3 @@
-{{-- resources/views/admin/kepala_sekolah/create.blade.php --}}
 @extends('layouts.backend.app')
 
 @section('title', 'Tambah Kepala Sekolah')

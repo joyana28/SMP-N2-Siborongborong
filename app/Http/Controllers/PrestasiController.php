@@ -103,6 +103,18 @@ class PrestasiController extends Controller
             ->with('success', 'Data prestasi berhasil diperbarui');
     }
 
+    public function akademik()
+    {
+        $prestasiAkademik = Prestasi::where('jenis', 'akademik')->paginate(10);
+        return view('prestasi.akademik', compact('prestasiAkademik'));
+    }
+
+    public function nonAkademik()
+    {
+        $prestasiNonAkademik = Prestasi::where('jenis', 'non-akademik')->paginate(10);
+        return view('prestasi.nonakademik', compact('prestasiNonAkademik'));
+    }
+
     public function destroy($id)
     {
         $prestasi = Prestasi::findOrFail($id);

@@ -13,7 +13,6 @@ return new class extends Migration
             $table->foreignId('id_admin')
                   ->constrained('admin', 'id_admin')
                   ->onDelete('cascade');
-
             $table->string('nama', 100);
             $table->string('nip', 50);
             $table->string('golongan', 50);

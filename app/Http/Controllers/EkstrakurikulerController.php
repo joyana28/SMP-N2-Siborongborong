@@ -46,7 +46,7 @@ class EkstrakurikulerController extends Controller
         }
 
         Ekstrakurikuler::create([
-            'id_admin' => session('admin_id'), 
+            'id_admin' => session('admin_id'),
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
             'pembina' => $request->pembina,

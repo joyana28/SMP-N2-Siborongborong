@@ -22,38 +22,49 @@ class AlumniController extends Controller
     }
 
     public function store(Request $request)
-    {   
+    {
         $validator = Validator::make($request->all(), [
-        'nama' => 'required|string|max:100',
-        'tahun_lulus' => 'nullable|date_format:Y',
-        'deskripsi' => 'nullable|string',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+            'nama' => 'required|string|max:100',
+            'tahun_lulus' => 'nullable|date_format:Y',
+            'deskripsi' => 'nullable|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    if ($validator->fails()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $foto = null;
+        if ($request->hasFile('foto')) {
+            $fotoFile = $request->file('foto');
+            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
+            $fotoFile->storeAs('public/alumni', $fotoName);
+            $foto = $fotoName;
+        }
+
+        Alumni::create([
+            'id_admin' => session('admin_id'),
+            'nama' => $request->nama,
+            'tahun_lulus' => $request->tahun_lulus,
+            'deskripsi' => $request->deskripsi,
+            'foto' => $foto,
+        ]);
+
+        return redirect()->route('admin.alumni.index')
+            ->with('success', 'Data alumni berhasil ditambahkan!');
     }
 
-    $foto = null;
-    if ($request->hasFile('foto')) {
-        $fotoFile = $request->file('foto');
-        $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-        $fotoFile->storeAs('public/alumni', $fotoName);
-        $foto = $fotoName;
-    }
+    public function showFrontend()
+    {
+        $alumni = Alumni::latest()->first();
 
-    Alumni::create([
-        'id_admin' => session('admin_id'), 
-        'nama' => $request->nama,
-        'tahun_lulus' => $request->tahun_lulus,
-        'deskripsi' => $request->deskripsi,
-        'foto' => $foto,
-    ]);
+        if (!$alumni) {
+            return redirect()->route('alumni.index')->with('error', 'Alumni tidak ditemukan');
+        }
 
-    return redirect()->route('admin.alumni.index')
-        ->with('success', 'Data alumni berhasil ditambahkan!');
+        return view('alumni.show', compact('alumni'));
     }
 
     public function edit($id)

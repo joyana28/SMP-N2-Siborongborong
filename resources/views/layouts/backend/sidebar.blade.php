@@ -8,22 +8,22 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('alumni.index') }}" class="nav-link {{ request()->routeIs('admin.alumni') ? 'active' : '' }}">
+                <a href="{{ route('admin.alumni.index') }}" class="nav-link {{ request()->routeIs('admin.alumni') ? 'active' : '' }}">
                     <i class="fas fa-user-graduate me-2"></i> Alumni
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('ekstrakurikuler.index') }}" class="nav-link {{ request()->routeIs('admin.ekstrakurikuler') ? 'active' : '' }}">
+                <a href="{{ route('admin.ekstrakurikuler.index') }}" class="nav-link {{ request()->routeIs('admin.ekstrakurikuler') ? 'active' : '' }}">
                     <i class="fas fa-running me-2"></i> Ekstrakurikuler
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('fasilitas.index') }}" class="nav-link {{ request()->routeIs('admin.fasilitas') ? 'active' : '' }}">
+                <a href="{{ route('admin.fasilitas.index') }}" class="nav-link {{ request()->routeIs('admin.fasilitas') ? 'active' : '' }}">
                     <i class="fas fa-building me-2"></i> Fasilitas
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('formulir.index') }}" class="nav-link {{ request()->routeIs('admin.formulir') ? 'active' : '' }}">
+                <a href="{{ route('admin.formulirpendaftaran.index') }}" class="nav-link {{ request()->routeIs('admin.formulir') ? 'active' : '' }}">
                     <i class="fas fa-file-alt me-2"></i> Formulir Pendaftaran
                 </a>
             </li>
@@ -38,17 +38,17 @@
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('kepalasekolah.index') }}" class="nav-link {{ request()->routeIs('admin.kepalasekolah') ? 'active' : '' }}">
+                <a href="{{ route('admin.kepala_sekolah.index') }}" class="nav-link {{ request()->routeIs('admin.kepalasekolah') ? 'active' : '' }}">
                     <i class="fas fa-user-tie me-2"></i> Kepala Sekolah
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('pengumuman.index') }}" class="nav-link {{ request()->routeIs('admin.pengumuman') ? 'active' : '' }}">
+                <a href="{{ route('admin.pengumuman.index') }}" class="nav-link {{ request()->routeIs('admin.pengumuman') ? 'active' : '' }}">
                     <i class="fas fa-bullhorn me-2"></i> Pengumuman
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a href="{{ route('prestasi.index') }}" class="nav-link {{ request()->routeIs('admin.prestasi') ? 'active' : '' }}">
+                <a href="{{ route('admin.prestasi.index') }}" class="nav-link {{ request()->routeIs('admin.prestasi') ? 'active' : '' }}">
                     <i class="fas fa-trophy me-2"></i> Prestasi
                 </a>
             </li>

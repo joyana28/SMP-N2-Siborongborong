@@ -1,4 +1,3 @@
-{{-- resources/views/admin/kepala_sekolah/edit.blade.php --}}
 @extends('layouts.backend.app')
 
 @section('title', 'Edit Kepala Sekolah')

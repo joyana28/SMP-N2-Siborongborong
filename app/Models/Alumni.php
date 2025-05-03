@@ -11,7 +11,7 @@ class Alumni extends Model
 
     protected $table = 'alumni';
     protected $primaryKey = 'id_alumni';
-    
+
     protected $fillable = [
         'id_admin',
         'nama',
@@ -19,10 +19,9 @@ class Alumni extends Model
         'tahun_lulus',
         'foto'
     ];
-    
-    // Make sure no attribute is guarded to allow mass assignment
+
     protected $guarded = [];
-    
+
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin', 'id_admin');

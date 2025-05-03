@@ -21,7 +21,6 @@ class Pengumuman extends Model
         'foto',
     ];
 
-    // Relationships
     public function admin()
     {
         return $this->belongsTo(Admin::class, 'id_admin');

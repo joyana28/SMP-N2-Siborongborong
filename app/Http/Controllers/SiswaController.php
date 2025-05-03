@@ -10,7 +10,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $siswa = Siswa::with('admin')->get(); // boleh dihapus relasi admin kalau sudah tidak dipakai
+        $siswa = Siswa::with('admin')->get();
         return view('admin.siswa.index', compact('siswa'));
     }
 
@@ -28,7 +28,7 @@ class SiswaController extends Controller
             'jumlah_siswa_l' => 'required|integer',
             'jumlah_siswa_p' => 'required|integer',
             'tahun' => 'required',
-            'wali_kelas' => 'nullable|exists:guru,nama', // Mengambil nama wali dari guru
+            'wali_kelas' => 'nullable|exists:guru,nama',
         ]);
 
         $data = $request->only([
@@ -78,6 +78,17 @@ class SiswaController extends Controller
 
         return redirect()->route('admin.siswa.index')
             ->with('success', 'Data kelas berhasil diperbarui.');
+    }
+
+    public function showFrontend()
+    {
+        $siswa = Siswa::latest()->first();
+
+        if (!$siswa) {
+            return redirect()->route('siswa.index')->with('error', 'Kelas tidak ditemukan');
+        }
+
+        return view('siswa.show', compact('siswa'));
     }
 
     public function destroy(Siswa $siswa)
