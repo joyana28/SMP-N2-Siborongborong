@@ -4,11 +4,11 @@
 <div class="container">
     <h1>Data Prestasi</h1>
     <a href="{{ route('admin.prestasi.create') }}" class="btn btn-primary mb-3">Tambah Prestasi</a>
-
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
-
     <table class="table table-bordered">
     <thead>
         <tr>
@@ -38,7 +38,7 @@
                 </td>
                 <td>
                     <a href="{{ route('admin.prestasi.edit', $item->id_prestasi) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('admin.prestasi.destroy', $item->id_prestasi) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                    <form action="{{ route('admin.prestasi.destroy', $item->id_prestasi) }}" method="POST" class="form-hapus d-inline">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm">Hapus</button>
@@ -52,4 +52,40 @@
 </table>
     {{ $prestasi->links() }}
 </div>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!-- Konfirmasi hapus -->
+<script>
+    document.querySelectorAll('.form-hapus').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: "Data prestasi akan dihapus permanen.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#002B5B',
+                cancelButtonColor: '#E8AA42',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal',
+                background: '#fdfdfd',
+                color: '#333',
+                customClass: {
+                    popup: 'rounded-4 shadow',
+                    title: 'fw-bold',
+                    confirmButton: 'px-4 py-2',
+                    cancelButton: 'px-4 py-2'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
 @endsection

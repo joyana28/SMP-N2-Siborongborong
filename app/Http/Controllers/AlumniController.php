@@ -61,7 +61,7 @@ class AlumniController extends Controller
         $alumni = Alumni::latest()->first();
 
         if (!$alumni) {
-            return redirect()->route('alumni.index')->with('error', 'Alumni tidak ditemukan');
+            return redirect()->route('alumni.show')->with('error', 'Alumni tidak ditemukan');
         }
 
         return view('alumni.show', compact('alumni'));
