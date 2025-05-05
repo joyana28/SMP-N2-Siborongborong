@@ -74,56 +74,6 @@
     <!-- Yellow Strip -->
     <div class="yellow-strip"></div>
     
-    <!-- History Section -->
-    <div class="history-section">
-        <div class="history-container">
-            <div class="history-text">
-                <h2>Who We are & History</h2>
-                <p>
-                    Vestibule eleifend semper ultricies. Morbi
-                    quis magna in metus vulputate aliquet. Donec
-                    a diam massa. Sed at diam ut dolor accumsan
-                    dignissim. Fusce ut magna ut libero ultricies
-                    hendrerit id volutpat. Fusce eget mi hendrerit,
-                    semper turpis sed volutpat. Amet, arcu id
-                    turpis a luctus consequat.
-                </p>
-            </div>
-            <div class="history-text">
-                <p>
-                    Duis hendrerit lobortis. Praesent porta enim
-                    quis lacinia at nisl tempor dolor. Vestibulum
-                    diam metus, malesuada a neque lobortis,
-                    consectetur porttitor justo. Mauris feugiat
-                    ipsum et velit molestie et commodo volutpat
-                    scelerisque sit amet. Donec rutrum pulvinar
-                    accumsan ut at rhoncus velit porttitor.
-                </p>
-            </div>
-        </div>
-    </div>
+  
     
-    <!-- Achievement Section -->
-    <div class="achievement-section">
-        <div class="container">
-            <h2>Our Achievement</h2>
-            <div class="achievement-dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-            <p class="achievement-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, et labore, fugiat non informative stupit, animi quisquam distinctio ipsa amet.
-            </p>
-            <div class="awards">
-                <div class="award-icon">ISO 9001</div>
-                <div class="award-icon">AWARD 1</div>
-                <div class="award-icon">AWARD 2</div>
-                <div class="award-icon">QR CODE</div>
-                <div class="award-icon">CERTIFIED</div>
-            </div>
-        </div>
-    </div>
 
