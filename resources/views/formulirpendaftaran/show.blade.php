@@ -190,7 +190,7 @@
 <div class="container py-5">
     <div class="page-header text-center">
         <h2>Penerimaan Siswa Baru</h2>
-        <p class="mb-0">SMP NN2 Siborongborong Tahun Ajaran {{ date('Y') }}/{{ date('Y')+1 }}</p>
+        <p class="mb-0">SMP N2 Siborongborong Tahun Ajaran {{ date('Y') }}/{{ date('Y')+1 }}</p>
     </div>
     
     <div class="lead-paragraph text-center">
