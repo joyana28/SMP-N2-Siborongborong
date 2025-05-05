@@ -34,10 +34,11 @@
                     <td>{{ $s->wali_kelas ?? '-' }}</td>
                     <td>
                         <a href="{{ route('admin.siswa.edit', $s->id_siswa) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('admin.siswa.destroy', $s->id_siswa) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                        <!-- Perbaiki form dengan menambahkan class 'form-hapus' -->
+                        <form action="{{ route('admin.siswa.destroy', $s->id_siswa) }}" method="POST" class="form-hapus d-inline">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                         </form>
                     </td>
                 </tr>
@@ -49,4 +50,40 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Konfirmasi hapus dengan SweetAlert -->
+<script>
+    // Pastikan semua form dengan class 'form-hapus' memiliki event listener
+    document.querySelectorAll('.form-hapus').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();  // Mencegah submit form langsung
+
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: "Data kelas ini akan dihapus permanen.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#002B5B',
+                cancelButtonColor: '#E8AA42',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal',
+                background: '#fdfdfd',
+                color: '#333',
+                customClass: {
+                    popup: 'rounded-4 shadow',
+                    title: 'fw-bold',
+                    confirmButton: 'px-4 py-2',
+                    cancelButton: 'px-4 py-2'
+                }
+            }).then((result) => {
+                // Jika konfirmasi, submit form
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
 @endsection

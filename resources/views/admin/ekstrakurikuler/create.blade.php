@@ -47,8 +47,8 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        <button type="submit" class="btn btn-primary mb-3">Tambah Ekstrakurikuler</button>
 
-        <button type="submit" class="btn btn-primary mt-3">Tambah Ekstrakurikuler</button>
     </form>
 </div>
 @endsection
