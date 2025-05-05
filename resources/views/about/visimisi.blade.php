@@ -4,47 +4,72 @@
 <link rel="stylesheet" href="{{ asset('css/visimisi.css') }}">
 @section('content')
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="hero-text">
-                <h1 class="title">Visi & Misi Sekolah</h1>
-                <p class="hero-description">Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global melalui pendidikan yang inovatif dan inklusif.</p>
-            </div>
+    <section class="visimisi-hero-section">
+        <div class="visimisi-hero-text">
+            <h1 class="visimisi-title">Visi & Misi Sekolah</h1>
+            <p class="visimisi-description">Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global melalui pendidikan yang inovatif dan inklusif.</p>
         </div>
     </section>
     
-    <!-- About Content Section -->
-    <div class="about-content ">
-        <div class="container">
-            <div class="about-grid">
-                <div class="image-stack">
-                    <img src="{{ asset('images/worker1.jpg') }}" alt="Worker in workshop" class="about-image">
-                    <img src="{{ asset('images/worker2.jpg') }}" alt="Worker with tools" class="about-image">
-                </div>
-                <div class="about-text">
-                    <h2>About Us</h2>
-                    <div class="orange-dots">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-                    <p>
-                        Aliquam quis ex dui ea magna venenatis sed a dolor diam. Nam 
-                        cursus a diam tincidunt, gravida urnam malesuada ut.
-                    </p>
-                    <p>
-                        Lorem sit amet sit amet ipsum dolor elit. Proin tempus, 
-                        turpis semper a magna, rutrum aliquet nulla ut nibh pulvinar 
-                        dui. Sed ac vestibulum diam. Nulla dapibus sapien sed lectus 
-                        interdum commodo. Donec interdum magna nec mi vestibulum 
-                        hendrerit et.
-                    </p>
-                    <a href="#" class="about-btn">Discover More</a>
-                </div>
+    <!-- About Content Section (Vision, Mission, Goals) -->
+    <section class="vmg-section">
+      <div class="vmg-grid">
+        <!-- Left: Vision, Mission, Goals -->
+        <div class="vmg-left">
+          <div class="vmg-title-group">
+            <div class="vmg-title-line"></div>
+            <div class="vmg-title-diamonds">
+              <span class="diamond"></span>
+              <span class="diamond"></span>
+              <span class="diamond"></span>
             </div>
+            <div class="vmg-title-line"></div>
+          </div>
+          <h2 class="vmg-main-title">Visi & Misi</h2>
+          <div class="vmg-list">
+            <div class="vmg-item vmg-animate">
+              <div class="vmg-icon diamond-bg">
+                <!-- Vision Icon -->
+                <svg width="32" height="32" fill="none" stroke="#1a56a7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M2 12s3-7 10-7 10 7 10 7"/></svg>
+              </div>
+              <div>
+                <div class="vmg-item-title">Visi</div>
+                <div class="vmg-item-desc">Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global.</div>
+              </div>
+            </div>
+            <div class="vmg-item vmg-animate">
+              <div class="vmg-icon diamond-bg">
+                <!-- Mission Icon -->
+                <svg width="32" height="32" fill="none" stroke="#f3b11f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2v10"/><circle cx="12" cy="17" r="1"/><path d="M12 22v-2"/></svg>
+              </div>
+              <div>
+                <div class="vmg-item-title">Misi</div>
+                <div class="vmg-item-desc">1. Menyelenggarakan pendidikan berkualitas dan inovatif.<br>2. Membentuk karakter dan akhlak mulia.<br>3. Mengembangkan potensi dan kreativitas siswa.<br>4. Mempersiapkan siswa menghadapi tantangan global.</div>
+              </div>
+            </div>
+            <div class="vmg-item vmg-animate">
+              <div class="vmg-icon diamond-bg">
+                <!-- Goals Icon -->
+                <svg width="32" height="32" fill="none" stroke="#1a56a7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div>
+                <div class="vmg-item-title">Tujuan</div>
+                <div class="vmg-item-desc">Mewujudkan lulusan yang cerdas, berdaya saing, berkarakter, dan siap berkontribusi positif di masyarakat.</div>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+        <!-- Right: Diamond Images -->
+        <div class="vmg-right">
+          <div class="vmg-diamond-grid">
+            <div class="diamond-img diamond1"><img src="{{ asset('images/Hari Guru.png') }}" alt="img1"></div>
+            <div class="diamond-img diamond2"><img src="{{ asset('images/kumpul.png') }}" alt="img2"></div>
+            <div class="diamond-img diamond3"><img src="{{ asset('images/upacara.png') }}" alt="img3"></div>
+            <div class="diamond-img diamond4"><img src="{{ asset('images/penghargaan.png') }}" alt="img4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
     
     <!-- Yellow Strip -->
     <div class="yellow-strip"></div>
@@ -73,33 +98,6 @@
                     ipsum et velit molestie et commodo volutpat
                     scelerisque sit amet. Donec rutrum pulvinar
                     accumsan ut at rhoncus velit porttitor.
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Vision & Mission Section -->
-    <div class="vision-mission">
-        <div class="vision-mission-container">
-            <div class="vm-box">
-                <h3>Vision</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. In quo
-                    tempora vitae facere commodo veritatis
-                    venitur dolores rem.
-                </p>
-            </div>
-            <div class="vm-box" style="position: relative;">
-                <img src="{{ asset('images/worker-mask.jpg') }}" alt="Worker with mask" style="width: 100%; height: auto; border-radius: 5px;">
-            </div>
-            <div class="vm-box">
-                <h3>Mission</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. In quo
-                    tempora vitae facere commodo veritatis
-                    venitur dolores rem.
                 </p>
             </div>
         </div>

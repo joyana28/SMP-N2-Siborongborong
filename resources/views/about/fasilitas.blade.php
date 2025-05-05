@@ -15,7 +15,7 @@
 
 <!-- Section Intro Fasilitas -->
 <section class="section-intro-fasilitas">
-    <div class="intro-grid">
+    <div class="intro-grid intro-grid-align-top">
         <!-- Left: Overlapping Images -->
         <div class="intro-images">
             <img src="{{ asset('images/pp 2.png') }}" alt="Fasilitas 1" class="intro-img img-main">
@@ -23,36 +23,47 @@
         </div>
         <!-- Right: Content -->
         <div class="intro-content">
-            <div class="intro-logo">
-                <img src="https://svgshare.com/i/13dA.svg" alt="Logo" />
+            <div class="intro-label">Tentang Fasilitas</div>
+            <h2 class="intro-title">Fasilitas Unggulan untuk Mendukung Prestasi Siswa</h2>
+            <p class="intro-desc">SMPN 2 Siborongborong menyediakan berbagai fasilitas modern dan lengkap untuk menunjang proses belajar mengajar, pengembangan karakter, dan kreativitas siswa. Setiap fasilitas dirancang untuk memberikan pengalaman belajar yang menyenangkan, aman, dan inspiratif.</p>
+            <div class="intro-features-animated intro-goals-list">
+                <div class="intro-goal animated-goal">
+                    <span class="goal-icon">
+                        <!-- Icon bintang/achievement -->
+                        <svg width="28" height="28" fill="none" stroke="#f3b11f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/></svg>
+                    </span>
+                    <span class="goal-text"><strong>Fasilitas ini akan memberikan pengalaman belajar yang menyenangkan</strong> melalui lingkungan yang aman, nyaman, dan inspiratif.</span>
+                </div>
+                <div class="intro-goal animated-goal">
+                    <span class="goal-icon">
+                        <!-- Icon lampu/ide -->
+                        <svg width="28" height="28" fill="none" stroke="#1a56a7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9 12a3 3 0 0 1 6 0c0 1.5-1.5 2.5-3 4-1.5-1.5-3-2.5-3-4z"/><line x1="12" y1="18" x2="12" y2="20"/><line x1="9" y1="20" x2="15" y2="20"/></svg>
+                    </span>
+                    <span class="goal-text"><strong>Fasilitas ini mendorong kreativitas dan inovasi siswa</strong> dengan menyediakan sarana untuk bereksplorasi dan berkreasi.</span>
+                </div>
+                <div class="intro-goal animated-goal">
+                    <span class="goal-icon">
+                        <!-- Icon trophy/prestasi -->
+                        <svg width="28" height="28" fill="none" stroke="#f3b11f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M17 5V3H7v2a5 5 0 0 0 10 0z"/><path d="M21 7a2 2 0 0 1-2 2h-1M3 7a2 2 0 0 0 2 2h1"/></svg>
+                    </span>
+                    <span class="goal-text"><strong>Fasilitas ini mendukung peningkatan prestasi akademik dan non-akademik</strong> dengan ruang belajar, laboratorium, dan area olahraga yang memadai.</span>
+                </div>
+                <div class="intro-goal animated-goal">
+                    <span class="goal-icon">
+                        <!-- Icon people/kolaborasi -->
+                        <svg width="28" height="28" fill="none" stroke="#1a56a7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><circle cx="12" cy="7" r="3"/><path d="M7 17v-2a5 5 0 0 1 10 0v2"/></svg>
+                    </span>
+                    <span class="goal-text"><strong>Fasilitas ini membangun karakter dan keterampilan sosial</strong> melalui ruang kolaborasi, kegiatan ekstrakurikuler, dan pembinaan keagamaan.</span>
+                </div>
+                <div class="intro-goal animated-goal">
+                    <span class="goal-icon">
+                        <!-- Icon globe/digital -->
+                        <svg width="28" height="28" fill="none" stroke="#f3b11f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="10" ry="4"/><path d="M2 12a10 10 0 0 0 20 0"/></svg>
+                    </span>
+                    <span class="goal-text"><strong>Fasilitas ini mempersiapkan siswa menghadapi era global dan digital</strong> dengan akses teknologi dan literasi informasi yang memadai.</span>
+                </div>
             </div>
-            <div class="intro-label">About Your Company</div>
-            <h2 class="intro-title">We're Partner of Your Innovations</h2>
-            <p class="intro-desc">Infotech is a provider of IT consulting and software development services. We have helped organizations and companies improve business performance & enhance their competitiveness.</p>
-            <div class="intro-stats-features">
-                <div class="intro-stat-box">
-                    <div class="intro-stat-number">6800<sup>+</sup></div>
-                    <div class="intro-stat-label">Satisfied Clients</div>
-                </div>
-                <div class="intro-feature">
-                    <div class="intro-feature-icon">
-                        <svg width="32" height="32" fill="none" stroke="#6C63FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                    </div>
-                    <div class="intro-feature-label">Website Development</div>
-                </div>
-                <div class="intro-feature">
-                    <div class="intro-feature-icon">
-                        <svg width="32" height="32" fill="none" stroke="#6C63FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 8 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 8a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 8 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09c0 .66.39 1.26 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 8c.66 0 1.26.39 1.51 1H21a2 2 0 1 1 0 4h-.09c-.25 0-.48.09-.68.24"/></svg>
-                    </div>
-                    <div class="intro-feature-label">Internal Networking</div>
-                </div>
-            </div>
-            <ul class="intro-bullets">
-                <li><span class="intro-bullet-dot"></span>Bringing new IT solutions to the market</li>
-                <li><span class="intro-bullet-dot"></span>To be included the list of the best 100 IT companies</li>
-                <li><span class="intro-bullet-dot"></span>Our company have 300 IT senior professionals.</li>
-            </ul>
-            <a href="#" class="intro-btn">Learn More</a>
+            <a href="#" class="intro-btn">Lihat Semua Fasilitas</a>
         </div>
     </div>
 </section>
@@ -85,9 +96,13 @@
     <button class="slider-nav slider-nav-right" aria-label="Selanjutnya">&#10095;</button>
   </div>
 </section>
+<!-- Judul Profil Sekolah -->
+<div class="profil-sekolah-title">
+  <h2>Fasilitas Sekolah</h2>
+  <div class="profil-sekolah-underline"></div>
+</div>
 
 <div class="container py-5">
-    <h2 class="text-center mb-4">Fasilitas Sekolah</h2>
     @if ($fasilitas->count())
         <div class="row">
             @foreach ($fasilitas as $item)
