@@ -108,12 +108,12 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-about">
-                <img src="{{ asset('images/logo-white.png') }}" alt="SMPN 2 Siborongborong">
+                <img src="{{ asset('images/smpn2.jpg') }}" alt="SMPN 2 Siborongborong">
                 <p>SMP Negeri 2 Siborongborong adalah sekolah menengah pertama yang berkomitmen dalam mencetak generasi unggul, berkarakter, dan berprestasi.</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/share/1A4AgL1n79/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8w5nlddtNuE&_r=1"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
 
