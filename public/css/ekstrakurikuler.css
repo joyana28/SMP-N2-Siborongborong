@@ -1,0 +1,414 @@
+/* Hero Section Ekstrakurikuler */
+.ekstra-hero-section {
+    width: 100%;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a2744 0%, #1a56a7 25%, #0d3158 50%, #1a56a7 75%, #0a2744 100%);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite, revealFromSides 1.5s cubic-bezier(0.85,0,0.15,1) forwards;
+    transform-origin: center;
+    perspective: 1000px;
+}
+.ekstra-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, #1a56a7 0%, #0a2744 100%);
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: fasilitasHeroReveal 1.2s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+.ekstra-hero-text {
+    max-width: 650px;
+    padding-left: 56px;
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    color: #fff;
+}
+.ekstra-hero-text::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 80%;
+    background-color: #f3b11f;
+    border-radius: 3px;
+    opacity: 1;
+    animation: slideTextFromLeft 0.8s ease-out forwards;
+    animation-delay: 1s;
+}
+.ekstra-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-transform: capitalize;
+    opacity: 0;
+    animation: slideTextFromLeft 1.2s ease-out forwards;
+    animation-delay: 0.5s;
+}
+.ekstra-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.9);
+    max-width: 500px;
+    margin-top: 20px;
+    padding-left: 2px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: slideTextFromBottom 1.2s ease-out forwards;
+    animation-delay: 1.1s;
+}
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes revealFromSides {
+    0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 100% 100%, 100% 100%, 100% 0); transform: scaleX(0); }
+    40% { clip-path: polygon(0 0, 15% 0, 15% 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 85% 100%, 85% 100%, 100% 0); transform: scaleX(0.5); }
+    100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0); transform: scaleX(1); }
+}
+@keyframes fasilitasHeroReveal {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+@keyframes slideTextFromLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes slideTextFromBottom {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Intro Section Ekstrakurikuler */
+.ekstra-intro-section {
+  background: #fff;
+  padding: 60px 0 60px 0;
+}
+.ekstra-intro-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.ekstra-intro-imgwrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ekstra-img-shape {
+  position: relative;
+  width: 420px;
+  height: 340px;
+  background: #fff;
+  border-radius: 120px 60px 120px 60px / 80px 120px 80px 120px;
+  box-shadow: 0 8px 32px #1a56a733, 0 0 0 0 #f3b11f;
+  border: 8px solid #1a56a7;
+  outline: 4px solid #f3b11f;
+  outline-offset: -12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: box-shadow 0.5s, transform 0.5s cubic-bezier(0.7,0,0.3,1), outline 0.4s;
+  animation: ekstraWave 4s infinite linear alternate;
+}
+.ekstra-img-main {
+  width: 98%;
+  height: 96%;
+  object-fit: cover;
+  border-radius: 100px 50px 100px 50px / 60px 100px 60px 100px;
+  box-shadow: 0 4px 24px #1a56a733;
+  transition: filter 0.5s, transform 0.5s cubic-bezier(0.7,0,0.3,1);
+}
+.ekstra-img-shape:hover {
+  box-shadow: 0 24px 64px #1a56a7cc, 0 0 0 16px #f3b11faa;
+  outline: 8px solid #f3b11f;
+  transform: scale(1.07) rotate(-2deg) skewY(-2deg);
+  z-index: 10;
+  animation-play-state: paused;
+}
+.ekstra-img-shape:hover .ekstra-img-main {
+  filter: brightness(1.12) saturate(1.15);
+  transform: scale(1.06) rotate(1deg);
+}
+.ekstra-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #f3b11f 60%, #1a56a7 100%);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 24px #1a56a733;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
+  outline: none;
+}
+.ekstra-play-btn .play-icon {
+  display: block;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  mask: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%231a56a7" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8,5 19,12 8,19"/></svg>') center/contain no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%231a56a7" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8,5 19,12 8,19"/></svg>') center/contain no-repeat;
+  transition: background 0.3s;
+}
+.ekstra-play-btn:hover {
+  background: linear-gradient(135deg, #1a56a7 60%, #f3b11f 100%);
+  box-shadow: 0 8px 32px #f3b11faa;
+  transform: translate(-50%, -50%) scale(1.12) rotate(8deg);
+}
+.ekstra-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+}
+.ekstra-intro-label {
+  color: #1a56a7;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: introLabelIn 0.7s 0.2s cubic-bezier(0.7,0,0.3,1) forwards;
+  transition: color 0.3s;
+}
+@keyframes introLabelIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.ekstra-intro-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #1a56a7;
+  margin-bottom: 10px;
+  line-height: 1.15;
+  background: linear-gradient(90deg, #1a56a7 60%, #f3b11f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: introTitleIn 0.8s 0.4s cubic-bezier(0.7,0,0.3,1) forwards;
+  transition: filter 0.3s, transform 0.3s;
+}
+@keyframes introTitleIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ekstra-intro-desc {
+  color: #1a56a7;
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+  max-width: 500px;
+  opacity: 0;
+  transform: translateX(40px);
+  animation: introDescIn 0.8s 0.7s cubic-bezier(0.7,0,0.3,1) forwards;
+  transition: box-shadow 0.3s, color 0.3s;
+}
+@keyframes introDescIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.ekstra-intro-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.ekstra-intro-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #444;
+  margin-bottom: 0;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: introBulletTextIn 0.7s cubic-bezier(0.7,0,0.3,1) forwards;
+  animation-delay: 1s;
+}
+.ekstra-intro-list li:before {
+  content: '\2713';
+  color: #1a56a7;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1.1rem;
+}
+.ekstra-intro-info-box {
+  display: flex;
+  align-items: center;
+  background: #f3b11f;
+  color: #fff;
+  border-radius: 12px;
+  padding: 18px 32px 12px 32px;
+  min-width: 120px;
+  box-shadow: 0 4px 24px #1a56a733;
+  margin: 18px 0 12px 0;
+  font-weight: 700;
+  font-size: 1.3rem;
+  transition: box-shadow 0.3s, background 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: infoBoxIn 0.7s 1.2s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+@keyframes infoBoxIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.ekstra-intro-info-box:hover {
+  background: #1a56a7;
+  color: #fff;
+  box-shadow: 0 8px 32px #f3b11faa, 0 0 0 8px #1a56a7cc;
+  transform: scale(1.07) translateY(-2px);
+}
+.info-number {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-right: 12px;
+}
+.info-label {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.95;
+}
+.ekstra-intro-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 18px;
+}
+.ekstra-intro-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #1a56a7 60%, #f3b11f 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 12px #1a56a733;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
+}
+.ekstra-intro-btn:hover {
+  background: linear-gradient(90deg, #f3b11f 0%, #1a56a7 100%);
+  color: #fff;
+  transform: scale(1.07) translateY(-2px);
+  box-shadow: 0 8px 32px #f3b11faa;
+}
+.ekstra-intro-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #1a56a7;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+  box-shadow: 0 2px 12px #1a56a733;
+  font-size: 1rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.ekstra-intro-contact .contact-icon {
+  width: 28px;
+  height: 28px;
+  background: #1a56a7;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+  position: relative;
+}
+.ekstra-intro-contact .contact-icon:before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  mask: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%231a56a7" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M15 12h.01M9 12h.01"/></svg>') center/contain no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%231a56a7" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><path d="M15 12h.01M9 12h.01"/></svg>') center/contain no-repeat;
+}
+.ekstra-intro-contact:hover {
+  background: #1a56a7;
+  color: #fff;
+  box-shadow: 0 8px 32px #1a56a7cc;
+}
+.ekstra-intro-contact:hover .contact-icon {
+  background: #f3b11f;
+}
+.ekstra-intro-contact:hover .contact-icon:before {
+  background: #1a56a7;
+}
+@media (max-width: 900px) {
+  .ekstra-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .ekstra-img-shape {
+    width: 260px;
+    height: 180px;
+    border-width: 5px;
+    outline-width: 2px;
+  }
+  .ekstra-img-main {
+    border-radius: 40px 20px 40px 20px / 20px 40px 20px 40px;
+  }
+}
+@media (max-width: 600px) {
+  .ekstra-intro-section {
+    padding: 32px 0 20px 0;
+  }
+  .ekstra-intro-title {
+    font-size: 1.3rem;
+  }
+  .ekstra-img-shape {
+    width: 140px;
+    height: 90px;
+    border-width: 3px;
+    outline-width: 1.5px;
+  }
+}
+@keyframes ekstraWave {
+  0% { border-radius: 120px 60px 120px 60px / 80px 120px 80px 120px; }
+  50% { border-radius: 140px 80px 100px 80px / 100px 140px 60px 100px; }
+  100% { border-radius: 120px 60px 120px 60px / 80px 120px 80px 120px; }
+}
