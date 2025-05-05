@@ -41,7 +41,7 @@
             <input type="file" name="foto" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-success">Simpan</button>
+        <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
 </div>

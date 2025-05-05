@@ -1,31 +1,26 @@
 @extends('layouts.backend.app')
 
+@section('title', 'Data Alumni')
+
 @section('content')
-<div class="container-fluid">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Alumni</h1>
-    </div>
+<div class="container">
+    <h1 class="mt-4">Data Alumni</h1>
 
-    <!-- Tombol "Tambah Alumni" dipindahkan ke bawah -->
-    <div class="d-flex justify-content-between mb-3">
-        <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Tambah Alumni
-        </a>
-    </div>
+    <!-- Tombol Tambah (biru terang) -->
+    <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary mb-3">Tambah Alumni</a>
 
+    <!-- Pesan sukses -->
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
 
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Alumni</h6>
-        </div>
+    <div class="card shadow-sm">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered align-middle">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -51,18 +46,16 @@
                                 <td>{{ $item->tahun_lulus ?? '-' }}</td>
                                 <td>{{ $item->deskripsi ? \Illuminate\Support\Str::limit($item->deskripsi, 60) : '-' }}</td>
                                 <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <form action="{{ route('admin.alumni.destroy', $item->id_alumni) }}" method="POST" class="form-hapus d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return false;">
-                                                <i class="fas fa-trash"></i> Hapus
-                                            </button>
-                                        </form>
-                                    </div>
+                                    <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </a>
+                                    <form action="{{ route('admin.alumni.destroy', $item->id_alumni) }}" method="POST" class="d-inline form-hapus">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash"></i> Hapus
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @empty
@@ -81,21 +74,15 @@
         </div>
     </div>
 </div>
-@endsection
 
-@push('scripts')
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- SweetAlert2 Konfirmasi Hapus -->
 <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable({
-            "paging": false,
-            "info": false,
-        });
-    });
-
-    // Konfirmasi hapus dengan SweetAlert
     document.querySelectorAll('.form-hapus').forEach(form => {
         form.addEventListener('submit', function(e) {
-            e.preventDefault();  // Mencegah submit form langsung
+            e.preventDefault();
 
             Swal.fire({
                 title: 'Yakin ingin menghapus?',
@@ -104,23 +91,22 @@
                 showCancelButton: true,
                 confirmButtonColor: '#002B5B',
                 cancelButtonColor: '#E8AA42',
-                confirmButtonText: 'Ya, hapus',
+                confirmButtonText: 'Ya, Hapus',
                 cancelButtonText: 'Batal',
                 background: '#fdfdfd',
                 color: '#333',
                 customClass: {
-                    popup: 'rounded-4 shadow',
+                    popup: 'rounded-4 shadow-lg',
                     title: 'fw-bold',
                     confirmButton: 'px-4 py-2',
                     cancelButton: 'px-4 py-2'
                 }
             }).then((result) => {
-                // Jika konfirmasi, submit form
                 if (result.isConfirmed) {
-                    form.submit();  // Hanya submit form jika di-konfirmasi
+                    form.submit();
                 }
             });
         });
     });
 </script>
-@endpush
+@endsection
