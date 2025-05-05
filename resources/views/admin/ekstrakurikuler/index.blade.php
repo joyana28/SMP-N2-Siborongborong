@@ -6,7 +6,10 @@
 <div class="container">
     <h1 class="mt-4">Daftar Ekstrakurikuler</h1>
 
-    <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn btn-success mb-3">Tambah Ekstrakurikuler</a>
+    <!-- Tombol Tambah (Warna Biru Terang) -->
+    <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn btn-primary mb-3">
+        <i class="fas fa-plus"></i> Tambah Ekstrakurikuler
+    </a>
 
     <table class="table table-bordered">
         <thead>
@@ -28,13 +31,19 @@
                 <td>{{ $ekstra->deskripsi }}</td>
                 <td>{{ $ekstra->pembina }}</td>
                 <td>{{ $ekstra->jadwal }}</td>
-                <td><img src="{{ asset('storage/ekstrakurikuler/'.$ekstra->foto) }}" alt="Foto" width="100"></td>
                 <td>
-                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" style="display:inline;">
+                    <img src="{{ asset('storage/ekstrakurikuler/'.$ekstra->foto) }}" alt="Foto" width="100">
+                </td>
+                <td>
+                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="d-inline form-hapus">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">Hapus</button>
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i> Hapus
+                        </button>
                     </form>
                 </td>
             </tr>
@@ -44,4 +53,39 @@
 
     {{ $ekstrakurikuler->links() }}
 </div>
+
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- SweetAlert2 Script untuk konfirmasi hapus -->
+<script>
+    document.querySelectorAll('.form-hapus').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Konfirmasi Penghapusan',
+                text: "Apakah Anda yakin ingin menghapus data ini?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#002B5B', // Biru Tua
+                cancelButtonColor: '#E8AA42',  // Kuning soft
+                confirmButtonText: 'Ya, Hapus',
+                cancelButtonText: 'Batal',
+                background: '#f9f9f9',
+                color: '#333',
+                customClass: {
+                    popup: 'rounded-4 shadow-lg',
+                    title: 'fw-bold',
+                    confirmButton: 'px-4 py-2',
+                    cancelButton: 'px-4 py-2'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
 @endsection
