@@ -4,7 +4,11 @@
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Alumni</h1>
-        <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">
+    </div>
+
+    <!-- Tombol "Tambah Alumni" dipindahkan ke bawah -->
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{{ route('admin.alumni.create') }}" class="btn btn-success">
             <i class="fas fa-plus"></i> Tambah Alumni
         </a>
     </div>
@@ -12,9 +16,6 @@
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
         </div>
     @endif
 
@@ -54,11 +55,11 @@
                                         <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <form action="{{ route('admin.alumni.destroy', $item->id_alumni) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('admin.alumni.destroy', $item->id_alumni) }}" method="POST" class="form-hapus d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                                <i class="fas fa-trash"></i>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return false;">
+                                                <i class="fas fa-trash"></i> Hapus
                                             </button>
                                         </form>
                                     </div>
@@ -72,7 +73,8 @@
                     </tbody>
                 </table>
             </div>
-            
+
+            <!-- Pagination -->
             <div class="d-flex justify-content-end mt-3">
                 {{ $alumni->links() }}
             </div>
@@ -87,6 +89,37 @@
         $('#dataTable').DataTable({
             "paging": false,
             "info": false,
+        });
+    });
+
+    // Konfirmasi hapus dengan SweetAlert
+    document.querySelectorAll('.form-hapus').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();  // Mencegah submit form langsung
+
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: "Data alumni ini akan dihapus permanen.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#002B5B',
+                cancelButtonColor: '#E8AA42',
+                confirmButtonText: 'Ya, hapus',
+                cancelButtonText: 'Batal',
+                background: '#fdfdfd',
+                color: '#333',
+                customClass: {
+                    popup: 'rounded-4 shadow',
+                    title: 'fw-bold',
+                    confirmButton: 'px-4 py-2',
+                    cancelButton: 'px-4 py-2'
+                }
+            }).then((result) => {
+                // Jika konfirmasi, submit form
+                if (result.isConfirmed) {
+                    form.submit();  // Hanya submit form jika di-konfirmasi
+                }
+            });
         });
     });
 </script>

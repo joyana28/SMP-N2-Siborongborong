@@ -43,7 +43,7 @@
                     </td>
                     <td>
                         <a href="{{ route('admin.kepala_sekolah.edit', $ks->id_kepsek) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('admin.kepala_sekolah.destroy', $ks->id_kepsek) }}" method="POST" style="display:inline;">
+                        <form action="{{ route('admin.kepala_sekolah.destroy', $ks->id_kepsek) }}" method="POST" class="form-hapus" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
@@ -54,5 +54,38 @@
         </tbody>
     </table>
 </div>
+
+<!-- Tambahkan SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.querySelectorAll('.form-hapus').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Konfirmasi Hapus',
+                text: 'Yakin ingin menghapus data kepala sekolah ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#002B5B',  // Biru tua
+                cancelButtonColor: '#E8AA42',   // Kuning kecoklatan soft
+                confirmButtonText: 'Ya, Hapus',
+                cancelButtonText: 'Batal',
+                background: '#fdfdfd',
+                color: '#333',
+                customClass: {
+                    popup: 'rounded-4 shadow-lg',
+                    title: 'fw-bold',
+                    confirmButton: 'px-4 py-2',
+                    cancelButton: 'px-4 py-2'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
 @endsection
- 
