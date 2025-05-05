@@ -3,6 +3,21 @@
 @section('title', 'Profil Kepala Sekolah')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/kepalasekolah.css') }}">
+
+<!-- Hero Section Kepala Sekolah -->
+<section class="kepsek-hero-section">
+    <div class="kepsek-hero-overlay"></div>
+    <div class="kepsek-hero-content">
+        <h1 class="kepsek-hero-title">Bangun Generasi Hebat Bersama Kepala Sekolah</h1>
+        <div class="kepsek-hero-desc">
+            Kepala sekolah kami berkomitmen membangun lingkungan pendidikan yang inspiratif, inovatif, dan bertanggung jawab untuk masa depan yang lebih baik.
+        </div>
+        <button class="kepsek-hero-btn">Lihat Visi & Misi <span>&raquo;</span></button>
+    </div>
+    <div class="kepsek-hero-shape"></div>
+</section>
+
 <div class="container py-5">
 <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Kepala Sekolah</h2>
     <div class="row justify-content-center">

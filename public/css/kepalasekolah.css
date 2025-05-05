@@ -1,0 +1,123 @@
+/* ===== KEPALA SEKOLAH HERO SECTION ===== */
+.kepsek-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 380px;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    background: url('/images/bg-kepsek.jpg') center/cover no-repeat;
+    overflow: hidden;
+    z-index: 1;
+}
+.kepsek-hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(120deg, #1a56a7cc 40%, #f3b11fcc 100%);
+    opacity: 0.92;
+    z-index: 2;
+    pointer-events: none;
+    animation: heroOverlayFade 1.2s;
+}
+@keyframes heroOverlayFade {
+    0% { opacity: 0; }
+    100% { opacity: 0.92; }
+}
+.kepsek-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    margin-left: 7vw;
+    color: #fff;
+    animation: fadeInLeft 1.2s cubic-bezier(.4,2,.3,1) forwards;
+    opacity: 0;
+}
+@keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-60px) scale(0.96); }
+    80% { opacity: 1; transform: translateX(8px) scale(1.04); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+.kepsek-hero-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+    line-height: 1.15;
+    color: #fff;
+    text-shadow: 0 2px 12px #1a56a7cc;
+}
+.kepsek-hero-desc {
+    font-size: 1.08rem;
+    color: #f3f3f3;
+    margin-bottom: 32px;
+    line-height: 1.7;
+    text-shadow: 0 1px 4px #1a56a7cc;
+}
+.kepsek-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    background: #f3b11f;
+    color: #1a56a7;
+    font-weight: 700;
+    font-size: 1.08rem;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 28px 12px 22px;
+    box-shadow: 0 2px 12px #1a56a7aa;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+.kepsek-hero-btn span {
+    margin-left: 16px;
+    background: #1a56a7;
+    color: #fff;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-right: -10px;
+    transition: background 0.3s, color 0.3s;
+}
+.kepsek-hero-btn:hover {
+    background: #1a56a7;
+    color: #fff;
+    transform: scale(1.06) translateX(6px);
+    box-shadow: 0 6px 24px #f3b11faa;
+}
+.kepsek-hero-btn:hover span {
+    background: #f3b11f;
+    color: #1a56a7;
+}
+.kepsek-hero-shape {
+    position: absolute;
+    top: 0; right: 0;
+    width: 38vw;
+    height: 100%;
+    background: linear-gradient(120deg, #f3b11f 80%, #fff0 100%);
+    clip-path: polygon(100% 0, 0 0, 60% 100%, 100% 100%);
+    z-index: 4;
+    opacity: 0.93;
+    animation: heroShapeSlide 1.2s cubic-bezier(.4,2,.3,1) forwards;
+    transform: translateX(100px) scaleX(0.8);
+}
+@keyframes heroShapeSlide {
+    0% { opacity: 0; transform: translateX(180px) scaleX(0.5); }
+    100% { opacity: 0.93; transform: translateX(0) scaleX(1); }
+}
+@media (max-width: 900px) {
+    .kepsek-hero-section {
+        min-height: 260px;
+        height: 38vh;
+    }
+    .kepsek-hero-content {
+        margin-left: 3vw;
+        max-width: 98vw;
+    }
+    .kepsek-hero-title {
+        font-size: 1.5rem;
+    }
+    .kepsek-hero-shape {
+        width: 60vw;
+    }
+}
