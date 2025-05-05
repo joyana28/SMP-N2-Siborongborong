@@ -8,7 +8,7 @@
 
     <!-- Tombol "Tambah Alumni" dipindahkan ke bawah -->
     <div class="d-flex justify-content-between mb-3">
-        <a href="{{ route('admin.alumni.create') }}" class="btn btn-success">
+        <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary">
             <i class="fas fa-plus"></i> Tambah Alumni
         </a>
     </div>
