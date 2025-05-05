@@ -1,6 +1,22 @@
 @extends('layouts.frontend.app')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/pendaftaran.css') }}">
+
+<!-- Hero Section Pendaftaran -->
+<section class="pendaftaran-hero-modern">
+    <div class="pendaftaran-hero-modern-bg"></div>
+    <div class="pendaftaran-hero-modern-content">
+        <div class="pendaftaran-hero-modern-label">Selamat Datang di Halaman Pendaftaran</div>
+        <h1 class="pendaftaran-hero-modern-title">Bergabunglah Menjadi Bagian dari Keluarga Besar Kami</h1>
+        <div class="pendaftaran-hero-modern-desc">
+            Daftarkan dirimu sekarang dan raih kesempatan untuk belajar, berkembang, dan berprestasi bersama kami di lingkungan yang inspiratif dan penuh semangat!
+        </div>
+    </div>
+    <div class="pendaftaran-hero-modern-decor decor-1"></div>
+    <div class="pendaftaran-hero-modern-decor decor-2"></div>
+</section>
+
 <style>
     body {
         background-color: #f0f8ff;

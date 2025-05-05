@@ -3,6 +3,34 @@
 @section('title', 'Tenaga Pendidik')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/guru.css') }}">
+
+<!-- Hero Section Guru -->
+<section class="guru-hero-section">
+    <div class="guru-hero-overlay"></div>
+    <div class="guru-hero-content">
+        <h1 class="guru-hero-title">Guru Hebat, Generasi Kuat</h1>
+        <div class="guru-hero-desc">
+            Para guru kami adalah inspirasi dan teladan dalam membimbing, mendidik, dan membentuk karakter siswa untuk masa depan yang gemilang dan berdaya saing.
+        </div>
+    </div>
+    <div class="guru-hero-shape"></div>
+</section>
+
+<!-- Card Bertumpuk Interaktif -->
+<section class="guru-stacked-card-section">
+    <div class="stacked-card-container">
+        <div class="stacked-card card-daftar">
+            <span class="stacked-card-text">DAFTAR</span>
+            <div class="stacked-card-decor decor-left"></div>
+        </div>
+        <div class="stacked-card card-guru">
+            <span class="stacked-card-text">GURU</span>
+            <div class="stacked-card-decor decor-right"></div>
+        </div>
+    </div>
+</section>
+
 <div class="container py-5">
 <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Guru</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">

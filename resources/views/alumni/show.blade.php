@@ -1,26 +1,21 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-<style>
-    body {
-        background-color: #e3f2fd; /* biru muda */
-    }
+<link rel="stylesheet" href="{{ asset('css/alumni.css') }}">
 
-    .card {
-        background-color: #ffffff; 
-        border: 1px solid #0d47a1; 
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .card-title {
-        color: #0d47a1;
-    }
-
-    .btn-primary {
-        background-color: #0d47a1;
-        border-color: #0d47a1;
-    }
-</style>
+<!-- Hero Section Alumni (No Image, Creative) -->
+<section class="alumni-hero-modern">
+    <div class="alumni-hero-modern-bg"></div>
+    <div class="alumni-hero-modern-content">
+        <div class="alumni-hero-modern-label">Selamat Datang di Halaman Alumni</div>
+        <h1 class="alumni-hero-modern-title">Bangga Menjadi Bagian dari Alumni</h1>
+        <div class="alumni-hero-modern-desc">
+            Temukan kisah inspiratif, jejaring, dan kontribusi para alumni terbaik yang telah membawa nama baik sekolah ke berbagai penjuru dunia. Mari terus terhubung dan berkolaborasi untuk masa depan yang lebih gemilang!
+        </div>
+    </div>
+    <div class="alumni-hero-modern-decor decor-1"></div>
+    <div class="alumni-hero-modern-decor decor-2"></div>
+</section>
 
 <div class="container py-5">
     <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Detail Alumni</h2>

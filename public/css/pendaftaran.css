@@ -1,0 +1,124 @@
+/* ===== PENDAFTARAN HERO MODERN SECTION ===== */
+.pendaftaran-hero-modern {
+    position: relative;
+    width: 100%;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: #1a56a7;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 0 0 32px 0;
+    box-shadow: 0 8px 32px #1a56a733;
+    margin-bottom: 32px;
+    animation: alumniHeroFadeIn 1.2s cubic-bezier(.4,2,.3,1) backwards;
+}
+.pendaftaran-hero-modern-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, #1a56a7 60%, #f3b11f 100%);
+    opacity: 0.98;
+    z-index: 1;
+    animation: alumniModernBgMove 8s linear infinite alternate;
+}
+@keyframes alumniModernBgMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+.pendaftaran-hero-modern-content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    margin-left: 7vw;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    animation: alumniLeftSlideIn 1.2s cubic-bezier(.4,2,.3,1) 0.2s backwards;
+}
+.pendaftaran-hero-modern-label {
+    color: #f3b11f;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    animation: alumniLabelFadeIn 1.1s cubic-bezier(.4,2,.3,1) 0.4s backwards;
+}
+.pendaftaran-hero-modern-title {
+    color: #fff;
+    font-size: 2.7rem;
+    font-weight: 800;
+    margin-bottom: 0;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #1a56a7cc;
+    animation: alumniTitlePop 1.2s cubic-bezier(.4,2,.3,1) 0.5s backwards;
+}
+.pendaftaran-hero-modern-desc {
+    color: #fff;
+    font-size: 1.13rem;
+    line-height: 1.7;
+    text-shadow: 0 1px 8px #1a56a7cc;
+    margin-bottom: 8px;
+    animation: alumniBtnFadeIn 1.2s cubic-bezier(.4,2,.3,1) 0.7s backwards;
+}
+.pendaftaran-hero-modern-decor {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.7;
+    filter: blur(2px) saturate(1.2);
+    border-radius: 32px;
+    animation: alumniDecorMove 7s ease-in-out infinite alternate;
+}
+.pendaftaran-hero-modern-decor.decor-1 {
+    left: -80px; top: 0;
+    width: 220px; height: 100%;
+    background: linear-gradient(120deg, #f3b11f 60%, #1a56a7 100%);
+    opacity: 0.18;
+    animation-delay: 0.2s;
+}
+.pendaftaran-hero-modern-decor.decor-2 {
+    right: -60px; bottom: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle at 60% 40%, #f3b11f 0%, #1a56a7 100%);
+    opacity: 0.13;
+    animation-delay: 1.2s;
+}
+@keyframes alumniDecorMove {
+    0% { transform: scale(1) translateY(0); }
+    100% { transform: scale(1.12) translateY(-18px); }
+}
+@keyframes alumniHeroFadeIn {
+    0% { opacity: 0; transform: scale(0.96) translateY(-40px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes alumniLeftSlideIn {
+    0% { opacity: 0; transform: translateX(-80px) scale(0.98); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes alumniLabelFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes alumniTitlePop {
+    0% { opacity: 0; transform: scale(1.2) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes alumniBtnFadeIn {
+    0% { opacity: 0; transform: scale(0.92) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@media (max-width: 900px) {
+    .pendaftaran-hero-modern {
+        min-height: 220px;
+        border-radius: 0 0 18px 0;
+    }
+    .pendaftaran-hero-modern-content {
+        margin-left: 3vw;
+        max-width: 98vw;
+    }
+    .pendaftaran-hero-modern-title { font-size: 1.3rem; }
+}

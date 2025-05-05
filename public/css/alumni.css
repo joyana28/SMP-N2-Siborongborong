@@ -1,0 +1,286 @@
+/* ===== ALUMNI HERO SECTION ===== */
+.alumni-hero-section {
+    width: 100%;
+    min-height: 340px;
+    display: flex;
+    align-items: stretch;
+    background: #181c24;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 0 0 32px 0;
+    box-shadow: 0 8px 32px #1a56a733;
+    margin-bottom: 32px;
+    animation: alumniHeroFadeIn 1.2s cubic-bezier(.4,2,.3,1) backwards;
+}
+.alumni-hero-left {
+    flex: 1 1 54%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 56px 48px 56px 5vw;
+    background: #1a56a7;
+    position: relative;
+    z-index: 2;
+    clip-path: polygon(0 0, 90% 0, 80% 100%, 0 100%);
+    box-shadow: 0 8px 32px #1a56a7aa;
+    animation: alumniLeftSlideIn 1.2s cubic-bezier(.4,2,.3,1) 0.2s backwards;
+}
+.alumni-hero-label {
+    color: #f3b11f;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    animation: alumniLabelFadeIn 1.1s cubic-bezier(.4,2,.3,1) 0.4s backwards;
+}
+.alumni-hero-title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 32px;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #1a56a7cc;
+    animation: alumniTitlePop 1.2s cubic-bezier(.4,2,.3,1) 0.5s backwards;
+}
+.alumni-hero-btn {
+    background: #f3b11f;
+    color: #1a56a7;
+    font-weight: 700;
+    font-size: 1.08rem;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 38px;
+    box-shadow: 0 2px 12px #1a56a7aa;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 18px;
+    transition: background 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    animation: alumniBtnFadeIn 1.2s cubic-bezier(.4,2,.3,1) 0.7s backwards;
+}
+.alumni-hero-btn:hover {
+    background: #1a56a7;
+    color: #fff;
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: 0 6px 24px #f3b11faa;
+}
+.alumni-hero-arrow {
+    position: absolute;
+    right: -60px;
+    top: 60%;
+    width: 120px;
+    height: 60px;
+    z-index: 3;
+    pointer-events: none;
+    background: none;
+    border: none;
+    animation: alumniArrowDraw 1.5s cubic-bezier(.4,2,.3,1) 1s backwards;
+}
+.alumni-hero-arrow::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-bottom: 4px solid #f3b11f;
+    border-left: 4px solid #f3b11f;
+    border-radius: 0 0 60px 120px;
+    transform: rotate(-18deg);
+    box-shadow: 0 2px 12px #f3b11faa;
+}
+.alumni-hero-right {
+    flex: 1 1 46%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: #181c24;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+    animation: alumniRightSlideIn 1.2s cubic-bezier(.4,2,.3,1) 0.4s backwards;
+}
+.alumni-hero-img-wrapper {
+    width: 340px;
+    height: 220px;
+    border-radius: 0 0 48px 0;
+    overflow: hidden;
+    box-shadow: 0 8px 32px #f3b11faa, 0 0 0 8px #1a56a733;
+    position: relative;
+    margin-right: 4vw;
+    background: #fff;
+    animation: alumniImgPop 1.2s cubic-bezier(.4,2,.3,1) 0.7s backwards;
+}
+.alumni-hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 0 48px 0;
+    filter: brightness(0.98) contrast(1.08) saturate(1.1);
+    transition: filter 0.5s, transform 0.5s;
+}
+.alumni-hero-img-wrapper:hover .alumni-hero-img {
+    filter: brightness(1.08) contrast(1.18) saturate(1.2);
+    transform: scale(1.06) rotate(-2deg);
+}
+/* Animations */
+@keyframes alumniHeroFadeIn {
+    0% { opacity: 0; transform: scale(0.96) translateY(-40px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes alumniLeftSlideIn {
+    0% { opacity: 0; transform: translateX(-80px) scale(0.98); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes alumniRightSlideIn {
+    0% { opacity: 0; transform: translateX(80px) scale(0.98); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes alumniLabelFadeIn {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes alumniTitlePop {
+    0% { opacity: 0; transform: scale(1.2) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes alumniBtnFadeIn {
+    0% { opacity: 0; transform: scale(0.92) translateY(30px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes alumniImgPop {
+    0% { opacity: 0; transform: scale(1.12) translateY(40px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes alumniArrowDraw {
+    0% { opacity: 0; width: 0; }
+    100% { opacity: 1; width: 120px; }
+}
+@media (max-width: 900px) {
+    .alumni-hero-section {
+        flex-direction: column;
+        min-height: 320px;
+        border-radius: 0 0 18px 0;
+    }
+    .alumni-hero-left, .alumni-hero-right {
+        flex: 1 1 100%;
+        padding: 28px 12px 18px 12px;
+        clip-path: none;
+    }
+    .alumni-hero-img-wrapper {
+        width: 98vw;
+        height: 160px;
+        margin: 0 auto 18px auto;
+        border-radius: 0 0 18px 0;
+    }
+    .alumni-hero-title { font-size: 1.2rem; }
+}
+
+/* ===== ALUMNI HERO MODERN SECTION (NO IMAGE) ===== */
+.alumni-hero-modern {
+    position: relative;
+    width: 100%;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: #1a56a7;
+    overflow: hidden;
+    z-index: 10;
+    border-radius: 0 0 32px 0;
+    box-shadow: 0 8px 32px #1a56a733;
+    margin-bottom: 32px;
+    animation: alumniHeroFadeIn 1.2s cubic-bezier(.4,2,.3,1) backwards;
+}
+.alumni-hero-modern-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, #1a56a7 60%, #f3b11f 100%);
+    opacity: 0.98;
+    z-index: 1;
+    animation: alumniModernBgMove 8s linear infinite alternate;
+}
+@keyframes alumniModernBgMove {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+.alumni-hero-modern-content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    margin-left: 7vw;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    animation: alumniLeftSlideIn 1.2s cubic-bezier(.4,2,.3,1) 0.2s backwards;
+}
+.alumni-hero-modern-label {
+    color: #f3b11f;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    animation: alumniLabelFadeIn 1.1s cubic-bezier(.4,2,.3,1) 0.4s backwards;
+}
+.alumni-hero-modern-title {
+    color: #fff;
+    font-size: 2.7rem;
+    font-weight: 800;
+    margin-bottom: 0;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #1a56a7cc;
+    animation: alumniTitlePop 1.2s cubic-bezier(.4,2,.3,1) 0.5s backwards;
+}
+.alumni-hero-modern-desc {
+    color: #fff;
+    font-size: 1.13rem;
+    line-height: 1.7;
+    text-shadow: 0 1px 8px #1a56a7cc;
+    margin-bottom: 8px;
+    animation: alumniBtnFadeIn 1.2s cubic-bezier(.4,2,.3,1) 0.7s backwards;
+}
+.alumni-hero-modern-decor {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.7;
+    filter: blur(2px) saturate(1.2);
+    border-radius: 32px;
+    animation: alumniDecorMove 7s ease-in-out infinite alternate;
+}
+.alumni-hero-modern-decor.decor-1 {
+    left: -80px; top: 0;
+    width: 220px; height: 100%;
+    background: linear-gradient(120deg, #f3b11f 60%, #1a56a7 100%);
+    opacity: 0.18;
+    animation-delay: 0.2s;
+}
+.alumni-hero-modern-decor.decor-2 {
+    right: -60px; bottom: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle at 60% 40%, #f3b11f 0%, #1a56a7 100%);
+    opacity: 0.13;
+    animation-delay: 1.2s;
+}
+@keyframes alumniDecorMove {
+    0% { transform: scale(1) translateY(0); }
+    100% { transform: scale(1.12) translateY(-18px); }
+}
+@media (max-width: 900px) {
+    .alumni-hero-modern {
+        min-height: 220px;
+        border-radius: 0 0 18px 0;
+    }
+    .alumni-hero-modern-content {
+        margin-left: 3vw;
+        max-width: 98vw;
+    }
+    .alumni-hero-modern-title { font-size: 1.3rem; }
+}

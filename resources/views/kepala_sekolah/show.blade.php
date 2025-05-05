@@ -13,10 +13,33 @@
         <div class="kepsek-hero-desc">
             Kepala sekolah kami berkomitmen membangun lingkungan pendidikan yang inspiratif, inovatif, dan bertanggung jawab untuk masa depan yang lebih baik.
         </div>
-        <button class="kepsek-hero-btn">Lihat Visi & Misi <span>&raquo;</span></button>
     </div>
     <div class="kepsek-hero-shape"></div>
 </section>
+
+<!-- Sambutan Kepala Sekolah Section (Animated Card) -->
+<section class="sambutan-section-2 py-5">
+    <div class="container d-flex justify-content-center align-items-center">
+        <div class="sambutan-card">
+            <div class="sambutan-card-img">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Welding" class="img-fluid sambutan-img-2">
+            </div>
+            <div class="sambutan-card-content">
+                <h2 class="sambutan-title-2">KATA SAMBUTAN KEPALA SEKOLAH</h2>
+                <div class="sambutan-divider-2"></div>
+                <p class="sambutan-desc-2">
+                    Selamat datang di website resmi SMP Negeri 2 Siborongborong!<br>
+                    Kami berkomitmen untuk membangun generasi yang cerdas, berkarakter, dan siap menghadapi tantangan masa depan. Melalui inovasi, dedikasi, dan semangat kebersamaan, kami yakin dapat menciptakan lingkungan belajar yang inspiratif dan menyenangkan bagi seluruh siswa.
+                </p>
+                <div class="sambutan-btn-group-2">
+                    <a href="#" class="sambutan-btn-2 sambutan-btn-primary-2">Lebih Lanjut</a>
+                    <a href="#" class="sambutan-btn-2 sambutan-btn-outline-2">Lihat Lokasi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Sambutan Section (Animated Card) -->
 
 <div class="container py-5">
 <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Kepala Sekolah</h2>
