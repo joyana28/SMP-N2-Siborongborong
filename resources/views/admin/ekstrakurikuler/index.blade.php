@@ -7,10 +7,7 @@
     <h1 class="mt-4">Daftar Ekstrakurikuler</h1>
 
     <!-- Tombol Tambah (Warna Biru Terang) -->
-    <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn btn-primary mb-3">
-        <i class="fas fa-plus"></i> Tambah Ekstrakurikuler
-    </a>
-
+    <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn btn-primary mb-3">Tambah Ekstrakurikuler</a>
     <table class="table table-bordered">
         <thead>
             <tr>

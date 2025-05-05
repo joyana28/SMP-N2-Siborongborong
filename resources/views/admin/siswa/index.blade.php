@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h1>Data Kelas</h1>
-    <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary mb-3">+ Tambah Kelas</a>
+    <a href="{{ route('admin.siswa.create') }}" class="btn btn-primary mb-3"> Tambah Kelas</a>
 
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
