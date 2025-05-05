@@ -5,7 +5,7 @@
 @section('content')
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-content">
+        <div class="container">
             <div class="hero-text">
                 <h1 class="title">Visi & Misi Sekolah</h1>
                 <p class="hero-description">Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global melalui pendidikan yang inovatif dan inklusif.</p>
