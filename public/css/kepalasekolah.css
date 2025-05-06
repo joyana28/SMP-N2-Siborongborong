@@ -552,3 +552,112 @@
     }
     .sambutan-modern-title { font-size: 1.2rem; }
 }
+
+/* ===== Card Gambar & Overlay Data Kepala Sekolah ===== */
+.sambutan-modern-img-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 260px;
+    max-width: 340px;
+    position: relative;
+    z-index: 3;
+}
+.sambutan-modern-img-wrapper.sambutan-img-hover-group {
+    position: relative;
+    width: 100%;
+    min-width: 240px;
+    min-height: 320px;
+    max-width: 320px;
+    max-height: 380px;
+    background: linear-gradient(120deg, #1a56a7 60%, #f3b11f 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px #1a56a7aa, 0 0 0 8px #f3b11f22;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    transition: box-shadow 0.4s, transform 0.4s;
+}
+.sambutan-modern-img-wrapper.sambutan-img-hover-group:hover {
+    box-shadow: 0 16px 48px #f3b11faa, 0 0 0 12px #1a56a7aa;
+    transform: scale(1.04) rotate(-2deg);
+}
+.sambutan-img-overlay-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    background: rgba(255,255,255,0.97);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px #1a56a7aa, 0 0 0 4px #f3b11f33;
+    padding: 28px 32px 18px 32px;
+    min-width: 220px;
+    min-height: 120px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.45s cubic-bezier(.4,2,.3,1), transform 0.45s cubic-bezier(.4,2,.3,1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.sambutan-img-hover-group:hover .sambutan-img-overlay-box {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+.sambutan-img-overlay-title {
+    color: #1a56a7;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+.sambutan-img-overlay-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.sambutan-img-overlay-item {
+    color: #222;
+    font-size: 1.04rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+.sambutan-img-overlay-item span {
+    color: #1a56a7;
+    font-weight: 700;
+    margin-right: 8px;
+}
+.sambutan-modern-img-caption {
+    margin-top: 16px;
+    text-align: center;
+}
+.sambutan-modern-img-name {
+    color: #1a56a7;
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #f3b11f44;
+}
+@media (max-width: 900px) {
+    .sambutan-modern-img-card {
+        min-width: 0;
+        max-width: 98vw;
+    }
+    .sambutan-modern-img-wrapper.sambutan-img-hover-group {
+        min-width: 0;
+        max-width: 98vw;
+        min-height: 180px;
+        max-height: 220px;
+        padding: 8px;
+    }
+    .sambutan-img-overlay-box {
+        min-width: 120px;
+        padding: 16px 10px 10px 10px;
+    }
+}

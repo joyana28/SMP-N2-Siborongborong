@@ -17,15 +17,28 @@
     <div class="kepsek-hero-shape"></div>
 </section>
 
-<!-- Sambutan Kepala Sekolah Section (Modern) -->
+<!-- Sambutan Kepala Sekolah Section (Modern, Card Data) -->
 <section class="sambutan-modern-section py-5">
     <div class="container d-flex flex-wrap align-items-center justify-content-center sambutan-modern-container">
-        <div class="sambutan-modern-img-wrapper">
-            @if ($kepalaSekolah->foto)
-                <img src="{{ asset('storage/kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto {{ $kepalaSekolah->nama }}" class="sambutan-modern-img">
-            @else
-                <img src="{{ asset('images/default-user.jpg') }}" alt="Default" class="sambutan-modern-img">
-            @endif
+        <div class="sambutan-modern-img-card">
+            <div class="sambutan-modern-img-wrapper sambutan-img-hover-group">
+                @if ($kepalaSekolah->foto)
+                    <img src="{{ asset('storage/kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto {{ $kepalaSekolah->nama }}" class="sambutan-modern-img">
+                @else
+                    <img src="{{ asset('images/default-user.jpg') }}" alt="Default" class="sambutan-modern-img">
+                @endif
+                <div class="sambutan-img-overlay-box">
+                    <div class="sambutan-img-overlay-title">Data Kepala Sekolah</div>
+                    <div class="sambutan-img-overlay-list">
+                        <div class="sambutan-img-overlay-item"><span>NIP:</span> {{ $kepalaSekolah->nip }}</div>
+                        <div class="sambutan-img-overlay-item"><span>Golongan:</span> {{ $kepalaSekolah->golongan }}</div>
+                        <div class="sambutan-img-overlay-item"><span>Periode:</span> {{ $kepalaSekolah->periode }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sambutan-modern-img-caption">
+                <div class="sambutan-modern-img-name">{{ $kepalaSekolah->nama }}</div>
+            </div>
         </div>
         <div class="sambutan-modern-content">
             <div class="sambutan-modern-label">KATA SAMBUTAN</div>
@@ -38,43 +51,6 @@
     </div>
     <div class="sambutan-modern-bg-decor"></div>
 </section>
-<!-- End Sambutan Section (Modern) -->
+<!-- End Sambutan Section (Modern, Card Data) -->
 
-<div class="container py-5">
-<h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Kepala Sekolah</h2>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card teacher-card shadow">
-                <div class="teacher-header text-center">
-                    @if ($kepalaSekolah->foto)
-                        <img src="{{ asset('storage/kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto {{ $kepalaSekolah->nama }}" class="rounded-circle teacher-img">
-                    @else
-                        <img src="{{ asset('images/default-user.jpg') }}" alt="Default" class="rounded-circle teacher-img">
-                    @endif
-                </div>
-                <div class="card-body text-center py-4">
-                    <h4 class="teacher-name">{{ $kepalaSekolah->nama }}</h4>
-                    <p class="teacher-subject mb-2">Periode: {{ $kepalaSekolah->periode }}</p>
-
-                    <table class="table table-bordered table-info mt-4">
-                        <tbody>
-                            <tr>
-                                <th>NIP</th>
-                                <td>{{ $kepalaSekolah->nip }}</td>
-                            </tr>
-                            <tr>
-                                <th>Golongan</th>
-                                <td>{{ $kepalaSekolah->golongan }}</td>
-                            </tr>
-                            <tr>
-                                <th>Periode</th>
-                                <td>{{ $kepalaSekolah->periode }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection
