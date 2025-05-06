@@ -23,6 +23,7 @@
     <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Detail Kelas</h2>
     <div class="row">
         <div class="col-md-8 mx-auto">
+            @if ($siswa)
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ $siswa->nama_kelas }}</h5>
@@ -38,6 +39,11 @@
                     @endif
                 </div>
             </div>
+            @else
+            <div class="alert alert-warning text-center">
+                Data kelas tidak ditemukan.
+            </div>
+            @endif
         </div>
     </div>
 </div>
