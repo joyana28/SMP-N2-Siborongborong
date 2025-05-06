@@ -1,47 +1,96 @@
 @extends('layouts.backend.app')
 
+@section('title', 'Tambah Prestasi')
+
 @section('content')
-<div class="container">
-    <h1>Tambah Prestasi</h1>
-    <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
+<style>
+    .card-custom {
+        border: none;
+        border-left: 6px solid #0d47a1;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
 
-        <div class="mb-3">
-            <label for="nama" class="form-label">Nama Prestasi</label>
-            <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}">
-            @error('nama') <div class="text-danger">{{ $message }}</div> @enderror
+    .btn-primary-custom {
+        background-color: #0d47a1;
+        border: none;
+    }
+
+    .btn-primary-custom:hover {
+        background-color: #08306b;
+    }
+
+    .btn-secondary-custom {
+        background-color: #b0bec5;
+        border: none;
+    }
+
+    .btn-secondary-custom:hover {
+        background-color: #90a4ae;
+    }
+
+    label {
+        font-weight: 600;
+        color: #0d47a1;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #0d47a1;
+        box-shadow: 0 0 0 0.2rem rgba(13,71,161,.25);
+    }
+
+    .invalid-feedback {
+        font-size: 0.875rem;
+    }
+</style>
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-primary">Tambah Prestasi</h2>
+
+    <div class="card card-custom">
+        <div class="card-body">
+            <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <div class="form-group mb-3">
+                    <label for="nama">Nama Prestasi</label>
+                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}">
+                    @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="tanggal">Tanggal</label>
+                    <input type="date" class="form-control @error('tanggal') is-invalid @enderror" id="tanggal" name="tanggal" value="{{ old('tanggal') }}">
+                    @error('tanggal') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="jenis">Jenis Prestasi</label>
+                    <select class="form-select @error('jenis') is-invalid @enderror" id="jenis" name="jenis">
+                        <option value="">-- Pilih Jenis --</option>
+                        <option value="akademik" {{ old('jenis') == 'akademik' ? 'selected' : '' }}>Akademik</option>
+                        <option value="non-akademik" {{ old('jenis') == 'non-akademik' ? 'selected' : '' }}>Non-Akademik</option>
+                    </select>
+                    @error('jenis') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="deskripsi">Deskripsi</label>
+                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
+                    @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="foto">Foto (opsional)</label>
+                    <input class="form-control @error('foto') is-invalid @enderror" type="file" id="foto" name="foto">
+                    @error('foto') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary-custom">Simpan</button>
+                    <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary-custom ml-2">Kembali</a>
+                </div>
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ old('tanggal') }}">
-            @error('tanggal') <div class="text-danger">{{ $message }}</div> @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="jenis" class="form-label">Jenis Prestasi</label>
-            <select class="form-select" id="jenis" name="jenis">
-                <option value="">-- Pilih Jenis --</option>
-                <option value="akademik" {{ old('jenis') == 'akademik' ? 'selected' : '' }}>Akademik</option>
-                <option value="non-akademik" {{ old('jenis') == 'non-akademik' ? 'selected' : '' }}>Non-Akademik</option>
-            </select>
-            @error('jenis') <div class="text-danger">{{ $message }}</div> @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="deskripsi" class="form-label">Deskripsi</label>
-            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
-            @error('deskripsi') <div class="text-danger">{{ $message }}</div> @enderror
-        </div>
-
-        <div class="mb-3">
-            <label for="foto" class="form-label">Foto (opsional)</label>
-            <input class="form-control" type="file" id="foto" name="foto">
-            @error('foto') <div class="text-danger">{{ $message }}</div> @enderror
-        </div>
-
-        <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary">Kembali</a>
-    </form>
+    </div>
 </div>
 @endsection
