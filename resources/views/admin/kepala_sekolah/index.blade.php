@@ -65,7 +65,7 @@
 
             Swal.fire({
                 title: 'Konfirmasi Hapus',
-                text: 'Yakin ingin menghapus data kepala sekolah ini?',
+                text: "Apakah Anda yakin ingin menghapus data ini?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#002B5B',  // Biru tua

@@ -86,7 +86,7 @@
 
             Swal.fire({
                 title: 'Yakin ingin menghapus?',
-                text: "Data alumni ini akan dihapus permanen.",
+                text: "Apakah Anda yakin ingin menghapus data ini?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#002B5B',
