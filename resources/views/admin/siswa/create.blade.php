@@ -45,7 +45,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-        <a href="{{ route('admin.siswa.index') }}" class="btn btn-secondary mt-3">Batal</a>
+        <a href="{{ route('admin.siswa.index') }}" class="btn btn-secondary mt-3">Kembali</a>
     </form>
 </div>
 

@@ -84,19 +84,6 @@
                     <label for="deskripsi">Deskripsi</label>
                     <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" required>{{ old('deskripsi', $fasilitas->deskripsi) }}</textarea>
                 </div>
-
-                <div class="form-group">
-                    <label for="foto">Foto Fasilitas</label>
-                    <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*" onchange="previewImage()">
-                    @if($fasilitas->foto)
-                        <div class="mt-3">
-                            <p>Foto saat ini:</p>
-                            <img src="{{ asset('storage/fasilitas/' . $fasilitas->foto) }}" alt="Foto Fasilitas" class="img-thumbnail mb-2" style="max-height: 200px;">
-                        </div>
-                    @endif
-                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
-                </div>
-
                 <div class="form-group">
                     <label for="tahun">Tahun</label>
                     <input type="text" class="form-control" id="tahun" name="tahun" value="{{ old('tahun', $fasilitas->tahun) }}" required>
@@ -110,6 +97,17 @@
                 <div class="form-group">
                     <label for="penambahan">Penambahan</label>
                     <input type="text" class="form-control" id="penambahan" name="penambahan" value="{{ old('penambahan', $fasilitas->penambahan) }}">
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto Fasilitas</label>
+                    <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*" onchange="previewImage()">
+                    @if($fasilitas->foto)
+                        <div class="mt-3">
+                            <p>Foto saat ini:</p>
+                            <img src="{{ asset('storage/fasilitas/' . $fasilitas->foto) }}" alt="Foto Fasilitas" class="img-thumbnail mb-2" style="max-height: 200px;">
+                        </div>
+                    @endif
+                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
                 </div>
 
                 <div class="text-right mt-4">
