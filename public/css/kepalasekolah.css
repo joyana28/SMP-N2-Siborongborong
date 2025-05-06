@@ -413,3 +413,251 @@
     .sambutan-divider-2 { width: 40px; }
     .sambutan-btn-group-2 { flex-direction: column; gap: 10px; align-items: center; }
 }
+
+/* ===== SAMBUTAN KEPALA SEKOLAH MODERN SECTION ===== */
+.sambutan-modern-section {
+    position: relative;
+    width: 100%;
+    background: #f8fafc;
+    padding: 64px 0 64px 0;
+    overflow: hidden;
+    z-index: 2;
+}
+.sambutan-modern-container {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    min-height: 340px;
+    max-width: 1100px;
+    position: relative;
+    z-index: 3;
+    align-items: center;
+    justify-content: flex-start;
+}
+.sambutan-modern-img-wrapper {
+    background: linear-gradient(120deg, #1a56a7 60%, #f3b11f 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px #1a56a7aa, 0 0 0 8px #f3b11f22;
+    padding: 16px;
+    min-width: 260px;
+    min-height: 320px;
+    max-width: 320px;
+    max-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: fadeInLeftSambutan 1.2s cubic-bezier(.4,2,.3,1) backwards;
+    transition: box-shadow 0.4s, transform 0.4s;
+}
+.sambutan-modern-img-wrapper:hover {
+    box-shadow: 0 16px 48px #f3b11faa, 0 0 0 12px #1a56a7aa;
+    transform: scale(1.04) rotate(-2deg);
+}
+.sambutan-modern-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px #1a56a7aa;
+    background: #fff;
+    transition: filter 0.4s, transform 0.4s;
+    animation: imgPopSambutan 1.2s cubic-bezier(.4,2,.3,1) 0.2s backwards;
+}
+.sambutan-modern-content {
+    flex: 1 1 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    animation: fadeInRightSambutan 1.2s cubic-bezier(.4,2,.3,1) 0.3s backwards;
+    z-index: 2;
+}
+.sambutan-modern-label {
+    color: #f3b11f;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    animation: fadeInUpSambutan 1.1s cubic-bezier(.4,2,.3,1) 0.4s backwards;
+}
+.sambutan-modern-title {
+    color: #1a56a7;
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+    line-height: 1.15;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #f3b11f44;
+    animation: fadeInUpSambutan 1.2s cubic-bezier(.4,2,.3,1) 0.5s backwards;
+}
+.sambutan-modern-desc {
+    color: #222;
+    font-size: 1.13rem;
+    line-height: 1.7;
+    text-shadow: 0 1px 8px #1a56a722;
+    margin-bottom: 0;
+    animation: fadeInUpSambutan 1.2s cubic-bezier(.4,2,.3,1) 0.7s backwards;
+}
+.sambutan-modern-bg-decor {
+    position: absolute;
+    right: -80px; bottom: -60px;
+    width: 260px; height: 180px;
+    background: radial-gradient(circle at 60% 40%, #f3b11f 0%, #1a56a7 100%);
+    opacity: 0.13;
+    border-radius: 50%;
+    z-index: 1;
+    animation: decorFloatSambutan 7s ease-in-out infinite alternate;
+}
+@keyframes fadeInLeftSambutan {
+    0% { opacity: 0; transform: translateX(-80px) scale(0.98); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes fadeInRightSambutan {
+    0% { opacity: 0; transform: translateX(80px) scale(0.98); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes fadeInUpSambutan {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes imgPopSambutan {
+    0% { opacity: 0; transform: scale(1.12) translateY(40px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes decorFloatSambutan {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-18px) scale(1.12); }
+}
+@media (max-width: 900px) {
+    .sambutan-modern-container {
+        flex-direction: column;
+        gap: 24px;
+        min-width: 0;
+        max-width: 98vw;
+        align-items: center;
+        justify-content: center;
+    }
+    .sambutan-modern-img-wrapper {
+        min-width: 0;
+        max-width: 98vw;
+        min-height: 180px;
+        max-height: 220px;
+        padding: 8px;
+    }
+    .sambutan-modern-img {
+        height: 140px;
+        border-radius: 10px;
+    }
+    .sambutan-modern-title { font-size: 1.2rem; }
+}
+
+/* ===== Card Gambar & Overlay Data Kepala Sekolah ===== */
+.sambutan-modern-img-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 260px;
+    max-width: 340px;
+    position: relative;
+    z-index: 3;
+}
+.sambutan-modern-img-wrapper.sambutan-img-hover-group {
+    position: relative;
+    width: 100%;
+    min-width: 240px;
+    min-height: 320px;
+    max-width: 320px;
+    max-height: 380px;
+    background: linear-gradient(120deg, #1a56a7 60%, #f3b11f 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px #1a56a7aa, 0 0 0 8px #f3b11f22;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    transition: box-shadow 0.4s, transform 0.4s;
+}
+.sambutan-modern-img-wrapper.sambutan-img-hover-group:hover {
+    box-shadow: 0 16px 48px #f3b11faa, 0 0 0 12px #1a56a7aa;
+    transform: scale(1.04) rotate(-2deg);
+}
+.sambutan-img-overlay-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    background: rgba(255,255,255,0.97);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px #1a56a7aa, 0 0 0 4px #f3b11f33;
+    padding: 28px 32px 18px 32px;
+    min-width: 220px;
+    min-height: 120px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.45s cubic-bezier(.4,2,.3,1), transform 0.45s cubic-bezier(.4,2,.3,1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.sambutan-img-hover-group:hover .sambutan-img-overlay-box {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+.sambutan-img-overlay-title {
+    color: #1a56a7;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+.sambutan-img-overlay-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.sambutan-img-overlay-item {
+    color: #222;
+    font-size: 1.04rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+.sambutan-img-overlay-item span {
+    color: #1a56a7;
+    font-weight: 700;
+    margin-right: 8px;
+}
+.sambutan-modern-img-caption {
+    margin-top: 16px;
+    text-align: center;
+}
+.sambutan-modern-img-name {
+    color: #1a56a7;
+    font-size: 1.18rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #f3b11f44;
+}
+@media (max-width: 900px) {
+    .sambutan-modern-img-card {
+        min-width: 0;
+        max-width: 98vw;
+    }
+    .sambutan-modern-img-wrapper.sambutan-img-hover-group {
+        min-width: 0;
+        max-width: 98vw;
+        min-height: 180px;
+        max-height: 220px;
+        padding: 8px;
+    }
+    .sambutan-img-overlay-box {
+        min-width: 120px;
+        padding: 16px 10px 10px 10px;
+    }
+}

@@ -13,51 +13,40 @@
     </div>
 </section>
 
-<!-- Section Eksplorasi Prestasi Nonakademik -->
+<!-- Section Eksplorasi Prestasi Nonakademik (ENHANCED DESIGN) -->
 <section class="nonakademik-explore-section">
-    <div class="nonakademik-explore-container">
-        <div class="nonakademik-explore-left">
-            <span class="nonakademik-explore-label"><i class="fas fa-star"></i> Eksplorasi Prestasi</span>
-            <h2 class="nonakademik-explore-title">Temukan Ragam Prestasi Nonakademik Siswa</h2>
-            <p class="nonakademik-explore-desc">
-                Siswa-siswi SMP Negeri 2 Siborongborong aktif berprestasi di bidang olahraga, seni, pramuka, dan berbagai kegiatan ekstrakurikuler lainnya. Setiap pencapaian adalah bukti bakat, kreativitas, dan semangat kolaborasi yang tinggi.
-            </p>
-            <div class="nonakademik-explore-bar">
-                <div class="explore-bar-item">
-                    <i class="fas fa-futbol"></i> Olahraga
-                </div>
-                <div class="explore-bar-item">
-                    <i class="fas fa-paint-brush"></i> Seni & Budaya
-                </div>
-                <div class="explore-bar-item">
-                    <i class="fas fa-users"></i> Pramuka & Organisasi
-                </div>
-                <div class="explore-bar-action">
-                    <button class="explore-btn">Lihat Semua</button>
-                </div>
-            </div>
+    <div class="nonakademik-explore-bg-animated"></div>
+    <svg class="nonakademik-explore-svg-decor decor-star" width="32" height="32"><circle cx="16" cy="16" r="8" fill="#f3b11f" opacity="0.18"/></svg>
+    <svg class="nonakademik-explore-svg-decor decor-dot" width="16" height="16"><circle cx="8" cy="8" r="3" fill="#1a56a7" opacity="0.18"/></svg>
+    <svg class="nonakademik-explore-svg-decor decor-wave" width="120" height="32"><ellipse cx="60" cy="16" rx="60" ry="12" fill="#f3b11f" opacity="0.12"/></svg>
+    <div class="nonakademik-explore-header">
+        <h2 class="nonakademik-explore-main-title gradient-text">Apa yang <span>Nonakademik</span> Tawarkan?</h2>
+        <div class="nonakademik-explore-subtitle">Beragam kegiatan dan prestasi nonakademik untuk mengembangkan bakat, karakter, dan kreativitas siswa di luar kelas.</div>
+    </div>
+    <div class="nonakademik-explore-features">
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-1 floating-icon"><i class="fas fa-futbol"></i></div>
+            <div class="feature-title">Olahraga</div>
+            <div class="feature-desc">Kompetisi dan klub olahraga untuk membangun sportivitas dan kesehatan.</div>
         </div>
-        <div class="nonakademik-explore-right">
-            <div class="explore-img-grid">
-                <div class="explore-img-card">
-                    <img src="/images/nonakademik-olahraga.jpg" alt="Olahraga" />
-                    <span class="explore-img-badge">Juara Futsal</span>
-                </div>
-                <div class="explore-img-card">
-                    <img src="/images/nonakademik-seni.jpg" alt="Seni" />
-                    <span class="explore-img-badge">Festival Tari</span>
-                </div>
-                <div class="explore-img-card">
-                    <img src="/images/nonakademik-pramuka.jpg" alt="Pramuka" />
-                    <span class="explore-img-badge">Pramuka Teladan</span>
-                </div>
-                <div class="explore-img-card">
-                    <img src="/images/nonakademik-lomba.jpg" alt="Lomba" />
-                    <span class="explore-img-badge">Lomba Kreativitas</span>
-                </div>
-            </div>
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-2 floating-icon"><i class="fas fa-paint-brush"></i></div>
+            <div class="feature-title">Seni & Budaya</div>
+            <div class="feature-desc">Ekspresikan kreativitas melalui seni, musik, tari, dan budaya.</div>
+        </div>
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-3 floating-icon"><i class="fas fa-users"></i></div>
+            <div class="feature-title">Organisasi</div>
+            <div class="feature-desc">Kembangkan jiwa kepemimpinan dan kerjasama dalam organisasi siswa.</div>
+        </div>
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-4 floating-icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="feature-title">Kreativitas</div>
+            <div class="feature-desc">Ajang lomba dan inovasi untuk menyalurkan ide-ide kreatif siswa.</div>
         </div>
     </div>
+    <div class="nonakademik-explore-bg-wave"></div>
+    <div class="nonakademik-explore-bg-decor"></div>
 </section>
 
 <!-- Judul Section Fasilitas Sekolah -->

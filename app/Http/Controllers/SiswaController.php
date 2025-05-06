@@ -84,10 +84,6 @@ class SiswaController extends Controller
     {
         $siswa = Siswa::latest()->first();
 
-        if (!$siswa) {
-            return redirect()->route('siswa.show')->with('error', 'Kelas tidak ditemukan');
-        }
-
         return view('siswa.show', compact('siswa'));
     }
 
