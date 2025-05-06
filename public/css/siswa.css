@@ -1,0 +1,428 @@
+/* siswa.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Quicksand:wght@500;700&display=swap');
+
+body {
+    font-family: 'Quicksand', Arial, sans-serif;
+}
+
+.siswa-hero-section {
+    position: relative;
+    height: 400px;
+    background: linear-gradient(135deg, #1a56a7, #f3b11f);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.siswa-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.siswa-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.siswa-hero-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.siswa-hero-desc {
+    font-size: 1.2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.siswa-hero-shape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: white;
+    clip-path: polygon(0 100%, 100% 100%, 100% 0);
+    animation: slideInUp 1s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.siswa-card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+}
+
+.siswa-card {
+    background: rgba(26,86,167,0.85);
+    color: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(26,86,167,0.25), 0 1.5px 6px 0 #f3b11f44;
+    padding: 36px 28px 28px 28px;
+    min-width: 270px;
+    min-height: 230px;
+    position: relative;
+    overflow: hidden;
+    border: 1.5px solid #f3b11f55;
+    backdrop-filter: blur(8px) saturate(1.2);
+    transition: transform 0.35s cubic-bezier(.25,.8,.25,1), box-shadow 0.35s, border 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    animation: cardPopIn 0.7s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.siswa-card:hover {
+    transform: translateY(-16px) scale(1.045) rotate(-1.5deg);
+    box-shadow: 0 24px 60px 0 #1a56a7cc, 0 4px 16px 0 #f3b11f88;
+    border: 2.5px solid #f3b11f;
+}
+.siswa-card-icon {
+    margin-bottom: 22px;
+    background: linear-gradient(135deg, #fff 70%, #f3b11f33 100%);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 4px 16px #f3b11f33, 0 1.5px 6px #1a56a722;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.35s, transform 0.35s, background 0.35s;
+    will-change: transform;
+    z-index: 2;
+    position: relative;
+}
+.siswa-card:hover .siswa-card-icon {
+    transform: translateY(-18px) scale(1.18) rotate(-6deg);
+    box-shadow: 0 12px 32px #f3b11faa, 0 2px 8px #1a56a7cc;
+    background: linear-gradient(135deg, #f3b11f 60%, #fff 100%);
+}
+.siswa-card-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.08rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: #f3b11f;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s, letter-spacing 0.3s;
+    text-shadow: 0 2px 8px #1a56a744;
+}
+.siswa-card:hover .siswa-card-title {
+    color: #fff;
+    letter-spacing: 2.5px;
+}
+.siswa-card-value {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 0;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 12px #1a56a7cc, 0 1.5px 6px #f3b11f55;
+    transition: color 0.3s, text-shadow 0.3s, transform 0.35s;
+    will-change: transform;
+}
+.siswa-card:hover .siswa-card-value {
+    color: #f3b11f;
+    text-shadow: 0 4px 24px #f3b11faa, 0 2px 8px #1a56a7cc;
+    transform: translateY(8px) scale(1.08);
+}
+.siswa-card-1 { animation-delay: 0.05s; }
+.siswa-card-2 { animation-delay: 0.15s; }
+.siswa-card-3 { animation-delay: 0.25s; }
+.siswa-card-4 { animation-delay: 0.35s; }
+.siswa-card-5 { animation-delay: 0.45s; }
+.siswa-card-6 { animation-delay: 0.55s; }
+
+@keyframes cardPopIn {
+    0% { opacity: 0; transform: scale(0.7) translateY(40px); }
+    80% { opacity: 1; transform: scale(1.05) translateY(-8px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (max-width: 991px) {
+    .siswa-card { min-width: 220px; min-height: 180px; }
+}
+@media (max-width: 767px) {
+    .siswa-card-grid { gap: 16px; }
+    .siswa-card { min-width: 90vw; }
+}
+
+.siswa-detail-heading-section {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin: 0 auto 48px auto;
+    max-width: 1100px;
+    min-height: 180px;
+    position: relative;
+    z-index: 3;
+}
+.siswa-detail-heading-left {
+    background: linear-gradient(120deg, #1a56a7 80%, #0d2c54 100%);
+    color: #fff;
+    min-width: 260px;
+    max-width: 320px;
+    padding: 32px 24px 24px 32px;
+    border-radius: 8px 0 0 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: 0 4px 32px #1a56a7aa;
+    clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+    position: relative;
+    animation: slideInLeft 0.9s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.siswa-detail-heading-number {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: #f3b11f;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #0d2c54cc;
+    line-height: 1;
+}
+.siswa-detail-heading-label {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 2px;
+    color: #fff;
+    text-transform: uppercase;
+}
+.siswa-detail-heading-sub {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-size: 0.95rem;
+    color: #f3b11f;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+.siswa-detail-heading-right {
+    background: linear-gradient(120deg, #fff 80%, #f3b11f22 100%);
+    color: #1a56a7;
+    flex: 1;
+    padding: 32px 40px 32px 48px;
+    border-radius: 0 32px 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 32px #1a56a733;
+    margin-left: -32px;
+    clip-path: polygon(6% 0, 100% 0, 100% 100%, 0% 100%);
+    position: relative;
+    animation: slideInRight 0.9s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.siswa-detail-heading-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: #1a56a7;
+    margin-bottom: 10px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 8px #f3b11f33;
+    line-height: 1.1;
+}
+.siswa-detail-heading-desc {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-size: 1.08rem;
+    color: #1a56a7;
+    opacity: 0.92;
+    font-weight: 500;
+    max-width: 600px;
+}
+.siswa-detail-heading-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, #fff 70%, #f3b11f33 100%);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px #f3b11f33, 0 1.5px 6px #1a56a722;
+    transition: box-shadow 0.35s, transform 0.35s, background 0.35s;
+    will-change: transform;
+    position: relative;
+}
+.siswa-detail-heading-section:hover .siswa-detail-heading-icon {
+    transform: scale(1.13) rotate(-6deg);
+    box-shadow: 0 12px 32px #f3b11faa, 0 2px 8px #1a56a7cc;
+    background: linear-gradient(135deg, #f3b11f 60%, #fff 100%);
+}
+@keyframes slideInLeft {
+    0% { opacity: 0; transform: translateX(-80px) scale(0.95) skewX(-8deg); }
+    80% { opacity: 1; transform: translateX(8px) scale(1.03) skewX(-2deg); }
+    100% { opacity: 1; transform: translateX(0) scale(1) skewX(0); }
+}
+@keyframes slideInRight {
+    0% { opacity: 0; transform: translateX(80px) scale(0.95) skewX(8deg); }
+    80% { opacity: 1; transform: translateX(-8px) scale(1.03) skewX(2deg); }
+    100% { opacity: 1; transform: translateX(0) scale(1) skewX(0); }
+}
+.siswa-detail-heading-section:hover .siswa-detail-heading-left {
+    box-shadow: 0 8px 48px #1a56a7ee, 0 2px 8px #f3b11f88;
+    transform: scale(1.03) skewX(-2deg);
+}
+.siswa-detail-heading-section:hover .siswa-detail-heading-right {
+    box-shadow: 0 8px 48px #f3b11f55, 0 2px 8px #1a56a7cc;
+    transform: scale(1.03) skewX(2deg);
+}
+@media (max-width: 900px) {
+    .siswa-detail-heading-section { flex-direction: column; min-height: unset; }
+    .siswa-detail-heading-left, .siswa-detail-heading-right {
+        border-radius: 18px;
+        margin-left: 0;
+        clip-path: none;
+        padding: 24px 18px;
+    }
+    .siswa-detail-heading-right { margin-top: 0; }
+}
+
+.tirai-hero-section {
+    position: relative;
+    height: 480px;
+    min-height: 340px;
+    background: none;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 1;
+}
+.tirai-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, #0d2340 0%, #1a56a7 50%, #f3b11f 100%);
+    z-index: 1;
+    opacity: 0.98;
+    animation: tiraiBgFadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.tirai-hero-curtain {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(120deg, rgba(255,255,255,0.07) 0 8px, transparent 8px 32px);
+    z-index: 2;
+    pointer-events: none;
+    animation: tiraiCurtainSlide 1.5s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.tirai-hero-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: tiraiContentPop 1.2s 0.3s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.tirai-hero-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 18px;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 16px #0d2340cc, 0 1.5px 6px #f3b11f55;
+    animation: tiraiTitleFadeIn 1.2s 0.5s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.tirai-hero-desc {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-size: 1.25rem;
+    color: #fff;
+    opacity: 0.93;
+    font-weight: 500;
+    text-shadow: 0 2px 8px #0d234099;
+    animation: tiraiDescFadeIn 1.2s 0.7s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.tirai-hero-bottom {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 70px;
+    background: #888;
+    clip-path: polygon(0 60%, 100% 100%, 100% 100%, 0 100%);
+    z-index: 4;
+    opacity: 0.7;
+    animation: tiraiBottomSlide 1.2s 0.7s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+@keyframes tiraiBgFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 0.98; }
+}
+@keyframes tiraiCurtainSlide {
+    0% { transform: translateY(-100px) scaleY(1.2); opacity: 0; }
+    80% { opacity: 1; }
+    100% { transform: translateY(0) scaleY(1); opacity: 1; }
+}
+@keyframes tiraiContentPop {
+    0% { opacity: 0; transform: scale(0.95) translateY(40px); }
+    80% { opacity: 1; transform: scale(1.03) translateY(-8px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes tiraiTitleFadeIn {
+    0% { opacity: 0; transform: translateY(-30px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes tiraiDescFadeIn {
+    0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes tiraiBottomSlide {
+    0% { opacity: 0; transform: translateY(60px) scaleX(0.8); }
+    100% { opacity: 0.7; transform: translateY(0) scaleX(1); }
+}
+@media (max-width: 900px) {
+    .tirai-hero-section { height: 320px; }
+    .tirai-hero-title { font-size: 2rem; }
+    .tirai-hero-content { padding: 0 8px; }
+}
