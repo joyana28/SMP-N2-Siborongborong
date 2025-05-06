@@ -28,11 +28,11 @@
                     <td>{{ $item->tanggal_terbit }}</td>
                     <td>{{ $item->tanggal_berakhir }}</td>
                     <td>
-                        <a href="{{ route('admin.formulirpendaftaran.edit', $item->id_pendaftaran) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.formulirpendaftaran.destroy', $item->id_pendaftaran) }}" method="POST" class="form-hapus d-inline">
+                        <a href="{{ route('admin.formulirpendaftaran.edit', $item->id_pendaftaran) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('admin.formulirpendaftaran.destroy', $item->id_pendaftaran) }}" method="POST" class="form-hapus" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Hapus</button>
+                            <button class="btn btn-sm btn-danger">Hapus</button>
                         </form>
                         
                     </td>

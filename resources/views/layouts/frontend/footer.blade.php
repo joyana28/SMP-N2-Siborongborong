@@ -107,15 +107,37 @@
 
     <div class="container">
         <div class="footer-content">
-            <div class="footer-about">
-                <img src="{{ asset('images/smpn2.jpg') }}" alt="SMPN 2 Siborongborong">
-                <p>SMP Negeri 2 Siborongborong adalah sekolah menengah pertama yang berkomitmen dalam mencetak generasi unggul, berkarakter, dan berprestasi.</p>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/share/1A4AgL1n79/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8w5nlddtNuE&_r=1"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
+        <div class="footer-about">
+    <h5 class="mb-3 text-primary">Lokasi SMP Negeri 2 Siborongborong</h5>
+
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31810.476271007087!2d98.9862382!3d2.0274821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302dfda5a58f5da3%3A0x665b0896f97fd420!2sSMP%20Negeri%202%20Siborongborong!5e0!3m2!1sid!2sid!4v1714999622961!5m2!1sid!2sid" 
+        width="100%" 
+        height="200" 
+        style="border:0; border-radius: 8px;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <a 
+        href="https://www.google.com/maps/place/SMP+Negeri+2+Siborongborong/@2.0274821,98.9862382,15z" 
+        class="btn btn-outline-primary mt-2" 
+        target="_blank">
+        Lihat di Google Maps
+    </a>
+
+    <p class="mt-3">
+        <strong>SMP Negeri 2 Siborongborong</strong> adalah sekolah menengah pertama yang berkomitmen dalam mencetak generasi unggul, berkarakter, dan berprestasi.
+    </p>
+
+    <div class="social-icons mt-3">
+        <a href="https://www.facebook.com/share/1A4AgL1n79/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8w5nlddtNuE&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+</div>
+
 
             <div class="footer-links">
                 <h3>Menu</h3>
@@ -136,9 +158,11 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 SMP Negeri 2 Siborongborong. Semua Hak Dilindungi.</p>
-            <p>www.smpn2siborongborong.sch.id</p>
-        </div>
+        <div class="footer-bottom text-center py-3" style="background: linear-gradient(45deg, #ff9800, #ff5722); color: white;">
+    <p class="mb-1 fw-semibold">&copy; 2025 SMP Negeri 2 Siborongborong. Semua Hak Dilindungi.</p>
+    <p class="mb-0">
+    </p>
+</div>
+
     </div>
 </footer>

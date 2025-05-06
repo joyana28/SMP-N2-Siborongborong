@@ -33,13 +33,12 @@
                 </td>
                 <td>
                     <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm">
-                        <i class="fas fa-edit"></i> Edit
+                     Edit
                     </a>
                     <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="d-inline form-hapus">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="fas fa-trash"></i> Hapus
+                        <button type="submit" class="btn btn-danger btn-sm"> Hapus
                         </button>
                     </form>
                 </td>

@@ -47,13 +47,13 @@
                                 <td>{{ $item->deskripsi ? \Illuminate\Support\Str::limit($item->deskripsi, 60) : '-' }}</td>
                                 <td>
                                     <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i> Edit
+                                     Edit
                                     </a>
                                     <form action="{{ route('admin.alumni.destroy', $item->id_alumni) }}" method="POST" class="d-inline form-hapus">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">
-                                            <i class="fas fa-trash"></i> Hapus
+                                             Hapus
                                         </button>
                                     </form>
                                 </td>
