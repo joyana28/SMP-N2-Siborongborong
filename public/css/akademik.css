@@ -37,9 +37,9 @@
         revealFromSides 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
     transform-origin: center;
     perspective: 1000px;
-    min-height: 40vh;
+    min-height: 54vh;
     height: auto;
-    padding-top: 40px;
+    padding-top: 60px;
     margin-bottom: 40px;
     position: relative;
     color: #fff;

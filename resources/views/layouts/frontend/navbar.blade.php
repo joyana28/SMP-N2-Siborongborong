@@ -28,8 +28,8 @@
                 <li class="nav-item-dropdown">
                     <a href="#" class="nav-link">Prestasi</a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('prestasi.akademik') }}">Akademik</a></li>
-                        <li><a href="{{ route('prestasi.nonakademik') }}">Non-Akademik</a></li>
+                        <li><a href="{{ route('prestasi.akademik') }}"><i class="fas fa-graduation-cap"></i> Akademik</a></li>
+                        <li><a href="{{ route('prestasi.nonakademik') }}"><i class="fas fa-trophy"></i> Non-Akademik</a></li>
                     </ul>
                 </li>
 
