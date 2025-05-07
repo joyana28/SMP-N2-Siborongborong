@@ -18,10 +18,8 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminAuthController;
 
 Route::get('/', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+    return view('home');
+})->name('home');
 
 Route::get('/profil/visimisi', [AboutController::class, 'visiMisi'])->name('profil.visimisi');
 Route::get('/profil/ekstrakurikuler', [AboutController::class, 'ekstrakurikuler'])->name('profil.ekstrakurikuler');
