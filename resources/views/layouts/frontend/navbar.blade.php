@@ -38,7 +38,7 @@
                 <li><a class="nav-link" href="{{ route('siswa.show') }}">Siswa dan Kelas</a></li>
                 <li><a class="nav-link" href="{{ route('alumni.show') }}">Profil Alumni</a></li>
                 <li><a class="nav-link" href="{{ route('formulirpendaftaran.show') }}">Prosedur Pendaftaran</a></li>
-                <li><a href="{{ route('admin.login') }}" class="nav-link {{ request()->is('login') ? 'active' : '' }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li class="nav-item invisible-login"><a href="{{ route('admin.login') }}" class="nav-link {{ request()->is('login') ? 'active' : '' }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             </ul>
         </div>
     </div>

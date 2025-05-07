@@ -315,6 +315,17 @@
     transform: scale(0.95);
 }
 
+.invisible-login {
+    opacity: 0 !important;         
+    pointer-events: auto !important; 
+    width: 60px;                  
+    height: 40px;                 
+    position: relative;
+}
+.invisible-login a {
+    opacity: 0 !important;         
+}
+
 /* Glow Animation */
 @keyframes glow {
     0% {
