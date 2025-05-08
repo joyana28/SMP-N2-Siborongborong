@@ -16,6 +16,7 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\VisiMisiController;
 
 Route::get('/', function () {
     return view('home');
@@ -52,6 +53,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         }
         return view('admin.dashboard');
     })->name('dashboard');
+ Route::get('/visi-misi', [VisiMisiController::class, 'visiMisi'])->name('visi.misi');
 
     Route::resource('prestasi', PrestasiController::class);
     Route::resource('alumni', AlumniController::class);

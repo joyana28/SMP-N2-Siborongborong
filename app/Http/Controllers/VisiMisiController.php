@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VisiMisi;
 use Illuminate\Http\Request;
-
+use Illuminate\View\View;
 class VisiMisiController extends Controller
 {
     public function index()
@@ -41,5 +41,9 @@ class VisiMisiController extends Controller
         $visiMisi->delete();
 
         return response()->json(['message' => 'Deleted']);
+    }
+    public function visiMisi(): View
+    {
+        return view('visimisi'); // Pastikan nama view sesuai dengan nama file Blade Anda
     }
 }

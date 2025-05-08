@@ -12,7 +12,7 @@
         <div class="hero-content">
             <h1 class="animated-title">SMPN2<br>SIBORONGBORONG</h1>
             <p>Inspirasi Tanpa Batas, Prestasi Tiada Henti, Wadah Tumbuhnya Calon Pemimpin Masa Depan</p>
-            <a href="#" class="btn-primary">GET STARTED</a>
+            <a href="#profil-sekolah"class="btn-primary">GET STARTED</a>
         </div>
     </div>
     
@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
 <!-- Features Section -->
-<section class="features-section">
+<section class="features-section" id="profil-sekolah">
     <div class="container">
         <div class="section-title">
             <h2>"Dengan segudang prestasi di bidang akademik, olahraga, dan seni, <span> SMPN 2 Siborongborong</span> terus berinovasi dalam pendidikan. Kami percaya bahwa setiap siswa memiliki keunikan, dan tugas kami adalah mengasahnya menjadi karya nyata yang membanggakan." </h2>
@@ -170,115 +170,14 @@
 
     <!-- CTA Section -->
     <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>"Mengapa memilih kami"</h2>
-                <p>Tidak hanya berbekal ilmu, kami ikut serta membekali siswa dengan keterampilan hidup, nilai moral, dan jiwa kepemimpinan untuk masa depan yang cerah.</p>
-                <a href="#" class="btn-primary">Learn More</a>
-            </div>
+    <div class="container">
+        <div class="cta-content">
+            <h2>"Mengapa memilih kami"</h2>
+            <p>Tidak hanya berbekal ilmu, kami ikut serta membekali siswa dengan keterampilan hidup, nilai moral, dan jiwa kepemimpinan untuk masa depan yang cerah.</p>
+            <a href="/visi-misi" class="btn-primary">Learn More</a>
         </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mereka Berawal di Sini, Sekarang Menginspirasi Dunia</h2>
-            </div>
-            <div class="testimonials-slider">
-                <div class="testimonial-item">
-                    <div class="client-image">
-                        <img src="images/client1.jpg" alt="Client">
-                    </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Their technical expertise and customer service are outstanding. Highly recommended for any tech solution needs."</p>
-                    <h4>Jane Smith</h4>
-                    <p class="client-position">Marketing Director</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="client-image">
-                        <img src="images/client2.jpg" alt="Client">
-                    </div>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"We've seen tremendous growth since implementing their solutions. The team is responsive and truly understands our business needs."</p>
-                    <h4>John Davis</h4>
-                    <p class="client-position">CEO, TechStart</p>
-                </div>
-            </div>
-            <div class="testimonial-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Statistic - Section -->
-
-    <section class="statistics-section">
-  <div class="statistics-grid">
-    <!-- Total Courses -->
-    <div class="statistic-item">
-      <div class="stat-icon-wrapper">
-        <i class="fas fa-chalkboard"></i>
-      </div>
-      <div class="stat-number-wrapper">
-        <span class="stat-number" data-target="500">0</span>
-        <span class="stat-number-plus">+</span>
-      </div>
-      <div class="stat-label">Total Courses</div>
     </div>
-    
-    <!-- Our Students -->
-    <div class="statistic-item">
-      <div class="stat-icon-wrapper">
-        <i class="fas fa-user-graduate"></i>
-      </div>
-      <div class="stat-number-wrapper">
-        <span class="stat-number" data-target="1900">0</span>
-        <span class="stat-number-plus">+</span>
-      </div>
-      <div class="stat-label">Our Students</div>
-    </div>
-    
-    <!-- Skilled Lecturers -->
-    <div class="statistic-item">
-      <div class="stat-icon-wrapper">
-        <i class="fas fa-chalkboard-teacher"></i>
-      </div>
-      <div class="stat-number-wrapper">
-        <span class="stat-number" data-target="750">0</span>
-        <span class="stat-number-plus">+</span>
-      </div>
-      <div class="stat-label">Skilled Lecturers</div>
-    </div>
-    
-    <!-- Win Awards -->
-    <div class="statistic-item">
-      <div class="stat-icon-wrapper">
-        <i class="fas fa-trophy"></i>
-      </div>
-      <div class="stat-number-wrapper">
-        <span class="stat-number" data-target="30">0</span>
-        <span class="stat-number-plus">+</span>
-      </div>
-      <div class="stat-label">Win Awards</div>
-    </div>
-  </div>
 </section>
-    
 <!-- Gallery Section -->
 <section class="gallery-section">
     <div class="gallery-container">
@@ -436,5 +335,5 @@
                 </div>
             </div>
         </div>
-    </section>
+</section>
 @endsection

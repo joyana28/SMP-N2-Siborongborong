@@ -4,12 +4,12 @@
 <link rel="stylesheet" href="{{ asset('css/visimisi.css') }}">
 @section('content')
     <!-- Hero Section -->
-    <section class="visimisi-hero-section">
-        <div class="visimisi-hero-text">
-            <h1 class="visimisi-title">Visi & Misi Sekolah</h1>
-            <p class="visimisi-description">Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global melalui pendidikan yang inovatif dan inklusif.</p>
-        </div>
-    </section>
+    <section class="visimisi-hero-section" id="visi-misi">
+    <div class="visimisi-hero-text">
+        <h1 class="visimisi-title">Visi & Misi Sekolah</h1>
+        <p class="visimisi-description">Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global melalui pendidikan yang inovatif dan inklusif.</p>
+    </div>
+</section>
     
     <!-- About Content Section (Vision, Mission, Goals) -->
     <section class="vmg-section">
