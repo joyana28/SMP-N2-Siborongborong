@@ -167,17 +167,6 @@
         </div>
     </div>
 </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-    <div class="container">
-        <div class="cta-content">
-            <h2>"Mengapa memilih kami"</h2>
-            <p>Tidak hanya berbekal ilmu, kami ikut serta membekali siswa dengan keterampilan hidup, nilai moral, dan jiwa kepemimpinan untuk masa depan yang cerah.</p>
-            <a href="/visi-misi" class="btn-primary">Learn More</a>
-        </div>
-    </div>
-</section>
 <!-- Gallery Section -->
 <section class="gallery-section">
     <div class="gallery-container">
