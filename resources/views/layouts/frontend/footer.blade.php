@@ -110,22 +110,22 @@
         <div class="footer-about">
     <h5 class="mb-3 text-primary">Lokasi SMP Negeri 2 Siborongborong</h5>
 
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31810.476271007087!2d98.9862382!3d2.0274821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302dfda5a58f5da3%3A0x665b0896f97fd420!2sSMP%20Negeri%202%20Siborongborong!5e0!3m2!1sid!2sid!4v1714999622961!5m2!1sid!2sid" 
-        width="100%" 
-        height="200" 
-        style="border:0; border-radius: 8px;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3985.488949872345!2d99.1715083747245!3d2.03879789794876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e067a79b25d01%3A0x87e99965b8c7b6a!2sSMP%20Negeri%202%20Siborongborong!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+    width="100%"
+    height="200"
+    style="border:0; border-radius: 8px;"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+</iframe>
 
-    <a 
-        href="https://www.google.com/maps/place/SMP+Negeri+2+Siborongborong/@2.0274821,98.9862382,15z" 
-        class="btn btn-outline-primary mt-2" 
-        target="_blank">
-        Lihat di Google Maps
-    </a>
+    <a
+    href="https://maps.google.com/?cid=2325376172867215434"
+    class="btn btn-outline-primary mt-2"
+    target="_blank">
+    Lihat di Google Maps
+</a>
 
     <p class="mt-3">
         <strong>SMP Negeri 2 Siborongborong</strong> adalah sekolah menengah pertama yang berkomitmen dalam mencetak generasi unggul, berkarakter, dan berprestasi.
