@@ -102,10 +102,23 @@ class PengumumanController extends Controller
         return redirect()->route('admin.pengumuman.index')
             ->with('success', 'Pengumuman berhasil diperbarui');
     }
+
     public function show($id)
     {
         $pengumuman = Pengumuman::with('admin')->findOrFail($id);
         return view('admin.pengumuman.show', compact('pengumuman'));
+    }
+
+    public function blog()
+    {
+    $pengumuman = Pengumuman::orderBy('tanggal_terbit', 'desc')->take(3)->get(); 
+    return view('home', compact('pengumuman'));
+    }
+
+    public function showBlog($id)
+    {
+    $pengumuman = Pengumuman::findOrFail($id);
+    return view('pengumuman.blog-show', compact('pengumuman'));
     }
 
     public function destroy($id)

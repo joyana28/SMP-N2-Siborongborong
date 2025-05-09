@@ -275,54 +275,35 @@
 
     
 
-    <!-- Blog Section -->
     <section class="blog-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Latest News & Articles</h2>
-            </div>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="images/ulos.png" alt="Blog">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> April 25, 2025</span>
-                        </div>
-                        <h3>Pelestarian Budaya Melalui Pakaian Adat</h3>
-                        <p>Siswa dan guru SMPN 2 Siborongborong mengenakan pakaian adat Batak dalam rangka memperingati Hari Kartini, sebagai bentuk pelestarian budaya lokal di lingkungan sekolah.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="images/bola.png" alt="Blog">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> April 20, 2025</span>
-                        </div>
-                        <h3>Apel Pagi dan Pembinaan Karakter Siswa</h3>
-                        <p>Seluruh warga sekolah mengikuti apel pagi yang diisi dengan pembinaan karakter serta penyampaian informasi penting oleh kepala sekolah di lapangan utama SMPN 2 Siborongborong.
-                        </p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="images/ibadah.png" alt="Blog">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> April 15, 2025</span>
-                        </div>
-                        <h3> Perayaan Natal Bersama Keluarga Besar SMPN 2 Siborongborong</h3>
-                        <p>Perayaan Natal berlangsung khidmat dan meriah di gereja sekitar, melibatkan siswa, guru, dan orang tua sebagai bentuk kebersamaan dan toleransi antarumat beragama.</p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <div class="section-title">
+            <h2>Pengumuman dan Berita Terbaru</h2>
         </div>
+        <div class="blog-grid">
+            @foreach ($pengumuman as $item)
+                <div class="blog-card">
+                    <div class="blog-image">
+                        @if ($item->foto)
+                            <img src="{{ asset('storage/pengumuman/' . $item->foto) }}" alt="Blog" style="object-fit: cover;">
+                        @else
+                            <img src="{{ asset('images/default.png') }}" alt="Blog">
+                        @endif
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i>
+                                {{ \Carbon\Carbon::parse($item->tanggal_terbit)->translatedFormat('F d, Y') }}
+                            </span>
+                        </div>
+                        <h3>{{ $item->judul }}</h3>
+                        <p>{{ Str::limit($item->isi, 150) }}</p>
+                        <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Read More</a>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 </section>
+
 @endsection

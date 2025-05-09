@@ -35,8 +35,8 @@ Route::get('/siswa', [SiswaController::class, 'showFrontend'])->name('siswa.show
 
 Route::get('/alumni', [AlumniController::class, 'showFrontend'])->name('alumni.show');
 
-Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman.index');
-Route::get('/pengumuman/{slug}', [PengumumanController::class, 'show'])->name('pengumuman.show');
+Route::get('/', [PengumumanController::class, 'blog'])->name('home');
+Route::get('/pengumuman/{id}', [PengumumanController::class, 'showBlog'])->name('pengumuman.showBlog');
 
 Route::get('/guru', [App\Http\Controllers\GuruController::class, 'daftarGuru'])->name('guru.index');
 
