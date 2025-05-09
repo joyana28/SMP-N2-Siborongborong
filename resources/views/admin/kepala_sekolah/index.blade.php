@@ -6,7 +6,7 @@
 <div class="container">
     <h1 class="mt-4 mb-3">Daftar Kepala Sekolah</h1>
 
-    <a href="{{ route('admin.kepala_sekolah.create') }}" class="btn btn-primary mb-3">Tambah Kepala Sekolah</a>
+    <a href="{{ route('admin.kepala_sekolah.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Kepala Sekolah</a>
 
     @if(session('success'))
         <div class="alert alert-success">

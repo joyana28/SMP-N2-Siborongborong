@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Daftar Formulir Pendaftaran</h1>
-    <a href="{{ route('admin.formulirpendaftaran.create') }}" class="btn btn-primary mb-3">Tambah Formulir Pendaftaran</a>
+    <a href="{{ route('admin.formulirpendaftaran.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Formulir Pendaftaran</a>
 
     @if(session('success'))
         <div class="alert alert-success">

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h4>Daftar Pengumuman</h4>
-    <a href="{{ route('admin.pengumuman.create') }}" class="btn btn-primary mb-3">Tambah Pengumuman</a>
+    <a href="{{ route('admin.pengumuman.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Pengumuman</a>
 
     @if(session('success'))
         <div class="alert alert-success">

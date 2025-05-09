@@ -2,22 +2,24 @@
 
 <nav class="navbar">
     <div class="container">
+        <!-- Logo -->
         <a href="/" class="logo">
             <img src="{{ asset('images/logo.png') }}" alt="SMPN 2 Siborongborong">
         </a>
-
+        <!-- Tombol Hamburger untuk tampilan mobile -->
         <button class="hamburger" id="hamburger">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
         </button>
 
+        <!-- Menu Navigasi -->
         <div class="nav-menu" id="navMenu">
             <ul class="nav-list">
-                <li><a href="{{ route('home') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a></li>
+                <li><a href="{{ route('home') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Beranda</a></li>
 
                 <li class="nav-item-dropdown">
-                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Tentang</a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('profil.visimisi') }}"><i class="fas fa-bullseye"></i> Visi dan Misi</a></li>
                         <li><a href="{{ route('profil.fasilitas') }}"><i class="fas fa-building"></i> Fasilitas</a></li>
@@ -45,6 +47,7 @@
 </nav>
 
 <script>
+    // Toggle menu saat tombol hamburger diklik
     document.getElementById('hamburger').addEventListener('click', function () {
         document.getElementById('navMenu').classList.toggle('active');
     });

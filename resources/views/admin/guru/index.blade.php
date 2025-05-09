@@ -8,7 +8,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('admin.guru.create') }}" class="btn btn-primary mb-3">Tambah Guru</a>
+    <a href="{{ route('admin.guru.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Guru</a>
 
     <table class="table table-bordered">
     <thead>

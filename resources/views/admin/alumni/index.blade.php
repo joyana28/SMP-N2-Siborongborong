@@ -4,10 +4,12 @@
 
 @section('content')
 <div class="container">
-    <h1 class="mt-4">Data Alumni</h1>
+   <!-- Judul Halaman -->
+<h1 class="mt-4">Data Alumni</h1> {{-- Judul utama halaman yang tampil besar di atas tabel --}}
 
-    <!-- Tombol Tambah (biru terang) -->
-    <a href="{{ route('admin.alumni.create') }}" class="btn btn-primary mb-3">Tambah Alumni</a>
+<!-- Tombol Tambah (warna biru terang dengan efek hover) -->
+<a href="{{ route('admin.alumni.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Alumni</a>
+{{-- Tombol untuk menuju ke halaman tambah data alumni --}}
 
     <!-- Pesan sukses -->
     @if(session('success'))
