@@ -303,7 +303,7 @@
     transition: background 0.4s, box-shadow 0.4s, transform 0.4s;
     position: relative;
     z-index: 2;
-    border: 3px solid #fffbe7;
+    border: 3px solid #766822;
     animation: iconPulse 2.5s infinite alternate cubic-bezier(.4,2,.3,1);
 }
 .floating-icon {

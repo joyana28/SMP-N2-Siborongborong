@@ -6,12 +6,12 @@
         }
 
         body {
-            background-color: #f0f2f5;
+            background-color: #212429;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: rgb(3, 37, 128);
+           background: linear-gradient(90deg, #1a56a7 60%, #f3b11f 100%);
             overflow: hidden;
         }
 
@@ -29,9 +29,9 @@
 
         .left-panel {
             flex: 1;
-            background: linear-gradient(135deg, #0046cc 0%, #0077ff 100%);
+            background: linear-gradient(90deg, #ffffff 60%, #f3b11f 100%);
             position: relative;
-            color: white;
+            color: rgb(18, 15, 15);
             padding: 40px;
             display: flex;
             flex-direction: column;
@@ -119,11 +119,15 @@
         }
 
         .logo {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-        }
+    display: flex;
+    align-items: center;
+    }
+
+    .logo-img {
+    width: 100px; /* Atur ukuran sesuai kebutuhan */
+    height: auto;
+    }
+
 
         .logo-icon {
             width: 32px;
@@ -131,7 +135,7 @@
             background-color: white;
             border-radius: 50%;
             margin-right: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(213, 25, 25, 0.5);
         }
 
         .logo-text {
@@ -283,8 +287,8 @@
         }
 
         input[type="email"],
-input[type="password"],
-input[type="text"] {
+        input[type="password"],
+        input[type="text"] {
     width: 100%;
     padding: 18px 18px 18px 50px;
     border: none;
@@ -359,18 +363,7 @@ input[type="text"]:focus {
             font-size: 14px;
         }
 
-        .forgot-password {
-            color: #0066ff;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .forgot-password:hover {
-            color: #0055ff;
-            text-decoration: underline;
-        }
+        
 
         .login-btn {
             width: 100%;
@@ -425,10 +418,10 @@ input[type="text"]:focus {
             display: block;
             width: 100%;
             padding: 15px;
-            background-color: #0066ff;
+            background-color: #38393b;
             border: none;
             border-radius: 12px;
-            color: white;
+            color: rgb(38, 24, 24);
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
@@ -456,7 +449,7 @@ input[type="text"]:focus {
         }
 
         .signup-btn:hover {
-            background-color: #0055ff;
+            background-color: #16181b;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
         }

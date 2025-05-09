@@ -30,13 +30,10 @@
                 <?php } ?>
             </div>
 
-            <div class="logo">
-                <div class="logo-icon"></div>
-                <div>
-                    <div class="logo-text">YOUR</div>
-                    <div class="logo-subtext">LOGO</div>
-                </div>
-            </div>
+          <div class="logo">
+              <img src="images/logo.png" alt="Logo" class="logo-img">
+          </div>
+
 
             <div class="welcome-text">
                 <h1>Hello,<br>welcome!</h1>
