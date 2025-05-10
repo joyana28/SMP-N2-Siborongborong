@@ -166,51 +166,7 @@
         </div>
 
     
-    <!-- Content Row - Latest Announcements -->
-    <div class="row">
-        <!-- Pengumuman Terbaru Table -->
-        <div class="col-lg-7 mb-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Pengumuman Terbaru</h6>
-                    <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a>
-                </div>
-                <div class="card-body">
-                    @php
-                        $pengumumanList = \App\Models\Pengumuman::latest()->take(5)->get();
-                    @endphp
-                    
-                    @if($pengumumanList->count() > 0)
-                        <div class="table-responsive">
-                            <table class="table table-bordered" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Judul</th>
-                                        <th>Tanggal</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach($pengumumanList as $pengumuman)
-                                    <tr>
-                                        <td>{{ $pengumuman->judul }}</td>
-                                        <td>{{ $pengumuman->created_at->format('d/m/Y') }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.pengumuman.show', $pengumuman->id_pengumuman) }}" class="btn btn-sm btn-info">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @else
-                        <p class="text-center">Belum ada pengumuman</p>
-                    @endif
-                </div>
-            </div>
-        </div>
+           
     
     <!-- Content Row - Prestasi Terbaru -->
     <div class="row">

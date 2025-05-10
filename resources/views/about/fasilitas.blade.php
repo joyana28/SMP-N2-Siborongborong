@@ -63,39 +63,10 @@
                     <span class="goal-text"><strong>Fasilitas ini mempersiapkan siswa menghadapi era global dan digital</strong> dengan akses teknologi dan literasi informasi yang memadai.</span>
                 </div>
             </div>
-            <a href="#" class="intro-btn">Lihat Semua Fasilitas</a>
         </div>
     </div>
 </section>
 
-<!-- Section Slider Fasilitas -->
-<section class="fasilitas-slider-section">
-  <div class="slider-container">
-    <button class="slider-nav slider-nav-left" aria-label="Sebelumnya">&#10094;</button>
-    <div class="slider-track">
-      <!-- Card 1 -->
-      <div class="slider-card slider-card-side">
-        <img src="{{ asset('images/bola2.png') }}" alt="Cabin Training">
-        <div class="slider-label slider-label-vertical slider-label-blue">CABIN TRAININGS</div>
-      </div>
-      <!-- Card 2 (center) -->
-      <div class="slider-card slider-card-center">
-        <img src="{{ asset('images/senang.png') }}" alt="Full Flight Simulators">
-        <div class="slider-info slider-label-yellow">
-          <h3>FULL FLIGHT SIMULATORS</h3>
-          <p>Are you ready for take off and flight with our training center?</p>
-          <a href="#" class="slider-btn">ALL SIMULATORS</a>
-        </div>
-      </div>
-      <!-- Card 3 -->
-      <div class="slider-card slider-card-side">
-        <img src="{{ asset('images/stadion.png') }}" alt="Cockpit Training">
-        <div class="slider-label slider-label-vertical slider-label-blue">COCKPIT TRAININGS</div>
-      </div>
-    </div>
-    <button class="slider-nav slider-nav-right" aria-label="Selanjutnya">&#10095;</button>
-  </div>
-</section>
 <!-- Judul Profil Sekolah -->
 <div class="profil-sekolah-title">
   <h2>Fasilitas Sekolah</h2>
