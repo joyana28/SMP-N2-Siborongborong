@@ -32,7 +32,6 @@ Route::get('/prestasi-non-akademik', [PrestasiController::class, 'nonAkademik'])
 Route::get('/formulirpendaftaran', [FormulirPendaftaranController::class, 'showFrontend'])->name('formulirpendaftaran.show');
 
 Route::get('/siswa', [SiswaController::class, 'showFrontend'])->name('siswa.show');
-
 Route::get('/alumni', [AlumniController::class, 'showFrontend'])->name('alumni.show');
 
 Route::get('/', [PengumumanController::class, 'blog'])->name('home');

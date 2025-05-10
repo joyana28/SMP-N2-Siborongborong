@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="{{ asset('js/login.js') }}"></script>
 </head>
 <body>
@@ -46,20 +47,21 @@
                 <form method="POST" action="{{ route('admin.login.submit') }}">
                     @csrf
 
-                    <div class="input-field" style="animation-delay: 0.2s;">
-                        <div class="input-icon"></div>
-                        <input type="text" name="username" placeholder="Username">
-                    </div>
+              <div class="input-field" style="animation-delay: 0.2s;">
+              <input type="text" name="username" id="username" placeholder=" " required>
+              <label for="username">Username</label>
+              </div>
 
-                    <div class="input-field" style="animation-delay: 0.4s;">
-                        <div class="input-icon"></div>
-                        <input type="email" name="email" placeholder="Email">
-                    </div>
+              <div class="input-field" style="animation-delay: 0.4s;">
+              <input type="email" name="email" id="email" placeholder=" " required>
+              <label for="email">Email</label>
+              </div>
 
-                    <div class="input-field" style="animation-delay: 0.6s;">
-                        <div class="input-icon"></div>
-                        <input type="password" name="password" placeholder="Password">
-                    </div>
+              <div class="input-field" style="animation-delay: 0.6s;">
+              <input type="password" name="password" id="password" placeholder=" " required>
+              <label for="password">Password</label>
+              </div>
+     
 
                     <div class="checkbox-container">
                         <div class="remember-me">

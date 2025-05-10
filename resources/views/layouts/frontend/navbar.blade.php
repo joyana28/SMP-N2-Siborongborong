@@ -40,9 +40,15 @@
                 <li><a class="nav-link" href="{{ route('siswa.show') }}">Siswa dan Kelas</a></li>
                 <li><a class="nav-link" href="{{ route('alumni.show') }}">Profil Alumni</a></li>
                 <li><a class="nav-link" href="{{ route('formulirpendaftaran.show') }}">Prosedur Pendaftaran</a></li>
-                <li class="nav-item invisible-login"><a href="{{ route('admin.login') }}" class="nav-link {{ request()->is('login') ? 'active' : '' }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-            </ul>
-        </div>
+<li class="nav-item invisible-login" title="Login">
+    <a href="{{ route('admin.login') }}" 
+       class="nav-link d-flex align-items-center justify-content-center bg-warning text-primary rounded-circle"
+       style="width: 40px; height: 40px; transition: 0.3s;">
+        <i class="fas fa-sign-in-alt"></i>
+    </a>
+</li>
+</ul>
+ </div>
     </div>
 </nav>
 

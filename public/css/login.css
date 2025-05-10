@@ -1,518 +1,203 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+/* Reset dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        body {
-            background-color: #212429;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-           background: linear-gradient(90deg, #1a56a7 60%, #f3b11f 100%);
-            overflow: hidden;
-        }
+/* Background animasi */
+body {
+    min-height: 100vh;
+    background: linear-gradient(to right, #00274d, #005288); /* Biru tua */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
 
-        .login-container {
-            display: flex;
-            background-color: white;
-            border-radius: 16px;
-            overflow: hidden;
-            width: 90%;
-            max-width: 1100px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 10;
-        }
+.background-gradients .gradient-blob {
+    position: absolute;
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite alternate;
+    z-index: -1;
+}
 
-        .left-panel {
-            flex: 1;
-            background: linear-gradient(90deg, #ffffff 60%, #f3b11f 100%);
-            position: relative;
-            color: rgb(18, 15, 15);
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
 
-        .light-effect {
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 183, 255, 0.4) 0%, rgba(0, 123, 255, 0) 70%);
-            border-radius: 50%;
-            filter: blur(30px);
-            animation: pulse 8s infinite alternate;
-        }
+/* Kontainer utama login */
+.login-container {
+    display: flex;
+    width: 90%;
+    max-width: 1000px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.3;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0.6;
-            }
-        }
+/* Panel kiri (welcome) */
+.left-panel {
+    flex: 1;
+    background: linear-gradient(135deg, #ffffff, #ffffff); /* Biru gelap */
+    padding: 40px 30px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
-        .diagonal-lines {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            z-index: 1;
-        }
+.left-panel .logo-img {
+    width: 80px;
+    margin-bottom: 20px;
+}
 
-        .line {
-            position: absolute;
-            height: 200%;
-            width: 1px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-            animation: moveLines 15s linear infinite;
-            transform: rotate(45deg) translateX(-50%);
-            transform-origin: 0 0;
-        }
+.welcome-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
 
-        @keyframes moveLines {
-            0% {
-                transform: rotate(45deg) translateX(-50%) translateY(-100%);
-            }
-            100% {
-                transform: rotate(45deg) translateX(-50%) translateY(100%);
-            }
-        }
+.welcome-text p {
+    font-size: 18px;
+    opacity: 0.8;
+}
 
-        .stars {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 0;
-        }
-
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            animation: twinkle 5s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            0% {
-                opacity: 0.2;
-            }
-            100% {
-                opacity: 0.8;
-            }
-        }
-
-        .logo {
+/* Panel kanan (form login) */
+.right-panel {
+    flex: 1;
+    background: white;
+    padding: 50px 40px;
     display: flex;
     align-items: center;
-    }
+    justify-content: center;
+}
 
-    .logo-img {
-    width: 100px; /* Atur ukuran sesuai kebutuhan */
-    height: auto;
-    }
-
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background-color: white;
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 15px rgba(213, 25, 25, 0.5);
-        }
-
-        .logo-text {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .logo-subtext {
-            font-size: 16px;
-            opacity: 0.8;
-            letter-spacing: 1px;
-        }
-
-        .welcome-text {
-            position: relative;
-            z-index: 2;
-            margin-top: 100px;
-        }
-
-        .welcome-text h1 {
-            font-size: 60px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .welcome-text p {
-            font-size: 16px;
-            opacity: 0.8;
-            max-width: 400px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease-out 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .view-more-btn {
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            z-index: 2;
-            position: relative;
-            display: inline-block;
-            width: fit-content;
-            animation: fadeInUp 1s ease-out 0.4s;
-            animation-fill-mode: both;
-            overflow: hidden;
-        }
-
-        .view-more-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease-in-out;
-            z-index: -1;
-        }
-
-        .view-more-btn:hover:before {
-            left: 0;
-        }
-
-        .view-more-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .view-more-btn:active {
-            transform: translateY(-1px);
-        }
-
-        .right-panel {
-            flex: 1;
-            padding: 60px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: white;
-            position: relative;
-            z-index: 5;
-        }
-
-        .right-panel::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 20px;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
-            z-index: -1;
-        }
-
-        .form-container {
-            max-width: 400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-field {
-            position: relative;
-            margin-bottom: 20px;
-            animation: fadeInRight 0.8s ease-out;
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .input-icon {
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #e6e9f2;
-            border-radius: 6px;
-        }
-
-        input[type="email"],
-        input[type="password"],
-        input[type="text"] {
+.form-container {
     width: 100%;
-    padding: 18px 18px 18px 50px;
-    border: none;
-    border-radius: 12px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    background-color: #f9fafd;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    color: #4a5568;
+    max-width: 350px;
 }
 
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="text"]:focus {
+/* Input field */
+.input-field {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2), 0 2px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    font-size: 16px;
+    transition: border-color 0.3s ease;
 }
-        .checkbox-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            animation: fadeIn 0.8s ease-out 0.4s;
-            animation-fill-mode: both;
-        }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+.input-field input:focus {
+    border-color: #ffb100; /* Kuning-oranye */
+    background-color: #fff;
+}
 
-        .remember-me {
-            display: flex;
-            align-items: center;
-        }
+.input-field label {
+    position: absolute;
+    left: 20px;
+    top: 14px;
+    background: white;
+    padding: 0 5px;
+    color: #888;
+    font-size: 14px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
 
-        .remember-me input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-            margin-right: 8px;
-            cursor: pointer;
-            position: relative;
-            border: 1px solid #0066ff;
-            appearance: none;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
+.input-field input:focus + label,
+.input-field input:not(:placeholder-shown) + label {
+    top: -10px;
+    font-size: 12px;
+    color: #ffb100;
+}
 
-        .remember-me input[type="checkbox"]:checked {
-            background-color: #0066ff;
-        }
+/* Checkbox + button */
+.checkbox-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
-        .remember-me input[type="checkbox"]:checked::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 2px;
-            width: 5px;
-            height: 9px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
+.checkbox-container label {
+    font-size: 14px;
+    color: #333;
+}
 
-        .remember-me label {
-            color: #7b8794;
-            font-size: 14px;
-        }
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: linear-gradient(to right, #ffb100, #ff8c00); /* Gradasi kuning-oranye */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
 
-        
+.login-btn:hover {
+    background: linear-gradient(to right, #ff9900, #e67300);
+}
 
-        .login-btn {
-            width: 100%;
-            padding: 15px;
-            background-color: #f9fafd;
-            border: none;
-            border-radius: 12px;
-            color: #0066ff;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            animation: fadeIn 0.8s ease-out 0.6s;
-            animation-fill-mode: both;
-            position: relative;
-            overflow: hidden;
-        }
+/* Animasi bintang & garis (jika ada) */
+.star, .line {
+    position: absolute;
+    background: rgb(254, 254, 254);
+}
 
-        .login-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 102, 255, 0.1);
-            transition: all 0.4s ease-in-out;
-            z-index: -1;
-        }
+.star {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    animation: blink 2s infinite alternate;
+}
 
-        .login-btn:hover:before {
-            left: 0;
-        }
+@keyframes blink {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
 
-        .login-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.2);
-        }
+.line {
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    animation: slide 3s linear infinite;
+}
 
-        .signup-text {
-            text-align: center;
-            color: #7b8794;
-            font-size: 14px;
-            margin-bottom: 20px;
-            animation: fadeIn 0.8s ease-out 0.8s;
-            animation-fill-mode: both;
-        }
+@keyframes slide {
+    0% { transform: translateY(-100px); }
+    100% { transform: translateY(300px); }
+}
 
-        .signup-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #38393b;
-            border: none;
-            border-radius: 12px;
-            color: rgb(38, 24, 24);
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            animation: fadeIn 0.8s ease-out 1s;
-            animation-fill-mode: both;
-            position: relative;
-            overflow: hidden;
-        }
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
 
-        .signup-btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease-in-out;
-            z-index: -1;
-        }
+    .left-panel, .right-panel {
+        width: 100%;
+        padding: 30px;
+    }
 
-        .signup-btn:hover:before {
-            left: 0;
-        }
+    .left-panel {
+        align-items: center;
+        text-align: center;
+    }
 
-        .signup-btn:hover {
-            background-color: #16181b;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 102, 255, 0.3);
-        }
-
-        .signup-btn:active {
-            transform: translateY(-1px);
-        }
-
-        .background-gradients {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .gradient-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(50px);
-            opacity: 0.5;
-            animation: floatBlob 20s infinite ease-in-out alternate;
-        }
-
-        @keyframes floatBlob {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(50px, 50px) scale(1.2);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .login-container {
-                flex-direction: column;
-                margin: 20px;
-            }
-
-            .left-panel {
-                padding: 30px;
-                min-height: 350px;
-            }
-
-            .welcome-text {
-                margin-top: 30px;
-            }
-
-            .welcome-text h1 {
-                font-size: 40px;
-            }
-
-            .right-panel {
-                padding: 30px;
-            }
-
-            .right-panel::before {
-                width: 100%;
-                height: 20px;
-                top: 0;
-                left: 0;
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
-            }
-        }
+    .form-container {
+        max-width: 100%;
+    }
+}
