@@ -6,6 +6,13 @@
 <div class="container">
     <h1 class="mt-4">Daftar Ekstrakurikuler</h1>
 
+    {{-- Notifikasi sukses tanpa tombol close --}}
+    @if (session('success'))
+        <div class="alert alert-success fade show" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <!-- Tombol Tambah (Warna Biru Terang) -->
     <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Ekstrakurikuler</a>
 
@@ -33,14 +40,11 @@
                     <img src="{{ asset('storage/ekstrakurikuler/'.$ekstra->foto) }}" alt="Foto" width="100">
                 </td>
                 <td>
-                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm">
-                     Edit
-                    </a>
+                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="d-inline form-hapus">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm"> Hapus
-                        </button>
+                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                     </form>
                 </td>
             </tr>

@@ -57,7 +57,15 @@
 
 <div class="container mt-5">
     <h2 class="mb-4 text-primary">Edit Ekstrakurikuler</h2>
-
+{{-- Notifikasi sukses --}}
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Tutup">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="card card-custom">
         <div class="card-body">
             <form action="{{ route('admin.ekstrakurikuler.update', $ekstrakurikuler->id_ekstrakurikuler) }}" method="POST" enctype="multipart/form-data">

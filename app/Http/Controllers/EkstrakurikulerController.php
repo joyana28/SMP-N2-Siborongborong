@@ -63,7 +63,7 @@ class EkstrakurikulerController extends Controller
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
         return view('admin.ekstrakurikuler.edit', compact('ekstrakurikuler'));
     }
-
+    
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [

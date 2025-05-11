@@ -5,216 +5,168 @@
 @section('content')
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="{{ route('home') }}"><i class="fas fa-sign-out-alt fa-sm text-white-50"></i> Logout</a>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4" style="background-color: #001f3f; padding: 15px 20px; border-radius: 10px;">
+        <h1 class="h3 mb-0" style="color: #E8AA42;">Dashboard</h1>
+        <a href="{{ route('home') }}" style="color: #E8AA42; text-decoration: none; font-weight: bold;">
+            <i class="fas fa-sign-out-alt fa-sm me-1"></i> Logout
+        </a>
     </div>
-
-    <!-- Content Row - Main Cards -->
-    <div class="row">
-        <!-- Alumni Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Alumni</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Alumni::count() }}</div>
-                            <a href="{{ route('admin.alumni.index') }}" class="mt-2 small text-primary">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
-                        </div>
+</div> <!-- penutup container-fluid -->
+<div class="row">
+    <!-- Alumni Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            Total Alumni</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Alumni::count() }}</div>
+                        <a href="{{ route('admin.alumni.index') }}" class="btn btn-sm btn-primary mt-2">Lihat Detail <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Guru Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Total Guru</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Guru::count() }}</div>
-                            <a href="{{ route('admin.guru.index') }}" class="mt-2 small text-success">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ekstrakurikuler Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Total Ekstrakurikuler</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Ekstrakurikuler::count() }}</div>
-                            <a href="{{ route('admin.ekstrakurikuler.index') }}" class="mt-2 small text-info">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-futbol fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Prestasi Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Total Prestasi</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Prestasi::count() }}</div>
-                            <a href="{{ route('admin.prestasi.index') }}" class="mt-2 small text-warning">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-trophy fa-2x text-gray-300"></i>
-                        </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Content Row - Secondary Cards -->
-    <div class="row">
-        <!-- Fasilitas Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-danger shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                Total Fasilitas</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Fasilitas::count() }}</div>
-                            <a href="{{ route('admin.fasilitas.index') }}" class="mt-2 small text-danger">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-building fa-2x text-gray-300"></i>
-                        </div>
+    <!-- Guru Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total Guru</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Guru::count() }}</div>
+                        <a href="{{ route('admin.guru.index') }}" class="btn btn-sm btn-success mt-2">Lihat Detail <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Pengumuman Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-secondary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                                Total Pengumuman</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Pengumuman::count() }}</div>
-                            <a href="{{ route('admin.pengumuman.index') }}" class="mt-2 small text-secondary">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Kelas Card -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Total Kelas</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Siswa::count() }}</div>
-                            <a href="{{ route('admin.siswa.index') }}" class="mt-2 small text-success">Lihat Detail <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-door-open fa-2x text-gray-300"></i>
-                        </div>
+                    <div class="col-auto">
+                        <i class="fas fa-chalkboard-teacher fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Content Row - Charts and Tables -->
-    <div class="row">
-        <!-- Semester Statistics Chart -->
-        <div class="col-lg-8 mb-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Statistik Jumlah Siswa Per Semester</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="semesterChart" style="height: 320px;"></canvas>
+    <!-- Ekstrakurikuler Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            Total Ekstrakurikuler</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Ekstrakurikuler::count() }}</div>
+                        <a href="{{ route('admin.ekstrakurikuler.index') }}" class="btn btn-sm btn-info mt-2">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-futbol fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    
-           
-    
-    <!-- Content Row - Prestasi Terbaru -->
-    <div class="row">
-        <div class="col-lg-12 mb-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Prestasi Terbaru</h6>
-                    <a href="{{ route('admin.prestasi.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a>
-                </div>
-                <div class="card-body">
-                    @php
-                        $prestasiList = \App\Models\Prestasi::latest()->take(3)->get();
-                    @endphp
-                    
-                    @if($prestasiList->count() > 0)
-                        <div class="row">
-                            @foreach($prestasiList as $prestasi)
-                            <div class="col-md-4 mb-3">
-                                <div class="card shadow-sm h-100">
-                                    @if($prestasi->foto)
-                                    <img class="card-img-top" src="{{ asset('storage/' . $prestasi->foto) }}" alt="{{ $prestasi->nama }}" style="height: 180px; object-fit: cover;">
-                                    @else
-                                    <div class="bg-light text-center py-5">
-                                        <i class="fas fa-trophy fa-3x text-warning"></i>
-                                    </div>
-                                    @endif
-                                    <div class="card-body">
-                                        <h5 class="card-title font-weight-bold">{{ $prestasi->nama }}</h5>
-                                        <p class="card-text small text-muted mb-2">{{ \Illuminate\Support\Str::limit($prestasi->deskripsi ?? '', 100) }}</p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <span class="badge badge-primary">{{ $prestasi->jenis }}</span>
-                                            <small class="text-muted">{{ \Carbon\Carbon::parse($prestasi->tanggal)->format('d M Y') }}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-                    @else
-                        <div class="text-center py-5">
-                            <p class="mb-3">Belum ada data prestasi</p>
-                            <a href="{{ route('admin.prestasi.create') }}" class="btn btn-success">
-                                <i class="fas fa-plus mr-1"></i> Tambah Prestasi
-                            </a>
-                        </div>
-                    @endif
+    <!-- Prestasi Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            Total Prestasi</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Prestasi::count() }}</div>
+                        <a href="{{ route('admin.prestasi.index') }}" class="btn btn-sm btn-warning mt-2">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-trophy fa-2x text-gray-300"></i>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Row - Secondary Cards -->
+<div class="row">
+    <!-- Fasilitas Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                            Total Fasilitas</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Fasilitas::count() }}</div>
+                        <a href="{{ route('admin.fasilitas.index') }}" class="btn btn-sm btn-danger mt-2">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-building fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pengumuman Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-secondary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
+                            Total Pengumuman</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Pengumuman::count() }}</div>
+                        <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-sm btn-secondary mt-2">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-bullhorn fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kelas Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            Total Kelas</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ \App\Models\Siswa::count() }}</div>
+                        <a href="{{ route('admin.siswa.index') }}" class="btn btn-sm btn-success mt-2">Lihat Detail <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-door-open fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Semester Statistics Chart -->
+    <div class="col-lg-8 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #003366; color: #ffcc00;">
+                <h6 class="m-0 font-weight-bold">Statistik Jumlah Siswa Per Semester</h6>
+            </div>
+            <div class="card-body" style="background-color: #f7f7f7;">
+                <div class="chart-area">
+                    <canvas id="semesterChart" style="height: 320px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
         </div>
     </div>
     @endsection

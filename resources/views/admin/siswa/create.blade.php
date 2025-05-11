@@ -64,4 +64,4 @@
     inputL.addEventListener('input', hitungTotal);
     inputP.addEventListener('input', hitungTotal);
 </script>
-@endsection
+@endsectionz
