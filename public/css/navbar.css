@@ -1,10 +1,11 @@
-/* Navbar styles */
+/* ========== Navbar Styles ========== */
 .navbar {
-    background-color: #ffffff; /* Warna biru tua */
+    background-color: #ffffff; /* Background putih */
     padding: 15px 20px;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .container {
@@ -17,6 +18,7 @@
     max-width: 150px;
 }
 
+/* ========== Navigation Menu ========== */
 .nav-menu {
     display: flex;
     align-items: center;
@@ -31,15 +33,21 @@
 
 .nav-link {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: #070445; /* Biru tua */
     margin: 0 15px;
     font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+    position: relative;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: #070445; 
+.nav-link:hover,
+.nav-link.active {
+    color: #E8AA42; /* Kuning oranye */
+    transform: scale(1.05);
 }
 
+/* ========== Dropdown Menu ========== */
 .nav-item-dropdown {
     position: relative;
 }
@@ -47,20 +55,46 @@
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #ffffff;
     top: 100%;
     left: 0;
-    padding: 10px;
+    background-color: #ffffff;
+    padding: 12px 0;
     list-style: none;
     margin: 0;
+    box-shadow: 0 6px 18px rgba(7, 4, 69, 0.15);
+    min-width: 200px;
+    border-radius: 10px;
+    animation: fadeIn 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #070445;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease, padding-left 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #E8AA42;
+    color: #ffffff;
+    padding-left: 25px;
 }
 
 .nav-item-dropdown:hover .dropdown-menu {
     display: block;
 }
 
+/* ========== Hamburger Menu ========== */
 .hamburger {
-    display: none; /* Sembunyikan hamburger di layar besar */
+    display: none;
     flex-direction: column;
     justify-content: space-between;
     width: 25px;
@@ -68,38 +102,35 @@
     border: none;
     background: transparent;
     cursor: pointer;
+    padding: 0;
+    z-index: 1100;
 }
 
 .hamburger .bar {
     height: 4px;
     background-color: #070445;
     width: 100%;
+    border-radius: 2px;
+    transition: all 0.3s ease;
 }
 
-.nav-menu.active {
-    display: block;
-}
-
-.nav-menu {
-    display: flex;
-}
-
+/* ========== Responsive Styles ========== */
 @media (max-width: 768px) {
-    /* Tampilkan tombol hamburger di layar kecil */
     .hamburger {
         display: flex;
     }
 
     .nav-menu {
         display: none;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: #E8AA42;;
         flex-direction: column;
         align-items: center;
-        padding: 10px 0;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: #E8AA42;
+        padding: 20px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
 
     .nav-menu.active {
@@ -107,19 +138,46 @@
     }
 
     .nav-list {
-        display: block;
-        text-align: center;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .nav-link {
-        margin: 10px 0;
         font-size: 18px;
+        margin: 8px 0;
+        color: #ffffff;
+    }
+
+    .nav-link:hover {
+        color: #070445;
     }
 
     .dropdown-menu {
-        position: relative;
+        position: static;
+        box-shadow: none;
         background-color: transparent;
-        top: 0;
-        left: 0;
+        padding: 0;
+    }
+
+    .dropdown-menu a {
+        padding: 10px 20px;
+        color: #ffffff;
+    }
+
+    .dropdown-menu a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #070445;
+    }
+}
+
+/* ========== Animasi Dropdown ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
