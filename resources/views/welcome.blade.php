@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMPN 2 Siborongborong</title>
+    <title>SMP NEGERI 2 Siborongborong</title>
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="images/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -274,7 +274,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">SMPN 2 SIBORONGBORONG</a>
+            <a class="navbar-brand" href="#">SMP NEGERI 2 SIBORONGBORONG</a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="#">Home</a>
                 <a class="nav-link" href="#">About</a>
@@ -288,7 +288,7 @@
     <div class="hero-section">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <h1>SMPN 2 Siborongborong Membangun Masa Depan Melalui Pendidikan Berkualitas</h1>
+            <h1>SMP NEGERI 2 Siborongborong Membangun Masa Depan Melalui Pendidikan Berkualitas</h1>
             <a href="#" class="btn-contact mt-3">Contact us</a>
         </div>
     </div>

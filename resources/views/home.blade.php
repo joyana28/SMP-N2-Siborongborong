@@ -79,7 +79,7 @@
                     <i class="fas fa-check-circle"></i>
                 </div>
                 <h3>Ekstrakurikuler Kreatif</h3>
-                <p>Beragam pilihan ekstrakurikuler (olahraga, seni, sains, dll.) membantu siswa menemukan passion mereka. Fasilitas memadai dan pembinaan intensif menjadikan setiap talenta berkembang optimal.</p>
+                <p>Beragam pilihan ekstrakurikuler (olahraga, seni, akademik, dll.) membantu siswa menemukan passion mereka. Fasilitas memadai dan pembinaan intensif menjadikan setiap talenta berkembang optimal.</p>
             </div>
         </div>
     </div>
@@ -105,13 +105,14 @@
                 </div>
                 <div class="service-content service-back">
                     <h4>Visi</h4>
-                    <p>Mewujudkan sekolah yang unggul dalam prestasi, berkarakter, dan berwawasan lingkungan.</p>
+                    <p>Mewujudkan sekolah yang berkualitas, berdisiplin, berkarakter, berbudaya, dan berwawasan luas serta cerdas, kreatif, dan berakhlak mulia.</p>
                     <h4>Misi</h4>
                     <ul>
-                        <li><i class="fas fa-check"></i> Meningkatkan kualitas pembelajaran</li>
-                        <li><i class="fas fa-check"></i> Mengembangkan potensi siswa</li>
-                        <li><i class="fas fa-check"></i> Menanamkan nilai-nilai moral</li>
-                        <li><i class="fas fa-check"></i> Menciptakan lingkungan belajar kondusif</li>
+                        <li><i class="fas fa-check"></i> Meningkatkan kualitas pendidikan</li>
+                        <li><i class="fas fa-check"></i> Mengembangkan karakter siswa</li>
+                        <li><i class="fas fa-check"></i> Meningkatkan kemampuan akademik</li>
+                        <li><i class="fas fa-check"></i> Meningkatkan kesadaran global</li>
+                        <li><i class="fas fa-check"></i> Meningkatkan partisipasi orang tua dalam pendidikan siswa</li>
                     </ul>
                 </div>
             </div>
@@ -194,7 +195,7 @@
                         </div>
                         <h3>{{ $item->judul }}</h3>
                         <p>{{ Str::limit($item->isi, 150) }}</p>
-                        <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Read More</a>
+                    <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Read More</a>
                     </div>
                 </div>
             @endforeach

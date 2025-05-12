@@ -49,7 +49,7 @@
         </div>
         <div class="akademik-highlight-content">
             <span class="akademik-highlight-welcome">PRESTASI TERBAIK KAMI</span>
-            <h2 class="akademik-highlight-title">Siswa SMPN 2 Siborongborong Raih Prestasi Gemilang</h2>
+            <h2 class="akademik-highlight-title">Siswa SMP NEGERI 2 Siborongborong Raih Prestasi Gemilang</h2>
             <p class="akademik-highlight-desc">
                 Kami bangga dengan pencapaian luar biasa para siswa dalam berbagai ajang kompetisi akademik dan non-akademik, baik tingkat daerah, nasional, maupun internasional. Setiap prestasi adalah bukti dedikasi, kerja keras, dan semangat belajar yang tinggi dari seluruh keluarga besar sekolah.
             </p>
@@ -58,8 +58,7 @@
                     <i class="fas fa-trophy"></i>
                 </div>
                 <div>
-                    <div class="akademik-highlight-sign-name">Drs. Sihombing</div>
-                    <div class="akademik-highlight-sign-role">Kepala SMPN 2 Siborongborong</div>
+                    <div class="akademik-highlight-sign-role">Kepala SMP NEGERI 2 Siborongborong</div>
                 </div>
             </div>
         </div>

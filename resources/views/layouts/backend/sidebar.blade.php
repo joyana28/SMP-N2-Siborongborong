@@ -2,7 +2,7 @@
     <div class="p-3 text-center">
         <!-- Logo SMP -->
                 <h4 class="text-center mb-4 text-white">Dashboard</h4>    </div>
-        <h5 class="text-center text-warning fw-bold mb-3">SMP N 2 SIBORONGBORONG</h5>
+        <h5 class="text-center text-warning fw-bold mb-3">SMP NEGERI 2 SIBORONGBORONG</h5>
     <ul class="nav flex-column px-3">
         <li class="nav-item mb-2">
             <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">

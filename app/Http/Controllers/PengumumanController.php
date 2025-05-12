@@ -40,7 +40,7 @@ class PengumumanController extends Controller
     if ($request->hasFile('foto')) {
         $fotoFile = $request->file('foto');
         $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-        $fotoFile->move(public_path('pengumuman'), $fotoName); // langsung ke public/pengumuman
+        $fotoFile->move(public_path('pengumuman'), $fotoName); 
         $foto = $fotoName;
     }
 

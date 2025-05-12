@@ -4,7 +4,7 @@
     <div class="container">
         <!-- Logo -->
         <a href="/" class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="SMPN 2 Siborongborong">
+            <img src="{{ asset('images/logo.png') }}" alt="SMP NEGERI 2 Siborongborong">
         </a>
         <!-- Tombol Hamburger untuk tampilan mobile -->
         <button class="hamburger" id="hamburger">

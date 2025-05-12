@@ -41,7 +41,7 @@ class FasilitasController extends Controller
         if ($request->hasFile('foto')) {
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoPath = $fotoFile->storeAs('public/fasilitas', $fotoName);
+            $fotoFile->move(public_path('fasilitas'), $fotoName); 
             $foto = $fotoName;
         }
 
@@ -49,7 +49,7 @@ class FasilitasController extends Controller
             'id_admin' => session('admin_id'),
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
-            'foto' => $foto ?? null,
+            'foto' => $foto,
             'tahun' => $request->tahun,
             'perhatian_teknis' => $request->perhatian_teknis,
             'penambahan' => $request->penambahan,
@@ -70,7 +70,7 @@ class FasilitasController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:100',
             'deskripsi' => 'required|string',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'tahun' => 'required|string|max:100',
             'perhatian_teknis' => 'nullable|string|max:100',
             'penambahan' => 'nullable|string|max:100',
@@ -85,13 +85,14 @@ class FasilitasController extends Controller
         $fasilitas = Fasilitas::findOrFail($id);
 
         if ($request->hasFile('foto')) {
-            if ($fasilitas->foto && Storage::exists('public/fasilitas/' . $fasilitas->foto)) {
-                Storage::delete('public/fasilitas/' . $fasilitas->foto);
-            }
+        $oldPath = public_path('fasilitas/' . $fasilitas->foto);
+        if ($fasilitas->foto && file_exists($oldPath)) {
+            unlink($oldPath); 
+        }
 
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoPath = $fotoFile->storeAs('public/fasilitas', $fotoName);
+            $fotoFile->move(public_path('fasilitas'), $fotoName);
             $fasilitas->foto = $fotoName;
         }
 
@@ -110,8 +111,9 @@ class FasilitasController extends Controller
     {
         $fasilitas = Fasilitas::findOrFail($id);
 
-        if ($fasilitas->foto && Storage::exists('public/fasilitas/' . $fasilitas->foto)) {
-            Storage::delete('public/fasilitas/' . $fasilitas->foto);
+        $path = public_path('fasilitas/' . $fasilitas->foto);
+        if ($fasilitas->foto && file_exists($path)) {
+        unlink($path);
         }
 
         $fasilitas->delete();
