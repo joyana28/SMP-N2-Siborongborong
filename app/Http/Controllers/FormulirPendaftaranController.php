@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\FormulirPendaftaran;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class FormulirPendaftaranController extends Controller
 {
@@ -32,7 +31,7 @@ class FormulirPendaftaranController extends Controller
         if ($request->hasFile('formulir_pendaftaran')) {
             $file = $request->file('formulir_pendaftaran');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/formulir', $fileName);
+            $file->move(public_path('formulirpendaftaran'), $fileName);
         }
 
         FormulirPendaftaran::create([
@@ -66,12 +65,15 @@ class FormulirPendaftaranController extends Controller
 
         if ($request->hasFile('formulir_pendaftaran')) {
             if ($formulirPendaftaran->formulir_pendaftaran) {
-                Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
+                $oldPath = public_path('formulirpendaftaran/' . $formulirPendaftaran->formulir_pendaftaran);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
 
             $file = $request->file('formulir_pendaftaran');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('public/formulir', $fileName);
+            $file->move(public_path('formulirpendaftaran'), $fileName);
             $formulirPendaftaran->formulir_pendaftaran = $fileName;
         }
 
@@ -102,7 +104,10 @@ class FormulirPendaftaranController extends Controller
         $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
 
         if ($formulirPendaftaran->formulir_pendaftaran) {
-            Storage::delete('public/formulir/' . $formulirPendaftaran->formulir_pendaftaran);
+            $filePath = public_path('formulirpendaftaran/' . $formulirPendaftaran->formulir_pendaftaran);
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
         }
 
         $formulirPendaftaran->delete();
