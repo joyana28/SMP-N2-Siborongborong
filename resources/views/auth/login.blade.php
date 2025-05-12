@@ -48,17 +48,17 @@
                     @csrf
 
               <div class="input-field" style="animation-delay: 0.2s;">
-              <input type="text" name="username" id="username" placeholder=" " required>
+              <input type="text" name="username" id="username"  name="username" required title="Wajib isi username yang valid.">
               <label for="username">Username</label>
               </div>
 
               <div class="input-field" style="animation-delay: 0.4s;">
-              <input type="email" name="email" id="email" placeholder=" " required>
+              <input type="email" name="email" id="email" name="email" required title="Wajib isi email yang valid.">
               <label for="email">Email</label>
               </div>
 
               <div class="input-field" style="animation-delay: 0.6s;">
-              <input type="password" name="password" id="password" placeholder=" " required>
+              <input type="password" name="password" id="password" name="password" required title="Wajib isi password.">
               <label for="password">Password</label>
               </div>
      
