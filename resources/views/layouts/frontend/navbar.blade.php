@@ -20,7 +20,7 @@
                 <li><a href="{{ route('home') }}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Beranda</a></li>
 
                 <li class="nav-item-dropdown">
-                    <a href="#" class="nav-link">About</a>
+                    <a href="#" class="nav-link">Tentang</a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('profil.visimisi') }}"><i class="fas fa-bullseye"></i> Visi dan Misi</a></li>
                         <li><a href="{{ route('profil.fasilitas') }}"><i class="fas fa-building"></i> Fasilitas</a></li>

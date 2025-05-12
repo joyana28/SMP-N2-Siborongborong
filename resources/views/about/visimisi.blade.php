@@ -105,7 +105,4 @@
             </div>
         </div>
     </section>
-
-    {{-- Strip warna kuning sebagai pemisah/bawah --}}
-    <div class="yellow-strip"></div>
 @endsection

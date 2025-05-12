@@ -11,7 +11,7 @@
         <div class="hero-content">
             <h1 class="animated-title">SMP NEGERI 2<br>SIBORONGBORONG</h1>
             <p>Inspirasi Tanpa Batas, Prestasi Tiada Henti, Wadah Tumbuhnya Calon Pemimpin Masa Depan yang Berkarakter dan Berbudaya serta Memiliki Jiwa Nasionalisme</p>
-            <a href="#profil-sekolah"class="btn-primary">GET STARTED</a>
+            <a href="#profil-sekolah"class="btn-primary">LIHAT DETAIL</a>
         </div>
     </div>
     
