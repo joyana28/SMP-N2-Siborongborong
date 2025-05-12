@@ -90,11 +90,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="foto">Foto</label>
-                    <input type="file" class="form-control-file @error('foto') is-invalid @enderror" id="foto" name="foto">
-                    @error('foto') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    <label for="foto">Foto Kepala Sekolah</label>
+                    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
+                    @error('foto') 
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                @if(isset($kepalaSekolah) && $kepalaSekolah->foto)
+                        <div class="mt-2">
+                        <img src="{{ asset('kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto Kepala Sekolah" width="200">
+                        </div>
+                @endif
                 </div>
-
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Simpan</button>
                     <a href="{{ route('admin.kepala_sekolah.index') }}" class="btn btn-secondary-custom ml-2">Kembali</a>

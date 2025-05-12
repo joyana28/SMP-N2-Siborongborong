@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\KepalaSekolah;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class KepalaSekolahController extends Controller
 {
@@ -29,14 +28,14 @@ class KepalaSekolahController extends Controller
             'foto' => 'nullable|image|max:2048',
         ]);
 
-        $data = $request->all();
+        $data = $request->except('foto');
         $data['id_admin'] = session('admin_id');
 
         if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
+            $fotoFile = $request->file('foto');
             $fotoName = time() . '.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('public/kepala_sekolah', $fotoName);
-            $data['foto'] = $fotoName;
+            $foto->move(public_path('kepala_sekolah'), $fotoName);
+            $foto = $fotoName;
         }
 
         KepalaSekolah::create($data);
@@ -62,17 +61,18 @@ class KepalaSekolahController extends Controller
         ]);
 
         $kepalaSekolah = KepalaSekolah::findOrFail($id);
-        $data = $request->all();
+        $data = $request->except('foto');
 
         if ($request->hasFile('foto')) {
-            if ($kepalaSekolah->foto) {
-                Storage::delete('public/kepala_sekolah/' . $kepalaSekolah->foto);
+            $oldPath = public_path('kepala_sekolah/' . $kepalaSekolah->foto);
+            if ($kepalaSekolah->foto && file_exists($oldPath)) {
+                unlink($oldPath);
             }
 
             $foto = $request->file('foto');
             $fotoName = time() . '.' . $foto->getClientOriginalExtension();
-            $foto->storeAs('public/kepala_sekolah', $fotoName);
-            $data['foto'] = $fotoName;
+            $foto->move(public_path('kepala_sekolah'), $fotoName);
+            $kepalaSekolah->foto = $fotoName;
         }
 
         $kepalaSekolah->update($data);
@@ -91,8 +91,9 @@ class KepalaSekolahController extends Controller
     {
         $kepalaSekolah = KepalaSekolah::findOrFail($id);
 
-        if ($kepalaSekolah->foto) {
-            Storage::delete('public/kepala_sekolah/' . $kepalaSekolah->foto);
+        $path = public_path('kepala_sekolah/' . $kepalaSekolah->foto);
+        if ($kepalaSekolah->foto && file_exists($path)) {
+            unlink($path);
         }
 
         $kepalaSekolah->delete();
