@@ -31,10 +31,10 @@
                     <td>{{ $item->tanggal_berakhir }}</td>
                     <td>
                         @if($item->foto)
-                            <img src="{{ asset('storage/pengumuman/' . $item->foto) }}" width="100">
-                        @else
-                            -
-                        @endif
+    <img src="{{ asset('pengumuman/' . $item->foto) }}" width="100" alt="Foto Pengumuman">
+@else
+    -
+@endif
                     </td>
                     <td>
                         <a href="{{ route('admin.pengumuman.edit', $item->id_pengumuman) }}" class="btn btn-sm btn-warning">Edit</a>

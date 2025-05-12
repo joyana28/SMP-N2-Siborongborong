@@ -32,16 +32,16 @@
         </p>
 
         {{-- Gambar Pengumuman (jika ada) --}}
-        @if ($pengumuman->foto)
-            <div class="pengumuman-detail-image mb-4">
-                <img 
-                    src="{{ asset('storage/pengumuman/' . $pengumuman->foto) }}" 
-                    alt="Foto Pengumuman" 
-                    class="img-fluid rounded shadow-sm"
-                    style="width: 100%; max-height: 400px; object-fit: cover;"
-                >
-            </div>
-        @endif
+@if ($pengumuman->foto)
+    <div class="pengumuman-detail-image mb-4">
+        <img 
+            src="{{ asset('pengumuman/' . $pengumuman->foto) }}" 
+            alt="Foto Pengumuman" 
+            class="img-fluid rounded shadow-sm"
+            style="width: 100%; max-height: 400px; object-fit: cover;"
+        >
+    </div>
+@endif
 
         {{-- Isi Konten Pengumuman --}}
         <div class="pengumuman-detail-content mb-5" style="line-height: 1.8; font-size: 1.1rem;">

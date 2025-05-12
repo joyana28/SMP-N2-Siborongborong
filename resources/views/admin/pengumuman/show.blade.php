@@ -12,11 +12,11 @@
         </div>
         <div class="card-body">
             {{-- Foto --}}
-            @if ($pengumuman->foto)
-                <div class="mb-3 text-center">
-                    <img src="{{ asset('storage/pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" class="img-fluid rounded" style="max-height: 300px;">
-                </div>
-            @endif
+@if ($pengumuman->foto)
+    <div class="mb-3 text-center">
+        <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" class="img-fluid rounded" style="max-height: 300px;">
+    </div>
+@endif
 
             {{-- Isi Pengumuman --}}
             <div class="mb-3">

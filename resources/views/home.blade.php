@@ -2,7 +2,6 @@
 
 @section('content')
 
-    <!-- Hero Section -->
 <section class="hero-section">
     <div class="hero-image-container">
         <!-- Background image is set in CSS, this is for the foreground image -->
@@ -10,8 +9,8 @@
     </div>
     <div class="container">
         <div class="hero-content">
-            <h1 class="animated-title">SMPN2<br>SIBORONGBORONG</h1>
-            <p>Inspirasi Tanpa Batas, Prestasi Tiada Henti, Wadah Tumbuhnya Calon Pemimpin Masa Depan</p>
+            <h1 class="animated-title">SMP NEGERI 2<br>SIBORONGBORONG</h1>
+            <p>Inspirasi Tanpa Batas, Prestasi Tiada Henti, Wadah Tumbuhnya Calon Pemimpin Masa Depan yang Berkarakter dan Berbudaya serta Memiliki Jiwa Nasionalisme</p>
             <a href="#profil-sekolah"class="btn-primary">GET STARTED</a>
         </div>
     </div>
@@ -39,6 +38,12 @@
             <h3>Prestasi Unggul</h3>
             <p>Berbagai pencapaian akademik dan non-akademik tingkat nasional</p>
         </div>
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-handshake" style="color: #1A56A7;"></i>
+            </div>
+            <h3>Sekolah Berbudaya</h3>
+            <p>Menghidupkan 7 kebiasaan Anak Indonesia Hebat serta mempelajari nilai kearifan lokal dalam kehidupan sekolah</p>        </div>
     </div>
 </section>
 
@@ -52,7 +57,7 @@
 <section class="features-section" id="profil-sekolah">
     <div class="container">
         <div class="section-title">
-            <h2>"Dengan segudang prestasi di bidang akademik, olahraga, dan seni, <span> SMPN 2 Siborongborong</span> terus berinovasi dalam pendidikan. Kami percaya bahwa setiap siswa memiliki keunikan, dan tugas kami adalah mengasahnya menjadi karya nyata yang membanggakan." </h2>
+            <h2>"Dengan segudang prestasi di bidang akademik, olahraga, dan seni, <span> SMP NEGERI 2 Siborongborong</span> terus berinovasi dalam pendidikan. Kami percaya bahwa setiap siswa memiliki keunikan, dan tugas kami adalah mengasahnya menjadi karya nyata yang membanggakan." </h2>
         </div>
         <div class="features-grid">
             <div class="feature-box">
@@ -128,8 +133,7 @@
                         <li><i class="fas fa-desktop"></i> Lab Komputer</li>
                         <li><i class="fas fa-book"></i> Perpustakaan</li>
                         <li><i class="fas fa-futbol"></i> Lapangan Olahraga</li>
-                        <li><i class="fas fa-pray"></i> Ruang Ibadah</li>
-                        <li><i class="fas fa-music"></i> Studio Musik</li>
+                        <li><i class="fas fa-door-open"></i> Ruang Belajar yang Memadai</li>
                     </ul>
                 </div>
             </div>
@@ -149,17 +153,17 @@
                         <div class="ekskul-category">
                             <i class="fas fa-running"></i>
                             <h4>Olahraga</h4>
-                            <p>Futsal, Basket, Voli, Badminton</p>
+                            <p>Futsal, Voli</p>
                         </div>
                         <div class="ekskul-category">
-                            <i class="fas fa-paint-brush"></i>
+                            <i class="fas fa-music"></i>
                             <h4>Seni</h4>
-                            <p>Paduan Suara, Tari, Seni Lukis</p>
+                            <p>Alat Musik, Paduan Suara, Tari, Senam</p>
                         </div>
                         <div class="ekskul-category">
                             <i class="fas fa-brain"></i>
                             <h4>Akademik</h4>
-                            <p>Robotik, Karya Ilmiah, Jurnalistik</p>
+                            <p> Olimpiade, Karya Ilmiah</p>
                         </div>
                     </div>
                 </div>
@@ -177,7 +181,7 @@
                 <div class="blog-card">
                     <div class="blog-image">
                         @if ($item->foto)
-                            <img src="{{ asset('storage/pengumuman/' . $item->foto) }}" alt="Blog" style="object-fit: cover;">
+                            <img src="{{ asset('pengumuman/' . $item->foto) }}" alt="Blog" style="object-fit: cover;">
                         @else
                             <img src="{{ asset('images/default.png') }}" alt="Blog">
                         @endif
@@ -190,7 +194,7 @@
                         </div>
                         <h3>{{ $item->judul }}</h3>
                         <p>{{ Str::limit($item->isi, 150) }}</p>
-                        <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more"></a>
+                        <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Read More</a>
                     </div>
                 </div>
             @endforeach
