@@ -40,7 +40,7 @@ class PrestasiController extends Controller
         if ($request->hasFile('foto')) {
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoFile->storeAs('public/prestasi', $fotoName);
+            $fotoFile->move(public_path('prestasi'), $fotoName); 
             $foto = $fotoName;
         }
 
@@ -82,13 +82,14 @@ class PrestasiController extends Controller
         $prestasi = Prestasi::findOrFail($id);
 
         if ($request->hasFile('foto')) {
-            if ($prestasi->foto && Storage::exists('public/prestasi/' . $prestasi->foto)) {
-                Storage::delete('public/prestasi/' . $prestasi->foto);
-            }
+        $oldPath = public_path('prestasi/' . $prestasi->foto);
+        if ($prestasi->foto && file_exists($oldPath)) {
+            unlink($oldPath); 
+        }
 
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoFile->storeAs('public/prestasi', $fotoName);
+            $fotoFile->storeAs('prestasi', $fotoName);
             $prestasi->foto = $fotoName;
         }
 
@@ -119,8 +120,9 @@ class PrestasiController extends Controller
     {
         $prestasi = Prestasi::findOrFail($id);
 
-        if ($prestasi->foto && Storage::exists('public/prestasi/' . $prestasi->foto)) {
-            Storage::delete('public/prestasi/' . $prestasi->foto);
+        $path = public_path('prestasi/' . $prestasi->foto);
+        if ($prestasi->foto && file_exists($path)) {
+        unlink($path);
         }
 
         $prestasi->delete();
