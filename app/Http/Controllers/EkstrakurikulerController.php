@@ -37,11 +37,10 @@ class EkstrakurikulerController extends Controller
                 ->withInput();
         }
 
-        $foto = null;
         if ($request->hasFile('foto')) {
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoFile->storeAs('public/ekstrakurikuler', $fotoName);
+            $fotoFile->move(public_path('ekstrakurikuler'), $fotoName); 
             $foto = $fotoName;
         }
 
@@ -83,13 +82,14 @@ class EkstrakurikulerController extends Controller
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
 
         if ($request->hasFile('foto')) {
-            if ($ekstrakurikuler->foto && Storage::exists('public/ekstrakurikuler/' . $ekstrakurikuler->foto)) {
-                Storage::delete('public/ekstrakurikuler/' . $ekstrakurikuler->foto);
-            }
+        $oldPath = public_path('ekstrakurikuler/' . $ekstrakurikuler->foto);
+        if ($ekstrakurikuler->foto && file_exists($oldPath)) {
+            unlink($oldPath); 
+        }
 
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoFile->storeAs('public/ekstrakurikuler', $fotoName);
+            $fotoFile->move(public_path('ekstrakurikuler'), $fotoName);
             $ekstrakurikuler->foto = $fotoName;
         }
 
@@ -107,8 +107,9 @@ class EkstrakurikulerController extends Controller
     {
         $ekstrakurikuler = Ekstrakurikuler::findOrFail($id);
 
-        if ($ekstrakurikuler->foto && Storage::exists('public/ekstrakurikuler/' . $ekstrakurikuler->foto)) {
-            Storage::delete('public/ekstrakurikuler/' . $ekstrakurikuler->foto);
+        $path = public_path('ekstrakurikuler/' . $ekstrakurikuler->foto);
+        if ($ekstrakurikuler->foto && file_exists($path)) {
+        unlink($path);
         }
 
         $ekstrakurikuler->delete();

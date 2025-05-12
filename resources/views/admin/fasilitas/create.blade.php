@@ -120,7 +120,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="foto">Foto (opsional)</label>
+                    <label for="foto">Foto Fasilitas</label>
                     <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>

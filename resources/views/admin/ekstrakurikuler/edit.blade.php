@@ -105,19 +105,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="foto">Foto Ekstrakurikuler</label>
-                    <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-                    @error('foto')
-                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                    @enderror
-                    <small class="form-text text-muted">Format: JPG, PNG, JPEG. Maks 2MB.</small>
-
+                    <label>Foto Ekstrakurikuler</label>
+                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                @error('foto') 
+                    <div class="invalid-feedback d-block">{{ $message }}</div> 
+                @enderror
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                     <div class="mt-3">
-                        @if($ekstrakurikuler->foto)
-                            <p>Foto saat ini:</p>
-                            <img src="{{ asset('storage/ekstrakurikuler/'.$ekstrakurikuler->foto) }}" alt="{{ $ekstrakurikuler->nama }}" class="img-thumbnail mb-2" style="max-height: 200px;">
-                        @endif
-                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                @if ($ekstrakurikuler->foto)
+                    <p>Foto saat ini:</p>
+                    <img src="{{ asset('ekstrakurikuler/' . $ekstrakurikuler->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
+                @endif
+                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
                     </div>
                 </div>
 

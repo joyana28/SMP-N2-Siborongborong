@@ -49,18 +49,18 @@
             <p class="text-center text-gray-600">Data ekstrakurikuler tidak ditemukan.</p>
         @else
             <div class="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($ekstrakurikuler as $item)
+                @foreach ($ekstrakurikuler as $ekstra)
                     <div class="blog-card relative p-6 bg-white rounded-2xl shadow-lg overflow-hidden">
-                        @if ($item->gambar)
-                            <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}" class="w-full h-40 object-cover rounded-lg mb-4">
+                        @if ($ekstra->foto)
+                            <img src="{{ asset('ekstrakurikuler/' . $ekstra->foto) }}" alt="{{ $ekstra->nama }}" class="w-full h-40 object-cover rounded-lg mb-4">
                         @else
                             <img src="{{ asset('images/default-ekstra.jpg') }}" alt="Ekstrakurikuler" class="w-full h-40 object-cover rounded-lg mb-4">
                         @endif
 
                         <div class="blog-content relative z-10">
                             <span class="blog-tag inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-2">Ekstrakurikuler</span>
-                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $item->nama }}</h3>
-                            <p class="text-gray-600 text-sm">{{ $item->deskripsi }}</p>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ $ekstra->nama }}</h3>
+                            <p class="text-gray-600 text-sm">{{ $ekstra->deskripsi }}</p>
                             <div class="blog-meta mt-2">
                         <div class="corner-shadow absolute top-0 right-0 w-16 h-16 bg-[#1a56a7] transform rotate-45 translate-x-6 -translate-y-6"></div>
                     </div>

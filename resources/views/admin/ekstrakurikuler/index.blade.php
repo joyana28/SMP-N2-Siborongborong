@@ -36,9 +36,12 @@
                 <td>{{ $ekstra->deskripsi }}</td>
                 <td>{{ $ekstra->pembina }}</td>
                 <td>{{ $ekstra->jadwal }}</td>
-                <td>
-                    <img src="{{ asset('storage/ekstrakurikuler/'.$ekstra->foto) }}" alt="Foto" width="100">
-                </td>
+                        <td>
+                        @if($ekstra->foto)
+                            <img src="{{ asset('ekstrakurikuler/' . $ekstra->foto) }}" width="100" alt="Foto ekstrakurikuler">
+                        @else
+                        -
+                        @endif
                 <td>
                     <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="d-inline form-hapus">
