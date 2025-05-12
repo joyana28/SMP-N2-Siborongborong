@@ -19,28 +19,28 @@
     <div class="cards-container">
         <div class="card">
             <div class="card-icon">
-                <i class="fas fa-graduation-cap" style="color: #1A56A7;"></i>
+                <i class="fas fa-graduation-cap" style="color: #052C65;"></i>
             </div>
             <h3>Pendidikan Berkualitas</h3>
             <p>Kurikulum yang komprehensif untuk pembangunan karakter siswa</p>
         </div>
         <div class="card">
             <div class="card-icon">
-                <i class="fas fa-users" style="color: #1A56A7;"></i>
+                <i class="fas fa-users" style="color: #052C65;"></i>
             </div>
             <h3>Tenaga Pengajar Profesional</h3>
             <p>Guru berpengalaman dan berdedikasi untuk masa depan siswa</p>
         </div>
         <div class="card">
             <div class="card-icon">
-                <i class="fas fa-medal" style="color: #1A56A7;"></i>
+                <i class="fas fa-medal" style="color: #052C65;"></i>
             </div>
             <h3>Prestasi Unggul</h3>
             <p>Berbagai pencapaian akademik dan non-akademik tingkat nasional</p>
         </div>
         <div class="card">
             <div class="card-icon">
-                <i class="fas fa-handshake" style="color: #1A56A7;"></i>
+                <i class="fas fa-handshake" style="color: #052C65;"></i>
             </div>
             <h3>Sekolah Berbudaya</h3>
             <p>Menghidupkan 7 kebiasaan Anak Indonesia Hebat serta mempelajari nilai kearifan lokal dalam kehidupan sekolah</p>        </div>

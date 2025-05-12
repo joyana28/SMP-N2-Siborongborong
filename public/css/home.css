@@ -1,6 +1,6 @@
 /* Global Styles */
 :root {
-  --primary-color: #1a56a7;
+  --primary-color: #052C65;
   --secondary-color: #f3b11f;
   --text-color: #333;
   --light-color: #fff;
@@ -321,7 +321,7 @@ img {
 .card-icon {
   font-size: 36px;
   margin-bottom: 15px;
-  color: #1A56A7;
+  color: #052C65;
   position: relative;
   z-index: 2;
 }
@@ -349,7 +349,7 @@ img {
 .card h3 {
   font-size: 20px;
   margin-bottom: 12px;
-  color: #1A56A7;
+  color: #052C65;
   position: relative;
   display: inline-block;
 }
@@ -428,7 +428,7 @@ img {
   line-height: 70px;
   border-radius: 50%;
   background: rgba(26, 86, 167, 0.1);
-  color: #1A56A7;
+  color: #052C65;
   font-size: 28px;
   display: inline-flex;
   align-items: center;
@@ -437,7 +437,7 @@ img {
 }
 
 .feature-box:hover .feature-icon {
-  background: #1A56A7;
+  background: #052C65;
   color: #fff;
 }
 
@@ -517,7 +517,7 @@ img {
 
 .section-title h2 {
   font-size: 36px;
-  color: #1a56a7;
+  color: #052C65;
   font-weight: 700;
   position: relative;
   margin-bottom: 20px;
@@ -574,7 +574,7 @@ img {
 }
 
 .service-back {
-  background-color: #1a56a7;
+  background-color: #052C65;
   opacity: 0;
   visibility: hidden;
   padding: 40px 25px;
@@ -609,7 +609,7 @@ img {
 
 .service-icon i {
   font-size: 28px;
-  color: #1a56a7;
+  color: #052C65;
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -627,7 +627,7 @@ img {
 .service-box h3 {
   font-size: 24px;
   margin-bottom: 15px;
-  color: #1a56a7;
+  color: #052C65;
   font-weight: 700;
   transition: all 0.4s ease;
 }
@@ -648,7 +648,7 @@ img {
 .read-more {
   display: inline-flex;
   align-items: center;
-  color: #1a56a7;
+  color: #052C65;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 14px;
@@ -1352,7 +1352,7 @@ img {
 
 .blog-card:hover::before {
   border-width: 0 60px 60px 0;
-  border-color: transparent #1a56a7 transparent transparent;
+  border-color: transparent #052C65 transparent transparent;
 }
 
 .blog-card:hover::after {
@@ -1412,7 +1412,7 @@ img {
   display: inline-block;
   padding: 6px 15px;
   background: rgba(26, 86, 167, 0.1);
-  color: #1a56a7;
+  color: #052C65;
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
@@ -1422,7 +1422,7 @@ img {
 }
 
 .blog-card:hover .blog-tag {
-  background: #1a56a7;
+  background: #052C65;
   color: #fff;
   transform: translateZ(30px);
 }
@@ -1438,7 +1438,7 @@ img {
 }
 
 .blog-card:hover .blog-content h3 {
-  color: #1a56a7;
+  color: #052C65;
   transform: translateZ(25px);
 }
 
@@ -1473,13 +1473,13 @@ img {
 
 .blog-card:hover .blog-meta-item i {
   transform: scale(1.2);
-  color: #1a56a7;
+  color: #052C65;
 }
 
 .read-more {
   display: inline-flex;
   align-items: center;
-  color: #1a56a7;
+  color: #052C65;
   font-weight: 600;
   font-size: 14px;
   margin-top: 20px;
