@@ -168,6 +168,10 @@
         background-color: rgba(255, 255, 255, 0.2);
         color: #070445;
     }
+    .after-navbar {
+    margin-top: 80px; /* Atur nilai sesuai tinggi navbar kamu */
+}
+
 }
 
 /* ========== Animasi Dropdown ========== */

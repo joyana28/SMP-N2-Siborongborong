@@ -6,6 +6,7 @@
         <a href="/" class="logo">
             <img src="{{ asset('images/logo.png') }}" alt="SMP NEGERI 2 Siborongborong">
         </a>
+
         <!-- Tombol Hamburger untuk tampilan mobile -->
         <button class="hamburger" id="hamburger">
             <span class="bar"></span>
@@ -40,17 +41,22 @@
                 <li><a class="nav-link" href="{{ route('siswa.show') }}">Siswa dan Kelas</a></li>
                 <li><a class="nav-link" href="{{ route('alumni.show') }}">Profil Alumni</a></li>
                 <li><a class="nav-link" href="{{ route('formulirpendaftaran.show') }}">Prosedur Pendaftaran</a></li>
-<li class="nav-item invisible-login" title="Login">
-    <a href="{{ route('admin.login') }}" 
-       class="nav-link d-flex align-items-center justify-content-center bg-warning text-primary rounded-circle"
-       style="width: 40px; height: 40px; transition: 0.3s;">
-        <i class="fas fa-sign-in-alt"></i>
-    </a>
-</li>
-</ul>
- </div>
+                <li class="nav-item invisible-login" title="Login">
+                    <a href="{{ route('admin.login') }}" 
+                       class="nav-link d-flex align-items-center justify-content-center bg-warning text-primary rounded-circle"
+                       style="width: 40px; height: 40px; transition: 0.3s;">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
+
+<!-- Tambahan untuk memberi jarak ke konten -->
+<div class="after-navbar">
+    <!-- Konten halaman dimulai di sini -->
+</div>
 
 <script>
     // Toggle menu saat tombol hamburger diklik
