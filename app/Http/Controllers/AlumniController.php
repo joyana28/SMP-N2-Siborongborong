@@ -40,7 +40,7 @@ class AlumniController extends Controller
         if ($request->hasFile('foto')) {
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoFile->storeAs('public/alumni', $fotoName);
+            $fotoFile->move(public_path('alumni'), $fotoName); 
             $foto = $fotoName;
         }
 
@@ -91,13 +91,14 @@ class AlumniController extends Controller
         $alumni = Alumni::findOrFail($id);
 
         if ($request->hasFile('foto')) {
-            if ($alumni->foto && Storage::exists('public/alumni/' . $alumni->foto)) {
-                Storage::delete('public/alumni/' . $alumni->foto);
-            }
+        $oldPath = public_path('alumni/' . $alumni->foto);
+        if ($alumni->foto && file_exists($oldPath)) {
+            unlink($oldPath); 
+        }
 
             $fotoFile = $request->file('foto');
             $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoFile->storeAs('public/alumni', $fotoName);
+            $fotoFile->move(public_path('alumni'), $fotoName);
             $alumni->foto = $fotoName;
         }
 
@@ -114,10 +115,10 @@ class AlumniController extends Controller
     {
         $alumni = Alumni::findOrFail($id);
 
-        if ($alumni->foto && Storage::exists('public/alumni/' . $alumni->foto)) {
-            Storage::delete('public/alumni/' . $alumni->foto);
+        $path = public_path('alumni/' . $alumni->foto);
+        if ($alumni->foto && file_exists($path)) {
+        unlink($path);
         }
-
         $alumni->delete();
 
         return redirect()->route('admin.alumni.index')

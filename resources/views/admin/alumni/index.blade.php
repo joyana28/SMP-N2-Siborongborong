@@ -39,7 +39,7 @@
                                 <td>{{ $alumni->firstItem() + $index }}</td>
                                 <td class="text-center">
                                     @if($item->foto)
-                                        <img src="{{ asset('storage/alumni/'.$item->foto) }}" alt="{{ $item->nama }}" class="img-thumbnail" style="height: 80px;">
+                                        <img src="{{ asset('alumni/'.$item->foto) }}" alt="{{ $item->nama }}" class="img-thumbnail" style="height: 80px;">
                                     @else
                                         <img src="{{ asset('img/default-profile.png') }}" alt="No Image" class="img-thumbnail" style="height: 80px;">
                                     @endif

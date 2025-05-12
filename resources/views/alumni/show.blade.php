@@ -25,7 +25,7 @@
             <div class="col-md-8 mb-4">
                 <div class="card h-100">
                     @if($alumni->foto) 
-                        <img src="{{ Storage::url('public/alumni/' . $alumni->foto) }}" 
+                        <img src="{{ asset('alumni/' . $alumni->foto) }}" 
                              class="card-img-top" alt="Foto {{ $alumni->nama }}">
                     @else
                         <p class="text-center text-muted">Foto tidak tersedia</p>
