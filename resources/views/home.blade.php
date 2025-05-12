@@ -195,7 +195,7 @@
                         </div>
                         <h3>{{ $item->judul }}</h3>
                         <p>{{ Str::limit($item->isi, 150) }}</p>
-                    <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Read More</a>
+                    <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Lihat Selengkapnya...</a>
                     </div>
                 </div>
             @endforeach
