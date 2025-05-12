@@ -83,17 +83,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="foto">Foto Prestasi (Opsional)</label>
+                    <label>Foto Prestasi</label>
                     <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-                    @error('foto') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                @error('foto') 
+                    <div class="invalid-feedback d-block">{{ $message }}</div> 
+                @enderror
                     <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
-
                     <div class="mt-3">
-                        @if ($prestasi->foto)
-                            <p>Foto saat ini:</p>
-                            <img src="{{ asset('storage/prestasi/' . $prestasi->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Prestasi">
-                        @endif
-                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                @if ($prestasi->foto)
+                    <p>Foto saat ini:</p>
+                    <img src="{{ asset('prestasi/' . $prestasi->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
+                @endif
+                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
                     </div>
                 </div>
 

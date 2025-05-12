@@ -36,7 +36,7 @@
                     <td>{{ $ks->periode }}</td>
                     <td>
                         @if($ks->foto)
-                            <img src="{{ Storage::url('public/kepala_sekolah/'.$ks->foto) }}" alt="Foto Kepala Sekolah" width="100">
+                            <img src="{{ asset('kepala_sekolah/' . $ks->foto) }}" alt="Foto Kepala Sekolah" width="100">
                         @else
                             <span>Foto tidak tersedia</span>
                         @endif

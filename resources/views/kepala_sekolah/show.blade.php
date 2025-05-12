@@ -23,7 +23,7 @@
         <div class="sambutan-modern-img-card">
             <div class="sambutan-modern-img-wrapper sambutan-img-hover-group">
                 @if ($kepalaSekolah->foto)
-                    <img src="{{ asset('storage/kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto {{ $kepalaSekolah->nama }}" class="sambutan-modern-img">
+                    <img src="{{ asset('kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto {{ $kepalaSekolah->nama }}" class="sambutan-modern-img">
                 @else
                     <img src="{{ asset('images/default-user.jpg') }}" alt="Default" class="sambutan-modern-img">
                 @endif

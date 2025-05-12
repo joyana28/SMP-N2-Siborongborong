@@ -89,15 +89,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="foto">Foto Kepala Sekolah</label>
-                    <input type="file" class="form-control-file @error('foto') is-invalid @enderror" id="foto" name="foto" accept="image/*" onchange="previewImage()">
-                    @error('foto') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                    <label>Foto Kepala Sekolah</label>
+                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                @error('foto') 
+                    <div class="invalid-feedback d-block">{{ $message }}</div> 
+                @enderror
                     <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
-
+                    <div class="mt-3">
+                @if ($kepalaSekolah->foto)
+                    <p>Foto saat ini:</p>
+                    <img src="{{ asset('kepala_sekolah/' . $kepalaSekolah->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Kepala Sekolah">
+                @endif
+                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                    </div>
+                </div>
                     <div class="mt-3">
                         @if($kepalaSekolah->foto)
                             <p>Foto saat ini:</p>
-                            <img src="{{ asset('storage/kepala_sekolah/'.$kepalaSekolah->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Kepala Sekolah">
+                            <img src="{{ asset('kepala_sekolah/'.$kepalaSekolah->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Kepala Sekolah">
                         @endif
                         <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
                     </div>

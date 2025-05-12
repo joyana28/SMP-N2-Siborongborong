@@ -127,7 +127,7 @@
                     @enderror
                 @if(isset($fasilitas) && $fasilitas->foto)
                         <div class="mt-2">
-                        <img src="{{ asset('fasilitas/' . $fasilitas->foto) }}" alt="Foto Pengumuman" width="200">
+                        <img src="{{ asset('fasilitas/' . $fasilitas->foto) }}" alt="Foto Fasilitas" width="200">
                         </div>
                 @endif
                 </div>

@@ -31,7 +31,7 @@
                 <td>{{ $item->tanggal }}</td>
                 <td>
                     @if ($item->foto)
-                        <img src="{{ asset('storage/prestasi/' . $item->foto) }}" alt="Foto" width="80">
+                        <img src="{{ asset('prestasi/' . $item->foto) }}" alt="Foto" width="80">
                     @else
                         <span class="text-muted">-</span>
                     @endif
