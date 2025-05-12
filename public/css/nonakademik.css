@@ -303,7 +303,7 @@
     transition: background 0.4s, box-shadow 0.4s, transform 0.4s;
     position: relative;
     z-index: 2;
-    border: 3px solid #766822;
+  border: 3px solid #766822;
     animation: iconPulse 2.5s infinite alternate cubic-bezier(.4,2,.3,1);
 }
 .floating-icon {
@@ -418,4 +418,357 @@
 .akademik-hero-section {
     min-height: 54vh;
     padding-top: 60px;
-} 
+}
+
+/* Modern ID Card Style (Image Reference) */
+.idcard-modern-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: flex-start;
+  margin: 32px 0 0 0;
+}
+.idcard-modern {
+  position: relative;
+  width: 340px;
+  min-height: 520px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(26,86,167,0.13), 0 2px 8px 0 #f3b11f22;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 24px 0;
+  margin-bottom: 0;
+  z-index: 1;
+  transition: box-shadow 0.4s, transform 0.4s, border 0.3s;
+  animation: idcardPopIn 1s cubic-bezier(.4,2,.3,1) forwards;
+  opacity: 0;
+  border: 2.5px solid #f3b11f00;
+}
+@keyframes idcardPopIn {
+  0% { opacity: 0; transform: translateY(40px) scale(0.96); }
+  80% { opacity: 1; transform: translateY(-8px) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.idcard-modern:hover {
+  box-shadow: 0 16px 48px 0 #1a56a7cc, 0 2px 8px 0 #f3b11f99, 0 0px 0px 8px #f3b11f44;
+  transform: scale(1.04) rotateZ(-1deg) translateY(-8px);
+  border: 2.5px solid #f3b11f;
+  z-index: 10;
+}
+.idcard-bg-diagonal {
+  width: 100%;
+  height: 220px;
+  background: linear-gradient(120deg, #1a56a7 60%, #f3b11f 100%);
+  border-radius: 18px 18px 0 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.idcard-bg-diagonal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #fff;
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 0 60%);
+  z-index: 1;
+  opacity: 1;
+  animation: diagonalWave 2.5s cubic-bezier(.4,2,.3,1) infinite alternate;
+}
+.idcard-bg-diagonal::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(120deg, transparent 60%, #f3b11f 100%);
+  clip-path: polygon(100% 0, 100% 100%, 60% 100%, 80% 0);
+  z-index: 2;
+  opacity: 0.9;
+  animation: orangeWave 3s cubic-bezier(.4,2,.3,1) infinite alternate;
+}
+@keyframes diagonalWave {
+  0% { clip-path: polygon(0 0, 100% 0, 70% 100%, 0 60%); }
+  100% { clip-path: polygon(0 0, 100% 0, 75% 100%, 0 65%); }
+}
+@keyframes orangeWave {
+  0% { clip-path: polygon(100% 0, 100% 100%, 60% 100%, 80% 0); }
+  100% { clip-path: polygon(100% 0, 100% 100%, 65% 100%, 85% 0); }
+}
+.idcard-logo-tagline {
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+.idcard-logo {
+  width: 38px;
+  height: 38px;
+  background: radial-gradient(circle at 60% 40%, #f3b11f 0%, #1a56a7 100%);
+  border-radius: 50%;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #fff;
+  box-shadow: 0 2px 8px #1a56a7aa;
+  animation: logoPulse 2.5s infinite alternate cubic-bezier(.4,2,.3,1);
+}
+@keyframes logoPulse {
+  0% { box-shadow: 0 2px 8px #1a56a7aa; }
+  100% { box-shadow: 0 8px 24px #f3b11faa; }
+}
+.idcard-business {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 0px;
+  text-shadow: 0 2px 8px #1a56a755;
+}
+.idcard-tagline {
+  font-size: 0.85rem;
+  color: #fff;
+  opacity: 0.85;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.idcard-photo-outer {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  border-radius: 50%;
+  border: 6px solid #f3b11f;
+  box-shadow: 0 4px 24px 0 #1a56a7aa, 0 2px 8px 0 #f3b11f33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  animation: photoPop 1.2s cubic-bezier(.4,2,.3,1) forwards;
+  cursor: pointer;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.idcard-photo-outer:hover {
+  box-shadow: 0 0 0 8px #f3b11f55, 0 8px 32px #1a56a7cc;
+  transform: translateX(-50%) scale(1.06) rotateZ(2deg);
+}
+@keyframes photoPop {
+  0% { transform: translateX(-50%) scale(0.7); opacity: 0; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+.idcard-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  background: #eee;
+  z-index: 3;
+  transition: transform 0.3s;
+}
+.idcard-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #f3b11f33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a56a7;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: 3px dashed #1a56a7;
+  z-index: 3;
+  cursor: pointer;
+}
+.idcard-content {
+  margin-top: 160px;
+  width: 100%;
+  padding: 32px 28px 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+}
+.idcard-name-role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2px;
+}
+.idcard-name {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #1a56a7;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  animation: nameFadeIn 1.2s cubic-bezier(.4,2,.3,1) forwards;
+}
+@keyframes nameFadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.idcard-role {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f3b11f;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  animation: roleFadeIn 1.2s cubic-bezier(.4,2,.3,1) 0.2s forwards;
+  opacity: 0.95;
+}
+@keyframes roleFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 0.95; transform: translateY(0); }
+}
+.idcard-divider {
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, #1a56a7 60%, #f3b11f 100%);
+  border-radius: 2px;
+  margin: 12px 0 16px 0;
+  opacity: 0.7;
+  animation: dividerGrow 1.2s cubic-bezier(.4,2,.3,1) forwards;
+}
+@keyframes dividerGrow {
+  0% { width: 0; opacity: 0; }
+  100% { width: 80%; opacity: 0.7; }
+}
+.idcard-meta {
+  width: 100%;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 1.05rem;
+}
+.idcard-meta-row {
+  color: #222;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 2px;
+}
+.idcard-meta-row .meta-label {
+  color: #1a56a7;
+  font-weight: 700;
+  min-width: 70px;
+  display: inline-block;
+  margin-right: 8px;
+}
+.idcard-barcode {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 32px;
+  margin-bottom: 0;
+  z-index: 10;
+}
+.idcard-barcode-img {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px #1a56a733;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: barcodePop 1.2s cubic-bezier(.4,2,.3,1) forwards;
+}
+@keyframes barcodePop {
+  0% { transform: scaleX(0.7) scaleY(0.7); opacity: 0; }
+  100% { transform: scaleX(1) scaleY(1); opacity: 1; }
+}
+@media (max-width: 600px) {
+  .idcard-modern {
+    width: 98vw;
+    min-width: 0;
+    padding: 0 0 18px 0;
+  }
+  .idcard-modern-list {
+    gap: 18px;
+  }
+  .idcard-content {
+    padding: 24px 8px 0 8px;
+  }
+}
+
+/* ===== ZOOM MODAL FULLSCREEN FIX ===== */
+.zoom-modal {
+  display: none;
+  position: fixed !important;
+  z-index: 9999 !important;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.3s;
+}
+.zoom-modal[style*="flex"] {
+  display: flex !important;
+}
+.zoom-modal-image {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #000a;
+  background: #fff;
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
+  animation: zoomInModal 0.3s;
+}
+@keyframes zoomInModal {
+  from { transform: scale(0.7); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.zoom-modal-close {
+  position: absolute;
+  top: 32px; right: 48px;
+  font-size: 3rem;
+  color: #fff;
+  cursor: pointer;
+  z-index: 10001;
+  font-weight: bold;
+  text-shadow: 0 2px 8px #000;
+}
+.zoom-modal-placeholder {
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+  background: #222a;
+  padding: 32px 48px;
+  border-radius: 12px;
+  display: none;
+}
+@media (max-width: 600px) {
+  .zoom-modal-image {
+    max-width: 98vw;
+    max-height: 60vh;
+  }
+  .zoom-modal-close {
+    top: 12px; right: 18px;
+    font-size: 2.2rem;
+  }
+}
