@@ -106,11 +106,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="foto">Foto (Opsional)</label>
-                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror">
-                    @error('foto')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                    <label for="foto">Foto Guru</label>
+                    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
+                    @error('foto') 
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
+                @if(isset($guru) && $guru->foto)
+                        <div class="mt-2">
+                        <img src="{{ asset('guru/' . $guru->foto) }}" alt="Foto Guru" width="200">
+                        </div>
+                @endif
                 </div>
 
                 <div class="text-right mt-4">

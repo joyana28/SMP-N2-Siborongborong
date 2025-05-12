@@ -29,10 +29,10 @@
             <td>{{ $index + 1 }}</td>
             <td>
                 @if($item->foto)
-                    <img src="{{ asset('storage/guru/' . $item->foto) }}" alt="foto" width="60">
-                @else
-                    <img src="{{ asset('img/default-profile.png') }}" alt="default" width="60">
-                @endif
+                            <img src="{{ asset('guru/' . $item->foto) }}" width="100" alt="Foto fasilitas">
+                        @else
+                        -
+                        @endif
             </td>
             <td>{{ $item->nama }}</td>
             <td>{{ $item->nip }}</td>

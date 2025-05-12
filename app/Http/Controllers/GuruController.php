@@ -28,37 +28,22 @@ class GuruController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:50',
-            'golongan' => 'required|string|max:50',
-            'bidang' => 'required|string|max:100',
-            'no_telp' => 'required|string|max:15',
-            'foto' => 'nullable|image|max:2048',
-        ]);
+{
+    $data = $request->except('foto');
+    $data['id_admin'] = session('admin_id');
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $data = $request->only(['nama', 'nip', 'golongan', 'bidang', 'no_telp']);
-        $data['id_admin'] = session('admin_id');
-
-        if ($request->hasFile('foto')) {
-            $foto = $request->file('foto');
-            $fotoName = time() . '_' . $foto->getClientOriginalName();
-            $foto->storeAs('public/guru', $fotoName);
-            $data['foto'] = $fotoName;
-        }
-
-        Guru::create($data);
-
-        return redirect()->route('admin.guru.index')
-            ->with('success', 'Data Guru berhasil ditambahkan.');
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto');
+        $fotoName = time() . '_' . $foto->getClientOriginalName();
+        $foto->move(public_path('guru'), $fotoName);
+        $data['foto'] = $fotoName;
     }
+
+    Guru::create($data);
+
+    return redirect()->route('admin.guru.index')
+        ->with('success', 'Data Guru berhasil ditambahkan.');
+}
 
     public function edit($id)
     {
@@ -67,48 +52,37 @@ class GuruController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:100',
-            'nip' => 'required|string|max:50',
-            'golongan' => 'required|string|max:50',
-            'bidang' => 'required|string|max:100',
-            'no_telp' => 'required|string|max:15',
-            'foto' => 'nullable|image|max:2048',
-        ]);
+{
+    $guru = Guru::findOrFail($id);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+    // Ambil semua data kecuali 'foto'
+    $data = $request->except('foto');
+
+    if ($request->hasFile('foto')) {
+        $foto = $request->file('foto');
+        $fotoName = time() . '_' . $foto->getClientOriginalName();
+        $foto->move(public_path('guru'), $fotoName);
+        $data['foto'] = $fotoName;
+
+        // Hapus foto lama jika ada dan bukan default
+        if ($guru->foto && file_exists(public_path('guru/' . $guru->foto))) {
+            unlink(public_path('guru/' . $guru->foto));
         }
-
-        $guru = Guru::findOrFail($id);
-        $data = $request->only(['nama', 'nip', 'golongan', 'bidang', 'no_telp']);
-
-        if ($request->hasFile('foto')) {
-            if ($guru->foto && Storage::exists('public/guru/' . $guru->foto)) {
-                Storage::delete('public/guru/' . $guru->foto);
-            }
-
-            $foto = $request->file('foto');
-            $fotoName = time() . '_' . $foto->getClientOriginalName();
-            $foto->storeAs('public/guru', $fotoName);
-            $data['foto'] = $fotoName;
-        }
-
-        $guru->update($data);
-
-        return redirect()->route('admin.guru.index')
-            ->with('success', 'Data Guru berhasil diperbarui.');
     }
+
+    $guru->update($data);
+
+    return redirect()->route('admin.guru.index')
+        ->with('success', 'Data Guru berhasil diperbarui.');
+}
 
     public function destroy($id)
     {
         $guru = Guru::findOrFail($id);
 
-        if ($guru->foto && Storage::exists('public/guru/' . $guru->foto)) {
-            Storage::delete('public/guru/' . $guru->foto);
+        $path = public_path('guru/' . $guru->foto);
+        if ($guru->foto && file_exists($path)) {
+        unlink($path);
         }
 
         $guru->delete();
