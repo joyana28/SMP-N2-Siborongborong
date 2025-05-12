@@ -89,23 +89,20 @@
                 </div>
 
                 <div class="form-group">
-    <label>Foto Pengumuman (Opsional)</label>
-    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-    @error('foto') 
-        <div class="invalid-feedback d-block">{{ $message }}</div> 
-    @enderror
-    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
-
-    <div class="mt-3">
-        @if ($pengumuman->foto)
-            <p>Foto saat ini:</p>
-            <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
-        @endif
-        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
-    </div>
-</div>
-
-
+                    <label>Foto Pengumuman (Opsional)</label>
+                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                @error('foto') 
+                    <div class="invalid-feedback d-block">{{ $message }}</div> 
+                @enderror
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
+                    <div class="mt-3">
+                @if ($pengumuman->foto)
+                    <p>Foto saat ini:</p>
+                    <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
+                @endif
+                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                    </div>
+                </div>
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Perbarui</button>
                     <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-warning-custom ml-2">Batal</a>

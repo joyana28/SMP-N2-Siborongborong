@@ -35,9 +35,11 @@
                         <td>{{ $item->nama }}</td>
                         <td>{{ Str::limit($item->deskripsi, 50) }}</td>
                         <td>
-                            @if($item->foto)
-                                <img src="{{ asset('storage/fasilitas/' . $item->foto) }}" width="100" alt="Foto">
-                            @endif
+                        @if($item->foto)
+                            <img src="{{ asset('fasilitas/' . $item->foto) }}" width="100" alt="Foto fasilitas">
+                        @else
+                        -
+                        @endif
                         </td>
                         <td>{{ $item->tahun }}</td>
                         <td>{{ $item->perhatian_teknis ?? '-' }}</td>

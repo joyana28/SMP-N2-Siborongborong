@@ -99,15 +99,19 @@
                     <input type="text" class="form-control" id="penambahan" name="penambahan" value="{{ old('penambahan', $fasilitas->penambahan) }}">
                 </div>
                 <div class="form-group">
-                    <label for="foto">Foto Fasilitas</label>
-                    <input type="file" class="form-control-file" id="foto" name="foto" accept="image/*" onchange="previewImage()">
-                    @if($fasilitas->foto)
-                        <div class="mt-3">
-                            <p>Foto saat ini:</p>
-                            <img src="{{ asset('storage/fasilitas/' . $fasilitas->foto) }}" alt="Foto Fasilitas" class="img-thumbnail mb-2" style="max-height: 200px;">
-                        </div>
-                    @endif
+                    <label>Foto Fasilitas</label>
+                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                @error('foto') 
+                    <div class="invalid-feedback d-block">{{ $message }}</div> 
+                @enderror
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
+                    <div class="mt-3">
+                @if ($fasilitas->foto)
+                    <p>Foto saat ini:</p>
+                    <img src="{{ asset('fasilitas/' . $fasilitas->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
+                @endif
                     <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                    </div>
                 </div>
 
                 <div class="text-right mt-4">

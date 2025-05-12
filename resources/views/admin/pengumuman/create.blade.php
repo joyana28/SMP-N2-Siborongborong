@@ -90,18 +90,17 @@
                 </div>
 
                 <div class="form-group">
-    <label for="foto">Foto (opsional)</label>
-    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
-    @error('foto') 
-        <div class="invalid-feedback d-block">{{ $message }}</div>
-    @enderror
-
-    @if(isset($pengumuman) && $pengumuman->foto)
-        <div class="mt-2">
-            <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" width="200">
-        </div>
-    @endif
-</div>
+                    <label for="foto">Foto (opsional)</label>
+                    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
+                    @error('foto') 
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                @if(isset($pengumuman) && $pengumuman->foto)
+                        <div class="mt-2">
+                        <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" width="200">
+                        </div>
+                @endif
+                </div>
 
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Simpan</button>

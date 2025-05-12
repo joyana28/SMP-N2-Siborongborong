@@ -25,7 +25,7 @@
         <div class="intro-content">
             <div class="intro-label">Tentang Fasilitas</div>
             <h2 class="intro-title">Fasilitas Unggulan untuk Mendukung Prestasi Siswa</h2>
-            <p class="intro-desc">SMPN 2 Siborongborong menyediakan berbagai fasilitas modern dan lengkap untuk menunjang proses belajar mengajar, pengembangan karakter, dan kreativitas siswa. Setiap fasilitas dirancang untuk memberikan pengalaman belajar yang menyenangkan, aman, dan inspiratif.</p>
+            <p class="intro-desc">SMP NEGERI 2 Siborongborong menyediakan berbagai fasilitas modern dan lengkap untuk menunjang proses belajar mengajar, pengembangan karakter, dan kreativitas siswa. Setiap fasilitas dirancang untuk memberikan pengalaman belajar yang menyenangkan, aman, dan inspiratif.</p>
             <div class="intro-features-animated intro-goals-list">
                 <div class="intro-goal animated-goal">
                     <span class="goal-icon">
@@ -80,7 +80,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
                         @if ($item->foto)
-                            <img src="{{ asset('storage/fasilitas/' . $item->foto) }}" class="card-img-top" alt="Foto {{ $item->nama }}">
+                            <img src="{{ asset('fasilitas/' . $item->foto) }}" class="card-img-top" alt="Foto {{ $item->nama }}">
                         @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->nama }}</h5>
