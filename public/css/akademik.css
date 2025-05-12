@@ -933,6 +933,7 @@
   transition: box-shadow 0.4s, transform 0.4s;
   cursor: pointer;
   overflow: visible;
+  animation: akademikCardEntrance 1.2s cubic-bezier(.4,2,.3,1) both;
 }
 .akademik-card-bg {
   position: absolute;
@@ -1137,4 +1138,30 @@
   40% { transform: scale(1.25) rotate(-8deg); }
   60% { transform: scale(1.18) rotate(-12deg); }
   100% { transform: scale(1.18) rotate(-12deg); }
+}
+
+/* === Animasi Entrance Interaktif untuk Akademik Card Modern === */
+@keyframes akademikCardEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotateY(40deg) translateY(60px);
+    filter: blur(8px) brightness(1.2);
+    box-shadow: 0 0 0 0 #f3b11f00;
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08) rotateY(-8deg) translateY(-12px);
+    filter: blur(0.5px) brightness(1.05);
+    box-shadow: 0 16px 48px 0 #1a56a7cc, 0 2px 8px 0 #f3b11f99;
+  }
+  80% {
+    transform: scale(0.98) rotateY(2deg) translateY(4px);
+    filter: blur(0px) brightness(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg) translateY(0);
+    filter: none;
+    box-shadow: 0 8px 32px 0 rgba(26,86,167,0.13), 0 2px 8px 0 #f3b11f22;
+  }
 } 

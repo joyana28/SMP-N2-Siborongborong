@@ -61,66 +61,38 @@
 </style>
 
 <div class="container py-5">
-    <div class="row siswa-card-grid">
+    <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Detail Kelas</h2>
+    <div class="row justify-content-center">
         @if ($siswa)
-            <div class="col-md-4 mb-4">
-                <div class="siswa-card siswa-card-1">
-                    <div class="siswa-card-icon">
-                        <!-- Home/School detailed icon -->
-                        <svg width="40" height="40" fill="none" stroke="#f3b11f" stroke-width="2" viewBox="0 0 48 48"><rect x="6" y="20" width="36" height="20" rx="4" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/><path d="M24 8L8 20h32L24 8z" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/><rect x="18" y="28" width="12" height="12" rx="2" stroke="#1a56a7" stroke-width="2" fill="#f3b11f"/></svg>
+            <div class="col-lg-8 col-md-10">
+                <div class="book-card-3d">
+                    <div class="book-card-inner">
+                        <div class="book-card-cover">
+                            <div class="book-card-cover-content">
+                                <div class="book-card-cover-icon">
+                                    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="6" y="24" width="42" height="18" rx="5" fill="#fff" stroke="#f3b11f" stroke-width="2.5"/>
+                                        <rect x="18" y="12" width="18" height="12" rx="4" fill="#f3b11f" stroke="#1a56a7" stroke-width="2"/>
+                                        <circle cx="27" cy="18" r="3.5" fill="#fff" stroke="#1a56a7" stroke-width="2"/>
+                                    </svg>
+                                </div>
+                                <div class="book-card-cover-title">NAMA KELAS</div>
+                                <div class="book-card-cover-class">{{ $siswa->nama_kelas }}</div>
+                            </div>
+                        </div>
+                        <div class="book-card-page">
+                            <div class="book-card-page-content">
+                                <div class="book-card-page-title">Informasi Kelas</div>
+                                <div class="book-card-page-info">
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Jumlah Siswa (L):</span> <span class="book-card-info-value">{{ $siswa->jumlah_siswa_l }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Jumlah Siswa (P):</span> <span class="book-card-info-value">{{ $siswa->jumlah_siswa_p }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Total Siswa:</span> <span class="book-card-info-value">{{ $siswa->jumlah_siswa }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Tahun:</span> <span class="book-card-info-value">{{ $siswa->tahun }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Wali Kelas:</span> <span class="book-card-info-value">{{ $siswa->wali_kelas ? $siswa->wali_kelas : 'Tidak ada' }}</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="siswa-card-title">Nama Kelas</div>
-                    <div class="siswa-card-value">{{ $siswa->nama_kelas }}</div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="siswa-card siswa-card-2">
-                    <div class="siswa-card-icon">
-                        <!-- Boy icon -->
-                        <svg width="40" height="40" fill="none" viewBox="0 0 48 48"><circle cx="24" cy="16" r="8" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/><path d="M8 40c0-6 7.16-12 16-12s16 6 16 12" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/></svg>
-                    </div>
-                    <div class="siswa-card-title">Jumlah Siswa (L)</div>
-                    <div class="siswa-card-value">{{ $siswa->jumlah_siswa_l }}</div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="siswa-card siswa-card-3">
-                    <div class="siswa-card-icon">
-                        <!-- Girl icon -->
-                        <svg width="40" height="40" fill="none" viewBox="0 0 48 48"><circle cx="24" cy="16" r="8" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/><path d="M24 24c-6 0-12 6-12 12h24c0-6-6-12-12-12z" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/></svg>
-                    </div>
-                    <div class="siswa-card-title">Jumlah Siswa (P)</div>
-                    <div class="siswa-card-value">{{ $siswa->jumlah_siswa_p }}</div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="siswa-card siswa-card-4">
-                    <div class="siswa-card-icon">
-                        <!-- Total students icon -->
-                        <svg width="40" height="40" fill="none" viewBox="0 0 48 48"><rect x="8" y="12" width="32" height="24" rx="6" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/><path d="M16 36v-4a8 8 0 0 1 16 0v4" stroke="#1a56a7" stroke-width="2"/><circle cx="24" cy="20" r="4" stroke="#1a56a7" stroke-width="2"/></svg>
-                    </div>
-                    <div class="siswa-card-title">Total Siswa</div>
-                    <div class="siswa-card-value">{{ $siswa->jumlah_siswa }}</div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="siswa-card siswa-card-5">
-                    <div class="siswa-card-icon">
-                        <!-- Calendar icon -->
-                        <svg width="40" height="40" fill="none" viewBox="0 0 48 48"><rect x="8" y="12" width="32" height="28" rx="6" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/><rect x="16" y="24" width="16" height="8" rx="2" stroke="#1a56a7" stroke-width="2" fill="#f3b11f"/><path d="M16 12V8m16 4V8" stroke="#1a56a7" stroke-width="2"/></svg>
-                    </div>
-                    <div class="siswa-card-title">Tahun</div>
-                    <div class="siswa-card-value">{{ $siswa->tahun }}</div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="siswa-card siswa-card-6">
-                    <div class="siswa-card-icon">
-                        <!-- Teacher icon -->
-                        <svg width="40" height="40" fill="none" viewBox="0 0 48 48"><circle cx="24" cy="16" r="8" stroke="#f3b11f" stroke-width="2.5" fill="#fff"/><rect x="14" y="28" width="20" height="10" rx="5" stroke="#1a56a7" stroke-width="2" fill="#f3b11f"/></svg>
-                    </div>
-                    <div class="siswa-card-title">Wali Kelas</div>
-                    <div class="siswa-card-value">{{ $siswa->wali_kelas ? $siswa->wali_kelas : 'Tidak ada' }}</div>
                 </div>
             </div>
         @else
