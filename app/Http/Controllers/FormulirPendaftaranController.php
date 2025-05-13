@@ -89,15 +89,11 @@ class FormulirPendaftaranController extends Controller
     }
 
     public function showFrontend()
-    {
-        $formulir = FormulirPendaftaran::latest()->first();
+{
+    $formulir = FormulirPendaftaran::latest()->first();
+    return view('formulirpendaftaran.show', compact('formulir'));
+}
 
-        if (!$formulir) {
-            return redirect()->route('formulir.index')->with('error', 'Formulir pendaftaran tidak ditemukan');
-        }
-
-        return view('formulirpendaftaran.show', compact('formulir'));
-    }
 
     public function destroy($id)
     {

@@ -29,15 +29,15 @@ Route::get('/profil/fasilitas', [AboutController::class, 'fasilitas'])->name('pr
 Route::get('/prestasi-akademik', [PrestasiController::class, 'akademik'])->name('prestasi.akademik');
 Route::get('/prestasi-non-akademik', [PrestasiController::class, 'nonAkademik'])->name('prestasi.nonakademik');
 
-Route::get('/formulirpendaftaran', [FormulirPendaftaranController::class, 'showFrontend'])->name('formulirpendaftaran.show');
+Route::get('/formulir-pendaftaran', [FormulirPendaftaranController::class, 'showFrontend'])->name('formulirpendaftaran.show');
 
 Route::get('/siswa', [SiswaController::class, 'showFrontend'])->name('siswa.show');
-Route::get('/alumni', [AlumniController::class, 'showFrontend'])->name('alumni.show');
+Route::get('/profil-alumni', [AlumniController::class, 'showFrontend'])->name('alumni.show');
 
 Route::get('/', [PengumumanController::class, 'blog'])->name('home');
 Route::get('/pengumuman/{id}', [PengumumanController::class, 'showBlog'])->name('pengumuman.showBlog');
 
-Route::get('/guru', [App\Http\Controllers\GuruController::class, 'daftarGuru'])->name('guru.index');
+Route::get('/teacher', [GuruController::class, 'daftarGuru'])->name('guru.index');
 
 Route::get('/kepala-sekolah', [KepalaSekolahController::class, 'showFrontend'])->name('kepala_sekolah.show');
 

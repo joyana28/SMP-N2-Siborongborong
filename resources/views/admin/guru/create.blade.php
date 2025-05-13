@@ -78,9 +78,25 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mapel">Mata Pelajaran</label>
-                    <input type="text" name="mapel" class="form-control @error('mapel') is-invalid @enderror" value="{{ old('mapel') }}" required>
-                    @error('mapel')
+                    <label for="golongan">Golongan</label>
+                    <input type="text" name="golongan" class="form-control @error('golongan') is-invalid @enderror" value="{{ old('golongan') }}" required>
+                    @error('golongan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="bidang">Bidang</label>
+                    <input type="text" name="bidang" class="form-control @error('bidang') is-invalid @enderror" value="{{ old('bidang') }}" required>
+                    @error('bidang')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="no_telp">Nomor Telepon</label>
+                    <input type="text" name="no_telp" class="form-control @error('no_telp') is-invalid @enderror" value="{{ old('no_telp') }}" required>
+                    @error('no_telp')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
