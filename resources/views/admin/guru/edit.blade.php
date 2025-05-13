@@ -47,11 +47,17 @@
     #preview {
         transition: 0.3s ease;
         border: 2px dashed #0d47a1;
+        max-height: 200px;
     }
 
     #preview:hover {
         transform: scale(1.03);
         border-color: #ffb300;
+    }
+
+    .form-text {
+        font-size: 0.875rem;
+        color: #6c757d;
     }
 </style>
 
@@ -64,59 +70,32 @@
                 @csrf
                 @method('PUT')
 
-                <div class="form-group">
-                    <label for="nama">Nama <span class="text-danger">*</span></label>
-                    <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $guru->nama) }}" required>
-                    @error('nama')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                @foreach (['nama' => 'Nama', 'nip' => 'NIP', 'golongan' => 'Golongan', 'bidang' => 'Bidang', 'no_telp' => 'No. Telepon'] as $field => $label)
+                    <div class="form-group">
+                        <label for="{{ $field }}">{{ $label }}{{ $field === 'nama' ? ' *' : '' }}</label>
+                        <input type="text" name="{{ $field }}" id="{{ $field }}"
+                            class="form-control @error($field) is-invalid @enderror"
+                            value="{{ old($field, $guru->$field) }}" {{ $field === 'nama' ? 'required' : '' }}>
+                        @error($field)
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                @endforeach
 
                 <div class="form-group">
-                    <label for="nip">NIP</label>
-                    <input type="text" name="nip" id="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ old('nip', $guru->nip) }}">
-                    @error('nip')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                    <label for="foto">Foto Guru</label>
+                    <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                    @error('foto') 
+                        <div class="invalid-feedback d-block">{{ $message }}</div> 
                     @enderror
-                </div>
+                    <small class="form-text">Format: JPG, JPEG, PNG. Maksimal 2MB.</small>
 
-                <div class="form-group">
-                    <label for="golongan">Golongan</label>
-                    <input type="text" name="golongan" id="golongan" class="form-control @error('golongan') is-invalid @enderror" value="{{ old('golongan', $guru->golongan) }}">
-                    @error('golongan')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="bidang">Bidang</label>
-                    <input type="text" name="bidang" id="bidang" class="form-control @error('bidang') is-invalid @enderror" value="{{ old('bidang', $guru->bidang) }}">
-                    @error('bidang')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="no_telp">No. Telepon</label>
-                    <input type="text" name="no_telp" id="no_telp" class="form-control @error('no_telp') is-invalid @enderror" value="{{ old('no_telp', $guru->no_telp) }}">
-                    @error('no_telp')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                 <div class="form-group">
-                    <label>Foto Fasilitas</label>
-                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-                @error('foto') 
-                    <div class="invalid-feedback d-block">{{ $message }}</div> 
-                @enderror
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                     <div class="mt-3">
-                @if ($guru->foto)
-                    <p>Foto saat ini:</p>
-                    <img src="{{ asset('guru/' . $guru->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Guru">
-                @endif
-                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                        @if ($guru->foto)
+                            <p class="mb-1">Foto saat ini:</p>
+                            <img src="{{ asset('guru/' . $guru->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Guru">
+                        @endif
+                        <img id="preview" class="img-thumbnail d-none">
                     </div>
                 </div>
 

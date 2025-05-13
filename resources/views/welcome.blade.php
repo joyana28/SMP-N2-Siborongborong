@@ -631,7 +631,7 @@
             <!-- Jam Sekolah Column -->
             <div class="col-md-4 footer-column">
                 <h3>Jam Sekolah</h3>
-                <p>Telp : (0633) 41860</p>
+                <p>Telp : +6281370422455</p>
                 <p>8:00 a.m. - 2:00 p.m.</p>
             </div>
             

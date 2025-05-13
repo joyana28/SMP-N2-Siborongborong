@@ -45,7 +45,7 @@
         <div class="right-panel">
             <div class="form-container">
                 <form method="POST" action="{{ route('admin.login.submit') }}">
-                    @csrf
+                      @csrf
 
               <div class="input-field" style="animation-delay: 0.2s;">
               <input type="text" name="username" id="username"  name="username" required title="Wajib isi username yang valid.">

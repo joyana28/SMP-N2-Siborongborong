@@ -41,10 +41,6 @@
     .invalid-feedback {
         font-size: 0.875rem;
     }
-
-    .alert-danger {
-        color: red;
-    }
 </style>
 
 <div class="container mt-5">
@@ -67,7 +63,7 @@
 
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}">
+                    <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" required>
                     @error('nama')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -75,32 +71,16 @@
 
                 <div class="form-group">
                     <label for="nip">NIP</label>
-                    <input type="text" name="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ old('nip') }}">
+                    <input type="text" name="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ old('nip') }}" required>
                     @error('nip')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="form-group">
-                    <label for="golongan">Golongan</label>
-                    <input type="text" name="golongan" class="form-control @error('golongan') is-invalid @enderror" value="{{ old('golongan') }}">
-                    @error('golongan')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="bidang">Bidang</label>
-                    <input type="text" name="bidang" class="form-control @error('bidang') is-invalid @enderror" value="{{ old('bidang') }}">
-                    @error('bidang')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="no_telp">No. Telepon</label>
-                    <input type="text" name="no_telp" class="form-control @error('no_telp') is-invalid @enderror" value="{{ old('no_telp') }}">
-                    @error('no_telp')
+                    <label for="mapel">Mata Pelajaran</label>
+                    <input type="text" name="mapel" class="form-control @error('mapel') is-invalid @enderror" value="{{ old('mapel') }}" required>
+                    @error('mapel')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
@@ -111,11 +91,6 @@
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
-                @if(isset($guru) && $guru->foto)
-                        <div class="mt-2">
-                        <img src="{{ asset('guru/' . $guru->foto) }}" alt="Foto Guru" width="200">
-                        </div>
-                @endif
                 </div>
 
                 <div class="text-right mt-4">
