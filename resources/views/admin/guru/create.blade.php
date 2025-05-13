@@ -109,6 +109,12 @@
                     @enderror
                 </div>
 
+                <div class="form-group">
+                <label for="golongan">Golongan</label>
+                <input type="text" name="golongan" class="form-control" id="golongan" placeholder="Masukkan Golongan" required>
+                </div>
+
+
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Simpan</button>
                     <a href="{{ route('admin.guru.index') }}" class="btn btn-secondary-custom ml-2">Kembali</a>

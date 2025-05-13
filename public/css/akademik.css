@@ -26,9 +26,9 @@
     background: linear-gradient(
         135deg,
         #0a2744 0%,
-        #1a56a7 25%,
+        #052C65 25%,
         #0d3158 50%,
-        #1a56a7 75%,
+        #052C65 75%,
         #0a2744 100%
     );
     background-size: 400% 400%;
@@ -186,7 +186,7 @@
 .hero-section {
     position: relative;
     height: 500px;
-    background: linear-gradient(135deg, #1a56a7 0%, #0d3b7a 100%);
+    background: linear-gradient(135deg, #052C65 0%, #0d3b7a 100%);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -342,7 +342,7 @@
     left: 18px;
     width: 80%;
     height: 80%;
-    background: linear-gradient(120deg, #f3b11f 0%, #1a56a7 100%);
+    background: linear-gradient(120deg, #f3b11f 0%, #052C65 100%);
     opacity: 0.08;
     z-index: 0;
     transform: skew(-18deg, -6deg);
@@ -350,7 +350,7 @@
     transition: opacity 0.3s;
 }
 .akademik-feature-card:nth-child(2)::before {
-    background: linear-gradient(120deg, #f3b11f 60%, #1a56a7 100%);
+    background: linear-gradient(120deg, #f3b11f 60%, #052C65 100%);
     opacity: 0.18;
 }
 .akademik-feature-card:hover {
@@ -373,7 +373,7 @@
     transition: box-shadow 0.3s, transform 0.3s;
 }
 .bg-blue {
-    background: linear-gradient(135deg, #1a56a7 60%, #0d3158 100%);
+    background: linear-gradient(135deg, #052C65 60%, #0d3158 100%);
     color: #fff;
 }
 .bg-yellow {
@@ -387,7 +387,7 @@
 .akademik-feature-title {
     font-size: 1.35rem;
     font-weight: 700;
-    color: #1a56a7;
+    color: #052C65;
     margin-bottom: 10px;
     letter-spacing: 0.5px;
     position: relative;
@@ -406,7 +406,7 @@
     transition: color 0.3s;
 }
 .akademik-feature-card:hover .akademik-feature-desc {
-    color: #1a56a7;
+    color: #052C65;
 }
 
 @media (max-width: 900px) {
@@ -485,7 +485,7 @@
     left: 30px;
     width: 180px;
     height: 80px;
-    background: linear-gradient(120deg, #f3b11f 80%, #1a56a7 100%);
+    background: linear-gradient(120deg, #f3b11f 80%, #052C65 100%);
     opacity: 0.7;
     z-index: 1;
     transform: skew(-18deg, -6deg);
@@ -533,7 +533,7 @@
 .akademik-highlight-title {
     font-size: 2.1rem;
     font-weight: 800;
-    color: #1a56a7;
+    color: #052C65;
     margin-bottom: 18px;
     line-height: 1.2;
     animation: fadeIn 1.2s 0.7s both;
@@ -560,7 +560,7 @@
 }
 .akademik-highlight-sign-name {
     font-weight: 700;
-    color: #1a56a7;
+    color: #052C65;
     font-size: 1.08rem;
 }
 .akademik-highlight-sign-role {
@@ -590,7 +590,7 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #1a56a7 60%, #f3b11f 100%);
+    background: linear-gradient(135deg, #052C65 60%, #f3b11f 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -617,7 +617,7 @@
 .akademik-signbox:hover {
     transform: scale(1.18) rotate(-8deg);
     box-shadow: 0 8px 32px 0 #f3b11faa, 0 2px 16px 0 #1a56a7aa;
-    background: linear-gradient(135deg, #f3b11f 60%, #1a56a7 100%);
+    background: linear-gradient(135deg, #f3b11f 60%, #052C65 100%);
 }
 .akademik-signbox:hover::after {
     opacity: 0.5;
@@ -632,11 +632,11 @@
     z-index: 2;
     font-size: 2.2rem;
     transition: color 0.3s, text-shadow 0.3s;
-    text-shadow: 0 2px 8px #1a56a7aa, 0 1px 4px #f3b11faa;
+    text-shadow: 0 2px 8px #052C65aa, 0 1px 4px #f3b11faa;
 }
 .akademik-signbox:hover i {
     color: #fffbe7;
-    text-shadow: 0 4px 16px #f3b11faa, 0 2px 8px #1a56a7aa;
+    text-shadow: 0 4px 16px #f3b11faa, 0 2px 8px #052C65aa;
 }
 
 .akademik-section-title {
@@ -644,7 +644,7 @@
     margin: 48px 0 32px 0;
 }
 .akademik-section-title h2 {
-    color: #1a56a7;
+    color: #052C65;
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 12px;

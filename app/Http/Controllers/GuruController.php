@@ -33,33 +33,24 @@ class GuruController extends Controller
         $request->validate([ 
             'nama' => 'required|string|max:100', 
             'nip' => 'required|string|max:50',
-            'golongan' => 'required|string|max:50',
-            'bidang' => 'required|string|max:100',
-            'no_telp' => 'required|string|max:20', 
-            'foto' => 'nullable|image|max:2048', 
-        ]); 
- 
-        $data = $request->except('foto'); 
-        $data['id_admin'] = session('admin_id'); 
- 
-        if ($request->hasFile('foto')) { 
-            $foto = $request->file('foto'); 
-            $fotoName = time() . '_' . $foto->getClientOriginalName(); 
-            $foto->move(public_path('guru'), $fotoName); 
-            $data['foto'] = $fotoName; 
-        } 
- 
-        Guru::create($data); 
- 
-        return redirect()->route('admin.guru.index') 
-            ->with('success', 'Data Guru berhasil ditambahkan.'); 
-    } 
- 
-    // Tampilkan detail guru
-    public function show($id)
-    {
-        $guru = Guru::findOrFail($id);
-        return view('admin.guru.show', compact('guru'));
+            'mapel' => 'required|string|max:100',
+            'foto' => 'nullable|image|max:2048',
+        ]);
+
+        $data = $request->except('foto');
+        $data['id_admin'] = session('admin_id');
+
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $fotoName = time() . '_' . $foto->getClientOriginalName();
+            $foto->move(public_path('guru'), $fotoName);
+            $data['foto'] = $fotoName;
+        }
+
+        Guru::create($data);
+
+        return redirect()->route('admin.guru.index')
+            ->with('success', 'Data Guru berhasil ditambahkan.');
     }
  
     // Tampilkan form edit guru 
