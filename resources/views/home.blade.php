@@ -11,7 +11,7 @@
         <div class="hero-content">
             <h1 class="animated-title">SMP NEGERI 2<br>SIBORONGBORONG</h1>
             <p>Inspirasi Tanpa Batas, Prestasi Tiada Henti, Wadah Tumbuhnya Calon Pemimpin Masa Depan yang Berkarakter dan Berbudaya serta Memiliki Jiwa Nasionalisme</p>
-            <a href="#profil-sekolah"class="btn-primary">GET STARTED</a>
+            <a href="#profil-sekolah"class="btn-primary">LIHAT DETAIL</a>
         </div>
     </div>
     
@@ -195,7 +195,7 @@
                         </div>
                         <h3>{{ $item->judul }}</h3>
                         <p>{{ Str::limit($item->isi, 150) }}</p>
-                    <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Read More</a>
+                    <a href="{{ route('pengumuman.showBlog', $item->id_pengumuman) }}" class="read-more">Lihat Selengkapnya...</a>
                     </div>
                 </div>
             @endforeach
@@ -203,105 +203,5 @@
     </div>
 </section>
 
-<!-- Gallery Section -->
-<section class="gallery-section">
-    <div class="gallery-container">
-        <div class="section-title">
-            <h2>Galeri <span>Sekolah</span></h2>
-            <p>Jelajahi berbagai momen dan aktivitas di sekolah kami</p>
-        </div>
-
-        <!-- Loading Animation -->
-        <div class="gallery-loading"></div>
-
-        <!-- Gallery Grid -->
-        <div class="gallery-grid">
-            <!-- Featured Item -->
-            <div class="gallery-item featured" data-category="events">
-                <img src="images/cosplay.png" alt="Upacara Bendera" class="gallery-image">
-                <div class="gallery-content">
-                    <span class="gallery-category">Acara Sekolah</span>
-                    <h3 class="gallery-title">Upacara Bendera</h3>
-                    <p class="gallery-description">Kegiatan rutin upacara bendera setiap hari Senin untuk menumbuhkan jiwa nasionalisme.</p>
-                </div>
-                <div class="gallery-overlay">
-                    <div class="gallery-icon">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Regular Items -->
-            <div class="gallery-item" data-category="academic">
-                <img src="images/games.png" alt="Kegiatan Pembelajaran" class="gallery-image">
-                <div class="gallery-content">
-                    <span class="gallery-category">Akademik</span>
-                    <h3 class="gallery-title">Kegiatan Pembelajaran</h3>
-                    <p class="gallery-description">Suasana belajar yang interaktif dan menyenangkan di dalam kelas.</p>
-                </div>
-                <div class="gallery-overlay">
-                    <div class="gallery-icon">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="activities">
-                <img src="images/games2.png" alt="Ekstrakurikuler" class="gallery-image">
-                <div class="gallery-content">
-                    <span class="gallery-category">Kegiatan</span>
-                    <h3 class="gallery-title">Ekstrakurikuler</h3>
-                    <p class="gallery-description">Berbagai kegiatan ekstrakurikuler untuk mengembangkan bakat siswa.</p>
-                </div>
-                <div class="gallery-overlay">
-                    <div class="gallery-icon">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="facilities">
-                <img src="images/bola2.png" alt="Perpustakaan" class="gallery-image">
-                <div class="gallery-content">
-                    <span class="gallery-category">Fasilitas</span>
-                    <h3 class="gallery-title">Perpustakaan</h3>
-                    <p class="gallery-description">Perpustakaan modern dengan koleksi buku yang lengkap.</p>
-                </div>
-                <div class="gallery-overlay">
-                    <div class="gallery-icon">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="events">
-                <img src="images/upacara.png" alt="Pentas Seni" class="gallery-image">
-                <div class="gallery-content">
-                    <span class="gallery-category">Acara</span>
-                    <h3 class="gallery-title">Pentas Seni</h3>
-                    <p class="gallery-description">Pertunjukan bakat dan kreativitas siswa dalam bidang seni.</p>
-                </div>
-                <div class="gallery-overlay">
-                    <div class="gallery-icon">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="facilities">
-                <img src="images/games3.png" alt="Laboratorium" class="gallery-image">
-                <div class="gallery-content">
-                    <span class="gallery-category">Fasilitas</span>
-                    <h3 class="gallery-title">Laboratorium</h3>
-                    <p class="gallery-description">Fasilitas laboratorium lengkap untuk praktikum siswa.</p>
-                </div>
-                <div class="gallery-overlay">
-                    <div class="gallery-icon">
-                        <i class="fas fa-expand"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+ 
 @endsection

@@ -99,23 +99,32 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="formulir_pendaftaran">Formulir (PDF/DOC/DOCX)</label>
-                    <input type="file" name="formulir_pendaftaran" id="formulir_pendaftaran" class="form-control-file @error('formulir_pendaftaran') is-invalid @enderror">
-                    @error('formulir_pendaftaran')
-                        <div class="invalid-feedback d-block">{{ $message }}</div>
-                    @enderror
-                    <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti file.</small>
+                <div class="form-group mb-3">
+    <label for="formulir_pendaftaran" class="form-label">
+        <strong>Formulir Pendaftaran</strong> <small class="text-muted">(PDF, DOC, DOCX)</small>
+    </label>
+    <input
+        type="file"
+        name="formulir_pendaftaran"
+        id="formulir_pendaftaran"
+        class="form-control @error('formulir_pendaftaran') is-invalid @enderror"
+        accept=".pdf,.doc,.docx"
+    >
+    @error('formulir_pendaftaran')
+        <div class="invalid-feedback d-block">{{ $message }}</div>
+    @enderror
+    <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti file.</small>
 
-                    @if ($formulirPendaftaran->formulir_pendaftaran)
-                        <div class="mt-3">
-                            <p>File saat ini:</p>
-                            <a href="{{ asset('storage/formulir/' . $formulirPendaftaran->formulir_pendaftaran) }}" target="_blank" class="btn btn-sm btn-outline-primary">
-                                Lihat File
-                            </a>
-                        </div>
-                    @endif
-                </div>
+    @if ($formulirPendaftaran->formulir_pendaftaran)
+        <div class="mt-3">
+            <p class="mb-1">File saat ini:</p>
+            <a href="{{ asset('formulirpendaftaran/' . $formulirPendaftaran->formulir_pendaftaran) }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                <i class="fas fa-file-alt me-1"></i> Lihat File
+            </a>
+        </div>
+    @endif
+</div>
+
 
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Perbarui</button>

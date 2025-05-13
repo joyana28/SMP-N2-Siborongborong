@@ -97,7 +97,7 @@
                     <div class="mt-3">
                         @if($alumni->foto)
                             <p>Foto saat ini:</p>
-                            <img src="{{ asset('storage/alumni/'.$alumni->foto) }}" alt="{{ $alumni->nama }}" class="img-thumbnail mb-2" style="max-height: 200px;">
+                            <img src="{{ asset('alumni/'.$alumni->foto) }}" alt="{{ $alumni->nama }}" class="img-thumbnail mb-2" style="max-height: 200px;">
                         @endif
                         <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
                     </div>

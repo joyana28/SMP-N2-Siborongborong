@@ -97,13 +97,21 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="formulir_pendaftaran">Formulir Pendaftaran (PDF/Word)</label>
-                    <input type="file" name="formulir_pendaftaran" id="formulir_pendaftaran" class="form-control @error('formulir_pendaftaran') is-invalid @enderror">
-                    @error('formulir_pendaftaran')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <div class="form-group mb-3">
+    <label for="formulir_pendaftaran" class="form-label">
+        <strong>Formulir Pendaftaran</strong> <small class="text-muted">(PDF, DOC, DOCX)</small>
+    </label>
+    <input
+        type="file"
+        name="formulir_pendaftaran"
+        id="formulir_pendaftaran"
+        class="form-control @error('formulir_pendaftaran') is-invalid @enderror"
+        accept=".pdf,.doc,.docx"
+    >
+    @error('formulir_pendaftaran')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
 
                 <div class="form-group">
                     <label for="tanggal_terbit">Tanggal Terbit</label>

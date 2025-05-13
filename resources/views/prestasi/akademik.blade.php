@@ -49,7 +49,7 @@
         </div>
         <div class="akademik-highlight-content">
             <span class="akademik-highlight-welcome">PRESTASI TERBAIK KAMI</span>
-            <h2 class="akademik-highlight-title">Siswa SMP NEGERI 2 Siborongborong Raih Prestasi Gemilang</h2>
+            <h2 class="akademik-highlight-title">Siswa SMPN 2 Siborongborong Raih Prestasi Gemilang</h2>
             <p class="akademik-highlight-desc">
                 Kami bangga dengan pencapaian luar biasa para siswa dalam berbagai ajang kompetisi akademik dan non-akademik, baik tingkat daerah, nasional, maupun internasional. Setiap prestasi adalah bukti dedikasi, kerja keras, dan semangat belajar yang tinggi dari seluruh keluarga besar sekolah.
             </p>
@@ -58,7 +58,8 @@
                     <i class="fas fa-trophy"></i>
                 </div>
                 <div>
-                    <div class="akademik-highlight-sign-role">Kepala SMP NEGERI 2 Siborongborong</div>
+                    <div class="akademik-highlight-sign-name">Drs. Sihombing</div>
+                    <div class="akademik-highlight-sign-role">Kepala SMPN 2 Siborongborong</div>
                 </div>
             </div>
         </div>
@@ -72,26 +73,34 @@
 </div>
 
     @if ($prestasiAkademik->count())
-        <div class="row">
-            @foreach ($prestasiAkademik as $prestasi)
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100">
-                        @if ($prestasi->foto)
-                            <img src="{{ asset('prestasi/' . $prestasi->foto) }}" class="card-img-top" alt="Foto Prestasi">
-                        @endif
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $prestasi->nama }}</h5>
-                            <p class="card-text">{{ $prestasi->deskripsi }}</p>
-                            <p class="card-text">
-                                <small class="text-muted">Tanggal: {{ \Carbon\Carbon::parse($prestasi->tanggal)->format('d-m-Y') }}</small><br>
-                                <small class="text-muted">Jenis: {{ ucfirst($prestasi->jenis) }}</small>
-                            </p>
+        <div class="idcard-horizontal-scroll">
+            @foreach ($prestasiAkademik as $index => $prestasi)
+                <div class="akademik-card-modern animated-akademik-card">
+                    <div class="akademik-card-bg"></div>
+                    <div class="akademik-card-left">
+                        <div class="akademik-card-circle">
+                            @if ($prestasi->foto)
+                                <img src="{{ asset('prestasi/' . $prestasi->foto) }}" class="akademik-card-photo" alt="Foto Prestasi" onclick="showZoomModal(this.src)">
+                            @else
+                                <div class="akademik-card-photo-placeholder" onclick="showZoomModal(null)">No Image</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="akademik-card-right">
+                        <div class="akademik-card-icon"><i class="fas fa-trophy"></i></div>
+                        <div class="akademik-card-content">
+                            <div class="akademik-card-front">
+                                <div class="akademik-card-name">{{ strtoupper($prestasi->nama) }}</div>
+                                <div class="akademik-card-role">{{ ucfirst($prestasi->jenis) }}</div>
+                            </div>
+                            <div class="akademik-card-back">
+                                <div class="akademik-card-desc">{{ $prestasi->deskripsi }}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
-
         <div class="d-flex justify-content-center mt-4">
             {{ $prestasiAkademik->links() }}
         </div>
@@ -101,4 +110,35 @@
         </div>
     @endif
 </div>
+
+<!-- Modal Zoom Gambar -->
+<div id="zoomModal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
+    <span onclick="closeZoomModal()" style="position:absolute;top:32px;right:48px;font-size:2.5rem;color:#fff;cursor:pointer;z-index:10001;">&times;</span>
+    <img id="zoomModalImg" src="" alt="Zoomed" style="max-width:90vw;max-height:80vh;border-radius:18px;box-shadow:0 8px 32px #000a;display:block;margin:auto;">
+    <div id="zoomModalPlaceholder" style="display:none;width:180px;height:180px;border-radius:50%;background:#f3b11f33;display:flex;align-items:center;justify-content:center;color:#1a56a7;font-weight:700;font-size:1.5rem;border:4px dashed #1a56a7;margin:auto;">No Image</div>
+</div>
+<script>
+function showZoomModal(src) {
+    document.getElementById('zoomModal').style.display = 'flex';
+    if(src) {
+        document.getElementById('zoomModalImg').src = src;
+        document.getElementById('zoomModalImg').style.display = 'block';
+        document.getElementById('zoomModalPlaceholder').style.display = 'none';
+    } else {
+        document.getElementById('zoomModalImg').style.display = 'none';
+        document.getElementById('zoomModalPlaceholder').style.display = 'flex';
+    }
+}
+function closeZoomModal() {
+    document.getElementById('zoomModal').style.display = 'none';
+}
+// Close modal on ESC
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeZoomModal();
+});
+// Close modal on click outside image
+document.getElementById('zoomModal').addEventListener('click', function(e){
+    if(e.target === this) closeZoomModal();
+});
+</script>
 @endsection

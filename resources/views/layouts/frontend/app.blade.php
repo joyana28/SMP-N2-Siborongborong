@@ -26,9 +26,6 @@
             background: #fff;
         }
 
-        main {
-            padding-top: 80px;
-        }
     </style>
 </head>
 <body>

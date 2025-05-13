@@ -1,67 +1,119 @@
-/* Pengumuman Hero Section */
-.pengumuman-hero-section {
-    background: linear-gradient(to right, #007bff, #0056b3);
-    position: relative;
-    padding: 60px 20px;
-    text-align: center;
-    overflow: hidden;
+:root {
+    --warna-utama: #001f3f;
+    --warna-aksen: #E8AA42;
+    --warna-abu: #f8f9fa;
+    --warna-judul: #111827;
 }
 
-/* Overlay Gelap */
+/* === Hero Section === */
+.pengumuman-hero-section {
+    background: linear-gradient(to right, var(--warna-utama), #003366);
+    position: relative;
+    padding: 100px 20px 80px;
+    overflow: hidden;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}
+
 .pengumuman-hero-overlay {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-    transition: background-color 0.3s ease-in-out;
-}
-
-/* Konten di atas overlay */
-.pengumuman-hero-content {
-    position: relative;
-    z-index: 2;
-    color: white;
-    animation: fadeInUp 1s ease-out;
-}
-
-/* Judul Hero */
-.pengumuman-hero-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-/* Deskripsi Hero */
-.pengumuman-hero-desc {
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-/* Shape Dekoratif Bawah */
-.pengumuman-hero-shape {
-    position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 80px;
-    background: url('/images/wave-shape.svg') no-repeat bottom;
-    background-size: cover;
+    height: 100%;
+    background: rgba(0, 15, 30, 0.5);
     z-index: 1;
 }
 
-/* Efek Hover pada Overlay (Opsional interaktif) */
-.pengumuman-hero-section:hover .pengumuman-hero-overlay {
-    background-color: rgba(0, 0, 0, 0.55);
+.pengumuman-hero-content {
+    z-index: 2;
+    position: relative;
 }
 
-/* Animasi muncul dari bawah */
-@keyframes fadeInUp {
+.pengumuman-hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--warna-aksen);
+    animation: fadeDown 0.8s ease;
+}
+
+.pengumuman-hero-desc {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-top: 10px;
+    animation: fadeUp 1s ease;
+}
+
+/* === Detail Section === */
+.pengumuman-detail-section {
+    background-color: var(--warna-abu);
+    padding: 60px 20px;
+    position: relative;
+}
+
+.pengumuman-detail-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.pengumuman-detail-title {
+    color: var(--warna-utama);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.pengumuman-detail-date {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.pengumuman-detail-image img {
+    border-radius: 10px;
+    border: 3px solid var(--warna-aksen);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    width: 100%;
+    max-height: 400px;
+}
+
+/* === Konten Isi === */
+.pengumuman-detail-content {
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* === Tombol Kembali === */
+.pengumuman-detail-section .btn-outline-primary {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--warna-utama);
+    border: 2px solid var(--warna-utama);
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
+}
+
+.pengumuman-detail-section .btn-outline-primary:hover {
+    background-color: var(--warna-aksen);
+    color: #fff;
+    border-color: var(--warna-aksen);
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* === Animations === */
+@keyframes fadeDown {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
@@ -69,27 +121,26 @@
     }
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .pengumuman-hero-title {
-        font-size: 2rem;
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-
-    .pengumuman-hero-desc {
-        font-size: 1rem;
-    }
-
-    .pengumuman-hero-shape {
-        height: 50px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@media (max-width: 480px) {
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
     .pengumuman-hero-title {
-        font-size: 1.7rem;
+        font-size: 2.2rem;
     }
-
     .pengumuman-hero-desc {
-        font-size: 0.95rem;
+        font-size: 1rem;
+    }
+    .pengumuman-detail-title {
+        font-size: 1.6rem;
     }
 }

@@ -426,3 +426,254 @@ body {
     .tirai-hero-title { font-size: 2rem; }
     .tirai-hero-content { padding: 0 8px; }
 }
+
+/* --- CARD UTAMA DETAIL SISWA --- */
+.siswa-main-card {
+    background: linear-gradient(120deg, #1a56a7 80%, #f3b11f 100%);
+    color: #fff;
+    border-radius: 28px;
+    box-shadow: 0 8px 32px 0 rgba(26,86,167,0.25), 0 1.5px 6px 0 #f3b11f44;
+    padding: 38px 36px 32px 36px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #f3b11f55;
+    backdrop-filter: blur(8px) saturate(1.2);
+    transition: transform 0.35s cubic-bezier(.25,.8,.25,1), box-shadow 0.35s, border 0.3s;
+    animation: siswaMainCardPopIn 0.8s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.siswa-main-card:hover {
+    transform: translateY(-10px) scale(1.025) rotate(-1deg);
+    box-shadow: 0 24px 60px 0 #1a56a7cc, 0 4px 16px 0 #f3b11f88;
+    border: 2.5px solid #f3b11f;
+}
+.siswa-main-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 28px;
+}
+.siswa-main-card-title {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px #1a56a744;
+    display: flex;
+    align-items: center;
+}
+.siswa-main-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px 32px;
+    width: 100%;
+}
+.siswa-main-info-item {
+    background: rgba(255,255,255,0.09);
+    border-radius: 18px;
+    padding: 18px 18px 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 12px #1a56a733;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+    cursor: pointer;
+    position: relative;
+    animation: siswaMainInfoFadeIn 0.7s cubic-bezier(.68,-0.55,.27,1.55) both;
+}
+.siswa-main-info-item:hover {
+    background: #f3b11f;
+    color: #1a56a7;
+    box-shadow: 0 8px 32px #f3b11faa, 0 2px 8px #1a56a7cc;
+    transform: scale(1.04) rotate(-1deg);
+}
+.siswa-main-info-icon {
+    font-size: 2.1rem;
+    margin-right: 6px;
+    filter: drop-shadow(0 2px 8px #fff8) drop-shadow(0 1.5px 6px #f3b11f55);
+    transition: filter 0.3s, transform 0.3s;
+}
+.siswa-main-info-item:hover .siswa-main-info-icon {
+    filter: drop-shadow(0 2px 8px #1a56a7cc) drop-shadow(0 1.5px 6px #f3b11faa);
+    transform: scale(1.15) rotate(-8deg);
+}
+.siswa-main-info-label {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.01rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-right: 8px;
+    transition: color 0.3s;
+}
+.siswa-main-info-item:hover .siswa-main-info-label {
+    color: #1a56a7;
+}
+.siswa-main-info-value {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 12px #1a56a7cc, 0 1.5px 6px #f3b11f55;
+    margin-left: auto;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+.siswa-main-info-item:hover .siswa-main-info-value {
+    color: #1a56a7;
+    text-shadow: 0 4px 24px #f3b11faa, 0 2px 8px #1a56a7cc;
+}
+@keyframes siswaMainCardPopIn {
+    0% { opacity: 0; transform: scale(0.7) translateY(40px); }
+    80% { opacity: 1; transform: scale(1.05) translateY(-8px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes siswaMainInfoFadeIn {
+    0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (max-width: 900px) {
+    .siswa-main-card { padding: 18px 8px 18px 8px; }
+    .siswa-main-info-grid { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* === Book Card 3D Style & Animation === */
+.book-card-3d {
+  width: 420px;
+  height: 280px;
+  perspective: 1600px;
+  margin: 48px auto 48px auto;
+  position: relative;
+  border-radius: 18px;
+  box-shadow: 0 8px 48px 0 #1a56a733, 0 2px 8px 0 #f3b11f33;
+  background: transparent;
+}
+.book-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 1.1s cubic-bezier(.4,2,.3,1);
+}
+.book-card-3d:hover .book-card-inner {
+  transform: rotateY(-120deg);
+}
+.book-card-cover, .book-card-page {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0; top: 0;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 #1a56a722, 0 2px 8px 0 #f3b11f22;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+.book-card-cover {
+  background: linear-gradient(120deg, #1a56a7 70%, #f3b11f 100%);
+  color: #fff;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px 0 #1a56a7aa, 0 2px 8px 0 #f3b11f99;
+  border: 3px solid #f3b11f;
+  transform: rotateY(0deg);
+  transition: box-shadow 0.4s;
+}
+.book-card-cover-content {
+  text-align: center;
+  width: 100%;
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.book-card-cover-icon {
+  margin-bottom: 18px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #f3b11f55;
+  padding: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.book-card-cover-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 8px #1a56a7aa;
+}
+.book-card-cover-class {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #f3b11f;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 8px #fff8;
+}
+.book-card-page {
+  background: #fff;
+  color: #1a56a7;
+  z-index: 1;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px 0 #f3b11faa, 0 2px 8px 0 #1a56a7aa;
+  border: 3px solid #1a56a7;
+}
+.book-card-page-content {
+  width: 100%;
+  padding: 36px 32px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.book-card-page-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a56a7;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+.book-card-page-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.book-card-info-row {
+  font-size: 1.08rem;
+  color: #1a56a7;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.book-card-info-label {
+  min-width: 140px;
+  color: #f3b11f;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.book-card-info-value {
+  color: #1a56a7;
+  font-weight: 800;
+  font-size: 1.08rem;
+}
+@media (max-width: 600px) {
+  .book-card-3d {
+    width: 98vw;
+    height: 200px;
+  }
+  .book-card-cover-content, .book-card-page-content {
+    padding: 18px 8px 12px 8px;
+  }
+  .book-card-info-label {
+    min-width: 90px;
+  }
+}

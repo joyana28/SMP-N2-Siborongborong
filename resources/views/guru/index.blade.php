@@ -25,7 +25,7 @@
             <div class="card h-100 teacher-card shadow">
                 <div class="teacher-header text-center mt-4">
                     @if ($g->foto)
-                        <img src="{{ asset('storage/guru/' . $g->foto) }}" alt="Foto {{ $g->nama }}" class="rounded-circle teacher-img" width="120" height="120">
+                        <img src="{{ asset('guru/' . $g->foto) }}" alt="Foto {{ $g->nama }}" class="rounded-circle teacher-img" width="120" height="120">
                     @else
                         <img src="{{ asset('images/default-user.jpg') }}" alt="Default" class="rounded-circle teacher-img" width="120" height="120">
                     @endif

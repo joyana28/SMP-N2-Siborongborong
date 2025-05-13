@@ -78,11 +78,14 @@
                 <span class="formulir-card-date"><b>Terbit:</b> {{ \Carbon\Carbon::parse($formulir->tanggal_terbit)->format('d M Y') }}</span>
                 <span class="formulir-card-date"><b>Berakhir:</b> {{ \Carbon\Carbon::parse($formulir->tanggal_berakhir)->format('d M Y') }}</span>
             </div>
-            <div class="formulir-card-download">
-                <a href="{{ Storage::url('public/formulir/' . $formulir->formulir_pendaftaran) }}" class="btn btn-unduh-formulir" target="_blank" download="{{ $formulir->formulir_pendaftaran }}">
-                    <i class="fa fa-download"></i> Unduh Formulir
-                </a>
-            </div>
+            <div class="formulir-card-download text-center my-4">
+    <a href="{{ asset('formulirpendaftaran/' . $formulir->formulir_pendaftaran) }}"
+       class="btn btn-primary btn-lg"
+       target="_blank"
+       download="{{ $formulir->formulir_pendaftaran }}">
+        <i class="fas fa-download me-2"></i> Unduh Formulir
+    </a>
+</div>
         </div>
     </div>
 </section>

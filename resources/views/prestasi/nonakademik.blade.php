@@ -2,6 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/nonakademik.css') }}">
+<script src="{{ asset('js/nonakademik.js') }}" defer></script>
 
 <!-- Hero Section Nonakademik -->
 <section class="nonakademik-hero-section">
@@ -22,18 +23,18 @@
     <div class="nonakademik-explore-header">
         <h2 class="nonakademik-explore-main-title gradient-text">Apa yang <span>Nonakademik</span> Tawarkan?</h2>
         <div class="nonakademik-explore-subtitle">Beragam kegiatan dan prestasi nonakademik untuk mengembangkan bakat, karakter, dan kreativitas siswa di luar kelas.</div>
-    </div>
+                </div>
     <div class="nonakademik-explore-features">
         <div class="nonakademik-feature-card glass-card">
             <div class="feature-icon feature-bg-1 floating-icon"><i class="fas fa-futbol"></i></div>
             <div class="feature-title">Olahraga</div>
             <div class="feature-desc">Kompetisi dan klub olahraga untuk membangun sportivitas dan kesehatan.</div>
-        </div>
+                </div>
         <div class="nonakademik-feature-card glass-card">
             <div class="feature-icon feature-bg-2 floating-icon"><i class="fas fa-paint-brush"></i></div>
             <div class="feature-title">Seni & Budaya</div>
             <div class="feature-desc">Ekspresikan kreativitas melalui seni, musik, tari, dan budaya.</div>
-        </div>
+                </div>
         <div class="nonakademik-feature-card glass-card">
             <div class="feature-icon feature-bg-3 floating-icon"><i class="fas fa-users"></i></div>
             <div class="feature-title">Organisasi</div>
@@ -56,20 +57,36 @@
 </div>
 
     @if ($prestasiNonAkademik->count())
-        <div class="row">
+        <div class="idcard-modern-list">
             @foreach ($prestasiNonAkademik as $prestasi)
-                <div class="col-md-6 mb-4">
-                    <div class="card h-100">
-                        @if ($prestasi->foto)
-                            <img src="{{ asset('prestasi/' . $prestasi->foto) }}" class="card-img-top" alt="Foto Prestasi">
-                        @endif
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $prestasi->nama }}</h5>
-                            <p class="card-text">{{ $prestasi->deskripsi }}</p>
-                            <p class="card-text">
-                                <small class="text-muted">Tanggal: {{ \Carbon\Carbon::parse($prestasi->tanggal)->format('d-m-Y') }}</small><br>
-                                <small class="text-muted">Jenis: {{ ucfirst($prestasi->jenis) }}</small>
-                            </p>
+                <div class="idcard-modern animated-idcard">
+                    <div class="idcard-bg-diagonal">
+                        <div class="idcard-logo-tagline">
+                            <div class="idcard-logo"><!-- Optionally use <img src="/path/to/logo.png"> --></div>
+                            <div class="idcard-business">BUSINESS</div>
+                            <div class="idcard-tagline">TAGLINE HERE</div>
+                        </div>
+                        <div class="idcard-photo-outer">
+                            @if ($prestasi->foto)
+                                <img src="{{ asset('prestasi/' . $prestasi->foto) }}" alt="Foto Prestasi" class="idcard-photo" onclick="zoomNonakadPhoto(this)">
+                            @else
+                                <div class="idcard-photo-placeholder" onclick="zoomNonakadPhoto(this)">No Image</div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="idcard-content">
+                        <div class="idcard-name-role">
+                            <span class="idcard-name">{{ strtoupper($prestasi->nama) }}</span>
+                            <span class="idcard-role">{{ ucfirst($prestasi->jenis) }}</span>
+                        </div>
+                        <div class="idcard-divider"></div>
+                        <div class="idcard-meta">
+                            <div class="idcard-meta-row idcard-deskripsi">{{ $prestasi->deskripsi }}</div>
+                        </div>
+                        <div class="idcard-barcode">
+                            <div class="idcard-barcode-img">
+                                <svg width="180" height="32"><rect x="0" y="0" width="180" height="32" fill="#fff"/><rect x="10" y="6" width="6" height="20" fill="#222"/><rect x="22" y="6" width="3" height="20" fill="#222"/><rect x="30" y="6" width="2" height="20" fill="#222"/><rect x="38" y="6" width="8" height="20" fill="#222"/><rect x="50" y="6" width="4" height="20" fill="#222"/><rect x="58" y="6" width="2" height="20" fill="#222"/><rect x="66" y="6" width="6" height="20" fill="#222"/><rect x="76" y="6" width="2" height="20" fill="#222"/><rect x="84" y="6" width="8" height="20" fill="#222"/><rect x="96" y="6" width="3" height="20" fill="#222"/></svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,5 +101,11 @@
             <strong>Oops!</strong> Belum ada prestasi non-akademik yang ditambahkan untuk saat ini.
         </div>
     @endif
+
+<!-- Modal Zoom Gambar Nonakademik (letakkan di luar loop dan container utama) -->
+<div id="nonakadZoomModal" class="zoom-modal">
+    <span class="zoom-modal-close" onclick="closeNonakadZoomModal()">&times;</span>
+    <img id="nonakadZoomModalImg" src="" alt="Zoomed" class="zoom-modal-image">
+    <div id="nonakadZoomModalPlaceholder" class="zoom-modal-placeholder">No Image</div>
 </div>
 @endsection

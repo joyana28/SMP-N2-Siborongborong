@@ -32,10 +32,10 @@ class KepalaSekolahController extends Controller
         $data['id_admin'] = session('admin_id');
 
         if ($request->hasFile('foto')) {
-            $fotoFile = $request->file('foto');
+            $foto = $request->file('foto');
             $fotoName = time() . '.' . $foto->getClientOriginalExtension();
             $foto->move(public_path('kepala_sekolah'), $fotoName);
-            $foto = $fotoName;
+            $data['foto'] = $fotoName;
         }
 
         KepalaSekolah::create($data);
@@ -64,15 +64,16 @@ class KepalaSekolahController extends Controller
         $data = $request->except('foto');
 
         if ($request->hasFile('foto')) {
-            $oldPath = public_path('kepala_sekolah/' . $kepalaSekolah->foto);
-            if ($kepalaSekolah->foto && file_exists($oldPath)) {
-                unlink($oldPath);
+            // Hapus foto lama jika ada
+            if ($kepalaSekolah->foto && file_exists(public_path('kepala_sekolah/' . $kepalaSekolah->foto))) {
+                unlink(public_path('kepala_sekolah/' . $kepalaSekolah->foto));
             }
 
+            // Upload foto baru
             $foto = $request->file('foto');
             $fotoName = time() . '.' . $foto->getClientOriginalExtension();
             $foto->move(public_path('kepala_sekolah'), $fotoName);
-            $kepalaSekolah->foto = $fotoName;
+            $data['foto'] = $fotoName;
         }
 
         $kepalaSekolah->update($data);
@@ -91,9 +92,8 @@ class KepalaSekolahController extends Controller
     {
         $kepalaSekolah = KepalaSekolah::findOrFail($id);
 
-        $path = public_path('kepala_sekolah/' . $kepalaSekolah->foto);
-        if ($kepalaSekolah->foto && file_exists($path)) {
-            unlink($path);
+        if ($kepalaSekolah->foto && file_exists(public_path('kepala_sekolah/' . $kepalaSekolah->foto))) {
+            unlink(public_path('kepala_sekolah/' . $kepalaSekolah->foto));
         }
 
         $kepalaSekolah->delete();

@@ -134,7 +134,7 @@
     <div class="social-icons mt-3">
         <a href="https://www.facebook.com/share/1A4AgL1n79/" target="_blank"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8w5nlddtNuE&_r=1" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/6281370422455" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
 </div>
 
@@ -153,7 +153,7 @@
             <div class="footer-contact">
                 <h3>Kontak Kami</h3>
                 <p><i class="fas fa-map-marker-alt"></i> Jl. Siborongborong No.123, Tapanuli Utara, Sumatera Utara</p>
-                <p><i class="fas fa-phone"></i> (0633) 123456</p>
+                <p><i class="fas fa-phone"></i> 081370422455 </p>
                 <p><i class="fas fa-envelope"></i> smpn2siborongborong@gmail.com</p>
             </div>
         </div>

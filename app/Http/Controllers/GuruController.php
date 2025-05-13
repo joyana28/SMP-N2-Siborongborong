@@ -3,54 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
-use App\Models\Admin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class GuruController extends Controller
 {
+    // Tampilkan semua data guru (untuk admin)
     public function index()
     {
         $guru = Guru::with('admin')->get();
         return view('admin.guru.index', compact('guru'));
     }
 
+    // Tampilkan daftar guru untuk frontend publik
     public function daftarGuru()
     {
         $guru = Guru::orderBy('nama', 'asc')->get();
         return view('guru.index', compact('guru'));
     }
 
+    // Tampilkan form tambah guru
     public function create()
     {
         return view('admin.guru.create');
     }
 
+    // Simpan data guru baru
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'nama' => 'required|string|max:100',
             'nip' => 'required|string|max:50',
-            'golongan' => 'required|string|max:50',
-            'bidang' => 'required|string|max:100',
-            'no_telp' => 'required|string|max:15',
+            'mapel' => 'required|string|max:100',
             'foto' => 'nullable|image|max:2048',
+            'golongan' => 'required|string|max:10',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $data = $request->only(['nama', 'nip', 'golongan', 'bidang', 'no_telp']);
+        $data = $request->except('foto');
         $data['id_admin'] = session('admin_id');
+        $data['golongan'] = $request->golongan;
 
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             $fotoName = time() . '_' . $foto->getClientOriginalName();
-            $foto->storeAs('public/guru', $fotoName);
+            $foto->move(public_path('guru'), $fotoName);
             $data['foto'] = $fotoName;
         }
 
@@ -60,40 +55,35 @@ class GuruController extends Controller
             ->with('success', 'Data Guru berhasil ditambahkan.');
     }
 
+    // Tampilkan form edit guru
     public function edit($id)
     {
         $guru = Guru::findOrFail($id);
         return view('admin.guru.edit', compact('guru'));
     }
 
+    // Proses update data guru
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
+        $request->validate([
             'nama' => 'required|string|max:100',
             'nip' => 'required|string|max:50',
-            'golongan' => 'required|string|max:50',
-            'bidang' => 'required|string|max:100',
-            'no_telp' => 'required|string|max:15',
+            'mapel' => 'required|string|max:100',
             'foto' => 'nullable|image|max:2048',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
         $guru = Guru::findOrFail($id);
-        $data = $request->only(['nama', 'nip', 'golongan', 'bidang', 'no_telp']);
+        $data = $request->except('foto');
 
         if ($request->hasFile('foto')) {
-            if ($guru->foto && Storage::exists('public/guru/' . $guru->foto)) {
-                Storage::delete('public/guru/' . $guru->foto);
+            // Hapus foto lama jika ada
+            if ($guru->foto && file_exists(public_path('guru/' . $guru->foto))) {
+                unlink(public_path('guru/' . $guru->foto));
             }
 
             $foto = $request->file('foto');
             $fotoName = time() . '_' . $foto->getClientOriginalName();
-            $foto->storeAs('public/guru', $fotoName);
+            $foto->move(public_path('guru'), $fotoName);
             $data['foto'] = $fotoName;
         }
 
@@ -103,12 +93,14 @@ class GuruController extends Controller
             ->with('success', 'Data Guru berhasil diperbarui.');
     }
 
+    // Hapus data guru
     public function destroy($id)
     {
         $guru = Guru::findOrFail($id);
 
-        if ($guru->foto && Storage::exists('public/guru/' . $guru->foto)) {
-            Storage::delete('public/guru/' . $guru->foto);
+        // Hapus file foto jika ada
+        if ($guru->foto && file_exists(public_path('guru/' . $guru->foto))) {
+            unlink(public_path('guru/' . $guru->foto));
         }
 
         $guru->delete();
