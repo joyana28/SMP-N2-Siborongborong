@@ -40,32 +40,6 @@
     </div>
 </section>
 
-<!-- Section Highlight Prestasi Siswa -->
-<section class="akademik-highlight-section">
-    <div class="akademik-highlight-container">
-        <div class="akademik-highlight-img-wrap">
-            <img src="/images/prestasi.png" alt="Siswa Berprestasi" class="akademik-highlight-img">
-            <div class="akademik-highlight-accent"></div>
-        </div>
-        <div class="akademik-highlight-content">
-            <span class="akademik-highlight-welcome">PRESTASI TERBAIK KAMI</span>
-            <h2 class="akademik-highlight-title">Siswa SMPN 2 Siborongborong Raih Prestasi Gemilang</h2>
-            <p class="akademik-highlight-desc">
-                Kami bangga dengan pencapaian luar biasa para siswa dalam berbagai ajang kompetisi akademik dan non-akademik, baik tingkat daerah, nasional, maupun internasional. Setiap prestasi adalah bukti dedikasi, kerja keras, dan semangat belajar yang tinggi dari seluruh keluarga besar sekolah.
-            </p>
-            <div class="akademik-highlight-signature">
-                <div class="akademik-signbox">
-                    <i class="fas fa-trophy"></i>
-                </div>
-                <div>
-                    <div class="akademik-highlight-sign-name">Drs. Sihombing</div>
-                    <div class="akademik-highlight-sign-role">Kepala SMPN 2 Siborongborong</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Judul Section Fasilitas Sekolah -->
 <div class="akademik-section-title">
     <h2>Prestasi Akademik Kami</h2>
