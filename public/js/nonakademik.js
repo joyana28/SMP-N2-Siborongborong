@@ -68,3 +68,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+document.querySelectorAll('.idcard-photo').forEach(img => {
+    img.addEventListener('click', () => {
+      const modal = document.getElementById('zoomModal');
+      const modalImg = document.getElementById('zoomImage');
+      modalImg.src = img.src;
+      modal.style.display = 'flex';
+    });
+  });
+
+  // Tutup modal
+  document.getElementById('zoomClose').addEventListener('click', () => {
+    document.getElementById('zoomModal').style.display = 'none';
+  });

@@ -37,12 +37,6 @@
             background-color: #f8f9fa;
         }
         
-        footer {
-            background-color: #343a40;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-        }
     </style>
     
     @stack('styles')

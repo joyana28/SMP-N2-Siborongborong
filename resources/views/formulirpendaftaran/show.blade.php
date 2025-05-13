@@ -32,27 +32,6 @@
     </p>
 </div>
 
-<!-- Prosedur Pendaftaran Section -->
-<section class="pendaftaran-prosedur-section">
-    <div class="pendaftaran-prosedur-arrow arrow-blue">
-        <div class="pendaftaran-prosedur-icon">
-            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="7" y="5" width="24" height="30" rx="4" fill="#fff" stroke="#1a56a7" stroke-width="2.5"/>
-                <rect x="13" y="2" width="12" height="6" rx="2" fill="#1a56a7" stroke="#f3b11f" stroke-width="2"/>
-                <rect x="12" y="13" width="14" height="2.5" rx="1.2" fill="#1a56a7"/>
-                <rect x="12" y="18" width="14" height="2.5" rx="1.2" fill="#1a56a7"/>
-                <rect x="12" y="23" width="10" height="2.5" rx="1.2" fill="#1a56a7"/>
-            </svg>
-        </div>
-        <div class="pendaftaran-prosedur-content">
-            <div class="pendaftaran-prosedur-title">Serahkan Formulir ke Sekolah</div>
-            <div class="pendaftaran-prosedur-desc">
-                Setelah formulir pendaftaran diunduh dan diisi lengkap, silakan serahkan langsung ke panitia pendaftaran di sekolah sesuai jadwal yang telah ditentukan.
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Formulir Pendaftaran Card -->
 @if($formulir)
 <section class="formulir-card-section">
@@ -86,10 +65,29 @@
         <i class="fas fa-download me-2"></i> Unduh Formulir
     </a>
 </div>
+</div>
+</div>
+</section>
+<!-- Prosedur Pendaftaran Section -->
+<section class="pendaftaran-prosedur-section">
+    <div class="pendaftaran-prosedur-arrow arrow-blue">
+        <div class="pendaftaran-prosedur-icon">
+            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="7" y="5" width="24" height="30" rx="4" fill="#fff" stroke="#1a56a7" stroke-width="2.5"/>
+                <rect x="13" y="2" width="12" height="6" rx="2" fill="#1a56a7" stroke="#f3b11f" stroke-width="2"/>
+                <rect x="12" y="13" width="14" height="2.5" rx="1.2" fill="#1a56a7"/>
+                <rect x="12" y="18" width="14" height="2.5" rx="1.2" fill="#1a56a7"/>
+                <rect x="12" y="23" width="10" height="2.5" rx="1.2" fill="#1a56a7"/>
+            </svg>
+        </div>
+        <div class="pendaftaran-prosedur-content">
+            <div class="pendaftaran-prosedur-title">Serahkan Formulir ke Sekolah</div>
+            <div class="pendaftaran-prosedur-desc">
+                Setelah formulir pendaftaran diunduh dan diisi lengkap, silakan serahkan langsung ke panitia pendaftaran di sekolah sesuai jadwal yang telah ditentukan.
+            </div>
         </div>
     </div>
-</section>
+</section>   
 @endif
-
 </div>
 @endsection
