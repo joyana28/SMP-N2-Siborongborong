@@ -60,8 +60,18 @@
 </div>
 
 <script>
-    // Toggle menu saat tombol hamburger diklik
-    document.getElementById('hamburger').addEventListener('click', function () {
-        document.getElementById('navMenu').classList.toggle('active');
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navMenu.classList.toggle('active');
+    });
+
+    // Tambahan efek scroll pada navbar
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 </script>
+
