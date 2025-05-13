@@ -35,10 +35,12 @@ class GuruController extends Controller
             'nip' => 'required|string|max:50',
             'mapel' => 'required|string|max:100',
             'foto' => 'nullable|image|max:2048',
+            'golongan' => 'required|string|max:10',
         ]);
 
         $data = $request->except('foto');
         $data['id_admin'] = session('admin_id');
+        $data['golongan'] = $request->golongan;
 
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
