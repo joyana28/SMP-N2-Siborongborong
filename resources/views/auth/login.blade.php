@@ -37,7 +37,7 @@
 
 
             <div class="welcome-text">
-                <h1>Hello,<br>welcome!</h1>
+                <h1>Hello,<br>Selamat Datang!</h1>
                 <p>SMP NEGERI 2 SIBORONGBORONG</p>
             </div>
         </div>

@@ -55,7 +55,7 @@
         <div class="alert alert-success rounded-3 shadow-sm">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('admin.guru.create') }}" class="btn btn-custom mb-3">+ Tambah Guru</a>
+    <a href="{{ route('admin.guru.create') }}" class="btn btn-custom mb-3">Tambah Guru</a>
 
     <div class="table-responsive">
         <table class="table table-bordered shadow-sm bg-white">

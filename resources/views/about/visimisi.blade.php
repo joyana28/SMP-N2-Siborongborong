@@ -47,9 +47,7 @@
                         </div>
                         <div>
                             <div class="vmg-item-title">Visi</div>
-                            <div class="vmg-item-desc">
-                                Menjadi sekolah unggul yang berlandaskan iman, ilmu, dan karakter, serta berkomitmen mencetak generasi berprestasi, berakhlak mulia, dan siap menghadapi tantangan global.
-                            </div>
+                            <div class="vmg-item-desc">Mewujudkan sekolah yang berkualitas, berdisiplin, berkarakter, berbudaya, dan berwawasan luas serta cerdas, kreatif, dan berakhlak mulia.</div>
                         </div>
                     </div>
 
@@ -66,10 +64,10 @@
                         <div>
                             <div class="vmg-item-title">Misi</div>
                             <div class="vmg-item-desc">
-                                1. Menyelenggarakan pendidikan berkualitas dan inovatif.<br>
-                                2. Membentuk karakter dan akhlak mulia.<br>
-                                3. Mengembangkan potensi dan kreativitas siswa.<br>
-                                4. Mempersiapkan siswa menghadapi tantangan global.
+                                1. Meningkatkan kualitas pendidikan<br>
+                                2. Mengembangkan karakter siswa.<br>
+                                3. Meningkatkan kemampuan akademik.<br>
+                                4. Meningkatkan partisipasi orang tua dalam pendidikan siswa.
                             </div>
                         </div>
                     </div>
