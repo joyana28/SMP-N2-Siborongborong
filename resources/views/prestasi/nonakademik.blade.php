@@ -83,6 +83,9 @@
                         <div class="idcard-meta">
                             <div class="idcard-meta-row idcard-deskripsi">{{ $prestasi->deskripsi }}</div>
                         </div>
+                        <div class="akademik-card-date text-sm text-gray-500 mt-1">
+                                {{ \Carbon\Carbon::parse($prestasi->tanggal)->translatedFormat('d F Y') }}
+                            </div>
                         <div class="idcard-barcode">
                             <div class="idcard-barcode-img">
                                 <svg width="180" height="32"><rect x="0" y="0" width="180" height="32" fill="#fff"/><rect x="10" y="6" width="6" height="20" fill="#222"/><rect x="22" y="6" width="3" height="20" fill="#222"/><rect x="30" y="6" width="2" height="20" fill="#222"/><rect x="38" y="6" width="8" height="20" fill="#222"/><rect x="50" y="6" width="4" height="20" fill="#222"/><rect x="58" y="6" width="2" height="20" fill="#222"/><rect x="66" y="6" width="6" height="20" fill="#222"/><rect x="76" y="6" width="2" height="20" fill="#222"/><rect x="84" y="6" width="8" height="20" fill="#222"/><rect x="96" y="6" width="3" height="20" fill="#222"/></svg>

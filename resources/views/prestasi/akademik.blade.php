@@ -70,6 +70,9 @@
                             <div class="akademik-card-back">
                                 <div class="akademik-card-desc">{{ $prestasi->deskripsi }}</div>
                             </div>
+                            <div class="akademik-card-date text-sm text-gray-500 mt-1">
+                                {{ \Carbon\Carbon::parse($prestasi->tanggal)->translatedFormat('d F Y') }}
+                            </div>
                         </div>
                     </div>
                 </div>
