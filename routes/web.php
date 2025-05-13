@@ -17,6 +17,8 @@ use App\Http\Controllers\KepalaSekolahController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\VisiMisiController;
+use App\Http\Middleware\AdminAuthMiddleware; 
+
 
 Route::get('/', function () {
     return view('home');
@@ -45,15 +47,12 @@ Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin
 Route::post('/adminlogin', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware([AdminAuthMiddleware::class])->group(function () {
     Route::get('/dashboard', function () {
-        if (!session('admin_logged_in')) {
-            return redirect()->route('admin.login');
-        }
         return view('admin.dashboard');
     })->name('dashboard');
- Route::get('/visi-misi', [VisiMisiController::class, 'visiMisi'])->name('visi.misi');
-
+        
+    Route::get('/visi-misi', [VisiMisiController::class, 'visiMisi'])->name('visi.misi');
     Route::resource('prestasi', PrestasiController::class);
     Route::resource('alumni', AlumniController::class);
     Route::resource('ekstrakurikuler', EkstrakurikulerController::class);
