@@ -662,6 +662,126 @@
     }
 }
 
+/* ===== KEPSEK GLASS CARD (NEW MODERN STYLE) ===== */
+.kepsek-glass-card {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 28px;
+    border: 1.5px solid rgba(243, 177, 31, 0.18);
+    overflow: hidden;
+    min-width: 340px;
+    max-width: 420px;
+    min-height: 380px;
+    margin: 32px 32px 32px 0;
+    transition: box-shadow 0.5s cubic-bezier(.4,2,.3,1), transform 0.5s cubic-bezier(.4,2,.3,1);
+    animation: glassCardFadeIn 1.1s cubic-bezier(.4,2,.3,1) 0.1s backwards;
+}
+.kepsek-glass-card:hover {
+    box-shadow: 0 16px 48px 0 #f3b11faa, 0 2px 16px #1a56a7aa;
+    transform: scale(1.035) translateY(-6px);
+    border-color: #f3b11f99;
+}
+@keyframes glassCardFadeIn {
+    0% { opacity: 0; transform: translateY(40px) scale(0.97); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.kepsek-glass-img {
+    width: 160px;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-right: 2px solid rgba(243, 177, 31, 0.13);
+    background-color: #fff;
+    transition: filter 0.4s, transform 0.4s;
+}
+.kepsek-glass-card:hover .kepsek-glass-img {
+    filter: brightness(1.08) saturate(1.15) drop-shadow(0 2px 12px #f3b11f44);
+    transform: scale(1.04) rotate(-1deg);
+}
+.kepsek-glass-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 28px;
+    background: rgba(255,255,255,0.12);
+    position: relative;
+    z-index: 2;
+    min-width: 180px;
+}
+.kepsek-glass-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #f3b11f 60%, #ffe7b0 100%);
+    color: #1a56a7;
+    font-weight: 700;
+    font-size: 0.98rem;
+    padding: 4px 18px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px #f3b11f33;
+    text-shadow: 0 1px 4px #fff8;
+    animation: fadeInUp 1s cubic-bezier(.4,2,.3,1) 0.2s backwards;
+}
+.kepsek-glass-nama {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #1a56a7;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 8px #f3b11f33;
+    animation: fadeInRight 1s cubic-bezier(.4,2,.3,1) 0.3s backwards;
+}
+.kepsek-glass-divider {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #f3b11f 60%, #1a56a7 100%);
+    border-radius: 2px;
+    margin: 10px 0 16px 0;
+    opacity: 0.85;
+    animation: dividerGrow 1.1s cubic-bezier(.4,2,.3,1) 0.4s backwards;
+}
+.kepsek-glass-detail {
+    font-size: 1.08rem;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    animation: fadeInUp 1s cubic-bezier(.4,2,.3,1) 0.5s backwards;
+}
+.kepsek-glass-detail span {
+    color: #f3b11f;
+    font-weight: 700;
+    min-width: 80px;
+    display: inline-block;
+}
+@media (max-width: 700px) {
+    .kepsek-glass-card {
+        flex-direction: column;
+        min-width: 0;
+        max-width: 98vw;
+        min-height: 0;
+        width: 98vw;
+        margin: 18px 0;
+    }
+    .kepsek-glass-img {
+        width: 100%;
+        height: 180px;
+        border-right: none;
+        border-bottom: 2px solid rgba(243, 177, 31, 0.13);
+    }
+    .kepsek-glass-info {
+        padding: 18px 12px;
+        min-width: 0;
+    }
+}
+
 /* ===== KEPSEK ANIMATED CARD (MODERN SLIDE, SLOPED DOWN) ===== */
 .kepsek-anim-card {
     position: relative;
@@ -772,5 +892,108 @@
     }
     .kepsek-anim-info-inner {
         font-size: 0.95rem;
+    }
+}
+
+/* ===== INTERAKTIF KEPSEK CARD ANIMASI (REVISI: GAMBAR TETAP JELAS DI KANAN) ===== */
+.interactive-kepsek-card {
+    position: relative;
+    width: 420px;
+    height: 420px;
+    min-width: 320px;
+    max-width: 98vw;
+    min-height: 320px;
+    overflow: hidden;
+    background: none;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    border-radius: 28px;
+    transition: box-shadow 0.5s cubic-bezier(.4,2,.3,1);
+    cursor: pointer;
+}
+.interactive-kepsek-img {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 28px;
+    z-index: 2;
+    transition: left 0.7s cubic-bezier(.4,2,.3,1), width 0.7s cubic-bezier(.4,2,.3,1), border-radius 0.7s cubic-bezier(.4,2,.3,1), box-shadow 0.5s, filter 0.5s;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    filter: brightness(1) saturate(1.08);
+    animation: kepsekImgFullFadeIn 1.2s cubic-bezier(.4,2,.3,1) backwards;
+}
+@keyframes kepsekImgFullFadeIn {
+    0% { opacity: 0; transform: scale(1.08) translateY(40px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.interactive-kepsek-info {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 56%;
+    height: 100%;
+    background: rgba(255,255,255,0.97);
+    box-shadow: 8px 0 32px #f3b11f22;
+    border-radius: 28px 0 0 28px;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 38px 28px 38px 32px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-60px);
+    transition: opacity 0.6s cubic-bezier(.4,2,.3,1), transform 0.7s cubic-bezier(.4,2,.3,1);
+    box-sizing: border-box;
+}
+.interactive-kepsek-card:hover .interactive-kepsek-img,
+.interactive-kepsek-card:focus-within .interactive-kepsek-img {
+    left: 44%;
+    width: 56%;
+    border-radius: 0 28px 28px 0;
+    filter: brightness(1.08) saturate(1.13) drop-shadow(0 2px 12px #f3b11f33);
+    box-shadow: 0 16px 48px #f3b11faa;
+}
+.interactive-kepsek-card:hover .interactive-kepsek-info,
+.interactive-kepsek-card:focus-within .interactive-kepsek-info {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+    transition-delay: 0.08s;
+}
+/* Tambahkan gradient shadow di sisi kiri gambar saat hover agar transisi lebih smooth */
+.interactive-kepsek-card:hover .interactive-kepsek-img::before,
+.interactive-kepsek-card:focus-within .interactive-kepsek-img::before {
+    content: '';
+    position: absolute;
+    left: -32px; top: 0; bottom: 0;
+    width: 38px;
+    background: linear-gradient(to left, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.01) 100%);
+    z-index: 4;
+    border-radius: 0 0 0 28px;
+    pointer-events: none;
+}
+/* Responsive */
+@media (max-width: 700px) {
+    .interactive-kepsek-card {
+        width: 98vw;
+        height: 320px;
+        min-width: 0;
+        min-height: 0;
+    }
+    .interactive-kepsek-img {
+        border-radius: 18px;
+    }
+    .interactive-kepsek-info {
+        border-radius: 18px 0 0 18px;
+        padding: 18px 10px 18px 12px;
+    }
+    .interactive-kepsek-card:hover .interactive-kepsek-img,
+    .interactive-kepsek-card:focus-within .interactive-kepsek-img {
+        left: 44%;
+        width: 56%;
+        border-radius: 0 18px 18px 0;
     }
 }

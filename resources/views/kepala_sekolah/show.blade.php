@@ -20,15 +20,15 @@
 <!-- Sambutan Kepala Sekolah Section (Modern, Card Data) -->
 <section class="sambutan-modern-section py-5">
     <div class="container d-flex flex-wrap align-items-center justify-content-center sambutan-modern-container">
-        <div class="kepsek-anim-card">
-            <div class="kepsek-anim-img" style="background-image: url('{{ $kepalaSekolah->foto ? asset('kepala_sekolah/' . $kepalaSekolah->foto) : asset('images/default-user.jpg') }}');"></div>
-            <div class="kepsek-anim-info">
-                <div class="kepsek-anim-info-inner">
-                    <div class="kepsek-anim-nama">{{ $kepalaSekolah->nama }}</div>
-                    <div class="kepsek-anim-nip"><span>NIP:</span> {{ $kepalaSekolah->nip }}</div>
-                    <div class="kepsek-anim-gol"><span>Golongan:</span> {{ $kepalaSekolah->golongan }}</div>
-                    <div class="kepsek-anim-periode"><span>Periode:</span> {{ $kepalaSekolah->periode }}</div>
-                </div>
+        <div class="kepsek-glass-card interactive-kepsek-card">
+            <div class="kepsek-glass-img interactive-kepsek-img" style="background-image: url('{{ $kepalaSekolah->foto ? asset('kepala_sekolah/' . $kepalaSekolah->foto) : asset('images/default-user.jpg') }}');"></div>
+            <div class="kepsek-glass-info interactive-kepsek-info">
+                <div class="kepsek-glass-badge">Kepala Sekolah</div>
+                <div class="kepsek-glass-nama">{{ $kepalaSekolah->nama }}</div>
+                <div class="kepsek-glass-divider"></div>
+                <div class="kepsek-glass-detail"><span>NIP:</span> {{ $kepalaSekolah->nip }}</div>
+                <div class="kepsek-glass-detail"><span>Golongan:</span> {{ $kepalaSekolah->golongan }}</div>
+                <div class="kepsek-glass-detail"><span>Periode:</span> {{ $kepalaSekolah->periode }}</div>
             </div>
         </div>
         <div class="sambutan-modern-content">
