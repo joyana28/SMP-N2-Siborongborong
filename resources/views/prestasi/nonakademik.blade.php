@@ -8,7 +8,7 @@
 <section class="nonakademik-hero-section">
     <div class="nonakademik-hero-content">
         <div class="nonakademik-hero-text">
-            <h1 class="nonakademik-title">Prestasi Nonakademik</h1>
+            <h1 class="nonakademik-title">Prestasi Non-Akademik</h1>
             <p class="nonakademik-description">Menampilkan prestasi-prestasi nonakademik yang membanggakan dari siswa-siswi SMP Negeri 2 Siborongborong, mulai dari seni, olahraga, hingga kreativitas dan bakat lainnya.</p>
         </div>
     </div>
@@ -21,9 +21,7 @@
     <svg class="nonakademik-explore-svg-decor decor-dot" width="16" height="16"><circle cx="8" cy="8" r="3" fill="#1a56a7" opacity="0.18"/></svg>
     <svg class="nonakademik-explore-svg-decor decor-wave" width="120" height="32"><ellipse cx="60" cy="16" rx="60" ry="12" fill="#f3b11f" opacity="0.12"/></svg>
     <div class="nonakademik-explore-header">
-        <h2 class="nonakademik-explore-main-title gradient-text">Apa yang <span>Nonakademik</span> Tawarkan?</h2>
-        <div class="nonakademik-explore-subtitle">Beragam kegiatan dan prestasi nonakademik untuk mengembangkan bakat, karakter, dan kreativitas siswa di luar kelas.</div>
-                </div>
+        <h2 class="nonakademik-explore-main-title gradient-text">Beragam Prestasi <span>Non-Akademik</span></h2>                </div>
     <div class="nonakademik-explore-features">
         <div class="nonakademik-feature-card glass-card">
             <div class="feature-icon feature-bg-1 floating-icon"><i class="fas fa-futbol"></i></div>
@@ -52,7 +50,7 @@
 
 <!-- Judul Section Fasilitas Sekolah -->
 <div class="nonakademik-section-title">
-    <h2>Prestasi Nonakademik Kami</h2>
+    <h2>Prestasi Non-Akademik Kami</h2>
     <div class="nonakademik-title-underline"></div>
 </div>
 
@@ -61,11 +59,6 @@
             @foreach ($prestasiNonAkademik as $prestasi)
                 <div class="idcard-modern animated-idcard">
                     <div class="idcard-bg-diagonal">
-                        <div class="idcard-logo-tagline">
-                            <div class="idcard-logo"><!-- Optionally use <img src="/path/to/logo.png"> --></div>
-                            <div class="idcard-business">BUSINESS</div>
-                            <div class="idcard-tagline">TAGLINE HERE</div>
-                        </div>
                         <div class="idcard-photo-outer">
                             @if ($prestasi->foto)
                                 <img src="{{ asset('prestasi/' . $prestasi->foto) }}" alt="Foto Prestasi" class="idcard-photo" onclick="zoomNonakadPhoto(this)">
