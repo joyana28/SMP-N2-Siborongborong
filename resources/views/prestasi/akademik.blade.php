@@ -1,121 +1,107 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/akademik.css') }}">
+<link rel="stylesheet" href="{{ asset('css/prestasi.css') }}">
+<script src="{{ asset('js/nonakademik.js') }}" defer></script>
 
 <!-- Hero Section Akademik -->
-<section class="akademik-hero-section">
-    <div class="akademik-hero-content">
-        <div class="akademik-hero-text">
-            <h1 class="akademik-title">Prestasi Akademik</h1>
-            <p class="akademik-description">Menampilkan prestasi-prestasi akademik yang membanggakan dari siswa-siswi SMP Negeri 2 Siborongborong</p>
+<section class="nonakademik-hero-section">
+    <div class="nonakademik-hero-content">
+        <div class="nonakademik-hero-text">
+            <h1 class="nonakademik-title">Prestasi Akademik</h1>
+            <p class="nonakademik-description">Menampilkan prestasi-prestasi akademik yang membanggakan dari siswa-siswi SMP Negeri 2 Siborongborong.</p>
         </div>
     </div>
 </section>
 
-<!-- Section Prestasi Unggulan -->
-<section class="akademik-feature-section">
-    <div class="akademik-feature-container">
-        <div class="akademik-feature-card">
-            <div class="akademik-feature-icon bg-blue">
-                <i class="fas fa-trophy"></i>
-            </div>
-            <h3 class="akademik-feature-title">Juara Olimpiade</h3>
-            <p class="akademik-feature-desc">Penghargaan untuk siswa-siswi yang berhasil meraih juara dalam berbagai olimpiade sains, matematika, dan bidang akademik lainnya.</p>
+<!-- Section Eksplorasi Prestasi Akademik -->
+<section class="nonakademik-explore-section">
+    <div class="nonakademik-explore-bg-animated"></div>
+    <svg class="nonakademik-explore-svg-decor decor-star" width="32" height="32">
+        <circle cx="16" cy="16" r="8" fill="#1a56a7" opacity="0.18"/>
+    </svg>
+    <svg class="nonakademik-explore-svg-decor decor-dot" width="16" height="16">
+        <circle cx="8" cy="8" r="3" fill="#f3b11f" opacity="0.18"/>
+    </svg>
+    <svg class="nonakademik-explore-svg-decor decor-wave" width="120" height="32">
+        <ellipse cx="60" cy="16" rx="60" ry="12" fill="#1a56a7" opacity="0.12"/>
+    </svg>
+
+    <div class="nonakademik-explore-header">
+        <h2 class="nonakademik-explore-main-title gradient-text">Beragam Prestasi <span>Akademik</span></h2>
+    </div>
+
+    <div class="nonakademik-explore-features">
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-1 floating-icon"><i class="fas fa-trophy"></i></div>
+            <div class="feature-title">Olimpiade</div>
+            <div class="feature-desc">Prestasi dalam bidang sains, matematika, dan lomba akademik lainnya.</div>
         </div>
-        <div class="akademik-feature-card">
-            <div class="akademik-feature-icon bg-yellow">
-                <i class="fas fa-user-graduate"></i>
-            </div>
-            <h3 class="akademik-feature-title">Lulusan Berprestasi</h3>
-            <p class="akademik-feature-desc">Siswa-siswi yang lulus dengan nilai terbaik dan diterima di sekolah lanjutan favorit tingkat nasional maupun internasional.</p>
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-2 floating-icon"><i class="fas fa-user-graduate"></i></div>
+            <div class="feature-title">Lulusan Terbaik</div>
+            <div class="feature-desc">Siswa-siswi yang lulus dengan nilai terbaik dan prestasi akademik unggulan.</div>
         </div>
-        <div class="akademik-feature-card">
-            <div class="akademik-feature-icon bg-blue">
-                <i class="fas fa-book-open"></i>
-            </div>
-            <h3 class="akademik-feature-title">Karya Ilmiah Remaja</h3>
-            <p class="akademik-feature-desc">Prestasi dalam lomba karya tulis ilmiah, penelitian, dan inovasi yang membanggakan nama sekolah di tingkat daerah dan nasional.</p>
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-3 floating-icon"><i class="fas fa-book"></i></div>
+            <div class="feature-title">Karya Ilmiah</div>
+            <div class="feature-desc">Prestasi dalam menulis dan mempresentasikan karya ilmiah remaja.</div>
+        </div>
+        <div class="nonakademik-feature-card glass-card">
+            <div class="feature-icon feature-bg-4 floating-icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="feature-title">Inovasi</div>
+            <div class="feature-desc">Gagasan dan temuan akademik yang berkontribusi positif bagi masyarakat.</div>
         </div>
     </div>
+
+    <div class="nonakademik-explore-bg-wave"></div>
+    <div class="nonakademik-explore-bg-decor"></div>
 </section>
 
-<!-- Judul Section Fasilitas Sekolah -->
-<div class="akademik-section-title">
+<!-- Judul Section -->
+<div class="nonakademik-section-title">
     <h2>Prestasi Akademik Kami</h2>
-    <div class="akademik-title-underline"></div>
+    <div class="nonakademik-title-underline"></div>
 </div>
 
-    @if ($prestasiAkademik->count())
-        <div class="idcard-horizontal-scroll">
-            @foreach ($prestasiAkademik as $index => $prestasi)
-                <div class="akademik-card-modern animated-akademik-card">
-                    <div class="akademik-card-bg"></div>
-                    <div class="akademik-card-left">
-                        <div class="akademik-card-circle">
-                            @if ($prestasi->foto)
-                                <img src="{{ asset('prestasi/' . $prestasi->foto) }}" class="akademik-card-photo" alt="Foto Prestasi" onclick="showZoomModal(this.src)">
-                            @else
-                                <div class="akademik-card-photo-placeholder" onclick="showZoomModal(null)">No Image</div>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="akademik-card-right">
-                        <div class="akademik-card-icon"><i class="fas fa-trophy"></i></div>
-                        <div class="akademik-card-content">
-                            <div class="akademik-card-front">
-                                <div class="akademik-card-name">{{ strtoupper($prestasi->nama) }}</div>
-                                <div class="akademik-card-role">{{ ucfirst($prestasi->jenis) }}</div>
-                            </div>
-                            <div class="akademik-card-back">
-                                <div class="akademik-card-desc">{{ $prestasi->deskripsi }}</div>
-                            </div>
-                            <div class="akademik-card-date text-sm text-gray-500 mt-1">
-                                {{ \Carbon\Carbon::parse($prestasi->tanggal)->translatedFormat('d F Y') }}
-                            </div>
-                        </div>
+@if ($prestasiAkademik->count())
+    <div class="idcard-modern-list">
+        @foreach ($prestasiAkademik as $prestasi)
+            <div class="idcard-modern animated-idcard">
+                <div class="idcard-bg-diagonal">
+                    <div class="idcard-photo-outer">
+                        @if (!empty($prestasi->foto))
+                            <img src="{{ asset('prestasi/' . $prestasi->foto) }}" alt="Foto Prestasi" class="idcard-photo" onclick="zoomNonakadPhoto(this)">
+                        @else
+                            <div class="idcard-photo-placeholder" onclick="zoomNonakadPhoto(this)">No Image</div>
+                        @endif
                     </div>
                 </div>
-            @endforeach
-        </div>
-        <div class="d-flex justify-content-center mt-4">
-            {{ $prestasiAkademik->links() }}
-        </div>
-    @else
-        <div class="no-prestasi mt-4">
-            <strong>Oops!</strong> Belum ada prestasi akademik yang ditambahkan untuk saat ini.
-        </div>
-    @endif
-</div>
+                <div class="idcard-content">
+                    <div class="idcard-name-role">
+                        <span class="idcard-name">{{ strtoupper($prestasi->nama) }}</span>
+                        <span class="idcard-role">{{ ucfirst($prestasi->jenis) }}</span>
+                    </div>
+                    <div class="idcard-divider"></div>
+                    <div class="idcard-meta">
+                        <div class="idcard-meta-row idcard-deskripsi">
+                            {{ $prestasi->deskripsi }}
+                        </div>
+                    </div>
+                    <div class="akademik-card-date text-sm text-gray-500 mt-1">
+                        {{ $prestasi->tanggal ? \Carbon\Carbon::parse($prestasi->tanggal)->translatedFormat('d F Y') : '' }}
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
-<!-- Modal Zoom Gambar -->
-<div id="zoomModal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);align-items:center;justify-content:center;">
-    <span onclick="closeZoomModal()" style="position:absolute;top:32px;right:48px;font-size:2.5rem;color:#fff;cursor:pointer;z-index:10001;">&times;</span>
-    <img id="zoomModalImg" src="" alt="Zoomed" style="max-width:90vw;max-height:80vh;border-radius:18px;box-shadow:0 8px 32px #000a;display:block;margin:auto;">
-    <div id="zoomModalPlaceholder" style="display:none;width:180px;height:180px;border-radius:50%;background:#f3b11f33;display:flex;align-items:center;justify-content:center;color:#1a56a7;font-weight:700;font-size:1.5rem;border:4px dashed #1a56a7;margin:auto;">No Image</div>
-</div>
-<script>
-function showZoomModal(src) {
-    document.getElementById('zoomModal').style.display = 'flex';
-    if(src) {
-        document.getElementById('zoomModalImg').src = src;
-        document.getElementById('zoomModalImg').style.display = 'block';
-        document.getElementById('zoomModalPlaceholder').style.display = 'none';
-    } else {
-        document.getElementById('zoomModalImg').style.display = 'none';
-        document.getElementById('zoomModalPlaceholder').style.display = 'flex';
-    }
-}
-function closeZoomModal() {
-    document.getElementById('zoomModal').style.display = 'none';
-}
-// Close modal on ESC
-document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape') closeZoomModal();
-});
-// Close modal on click outside image
-document.getElementById('zoomModal').addEventListener('click', function(e){
-    if(e.target === this) closeZoomModal();
-});
-</script>
+    <div class="d-flex justify-content-center mt-4">
+        {{ $prestasiAkademik->links() }}
+    </div>
+@else
+    <div class="no-prestasi mt-4">
+        <strong>Oops!</strong> Belum ada prestasi akademik yang ditambahkan untuk saat ini.
+    </div>
+@endif
 @endsection

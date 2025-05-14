@@ -1,8 +1,8 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/nonakademik.css') }}">
-<script src="{{ asset('js/nonakademik.js') }}" defer></script>
+<link rel="stylesheet" href="{{ asset('css/prestasi.css') }}">
+<script src="{{ asset('js/prestasi.js') }}" defer></script>
 
 <!-- Hero Section Nonakademik -->
 <section class="nonakademik-hero-section">

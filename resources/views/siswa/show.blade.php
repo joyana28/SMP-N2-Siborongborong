@@ -60,7 +60,7 @@
     }
 </style>
 
-<div class="container py-5">
+<div class="container-siswa py-5">
     <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Detail Kelas</h2>
     <div class="row justify-content-center">
         @if ($siswa)
