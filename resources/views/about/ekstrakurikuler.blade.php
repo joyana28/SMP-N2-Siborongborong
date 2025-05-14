@@ -17,10 +17,11 @@
     <div class="ekstra-intro-grid">
       <!-- Left: Gambar -->
       <div class="ekstra-intro-imgwrap">
-        <div class="ekstra-img-diagonal">
-          <div class="diagonal-overlay diagonal-blue"></div>
-          <div class="diagonal-overlay diagonal-yellow"></div>
-          <img src="{{ asset('images/ekstrakurikuler.png') }}" alt="Ekstrakurikuler" class="ekstra-img-diagonal-main">
+        <div class="ekstra-img-diagonal v3-diagonal-img">
+          <div class="diagonal-piece diagonal-top"></div>
+          <div class="diagonal-piece diagonal-mid"></div>
+          <div class="diagonal-piece diagonal-bottom"></div>
+          <img src="{{ asset('images/ekstrakurikuler.png') }}" alt="Ekstrakurikuler" class="ekstra-img-diagonal-main v3-diagonal-img-main">
         </div>
       </div>
       <!-- Right: Konten -->

@@ -627,3 +627,80 @@ transition-duration: 150ms;
     border-radius: 18px;
   }
 }
+
+/* ===== DIAGONAL IMAGE V3 (3 PIECES, ATAS BIRU, BAWAH GAMBAR) ===== */
+.v3-diagonal-img {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1.4/1;
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px 0 rgba(26, 86, 167, 0.13);
+  background: #fff;
+  transition: box-shadow 0.5s, transform 0.5s cubic-bezier(0.7,0,0.3,1);
+}
+.v3-diagonal-img-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: filter 0.5s, transform 0.6s cubic-bezier(.4,2,.3,1);
+}
+.diagonal-piece {
+  position: absolute;
+  left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  transition: transform 0.7s cubic-bezier(.4,2,.3,1), box-shadow 0.5s, opacity 0.5s;
+  z-index: 2;
+}
+.diagonal-top {
+  top: 0;
+  height: 100%;
+  background: linear-gradient(120deg, #1a56a7 80%, #0a2744 100%);
+  opacity: 0.93;
+  clip-path: polygon(0 0, 100% 0, 80% 32%, 0 32%);
+  box-shadow: 0 4px 24px #1a56a744;
+}
+.diagonal-mid {
+  top: 0;
+  height: 100%;
+  background: transparent;
+  clip-path: polygon(0 32%, 80% 32%, 60% 68%, 0 68%);
+}
+.diagonal-bottom {
+  top: 0;
+  height: 100%;
+  background: transparent;
+  clip-path: polygon(0 68%, 60% 68%, 100% 100%, 0 100%);
+}
+/* Animasi interaktif: saat hover, pecahan diagonal merenggang */
+.v3-diagonal-img:hover .diagonal-top {
+  transform: translateY(-12px) scaleY(1.08);
+  box-shadow: 0 12px 32px #1a56a7aa;
+  opacity: 0.98;
+}
+.v3-diagonal-img:hover .diagonal-mid {
+  transform: translateY(10px) scaleY(1.04) skewY(-2deg);
+}
+.v3-diagonal-img:hover .diagonal-bottom {
+  transform: translateY(18px) scaleY(1.04) skewY(2deg);
+}
+.v3-diagonal-img:hover .v3-diagonal-img-main {
+  filter: brightness(1.08) saturate(1.1);
+  transform: scale(1.04) rotate(0.5deg);
+}
+@media (max-width: 700px) {
+  .v3-diagonal-img {
+    max-width: 98vw;
+    min-height: 120px;
+    border-radius: 18px;
+  }
+}
