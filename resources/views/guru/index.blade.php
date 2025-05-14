@@ -17,26 +17,42 @@
     <div class="guru-hero-shape"></div>
 </section>
 
+<!-- Title Design Graphics Section (Revised) -->
+<section class="guru-title-graphics-section">
+    <div class="title-graphics-outer">
+        <div class="title-graphics-bg-skew"></div>
+        <div class="title-graphics-inner">
+            <div class="title-graphics-bar"></div>
+            <div class="title-graphics-text">DAFTAR GURU</div>
+        </div>
+    </div>
+</section>
+<!-- End Title Design Graphics Section -->
+
 <div class="container py-5">
-<h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Guru</h2>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="guru-card-row">
         @forelse ($guru as $g)
-        <div class="col">
-            <div class="card h-100 teacher-card shadow">
-                <div class="teacher-header text-center mt-4">
+        <div class="guru-card-col">
+            <div class="idcard-guru">
+                <div class="idcard-bg-top"></div>
+                <div class="idcard-bg-diagonal"></div>
+                <div class="idcard-photo-wrap">
                     @if ($g->foto)
-                        <img src="{{ asset('guru/' . $g->foto) }}" alt="Foto {{ $g->nama }}" class="rounded-circle teacher-img" width="120" height="120">
+                        <img src="{{ asset('/guru/' . $g->foto) }}" alt="Foto {{ $g->nama }}" class="idcard-photo">
                     @else
-                        <img src="{{ asset('images/default-user.jpg') }}" alt="Default" class="rounded-circle teacher-img" width="120" height="120">
+                        <img src="{{ asset('images/default-user.jpg') }}" alt="Default" class="idcard-photo">
                     @endif
                 </div>
-                <div class="card-body text-center">
-                    <h5 class="teacher-name">{{ $g->nama }}</h5>
-                    <p class="teacher-subject">{{ $g->bidang }}</p>
-                    <p class="text-muted mb-1"><strong>NIP:</strong> {{ $g->nip }}</p>
-                    <p class="text-muted mb-1"><strong>Golongan:</strong> {{ $g->golongan }}</p>
-                    <p class="text-muted mb-0"><strong>No. Telp:</strong> {{ $g->no_telp }}</p>
+                <div class="idcard-body">
+                    <div class="idcard-nama"><span>{{ $g->nama }}</span></div>
+                    <div class="idcard-bidang">{{ $g->bidang }}</div>
+                    <div class="idcard-info">
+                        <div><span class="idcard-label">NIP</span>: {{ $g->nip }}</div>
+                        <div><span class="idcard-label">Golongan</span>: {{ $g->golongan }}</div>
+                        <div><span class="idcard-label">No. Telp</span>: {{ $g->no_telp }}</div>
+                    </div>
                 </div>
+                <div class="idcard-bg-bottom"></div>
             </div>
         </div>
         @empty

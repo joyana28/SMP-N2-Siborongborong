@@ -109,10 +109,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
-                <label for="golongan">Golongan</label>
-                <input type="text" name="golongan" class="form-control" id="golongan" placeholder="Masukkan Golongan" required>
-                </div>
+        
 
 
                 <div class="text-right mt-4">

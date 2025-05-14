@@ -33,7 +33,6 @@ class GuruController extends Controller
         $request->validate([ 
             'nama' => 'required|string|max:100', 
             'nip' => 'required|string|max:50',
-            'mapel' => 'required|string|max:100',
             'foto' => 'nullable|image|max:2048',
         ]);
 
