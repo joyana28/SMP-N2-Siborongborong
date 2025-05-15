@@ -25,7 +25,7 @@
         <div class="intro-content">
             <div class="intro-label">Tentang Fasilitas</div>
             <h2 class="intro-title">Fasilitas Unggulan untuk Mendukung Prestasi Siswa</h2>
-            <p class="intro-desc">SMP NEGERI 2 Siborongborong menyediakan berbagai fasilitas modern dan lengkap untuk menunjang proses belajar mengajar, pengembangan karakter, dan kreativitas siswa. Setiap fasilitas dirancang untuk memberikan pengalaman belajar yang menyenangkan, aman, dan inspiratif.</p>
+            <p class="intro-desc">SMPN 2 Siborongborong menyediakan berbagai fasilitas modern dan lengkap untuk menunjang proses belajar mengajar, pengembangan karakter, dan kreativitas siswa. Setiap fasilitas dirancang untuk memberikan pengalaman belajar yang menyenangkan, aman, dan inspiratif.</p>
             <div class="intro-features-animated intro-goals-list">
                 <div class="intro-goal animated-goal">
                     <span class="goal-icon">
@@ -63,9 +63,11 @@
                     <span class="goal-text"><strong>Fasilitas ini mempersiapkan siswa menghadapi era global dan digital</strong> dengan akses teknologi dan literasi informasi yang memadai.</span>
                 </div>
             </div>
+            <a href="#" class="intro-btn">Lihat Semua Fasilitas</a>
         </div>
     </div>
 </section>
+
 
 <!-- Judul Profil Sekolah -->
 <div class="profil-sekolah-title">
@@ -75,19 +77,35 @@
 
 <div class="container py-5">
     @if ($fasilitas->count())
-        <div class="row">
+        <div class="fasilitas-card-row">
             @foreach ($fasilitas as $item)
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        @if ($item->foto)
-                            <img src="{{ asset('fasilitas/' . $item->foto) }}" class="card-img-top" alt="Foto {{ $item->nama }}">
-                        @endif
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->nama }}</h5>
-                            <p class="card-text">{{ Str::limit($item->deskripsi, 100) }}</p>
-                            <p><strong>Tahun:</strong> {{ $item->tahun }}</p>
-                            <p><strong>Perhatian Teknis:</strong> {{ $item->perhatian_teknis ?? '-' }}</p>
-                            <p><strong>Penambahan:</strong> {{ $item->penambahan ?? '-' }}</p>
+                <div class="fasilitas-flip-card">
+                    <div class="fasilitas-flip-inner">
+                        <!-- FRONT SIDE -->
+                        <div class="fasilitas-flip-front">
+                            <div class="fasilitas-front-content">
+                                <div class="fasilitas-front-left">
+                                    <div class="fasilitas-nama">{{ $item->nama }}</div>
+                                </div>
+                                <div class="fasilitas-front-right">
+                                    <img src="{{ asset('fasilitas/' . $item->foto) }}" alt="Foto {{ $item->nama }}" class="fasilitas-foto">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- BACK SIDE -->
+                        <div class="fasilitas-flip-back">
+                            <div class="fasilitas-back-content">
+                                <div class="fasilitas-back-left">
+                                    <img src="{{ asset('storage/fasilitas/' . $item->foto) }}" alt="Foto {{ $item->nama }}" class="fasilitas-foto">
+                                </div>
+                                <div class="fasilitas-back-right">
+                                    <div class="fasilitas-nama-back">{{ $item->nama }}</div>
+                                    <div class="fasilitas-deskripsi">{{ $item->deskripsi }}</div>
+                                    <div class="fasilitas-info"><b>Tahun:</b> {{ $item->tahun }}</div>
+                                    <div class="fasilitas-info"><b>Perhatian Teknis:</b> {{ $item->perhatian_teknis }}</div>
+                                    <div class="fasilitas-info"><b>Penambahan:</b> {{ $item->penambahan }}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

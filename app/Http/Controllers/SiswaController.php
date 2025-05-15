@@ -82,8 +82,7 @@ class SiswaController extends Controller
 
     public function showFrontend()
     {
-        $siswa = Siswa::latest()->first();
-
+        $siswa = Siswa::all();
         return view('siswa.show', compact('siswa'));
     }
 
