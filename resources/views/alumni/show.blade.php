@@ -51,9 +51,9 @@
         </div>
 
         @if ($alumni && count($alumni))
-        <div class="row justify-content-center flex-wrap">
+        <div class="alumni-cards-horizontal-wrapper">
           @foreach($alumni as $a)
-            <div class="col-lg-6 col-md-8 mb-4 d-flex justify-content-center">
+            <div class="alumni-cards-horizontal-item">
               <div class="alumni-swap-card">
                 <div class="alumni-swap-card-inner">
                   <!-- FRONT SIDE -->
