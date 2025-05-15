@@ -67,6 +67,8 @@
                     <div class="ekstra-card-content">
                         <h5 class="ekstra-card-title">{{ $item->nama }}</h5>
                         <p class="ekstra-card-desc">{{ $item->deskripsi }}</p>
+                        <p class="text-sm text-gray-600 mt-2"><strong>Pembina:</strong> {{ $item->pembina }}</p>
+                        <p class="text-sm text-gray-600"><strong>Jadwal:</strong> {{ $item->jadwal }}</p>
                     </div>
                 </div>
             @endforeach
