@@ -25,4 +25,5 @@ class Prestasi extends Model
     {
         return $this->belongsTo(Admin::class, 'id_admin');
     }
+    
 }

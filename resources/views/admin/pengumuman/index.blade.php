@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container mt-4">
-    <h4>Daftar Pengumuman</h4>
+    <h1>Daftar Pengumuman</h1>
     <a href="{{ route('admin.pengumuman.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Pengumuman</a>
 
     @if(session('success'))
