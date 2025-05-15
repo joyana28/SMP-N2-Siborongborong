@@ -5,7 +5,7 @@ body, html {
     font-family: 'Segoe UI', sans-serif;
     background-color: #f0f2f5;
     height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 /* Background blobs */
@@ -29,7 +29,7 @@ body, html {
     50% { transform: translateY(-30px); }
 }
 
-/* Login container split */
+/* Login container */
 .login-container {
     display: flex;
     width: 900px;
@@ -42,17 +42,16 @@ body, html {
     background: #fff;
 }
 
-/* LEFT PANEL */
+/* Left Panel */
 .left-panel {
     flex: 1;
-    position: relative;
     background: #fff;
-    color: #333;
     padding: 40px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .left-panel .logo {
@@ -67,18 +66,16 @@ body, html {
 .welcome-text h1 {
     font-size: 32px;
     margin: 10px 0;
-    text-align: center;
 }
 
 .welcome-text p {
     font-size: 16px;
-    color: #777;
+    color: #0d47a1;
 }
 
-/* RIGHT PANEL */
+/* Right Panel */
 .right-panel {
     flex: 1;
-    position: relative;
     background: linear-gradient(135deg, #0d47a1, #ff9800);
     padding: 40px 30px;
     display: flex;
@@ -89,54 +86,52 @@ body, html {
 .form-container {
     width: 100%;
     max-width: 320px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(17, 17, 94, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     animation: fadeIn 1s ease;
+    color: #fff;
 }
 
 /* Input fields */
 .input-field {
-  position: relative;
-  margin-bottom: 25px;
+    position: relative;
+    margin-bottom: 25px;
 }
 
 .input-field input {
-  width: 100%;
-  padding: 12px 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  background: none;
-  font-size: 1em;
-  color: var(--text-dark);
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid rgba(17, 17, 94, 0.15);
+    border-radius: 8px;
+    outline: none;
+    background: none;
+    font-size: 1em;
+    color: #020202;
 }
 
 .input-field label {
-  position: absolute;
-  left: 10px;
-  top: 12px;
-  color: var(--text-light);
-  font-size: 1em;
-  pointer-events: none;
-  transition: 0.3s ease;
-  background: var(--light-bg);
-  padding: 0 4px;
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.3s ease;
+    padding: 0 4px;
+    color: #fff;
 }
 
 .input-field input:focus + label,
 .input-field input:not(:placeholder-shown):valid + label {
-  top: -10px;
-  left: 8px;
-  font-size: 0.85em;
-  color: var(--primary-blue);
-  background: var(--light-bg);
+    top: -10px;
+    left: 8px;
+    font-size: 0.85em;
+    background: transparent;
 }
 
-
-/* Checkbox and remember me */
+/* Checkbox */
 .checkbox-container {
     display: flex;
     justify-content: space-between;
@@ -150,7 +145,7 @@ body, html {
     margin-right: 5px;
 }
 
-/* LOGIN BUTTON */
+/* Login button */
 .login-btn {
     width: 100%;
     padding: 12px;
@@ -182,7 +177,7 @@ form div[style*="color: red"] {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Stars and lines (already in your HTML PHP loop) */
+/* Stars and lines */
 .stars .star {
     position: absolute;
     width: 2px;
@@ -209,4 +204,62 @@ form div[style*="color: red"] {
 @keyframes slideDown {
     0% { transform: translateY(-100%) rotate(20deg); }
     100% { transform: translateY(100%) rotate(20deg); }
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .left-panel, .right-panel {
+        flex: none;
+        width: 100%;
+        padding: 30px 20px;
+    }
+
+    .welcome-text h1 {
+        font-size: 28px;
+    }
+
+    .form-container {
+        max-width: 100%;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .login-container {
+        margin: 20px auto;
+    }
+
+    .left-panel .logo-img {
+        width: 80px;
+    }
+
+    .welcome-text h1 {
+        font-size: 24px;
+    }
+
+    .welcome-text p {
+        font-size: 14px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .input-field input {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+
+    .login-btn {
+        padding: 10px;
+    }
 }
