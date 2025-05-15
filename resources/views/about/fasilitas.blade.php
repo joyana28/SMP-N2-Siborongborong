@@ -63,7 +63,6 @@
                     <span class="goal-text"><strong>Fasilitas ini mempersiapkan siswa menghadapi era global dan digital</strong> dengan akses teknologi dan literasi informasi yang memadai.</span>
                 </div>
             </div>
-            <a href="#" class="intro-btn">Lihat Semua Fasilitas</a>
         </div>
     </div>
 </section>
