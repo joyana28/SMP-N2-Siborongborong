@@ -2,7 +2,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/prestasi.css') }}">
-<script src="{{ asset('js/nonakademik.js') }}" defer></script>
+<script src="{{ asset('js/prestasi.js') }}" defer></script>
 
 <!-- Hero Section Akademik -->
 <section class="nonakademik-hero-section">
@@ -104,4 +104,8 @@
         <strong>Oops!</strong> Belum ada prestasi akademik yang ditambahkan untuk saat ini.
     </div>
 @endif
+<div class="zoom-modal" id="zoomModal">
+    <span class="zoom-modal-close" id="zoomClose">&times;</span>
+    <img class="zoom-modal-image" id="zoomImage" src="#" alt="Zoomed Image">
+  </div>
 @endsection

@@ -4,6 +4,7 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/guru.css') }}">
+<link rel="icon" type="images/x-icon" href="/images/logo.png" />
 
 <!-- Hero Section Guru -->
 <section class="guru-hero-section">

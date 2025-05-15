@@ -6,7 +6,9 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="images/x-icon" href="/images/logo.png" />
     <script src="{{ asset('js/login.js') }}"></script>
+
 </head>
 <body>
     <!-- Background gradients for depth effect -->
@@ -17,7 +19,8 @@
 
     <div class="login-container">
         <div class="left-panel">
-            <div class="light-effect"></div>
+            <div class="light-effect"> <img src="{{ asset('images/logo.png') }}" alt="SMP NEGERI 2 Siborong" class="logo">
+        </div>
 
             <div class="stars">
                 <?php for ($i = 0; $i < 30; $i++) { ?>
@@ -30,12 +33,6 @@
                     <div class="line" style="left: <?php echo rand(0, 100); ?>%; animation-delay: <?php echo rand(0, 5000) / 1000; ?>s; width: <?php echo (rand(0, 100) > 80) ? '2px' : '1px'; ?>; opacity: <?php echo rand(10, 30) / 100; ?>;"></div>
                 <?php } ?>
             </div>
-
-          <div class="logo">
-              <img src="images/logo.png" alt="Logo" class="logo-img">
-          </div>
-
-
             <div class="welcome-text">
                 <h1>Hello,<br>Selamat Datang!</h1>
                 <p>SMP NEGERI 2 SIBORONGBORONG</p>
