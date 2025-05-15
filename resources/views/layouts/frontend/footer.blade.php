@@ -172,11 +172,11 @@
 </iframe>
 
     <a
-    href="https://maps.google.com/?cid=2325376172867215434"
-    class="btn btn-outline-primary mt-2"
-    target="_blank">
-    Lihat di Google Maps
-</a>
+  href="https://maps.google.com/?cid=2325376172867215434"
+  class="btn btn-outline-primary mt-2"
+  target="_blank">
+  Lihat di Google Maps
+  </a>
 
     <p class="mt-3">
         <strong>SMP Negeri 2 Siborongborong</strong> adalah sekolah menengah pertama yang berkomitmen dalam mencetak generasi unggul, berkarakter, dan berprestasi.
