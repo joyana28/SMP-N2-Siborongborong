@@ -59,9 +59,7 @@
         @empty
         <div class="col-12 text-center">
             <div class="no-data py-5">
-                <i class="fas fa-user-slash fa-3x mb-3 text-secondary"></i>
-                <h5>Belum ada data guru</h5>
-                <p class="text-muted">Silakan cek kembali nanti.</p>
+                <h2>Belum ada data guru</h2>
             </div>
         </div>
         @endforelse

@@ -98,10 +98,7 @@
                 </div>
                 <div class="alert-content">
                     <h4>Oops!</h4>
-                    <p>Alumni tidak ditemukan dalam database kami.</p>
-                    <a href="{{ url('/alumni') }}" class="btn btn-outline-danger mt-3">
-                        <i class="fas fa-arrow-left me-2"></i>Kembali ke Daftar Alumni
-                    </a>
+                    <p>Data Alumni Belum Ada.</p>
                 </div>
             </div>
         </div>
