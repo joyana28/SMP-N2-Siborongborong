@@ -60,41 +60,40 @@
     }
 </style>
 
-<div class="container-siswa py-5">
+<div class="container py-5">
     <h2 class="mb-4 text-center text-white bg-primary py-2 rounded">Detail Kelas</h2>
-    <div class="row justify-content-center">
-        @if ($siswa)
-            <div class="col-lg-8 col-md-10">
+    <div class="siswa-card-row">
+        @if ($siswa && count($siswa) > 0)
+            @foreach ($siswa as $item)
+            <div>
                 <div class="book-card-3d">
                     <div class="book-card-inner">
                         <div class="book-card-cover">
                             <div class="book-card-cover-content">
-                                <div class="book-card-cover-icon">
-                                    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="6" y="24" width="42" height="18" rx="5" fill="#fff" stroke="#f3b11f" stroke-width="2.5"/>
-                                        <rect x="18" y="12" width="18" height="12" rx="4" fill="#f3b11f" stroke="#1a56a7" stroke-width="2"/>
-                                        <circle cx="27" cy="18" r="3.5" fill="#fff" stroke="#1a56a7" stroke-width="2"/>
-                                    </svg>
+                                <div class="book-card-cover-icon animated-facility-icon">
+                                    <i class="fas fa-school"></i>
                                 </div>
                                 <div class="book-card-cover-title">NAMA KELAS</div>
-                                <div class="book-card-cover-class">{{ $siswa->nama_kelas }}</div>
+                                <div class="book-card-cover-class">{{ $item->nama_kelas }}</div>
                             </div>
                         </div>
-                        <div class="book-card-page">
+                        <div class="book-card-page book-card-page-3d">
+                            <div class="book-card-page-shadow"></div>
                             <div class="book-card-page-content">
                                 <div class="book-card-page-title">Informasi Kelas</div>
                                 <div class="book-card-page-info">
-                                    <div class="book-card-info-row"><span class="book-card-info-label">Jumlah Siswa (L):</span> <span class="book-card-info-value">{{ $siswa->jumlah_siswa_l }}</span></div>
-                                    <div class="book-card-info-row"><span class="book-card-info-label">Jumlah Siswa (P):</span> <span class="book-card-info-value">{{ $siswa->jumlah_siswa_p }}</span></div>
-                                    <div class="book-card-info-row"><span class="book-card-info-label">Total Siswa:</span> <span class="book-card-info-value">{{ $siswa->jumlah_siswa }}</span></div>
-                                    <div class="book-card-info-row"><span class="book-card-info-label">Tahun:</span> <span class="book-card-info-value">{{ $siswa->tahun }}</span></div>
-                                    <div class="book-card-info-row"><span class="book-card-info-label">Wali Kelas:</span> <span class="book-card-info-value">{{ $siswa->wali_kelas ? $siswa->wali_kelas : 'Tidak ada' }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Jumlah Siswa (L):</span> <span class="book-card-info-value">{{ $item->jumlah_siswa_l }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Jumlah Siswa (P):</span> <span class="book-card-info-value">{{ $item->jumlah_siswa_p }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Total Siswa:</span> <span class="book-card-info-value">{{ $item->jumlah_siswa }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Tahun:</span> <span class="book-card-info-value">{{ $item->tahun }}</span></div>
+                                    <div class="book-card-info-row"><span class="book-card-info-label">Wali Kelas:</span> <span class="book-card-info-value">{{ $item->wali_kelas ? $item->wali_kelas : 'Tidak ada' }}</span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            @endforeach
         @else
             <div class="col-12">
                 <div class="alert alert-warning text-center">

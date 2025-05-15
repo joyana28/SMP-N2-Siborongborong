@@ -802,3 +802,28 @@ transition-duration: 150ms;
     border-radius: 0 8px 8px 0;
   }
 }
+
+/* ===== SPACING ANTAR SECTION EKSTRAKURIKULER ===== */
+.ekstra-hero-section,
+.ekstra-intro-section,
+.ekstra-title-graphics-outer,
+.container-ekstra-list {
+  margin-bottom: 56px;
+}
+
+.ekstra-title-graphics-outer {
+  margin-top: 0;
+}
+
+/* Untuk container daftar ekstrakurikuler */
+.container-ekstra-list {
+  margin-top: 0;
+}
+
+/* Jika ada section yang berurutan, tambahkan jarak antar section */
+.ekstra-hero-section + .ekstra-intro-section,
+.ekstra-intro-section + .ekstra-title-graphics-outer,
+.ekstra-title-graphics-outer + .container-ekstra-list {
+  margin-top: 0;
+  margin-bottom: 56px;
+}
