@@ -80,11 +80,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="alumni-actions mt-4" data-aos="fade-up" data-aos-delay="500">
-                                            <a href="{{ url('/alumni') }}" class="btn btn-outline-secondary action-btn">
-                                                <i class="fas fa-arrow-left me-2"></i>Kembali
-                                            </a>
-                                        </div>
+        
 
                                     </div>
                                 </div>
