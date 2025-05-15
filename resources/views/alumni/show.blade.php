@@ -18,77 +18,83 @@
     <div class="alumni-hero-modern-decor decor-2"></div>
 </section>
 
+<!-- section title design graphics-->
+<div class="alumni-banner-v2">
+  <div class="alumni-banner-v2-bg"></div>
+  <div class="alumni-banner-v2-under"></div>
+  <div class="alumni-banner-v2-content">
+    <div class="alumni-banner-v2-icon">
+      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="38" height="38" rx="0" fill="#f3b11f"/>
+        <circle cx="19" cy="14" r="7" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
+        <ellipse cx="19" cy="27" rx="9" ry="5" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="alumni-banner-v2-titlebox">
+      <span class="alumni-banner-v2-title">DETAIL ALUMNI</span>
+    </div>
+    <div class="alumni-banner-v2-stripes">
+      <div class="alumni-banner-v2-stripe stripe1"></div>
+      <div class="alumni-banner-v2-stripe stripe2"></div>
+      <div class="alumni-banner-v2-stripe stripe3"></div>
+    </div>
+  </div>
+</div>
+
 <!-- Alumni Detail Section -->
 <section class="alumni-detail-section">
     <div class="container py-5">
         <div class="alumni-detail-header" data-aos="fade-down">
             <div class="alumni-header-inner">
-                <h2 class="mb-0 text-center">Detail Alumni</h2>
                 <div class="header-accent"></div>
             </div>
         </div>
 
-        @if ($alumni)
-        <div class="row">
-            <div class="col-lg-10 mx-auto">
-                <div class="alumni-card card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="alumni-card-inner">
-                        <div class="row g-0">
-                            <div class="col-md-5">
-                                <div class="profile-pic-container">
-                                    @if($alumni->foto)
-                                        <div class="profile-pic-wrapper">
-                                            <img src="{{ asset('alumni/' . $alumni->foto) }}" 
-                                                 class="profile-pic" alt="Foto {{ $alumni->nama }}">
-                                        </div>
-                                    @else
-                                        <div class="no-pic">
-                                            <div class="text-center">
-                                                <i class="fas fa-user-graduate pulse-icon"></i>
-                                                <p class="mt-3 text-muted">Foto tidak tersedia</p>
-                                            </div>
-                                        </div>
-                                    @endif
-                                    <div class="profile-pic-shine"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body alumni-info">
-                                    <div class="alumni-name-container">
-                                        <h3 class="alumni-name">{{ $alumni->nama }}</h3>
-                                        <div class="alumni-name-underline"></div>
-                                    </div>
-
-                                    <div class="info-section" data-aos="fade-up" data-aos-delay="300">
-                                        <div class="graduation-info">
-                                            <div class="info-icon">
-                                                <i class="fas fa-graduation-cap"></i>
-                                            </div>
-                                            <div class="info-content">
-                                                <span class="info-label">Tahun Lulus</span>
-                                                <span class="graduation-year">{{ $alumni->tahun_lulus }}</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="desc-container" data-aos="fade-up" data-aos-delay="400">
-                                            <div class="desc-header">
-                                                <i class="fas fa-quote-left quote-icon"></i>
-                                                <span class="info-label">Deskripsi Alumni</span>
-                                            </div>
-                                            <div class="desc-content">
-                                                <p class="card-text">{{ $alumni->deskripsi ?: 'Deskripsi tidak tersedia.' }}</p>
-                                            </div>
-                                        </div>
-
-        
-
-                                    </div>
-                                </div>
-                            </div>
+        @if ($alumni && count($alumni))
+        <div class="row justify-content-center flex-wrap">
+          @foreach($alumni as $a)
+            <div class="col-lg-6 col-md-8 mb-4 d-flex justify-content-center">
+              <div class="alumni-swap-card">
+                <div class="alumni-swap-card-inner">
+                  <!-- FRONT SIDE -->
+                  <div class="alumni-swap-card-front">
+                    <div class="alumni-swap-card-shape-left"></div>
+                    <div class="alumni-swap-card-shape-bottom"></div>
+                    <div class="alumni-swap-card-photo-area">
+                      @if($a->foto)
+                        <img src="{{ asset('alumni/' . $a->foto) }}" class="alumni-swap-photo" alt="Foto {{ $a->nama }}">
+                      @else
+                        <div class="alumni-swap-photo alumni-swap-no-photo">
+                          <i class="fas fa-user-graduate"></i>
                         </div>
+                      @endif
                     </div>
+                    <div class="alumni-swap-card-brand">
+                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="38" height="38" rx="8" fill="#f3b11f"/>
+                        <circle cx="19" cy="14" r="7" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
+                        <ellipse cx="19" cy="27" rx="9" ry="5" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
+                      </svg>
+                    </div>
+                    <div class="alumni-swap-card-nama">{{ $a->nama }}</div>
+                  </div>
+                  <!-- BACK SIDE -->
+                  <div class="alumni-swap-card-back">
+                    <div class="alumni-swap-card-back-content">
+                      <div class="alumni-swap-card-back-title">{{ $a->nama }}</div>
+                      <div class="alumni-swap-card-back-grad">
+                        <i class="fas fa-graduation-cap"></i> Tahun Lulus {{ $a->tahun_lulus }}
+                      </div>
+                      <div class="alumni-swap-card-back-desc">
+                        <i class="fas fa-quote-left"></i> <b>Deskripsi Alumni</b>
+                        <p>{{ $a->deskripsi ?: 'Deskripsi tidak tersedia.' }}</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          @endforeach
         </div>
         @else
         <div class="alert-no-alumni" data-aos="fade-up">
