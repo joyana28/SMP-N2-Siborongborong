@@ -57,9 +57,9 @@ class AlumniController extends Controller
 
     public function showFrontend()
     {
-        $alumni = Alumni::latest()->firstOrFail();
-        return view('alumni.show', compact('alumni'));
-    }
+     $alumni = Alumni::latest()->first();
+    return view('alumni.show', compact('alumni'));
+    }   
 
     public function edit($id)
     {
