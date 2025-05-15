@@ -3,14 +3,19 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f0f2f5;
+    background: linear-gradient(135deg, #0d47a1, #ff9800);
     height: 100vh;
     overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
 }
 
 /* Background blobs */
 .background-gradients {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -32,21 +37,22 @@ body, html {
 /* Login container */
 .login-container {
     display: flex;
-    width: 900px;
-    max-width: 95%;
-    height: 600px;
-    margin: 50px auto;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 900px;
+    min-height: 500px;
+    height: auto;
+    margin: 5vh auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     overflow: hidden;
-    background: #fff;
+    background: linear-gradient(135deg, #0d47a1, #ff9800);
 }
 
 /* Left Panel */
 .left-panel {
     flex: 1;
-    background: #fff;
-    padding: 40px 30px;
+    background: #ffffff;
+    padding: 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,16 +66,17 @@ body, html {
 
 .logo-img {
     width: 100px;
+    max-width: 30%;
     height: auto;
 }
 
 .welcome-text h1 {
-    font-size: 32px;
+    font-size: clamp(20px, 5vw, 32px);
     margin: 10px 0;
 }
 
 .welcome-text p {
-    font-size: 16px;
+    font-size: clamp(14px, 3vw, 16px);
     color: #0d47a1;
 }
 
@@ -77,7 +84,7 @@ body, html {
 .right-panel {
     flex: 1;
     background: linear-gradient(135deg, #0d47a1, #ff9800);
-    padding: 40px 30px;
+    padding: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,8 +96,8 @@ body, html {
     background: rgba(17, 17, 94, 0.15);
     backdrop-filter: blur(10px);
     border-radius: 15px;
-    padding: 30px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    padding: clamp(15px, 5%, 30px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     animation: fadeIn 1s ease;
     color: #fff;
 }
@@ -103,12 +110,12 @@ body, html {
 
 .input-field input {
     width: 100%;
-    padding: 12px 10px;
+    padding: clamp(10px, 3vw, 12px) 10px;
     border: 1px solid rgba(17, 17, 94, 0.15);
     border-radius: 8px;
     outline: none;
-    background: none;
-    font-size: 1em;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: clamp(0.85em, 2vw, 1em);
     color: #020202;
 }
 
@@ -116,18 +123,19 @@ body, html {
     position: absolute;
     left: 10px;
     top: 12px;
-    font-size: 1em;
+    font-size: clamp(0.85em, 2vw, 1em);
     pointer-events: none;
     transition: 0.3s ease;
     padding: 0 4px;
-    color: #fff;
+    color: #030303;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .input-field input:focus + label,
 .input-field input:not(:placeholder-shown):valid + label {
     top: -10px;
     left: 8px;
-    font-size: 0.85em;
+    font-size: clamp(0.7em, 1.8vw, 0.85em);
     background: transparent;
 }
 
@@ -136,130 +144,198 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 13px;
+    font-size: clamp(11px, 2.5vw, 13px);
     color: #fff;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.checkbox-container > div {
+    margin: 5px 0;
 }
 
 .checkbox-container input[type="checkbox"] {
     margin-right: 5px;
+    transform: scale(clamp(0.9, 1vw, 1.1));
 }
 
 /* Login button */
 .login-btn {
     width: 100%;
-    padding: 12px;
+    padding: clamp(10px, 3vw, 12px);
     background: #fff;
     color: #0d47a1;
     border: none;
     border-radius: 25px;
     font-weight: bold;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    font-size: clamp(0.9em, 2.2vw, 1em);
 }
 
 .login-btn:hover {
-    background: #eee;
+    background: linear-gradient(135deg, #0d47a1, #ff9800);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.login-btn:active {
+    transform: translateY(1px);
 }
 
 /* Error message */
 form div[style*="color: red"] {
-    font-size: 14px;
+    font-size: clamp(12px, 2.5vw, 14px);
     background: #ffe6e6;
     border: 1px solid red;
     padding: 8px;
     border-radius: 5px;
+    margin-bottom: 15px;
 }
 
-/* Optional animation */
+/* Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Stars and lines */
-.stars .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    animation: blink 2s infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 1; }
-}
-
-.diagonal-lines .line {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    background: white;
-    transform: rotate(20deg);
-    animation: slideDown 5s linear infinite;
-}
-
-@keyframes slideDown {
-    0% { transform: translateY(-100%) rotate(20deg); }
-    100% { transform: translateY(100%) rotate(20deg); }
-}
-
 /* ============================
-   RESPONSIVE
+   RESPONSIVE BREAKPOINTS
 ============================ */
 
-/* Tablet */
-@media (max-width: 768px) {
+/* Desktop & Laptop Breakpoints */
+@media (min-width: 1281px) {
+    .login-container {
+        max-width: 1000px;
+        height: 600px;
+    }
+}
+
+/* Small Laptops and Desktops */
+@media (min-width: 769px) and (max-width: 1280px) {
+    .login-container {
+        max-width: 90%;
+        height: auto;
+    }
+}
+
+/* Tablets & iPads */
+@media (min-width: 481px) and (max-width: 768px) {
     .login-container {
         flex-direction: column;
         height: auto;
+        margin: 3vh auto;
     }
-
+    
     .left-panel, .right-panel {
-        flex: none;
         width: 100%;
-        padding: 30px 20px;
+        padding: 30px;
     }
-
-    .welcome-text h1 {
-        font-size: 28px;
+    
+    .logo-img {
+        width: 80px;
     }
-
+    
     .form-container {
-        max-width: 100%;
+        max-width: 90%;
+        margin: 20px auto;
     }
 }
 
-/* Mobile */
+/* Mobile Phones */
 @media (max-width: 480px) {
     .login-container {
-        margin: 20px auto;
+        flex-direction: column;
+        width: 95%;
+        margin: 2vh auto;
+        min-height: auto;
     }
-
-    .left-panel .logo-img {
-        width: 80px;
+    
+    .left-panel, .right-panel {
+        width: 100%;
+        padding: 20px 15px;
     }
-
-    .welcome-text h1 {
-        font-size: 24px;
+    
+    .left-panel {
+        padding-bottom: 10px;
     }
-
-    .welcome-text p {
-        font-size: 14px;
+    
+    .right-panel {
+        padding-top: 10px;
     }
-
+    
+    .logo-img {
+        width: 70px;
+    }
+    
     .form-container {
-        padding: 20px;
+        padding: 15px;
+        max-width: 100%;
     }
-
-    .input-field input {
-        padding: 10px;
-        font-size: 0.9em;
+    
+    .input-field {
+        margin-bottom: 20px;
     }
+    
+    .checkbox-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .checkbox-container > div:first-child {
+        margin-bottom: 10px;
+    }
+}
 
+/* Extra Small Devices */
+@media (max-width: 320px) {
+    .login-container {
+        margin: 1vh auto;
+    }
+    
+    .left-panel, .right-panel {
+        padding: 15px 10px;
+    }
+    
+    .logo-img {
+        width: 60px;
+    }
+    
+    .form-container {
+        padding: 12px;
+    }
+    
+    .input-field {
+        margin-bottom: 15px;
+    }
+    
     .login-btn {
-        padding: 10px;
+        padding: 8px;
+    }
+}
+
+/* For landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .login-container {
+        flex-direction: row;
+        margin: 2vh auto;
+        min-height: 90vh;
+    }
+    
+    .left-panel, .right-panel {
+        padding: 15px;
+    }
+    
+    .logo-img {
+        width: 60px;
+    }
+    
+    .welcome-text h1 {
+        font-size: 20px;
+        margin: 5px 0;
+    }
+    
+    .welcome-text p {
+        margin: 5px 0;
     }
 }

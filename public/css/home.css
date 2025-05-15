@@ -59,7 +59,7 @@ img {
 }
 
 .btn-primary {
-  display: inline-block;
+  display: block; /* Ubah dari inline-block ke block agar bisa auto margin */
   background-color: var(--secondary-color);
   color: var(--light-color);
   padding: 12px 30px;
@@ -68,8 +68,10 @@ img {
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: all 0.3s ease;
-  margin-top: -20px;
+  margin: -20px auto 0 auto; /* Tengah secara horizontal */
+  text-align: center; /* Tengah isi teks di dalam tombol */
 }
+
 
 .btn-primary:hover {
   background-color: var(--primary-color);
@@ -1320,11 +1322,30 @@ img {
 .footer-bottom p {
   margin-bottom: 0;
 }
-
-/* Animations */
 .animated-title {
   display: inline-block;
   position: relative;
+  font-size: 6vw; /* Ukuran font berdasarkan lebar layar */
+  line-height: 1.2;
+  text-align: center;
+  font-weight: bold;
+  color: #ffffff; /* Sesuaikan warna jika perlu */
+  margin: 20px auto;
+  word-break: break-word;
+}
+
+/* Untuk layar sangat kecil (HP) */
+@media (max-width: 480px) {
+  .animated-title {
+    font-size: 8vw;
+  }
+}
+
+/* Untuk layar besar (desktop lebar) */
+@media (min-width: 1200px) {
+  .animated-title {
+    font-size: 3vw;
+  }
 }
 
 /* Responsive Styles */
