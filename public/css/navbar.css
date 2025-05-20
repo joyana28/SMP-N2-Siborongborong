@@ -168,6 +168,16 @@
         background-color: rgba(255, 255, 255, 0.2);
         color: #070445;
     }
+    .nav-link.active {
+    color: #ffc107 !important;  /* Warna kuning */
+    font-weight: bold;
+    border-bottom: 2px solid #ffc107;
+    
+}
+
+
+
+
   
 
 }
