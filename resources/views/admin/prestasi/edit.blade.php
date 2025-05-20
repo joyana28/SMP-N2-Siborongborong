@@ -66,35 +66,35 @@
 
                 <div class="form-group">
                     <label for="judul">Judul Prestasi <span class="text-danger">*</span></label>
-                    <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul', $prestasi->judul) }}" required>
+                    <input type="text" name="judul" id="judul" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul', $prestasi->judul) }}" required>
                     @error('judul') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi <span class="text-danger">*</span></label>
-                    <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4" required>{{ old('deskripsi', $prestasi->deskripsi) }}</textarea>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4" required>{{ old('deskripsi', $prestasi->deskripsi) }}</textarea>
                     @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="tanggal">Tanggal Prestasi <span class="text-danger">*</span></label>
-                    <input type="date" name="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $prestasi->tanggal) }}" required>
+                    <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $prestasi->tanggal) }}" required>
                     @error('tanggal') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
-                    <label>Foto Prestasi</label>
-                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-                @error('foto') 
-                    <div class="invalid-feedback d-block">{{ $message }}</div> 
-                @enderror
+                    <label for="foto">Foto Prestasi</label>
+                    <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                    @error('foto') 
+                        <div class="invalid-feedback d-block">{{ $message }}</div> 
+                    @enderror
                     <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                     <div class="mt-3">
-                @if ($prestasi->foto)
-                    <p>Foto saat ini:</p>
-                    <img src="{{ asset('prestasi/' . $prestasi->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
-                @endif
-                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                        @if ($prestasi->foto)
+                            <p>Foto saat ini:</p>
+                            <img src="{{ asset('prestasi/' . $prestasi->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Prestasi">
+                        @endif
+                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
                     </div>
                 </div>
 

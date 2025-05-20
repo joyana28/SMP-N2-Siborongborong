@@ -52,7 +52,7 @@
                         <div><span class="idcard-label">Golongan</span>: {{ $g->golongan }}</div>
                         <div><span class="idcard-label">No. Telp</span>: {{ $g->no_telp }}</div>
                     </div>
-                </div>
+                </div>2
                 <div class="idcard-bg-bottom"></div>
             </div>
         </div>

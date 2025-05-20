@@ -35,9 +35,13 @@
                         <li><a href="{{ route('prestasi.nonakademik') }}"><i class="fas fa-trophy"></i> Non-Akademik</a></li>
                     </ul>
                 </li>
-
-                <li><a class="nav-link" href="{{ route('kepala_sekolah.show') }}">Kepala Sekolah</a></li>
+                <li class="nav-item-dropdown">
+                    <a href="#" class="nav-link">Tenaga Pendidik</a>
+                    <ul class="dropdown-menu">
+                <li><a  href="{{ route('kepala_sekolah.show') }}">Kepala Sekolah</a></li>
                 <li><a href="{{ route('guru.index') }}" class="nav-link {{ request()->is('guru') ? 'active' : '' }}">Guru</a></li>
+                    </ul>
+                </li>
                 <li><a class="nav-link" href="{{ route('siswa.show') }}">Siswa dan Kelas</a></li>
                 <li><a class="nav-link" href="{{ route('alumni.show') }}">Profil Alumni</a></li>
                 <li><a class="nav-link" href="{{ route('formulirpendaftaran.show') }}">Prosedur Pendaftaran</a></li>

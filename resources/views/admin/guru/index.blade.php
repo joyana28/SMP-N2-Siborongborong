@@ -49,7 +49,7 @@
 </style>
 
 <div class="container">
-    <h1 class="mb-4 text-primary">Daftar Guru</h1>
+    <h1 class="mt-4">Daftar Guru</h1>
 
     @if(session('success'))
         <div class="alert alert-success rounded-3 shadow-sm">{{ session('success') }}</div>

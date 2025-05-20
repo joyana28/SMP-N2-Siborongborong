@@ -84,7 +84,6 @@
         </div>
     </div>
 </section>
-
 <section class="blog-section">
     <div class="container">
         <div class="section-title">
