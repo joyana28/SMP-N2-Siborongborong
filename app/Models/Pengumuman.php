@@ -19,6 +19,7 @@ class Pengumuman extends Model
         'tanggal_terbit',
         'tanggal_berakhir',
         'foto',
+        'lampiran',
     ];
 
     public function admin()

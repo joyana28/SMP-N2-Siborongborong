@@ -68,38 +68,61 @@
                 <div class="form-group">
                     <label for="judul">Judul</label>
                     <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul') }}">
-                    @error('judul') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('judul')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="isi">Isi</label>
                     <textarea name="isi" class="form-control @error('isi') is-invalid @enderror" rows="4">{{ old('isi') }}</textarea>
-                    @error('isi') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('isi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="tanggal_terbit">Tanggal Terbit</label>
                     <input type="date" name="tanggal_terbit" class="form-control @error('tanggal_terbit') is-invalid @enderror" value="{{ old('tanggal_terbit') }}">
-                    @error('tanggal_terbit') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('tanggal_terbit')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="tanggal_berakhir">Tanggal Berakhir</label>
                     <input type="date" name="tanggal_berakhir" class="form-control @error('tanggal_berakhir') is-invalid @enderror" value="{{ old('tanggal_berakhir') }}">
-                    @error('tanggal_berakhir') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('tanggal_berakhir')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="foto">Foto (opsional)</label>
+                    <small class="form-text text-muted mb-2">
+                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                    </small>
                     <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
-                @if(isset($pengumuman) && $pengumuman->foto)
+
+                    @if(isset($pengumuman) && $pengumuman->foto)
                         <div class="mt-2">
-                        <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" width="200">
+                            <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" width="200">
                         </div>
-                @endif
+                    @endif
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="lampiran" class="form-label">Lampiran Dokumen (opsional)</label>
+                    <small class="form-text text-muted mb-2">
+                        Format yang diizinkan: PDF, DOC, DOCX, XLS, XLSX. Ukuran maksimal: 5MB.
+                    </small>
+                    <input type="file" class="form-control @error('lampiran') is-invalid @enderror" name="lampiran" id="lampiran" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                    @error('lampiran')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <div class="text-right mt-4">

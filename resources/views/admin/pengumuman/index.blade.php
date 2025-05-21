@@ -19,6 +19,7 @@
                 <th>Tanggal Terbit</th>
                 <th>Tanggal Berakhir</th>
                 <th>Foto</th>
+                <th>Lampiran</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -34,6 +35,13 @@
                             <img src="{{ asset('pengumuman/' . $item->foto) }}" width="100" alt="Foto Pengumuman">
                         @else
                         -
+                        @endif
+                    </td>
+                    <td>
+                        @if($item->lampiran)
+                            <a href="{{ asset('pengumuman/lampiran/' . $item->lampiran) }}" target="_blank">Lihat</a>
+                        @else
+                            <span class="text-muted">-</span>
                         @endif
                     </td>
                     <td>

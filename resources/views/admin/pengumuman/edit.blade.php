@@ -11,7 +11,7 @@
     .card-custom {
         border: none;
         border-left: 6px solid #0d47a1;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
 
     .btn-primary-custom {
@@ -39,9 +39,10 @@
         color: #0d47a1;
     }
 
-    input:focus, textarea:focus {
+    input:focus,
+    textarea:focus {
         border-color: #0d47a1;
-        box-shadow: 0 0 0 0.2rem rgba(13,71,161,.25);
+        box-shadow: 0 0 0 0.2rem rgba(13, 71, 161, .25);
     }
 
     #preview {
@@ -91,18 +92,32 @@
                 <div class="form-group">
                     <label>Foto Pengumuman (Opsional)</label>
                     <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-                @error('foto') 
-                    <div class="invalid-feedback d-block">{{ $message }}</div> 
-                @enderror
+                    @error('foto') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
                     <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
+
                     <div class="mt-3">
-                @if ($pengumuman->foto)
-                    <p>Foto saat ini:</p>
-                    <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
-                @endif
-                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                        @if ($pengumuman->foto)
+                            <p>Foto saat ini:</p>
+                            <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
+                        @endif
+                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
                     </div>
                 </div>
+
+                <div class="mb-3">
+                    <label for="lampiran" class="form-label">Ganti Lampiran (opsional)</label>
+                    <input type="file" class="form-control @error('lampiran') is-invalid @enderror" name="lampiran" id="lampiran" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                    @error('lampiran') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    <small class="form-text text-muted">Format: PDF, DOC, DOCX, XLS, XLSX. Maks 5MB.</small>
+
+                    @if ($pengumuman->lampiran)
+                        <small class="form-text text-muted">
+                            Lampiran saat ini: 
+                            <a href="{{ asset('pengumuman/lampiran/' . $pengumuman->lampiran) }}" target="_blank">{{ $pengumuman->lampiran }}</a>
+                        </small>
+                    @endif
+                </div>
+
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Perbarui</button>
                     <a href="{{ route('admin.pengumuman.index') }}" class="btn btn-warning-custom ml-2">Batal</a>
@@ -111,7 +126,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @push('scripts')
@@ -119,7 +133,7 @@
     function previewImage() {
         const input = document.querySelector('input[name="foto"]');
         const preview = document.getElementById('preview');
-        
+
         if (input.files && input.files[0]) {
             const reader = new FileReader();
             reader.onload = function(e) {

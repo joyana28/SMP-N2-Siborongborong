@@ -28,6 +28,7 @@ class PengumumanController extends Controller
         'tanggal_terbit' => 'required|date',
         'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'lampiran' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:5120', 
     ]);
 
     if ($validator->fails()) {
@@ -44,6 +45,14 @@ class PengumumanController extends Controller
         $foto = $fotoName;
     }
 
+    $lampiran = null;
+    if ($request->hasFile('lampiran')) {
+        $lampiranFile = $request->file('lampiran');
+        $lampiranName = time() . '_' . $lampiranFile->getClientOriginalName();
+        $lampiranFile->move(public_path('pengumuman/lampiran'), $lampiranName); 
+        $lampiran = $lampiranName;
+    }
+
     Pengumuman::create([
         'id_admin' => session('admin_id'),
         'judul' => $request->judul,
@@ -51,6 +60,7 @@ class PengumumanController extends Controller
         'tanggal_terbit' => $request->tanggal_terbit,
         'tanggal_berakhir' => $request->tanggal_berakhir,
         'foto' => $foto,
+        'lampiran' => $lampiran,
     ]);
 
     return redirect()->route('admin.pengumuman.index')
@@ -71,6 +81,7 @@ class PengumumanController extends Controller
         'tanggal_terbit' => 'required|date',
         'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
         'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'lampiran' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:5120',
     ]);
 
     if ($validator->fails()) {
@@ -84,13 +95,25 @@ class PengumumanController extends Controller
     if ($request->hasFile('foto')) {
         $oldPath = public_path('pengumuman/' . $pengumuman->foto);
         if ($pengumuman->foto && file_exists($oldPath)) {
-            unlink($oldPath); // hapus file lama
+            unlink($oldPath); 
         }
 
         $fotoFile = $request->file('foto');
         $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
         $fotoFile->move(public_path('pengumuman'), $fotoName);
         $pengumuman->foto = $fotoName;
+    }
+
+    if ($request->hasFile('lampiran')) {
+        $oldLampiran = public_path('pengumuman/lampiran/' . $pengumuman->lampiran);
+        if ($pengumuman->lampiran && file_exists($oldLampiran)) {
+            unlink($oldLampiran);
+        }
+
+        $lampiranFile = $request->file('lampiran');
+        $lampiranName = time() . '_' . $lampiranFile->getClientOriginalName();
+        $lampiranFile->move(public_path('pengumuman/lampiran'), $lampiranName);
+        $pengumuman->lampiran = $lampiranName;
     }
 
     $pengumuman->id_admin = session('admin_id');
@@ -129,6 +152,11 @@ class PengumumanController extends Controller
     $path = public_path('pengumuman/' . $pengumuman->foto);
     if ($pengumuman->foto && file_exists($path)) {
         unlink($path);
+    }
+
+    $lampiranPath = public_path('pengumuman/lampiran/' . $pengumuman->lampiran);
+    if ($pengumuman->lampiran && file_exists($lampiranPath)) {
+        unlink($lampiranPath);
     }
 
     $pengumuman->delete();

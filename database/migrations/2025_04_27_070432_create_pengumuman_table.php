@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tanggal_terbit');
             $table->date('tanggal_berakhir');
             $table->string('foto', 100)->nullable();
+            $table->string('lampiran')->nullable();
             $table->timestamps();
         });
     }
