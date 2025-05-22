@@ -1,9 +1,3 @@
-/* 
-* Logistics & Transport Website CSS
-* Color scheme: Primary #1a56a7 (blue), Secondary #f3b11f (orange/yellow)
-*/
-
-/* General Styles */
 :root {
     --primary-color: #1a56a7;
     --secondary-color: #f3b11f;
@@ -2601,160 +2595,228 @@ body {
   height: 340px;
   perspective: 1200px;
   flex: 0 0 auto;
-  border-radius: 18px;
-  box-shadow: 0 8px 32px 0 #1a56a733, 0 2px 8px 0 #f3b11f33;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(26, 86, 167, 0.15), 0 4px 12px rgba(243, 177, 31, 0.15);
   margin: 0;
   position: relative;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1a56a7ee 0%, #1452a0ee 100%);
+  color: white;
 }
+
+.fasilitas-flip-card:hover {
+  box-shadow: 0 20px 60px rgba(26, 86, 167, 0.35), 0 8px 30px rgba(243, 177, 31, 0.35);
+  transform: translateY(-10px) scale(1.05) rotate(-1.2deg);
+  z-index: 10;
+}
+
 .fasilitas-flip-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.8s cubic-bezier(.4,2,.3,1);
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  border-radius: 18px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.15);
 }
+
 .fasilitas-flip-card:hover .fasilitas-flip-inner {
   transform: rotateY(180deg);
 }
+
 .fasilitas-flip-front, .fasilitas-flip-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
-  align-items: stretch;
-  box-shadow: 0 8px 32px 0 #1a56a733, 0 2px 8px 0 #f3b11f33;
+  box-shadow: 0 8px 24px rgba(26, 86, 167, 0.15);
 }
+
 .fasilitas-flip-front {
-  background: #1a56a7;
+  background: linear-gradient(135deg, #1a56a7, #1452a0);
   color: #fff;
   flex-direction: row;
+  align-items: center;
+  padding: 20px 24px;
 }
+
 .fasilitas-front-content {
   display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
 }
+
 .fasilitas-front-left {
-  flex: 1.2;
+  flex: 1.3;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 36px;
-  background: none;
+  padding-left: 32px;
 }
+
 .fasilitas-nama {
-  font-size: 2.1rem;
-  font-weight: 800;
+  font-size: 2.4rem;
+  font-weight: 900;
   color: #fff;
-  letter-spacing: 1.5px;
-  text-shadow: 0 2px 8px #0d2340cc, 0 1.5px 6px #f3b11f55;
-  background: none;
+  letter-spacing: 1.8px;
+  text-shadow: 0 3px 10px rgba(13, 35, 64, 0.8), 0 2px 8px rgba(243, 177, 31, 0.65);
+  user-select: none;
+  line-height: 1.2;
 }
+
 .fasilitas-front-right {
   flex: 1.1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: none;
   padding-right: 0;
 }
+
 .fasilitas-foto {
-  width: 150px;
+  width: 160px;
   height: 100%;
   object-fit: cover;
-  border-radius: 0 18px 18px 0;
-  box-shadow: 0 4px 24px #1a56a7aa;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 0 6px 30px rgba(26, 86, 167, 0.45);
   background: #fff;
+  transition: transform 0.3s ease;
 }
+
+.fasilitas-flip-card:hover .fasilitas-foto {
+  transform: scale(1.05) translateX(6px);
+}
+
 .fasilitas-flip-back {
   background: #fff;
   color: #1a56a7;
   transform: rotateY(180deg);
   flex-direction: row;
+  padding: 24px 32px;
+  box-shadow: inset 0 0 15px rgba(26, 86, 167, 0.1);
 }
+
 .fasilitas-back-content {
   display: flex;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
+
 .fasilitas-back-left {
   flex: 1.1;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background: none;
   padding-left: 0;
+  display: none;
 }
+
 .fasilitas-back-left .fasilitas-foto {
-  width: 150px;
+  width: 160px;
   height: 100%;
   object-fit: cover;
-  border-radius: 18px 0 0 18px;
-  box-shadow: 0 4px 24px #f3b11faa;
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 6px 30px rgba(243, 177, 31, 0.45);
   background: #fff;
+  transition: transform 0.3s ease;
 }
+
+.fasilitas-flip-card:hover .fasilitas-back-left .fasilitas-foto {
+  transform: scale(1.05) translateX(-6px);
+}
+
 .fasilitas-back-right {
-  flex: 1.2;
+  flex: 1.3;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 32px 32px 32px 36px;
-  background: none;
+  padding-left: 32px;
   overflow-y: auto;
   max-height: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: #1a56a7 #e0e0e0;
+  flex: 1;
+  padding-left: 32px;
 }
+
+.fasilitas-back-right::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fasilitas-back-right::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+
+.fasilitas-back-right::-webkit-scrollbar-thumb {
+  background-color: #1a56a7;
+  border-radius: 6px;
+}
+
 .fasilitas-nama-back {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 900;
   color: #1a56a7;
-  margin-bottom: 8px;
-  letter-spacing: 1.2px;
-  text-shadow: 0 2px 8px #f3b11f33;
+  margin-bottom: 14px;
+  letter-spacing: 1.4px;
+  text-shadow: 0 2px 12px rgba(243, 177, 31, 0.15);
+  user-select: none;
+  line-height: 1.2;
 }
+
 .fasilitas-deskripsi {
-  font-size: 1.08rem;
-  color: #222;
-  margin-bottom: 10px;
+  font-size: 1.15rem;
+  color: #333;
+  margin-bottom: 14px;
   font-weight: 500;
-  opacity: 0.92;
+  opacity: 0.95;
   word-break: break-word;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
 }
+
 .fasilitas-info {
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   color: #1a56a7;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   word-break: break-word;
 }
+
 .fasilitas-info b {
   color: #f3b11f;
   font-weight: 700;
 }
-.fasilitas-flip-card {
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-.fasilitas-flip-card:hover {
-  box-shadow: 0 16px 48px 0 #1a56a7cc, 0 4px 16px 0 #f3b11faa;
-  transform: translateY(-8px) scale(1.04) rotate(-1.5deg);
-  z-index: 2;
-}
+
 @media (max-width: 900px) {
-  .fasilitas-card-row {
-    gap: 18px;
-  }
   .fasilitas-flip-card {
-    width: 98vw;
-    height: 260px;
+    width: 95vw;
+    height: 280px;
+    border-radius: 16px;
   }
   .fasilitas-foto {
-    width: 90px;
+    width: 110px !important;
   }
   .fasilitas-back-left .fasilitas-foto {
-    width: 90px;
+    width: 110px !important;
+  }
+  .fasilitas-nama {
+    font-size: 1.8rem !important;
+  }
+  .fasilitas-nama-back {
+    font-size: 1.3rem !important;
+  }
+  .fasilitas-deskripsi {
+    font-size: 1rem !important;
+  }
+  .fasilitas-back-right {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }
