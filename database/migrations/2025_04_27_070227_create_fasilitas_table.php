@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama', 100);
             $table->text('deskripsi');
             $table->string('foto', 100);
-            $table->string('tahun', 100);
+            $table->string('tahun', 4);
             $table->string('perhatian_teknis', 100)->nullable();
             $table->string('penambahan', 100)->nullable();
             $table->timestamps();

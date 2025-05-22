@@ -47,11 +47,17 @@
     #preview {
         transition: 0.3s ease;
         border: 2px dashed #0d47a1;
+        max-height: 200px;
     }
 
     #preview:hover {
         transform: scale(1.03);
         border-color: #ffb300;
+    }
+
+    .text-danger {
+        margin-top: 4px;
+        font-size: 0.875rem;
     }
 </style>
 
@@ -77,40 +83,88 @@
 
                 <div class="form-group">
                     <label for="nama">Nama Fasilitas</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama', $fasilitas->nama) }}" required>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="nama"
+                        name="nama"
+                        value="{{ old('nama', $fasilitas->nama) }}"
+                        required
+                    >
                 </div>
 
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
-                    <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" required>{{ old('deskripsi', $fasilitas->deskripsi) }}</textarea>
+                    <textarea
+                        class="form-control"
+                        id="deskripsi"
+                        name="deskripsi"
+                        rows="4"
+                        required
+                    >{{ old('deskripsi', $fasilitas->deskripsi) }}</textarea>
                 </div>
+
                 <div class="form-group">
-                    <label for="tahun">Tahun</label>
-                    <input type="text" class="form-control" id="tahun" name="tahun" value="{{ old('tahun', $fasilitas->tahun) }}" required>
+                    <label for="tahun">Pilih Tahun</label>
+                    <input
+                        type="text"
+                        name="tahun"
+                        id="tahun"
+                        class="form-control @error('tahun') is-invalid @enderror"
+                        value="{{ old('tahun', $fasilitas->tahun) }}"
+                        autocomplete="off"
+                        required
+                    >
+                    @error('tahun')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="perhatian_teknis">Perhatian Teknis</label>
-                    <input type="text" class="form-control" id="perhatian_teknis" name="perhatian_teknis" value="{{ old('perhatian_teknis', $fasilitas->perhatian_teknis) }}">
+                    <small class="form-text text-muted mb-2">
+                        Perhatian teknis merupakan kondisi jumlah fasilitas yang mengalami kerusakan dan memerlukan penanganan perbaikan segera (opsional).
+                    </small>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="perhatian_teknis"
+                        name="perhatian_teknis"
+                        value="{{ old('perhatian_teknis', $fasilitas->perhatian_teknis) }}"
+                    >
                 </div>
 
                 <div class="form-group">
                     <label for="penambahan">Penambahan</label>
-                    <input type="text" class="form-control" id="penambahan" name="penambahan" value="{{ old('penambahan', $fasilitas->penambahan) }}">
+                    <small class="form-text text-muted mb-2">
+                        Penambahan merupakan jumlah fasilitas yang bertambah (opsional).
+                    </small>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="penambahan"
+                        name="penambahan"
+                        value="{{ old('penambahan', $fasilitas->penambahan) }}"
+                    >
                 </div>
+
                 <div class="form-group">
-                    <label>Foto Fasilitas</label>
-                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-                @error('foto') 
-                    <div class="invalid-feedback d-block">{{ $message }}</div> 
-                @enderror
                     <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
+                    <label for="foto">Foto Fasilitas</label>
+                    <input
+                        type="file"
+                        id="foto"
+                        name="foto"
+                        class="form-control-file @error('foto') is-invalid @enderror"
+                        accept="image/*"
+                        onchange="previewImage()"
+                    >
+                    @error('foto')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+
                     <div class="mt-3">
-                @if ($fasilitas->foto)
-                    <p>Foto saat ini:</p>
-                    <img src="{{ asset('fasilitas/' . $fasilitas->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
-                @endif
-                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;" alt="Preview Foto Baru">
                     </div>
                 </div>
 
@@ -124,22 +178,40 @@
 </div>
 @endsection
 
-@push('scripts')
-<script>
-    function previewImage() {
-        const input = document.getElementById('foto');
-        const preview = document.getElementById('preview');
+@push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+@endpush
 
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.classList.remove('d-none');
-            };
-            reader.readAsDataURL(input.files[0]);
-        } else {
-            preview.classList.add('d-none');
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tahun').datepicker({
+                format: "yyyy",
+                viewMode: "years",
+                minViewMode: "years",
+                autoclose: true,
+                startDate: new Date(2000, 0, 1),
+                endDate: new Date()
+            });
+        });
+
+        function previewImage() {
+            const file = document.getElementById('foto').files[0];
+            const preview = document.getElementById('preview');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = '';
+                preview.classList.add('d-none');
+            }
         }
-    }
-</script>
+    </script>
 @endpush
