@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GuruController extends Controller
 {
@@ -32,11 +33,11 @@ class GuruController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'no_telp' => 'required|digits_between:10,15',
             'golongan' => 'nullable|string|max:50',
-            'bidang' => 'nullable|string|max:100',
+            'bidang' => ['required', Rule::in(['Agama', 'PKN', 'Bahasa Indonesia', 'Matematika', 'IPA', 'IPS', 'Bahasa Inggris', 'Seni Budaya', 'Prakarya', 'TIK', 'Bahasa Daerah'])],
         ]);
 
         $data = $request->except('foto');
-        $data['id_admin'] = session('admin_id');
+        $data['id_admin'] = session('admin_id'); // Pastikan session ini tersedia
 
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
@@ -64,7 +65,7 @@ class GuruController extends Controller
             'nama' => 'required|string|max:100',
             'nip' => 'required|string|max:50|unique:guru,nip,' . $id . ',id_guru',
             'golongan' => 'required|string|max:50',
-            'bidang' => 'required|string|max:100',
+            'bidang' => ['required', Rule::in(['Agama', 'PKN', 'Bahasa Indonesia', 'Matematika', 'IPA', 'IPS', 'Bahasa Inggris', 'Seni Budaya', 'Prakarya', 'TIK', 'Bahasa Daerah'])],
             'no_telp' => 'required|digits_between:10,15',
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
         ]);

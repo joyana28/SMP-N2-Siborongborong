@@ -95,32 +95,33 @@
                     @error('tanggal_berakhir')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div> <br>
+                </div><br>
 
                 <div class="form-group">
                     <label for="foto">Foto (opsional)</label>
-                    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
+                    <input type="file" name="foto" id="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror" onchange="previewImage()">
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                     <small class="form-text text-muted mb-2">
-                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                        Format diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
                     </small>
                     @if(isset($pengumuman) && $pengumuman->foto)
                         <div class="mt-2">
                             <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" width="200">
                         </div>
                     @endif
-                </div> <br>
+                    <img id="preview" src="#" alt="Preview Foto" class="d-none mt-2" style="max-height: 200px;" />
+                </div><br>
 
-                <div class="form-group mb-3">
-                    <label for="lampiran" class="form-label">Lampiran Dokumen (opsional)</label>
+                <div class="form-group">
+                    <label for="lampiran">Lampiran Dokumen (opsional)</label>
                     <small class="form-text text-muted mb-2">
-                        Format yang diizinkan: PDF, DOC, DOCX, XLS, XLSX. Ukuran maksimal: 5MB.
+                        Format diizinkan: PDF, DOC, DOCX, XLS, XLSX. Ukuran maksimal: 5MB.
                     </small>
                     <input type="file" class="form-control @error('lampiran') is-invalid @enderror" name="lampiran" id="lampiran" accept=".pdf,.doc,.docx,.xls,.xlsx">
                     @error('lampiran')
-                        <small class="text-danger">{{ $message }}</small>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -133,3 +134,23 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function previewImage() {
+        const input = document.getElementById('foto');
+        const preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none');
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.classList.add('d-none');
+        }
+    }
+</script>
+@endpush

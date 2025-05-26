@@ -46,6 +46,16 @@
 <div class="container mt-5">
     <h2 class="mb-4 text-primary">Tambah Prestasi</h2>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="card card-custom">
         <div class="card-body">
             <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data">
@@ -79,19 +89,25 @@
                     @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
-               <div class="form-group">
+                <div class="form-group mb-4">
                     <label for="foto">Foto Prestasi</label>
-                    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
+                    <input type="file" name="foto" id="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror" onchange="previewImage()">
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
-                @if(isset($prestasi) && $prestasi->foto)
+                    <small class="form-text text-muted">
+                        Format diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                    </small>
+                    
+                    @if(isset($prestasi) && $prestasi->foto)
                         <div class="mt-2">
-                        <img src="{{ asset('prestasi/' . $prestasi->foto) }}" alt="Foto Prestasi" width="200">
+                            <img src="{{ asset('prestasi/' . $prestasi->foto) }}" alt="Foto Prestasi" width="200">
                         </div>
-                @endif
-                </div> <br>
+                    @endif
+
+                    <img id="preview" src="#" alt="Preview Foto" class="d-none mt-2" style="max-height: 200px;" />
+                </div>
+
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary-custom">Simpan</button>
                     <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary-custom ml-2">Kembali</a>
@@ -101,3 +117,23 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function previewImage() {
+        const input = document.getElementById('foto');
+        const preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none');
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.classList.add('d-none');
+        }
+    }
+</script>
+@endpush

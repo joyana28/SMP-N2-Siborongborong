@@ -100,31 +100,30 @@
                 </div>
 
                 <div class="form-group mb-3">
-    <label for="formulir_pendaftaran" class="form-label">
-        <strong>Formulir Pendaftaran</strong> <small class="text-muted">(PDF, DOC, DOCX)</small>
-    </label>
-    <input
-        type="file"
-        name="formulir_pendaftaran"
-        id="formulir_pendaftaran"
-        class="form-control @error('formulir_pendaftaran') is-invalid @enderror"
-        accept=".pdf,.doc,.docx"
-    >
-    @error('formulir_pendaftaran')
-        <div class="invalid-feedback d-block">{{ $message }}</div>
-    @enderror
-    <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti file.</small>
+                    <label for="formulir_pendaftaran" class="form-label">
+                        <strong>Formulir Pendaftaran</strong>
+                        <small class="form-text text-muted mb-2">
+                            Format yang diizinkan: PDF, DOC, DOCX, XLS, XLSX. Ukuran maksimal: 5MB.
+                        </small>
+                    </label>
+                    <input type="file" name="formulir_pendaftaran" id="formulir_pendaftaran"
+                        class="form-control @error('formulir_pendaftaran') is-invalid @enderror"
+                        accept=".pdf,.doc,.docx">
+                    @error('formulir_pendaftaran')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                    <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengganti file.</small>
 
-    @if ($formulirPendaftaran->formulir_pendaftaran)
-        <div class="mt-3">
-            <p class="mb-1">File saat ini:</p>
-            <a href="{{ asset('formulirpendaftaran/' . $formulirPendaftaran->formulir_pendaftaran) }}" target="_blank" class="btn btn-sm btn-outline-primary">
-                <i class="fas fa-file-alt me-1"></i> Lihat File
-            </a>
-        </div>
-    @endif
-</div>
-
+                    @if ($formulirPendaftaran->formulir_pendaftaran)
+                        <div class="mt-3">
+                            <p class="mb-1">File saat ini:</p>
+                            <a href="{{ asset('formulirpendaftaran/' . $formulirPendaftaran->formulir_pendaftaran) }}"
+                                target="_blank" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-file-alt me-1"></i> Lihat File
+                            </a>
+                        </div>
+                    @endif
+                </div>
 
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Perbarui</button>

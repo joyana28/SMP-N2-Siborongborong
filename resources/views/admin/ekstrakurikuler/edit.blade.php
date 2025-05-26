@@ -102,7 +102,7 @@
                     <label for="foto">Foto Ekstrakurikuler</label>
                     <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
                     @error('foto') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB.</small>
+                    <small class="form-text text-muted">Format yang diizinkan: jpeg, jpg, png, gif. Maks: 2MB.</small>
                     
                     <div class="mt-3">
                         <img id="preview" class="img-thumbnail d-none">

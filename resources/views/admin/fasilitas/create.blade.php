@@ -130,7 +130,7 @@
                     @error('foto')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
+                    <small class="form-text text-muted">Format yang diizinkan: jpeg, jpg, png, gif. Maks: 2MB.</small>
                     <div class="mt-3">
                         <img id="preview" class="img-thumbnail d-none" alt="Preview Foto Fasilitas">
                     </div>
