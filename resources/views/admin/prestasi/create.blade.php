@@ -85,12 +85,13 @@
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                 @if(isset($prestasi) && $prestasi->foto)
                         <div class="mt-2">
                         <img src="{{ asset('prestasi/' . $prestasi->foto) }}" alt="Foto Prestasi" width="200">
                         </div>
                 @endif
-                </div>
+                </div> <br>
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary-custom">Simpan</button>
                     <a href="{{ route('admin.prestasi.index') }}" class="btn btn-secondary-custom ml-2">Kembali</a>

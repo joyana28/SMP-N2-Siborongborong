@@ -65,43 +65,37 @@ class PrestasiController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:100',
-            'deskripsi' => 'nullable|string',
-            'tanggal' => 'required|date',
-            'jenis' => 'required|in:akademik,non-akademik',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
         $prestasi = Prestasi::findOrFail($id);
 
-        if ($request->hasFile('foto')) {
-        $oldPath = public_path('prestasi/' . $prestasi->foto);
-        if ($prestasi->foto && file_exists($oldPath)) {
-            unlink($oldPath); 
-        }
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'tanggal' => 'required|date',
+            'jenis' => 'required|string',
+            'deskripsi' => 'required|string',
+            'foto' => 'nullable|image|mimes:jpeg,jpg,png|max:2048',
+        ]);
 
-            $fotoFile = $request->file('foto');
-            $fotoName = time() . '_' . $fotoFile->getClientOriginalName();
-            $fotoFile->storeAs('prestasi', $fotoName);
-            $prestasi->foto = $fotoName;
-        }
-
-        $prestasi->id_admin = session('admin_id');
         $prestasi->nama = $request->nama;
-        $prestasi->deskripsi = $request->deskripsi;
         $prestasi->tanggal = $request->tanggal;
         $prestasi->jenis = $request->jenis;
+        $prestasi->deskripsi = $request->deskripsi;
+
+        if ($request->hasFile('foto')) {
+            // Hapus file lama jika ada
+            if ($prestasi->foto && file_exists(public_path('prestasi/' . $prestasi->foto))) {
+                unlink(public_path('prestasi/' . $prestasi->foto));
+            }
+
+            $file = $request->file('foto');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('prestasi'), $filename);
+
+            $prestasi->foto = $filename;
+        }
+
         $prestasi->save();
 
-        return redirect()->route('admin.prestasi.index')
-            ->with('success', 'Data prestasi berhasil diperbarui');
+        return redirect()->route('admin.prestasi.index')->with('success', 'Prestasi berhasil diperbarui');
     }
 
     public function akademik()
@@ -122,7 +116,7 @@ class PrestasiController extends Controller
 
         $path = public_path('prestasi/' . $prestasi->foto);
         if ($prestasi->foto && file_exists($path)) {
-        unlink($path);
+            unlink($path);
         }
 
         $prestasi->delete();

@@ -39,7 +39,7 @@
         color: #0d47a1;
     }
 
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
         border-color: #0d47a1;
         box-shadow: 0 0 0 0.2rem rgba(13,71,161,.25);
     }
@@ -47,11 +47,17 @@
     #preview {
         transition: 0.3s ease;
         border: 2px dashed #0d47a1;
+        max-height: 200px;
+        cursor: pointer;
     }
 
     #preview:hover {
         transform: scale(1.03);
         border-color: #ffb300;
+    }
+
+    .invalid-feedback {
+        font-size: 0.875rem;
     }
 </style>
 
@@ -64,22 +70,32 @@
                 @csrf
                 @method('PUT')
 
-                <div class="form-group">
-                    <label for="judul">Judul Prestasi <span class="text-danger">*</span></label>
-                    <input type="text" name="judul" id="judul" class="form-control @error('judul') is-invalid @enderror" value="{{ old('judul', $prestasi->judul) }}" required>
-                    @error('judul') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                <div class="form-group mb-3">
+                    <label for="nama">Nama Prestasi <span class="text-danger">*</span></label>
+                    <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $prestasi->nama ?? $prestasi->judul) }}" required>
+                    @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="deskripsi">Deskripsi <span class="text-danger">*</span></label>
-                    <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4" required>{{ old('deskripsi', $prestasi->deskripsi) }}</textarea>
-                    @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
-
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="tanggal">Tanggal Prestasi <span class="text-danger">*</span></label>
                     <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $prestasi->tanggal) }}" required>
                     @error('tanggal') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="jenis">Jenis Prestasi <span class="text-danger">*</span></label>
+                    <select name="jenis" id="jenis" class="form-select @error('jenis') is-invalid @enderror" required>
+                        <option value="">-- Pilih Jenis --</option>
+                        <option value="akademik" {{ old('jenis', $prestasi->jenis) == 'akademik' ? 'selected' : '' }}>Akademik</option>
+                        <option value="non-akademik" {{ old('jenis', $prestasi->jenis) == 'non-akademik' ? 'selected' : '' }}>Non-Akademik</option>
+                    </select>
+                    @error('jenis') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="deskripsi">Deskripsi <span class="text-danger">*</span></label>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4" required>{{ old('deskripsi', $prestasi->deskripsi) }}</textarea>
+                    @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
@@ -90,11 +106,14 @@
                     @enderror
                     <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                     <div class="mt-3">
-                        @if ($prestasi->foto)
-                            <p>Foto saat ini:</p>
-                            <img src="{{ asset('prestasi/' . $prestasi->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Prestasi">
-                        @endif
-                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                        {{-- Tampilkan foto lama sebagai preview awal --}}
+                    <img 
+                        id="preview" 
+                        src="{{ $prestasi->foto ? asset('prestasi/' . $prestasi->foto) : '' }}" 
+                        alt="Preview Foto Prestasi" 
+                        class="img-thumbnail {{ $prestasi->foto ? '' : 'd-none' }}"
+                        style="max-height: 200px;"
+                    >
                     </div>
                 </div>
 
@@ -106,25 +125,34 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @push('scripts')
 <script>
-    function previewImage() {
-        const input = document.getElementById('foto');
-        const preview = document.getElementById('preview');
+    const preview = document.getElementById('preview');
+    const initialSrc = preview.src;
 
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.classList.remove('d-none');
-            };
-            reader.readAsDataURL(input.files[0]);
+function previewImage() {
+    const input = document.getElementById('foto');
+    const preview = document.getElementById('preview');
+
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.classList.remove('d-none');
+        };
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        if(initialSrc) {
+            preview.src = initialSrc;
+            preview.classList.remove('d-none');
         } else {
+            preview.src = '';
             preview.classList.add('d-none');
         }
     }
+}
+
 </script>
 @endpush

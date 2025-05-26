@@ -14,7 +14,7 @@ return new class extends Migration
                   ->constrained('admin', 'id_admin')
                   ->onDelete('cascade');
             $table->string('nama', 100);
-            $table->string('nip', 50);
+            $table->unsignedBigInteger('nip')->unique();
             $table->string('golongan', 50);
             $table->string('periode', 50);
             $table->string('foto', 100)->nullable();

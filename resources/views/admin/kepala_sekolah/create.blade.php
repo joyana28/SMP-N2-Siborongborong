@@ -74,20 +74,27 @@
                 <div class="form-group">
                     <label for="nip">NIP</label>
                     <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ old('nip') }}">
-                    @error('nip') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                @error('nip')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="golongan">Golongan</label>
-                    <input type="text" class="form-control @error('golongan') is-invalid @enderror" id="golongan" name="golongan" value="{{ old('golongan') }}">
-                    @error('golongan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        <select class="form-control @error('golongan') is-invalid @enderror" id="golongan" name="golongan">
+                        <option value="">-- Pilih Golongan --</option>
+                    @foreach(['III/a', 'III/b', 'III/c', 'III/d', 'IV/a', 'IV/b', 'IV/c', 'IV/d', 'IV/e'] as $golongan)
+                        <option value="{{ $golongan }}" {{ old('golongan') == $golongan ? 'selected' : '' }}>{{ $golongan }}</option>
+                    @endforeach
+                    </select>
+                        @error('golongan') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="periode">Periode</label>
                     <input type="text" class="form-control @error('periode') is-invalid @enderror" id="periode" name="periode" value="{{ old('periode') }}">
                     @error('periode') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+                </div> <br>
 
                 <div class="form-group">
                     <label for="foto">Foto Kepala Sekolah</label>
@@ -95,6 +102,9 @@
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
+                    <small class="form-text text-muted mb-2">
+                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                    </small>  
                 @if(isset($kepalaSekolah) && $kepalaSekolah->foto)
                         <div class="mt-2">
                         <img src="{{ asset('kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto Kepala Sekolah" width="200">

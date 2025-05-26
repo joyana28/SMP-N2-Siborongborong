@@ -163,7 +163,8 @@
                     @enderror
                     <small class="form-text text-muted mb-2">
                         Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
-                    </small>                    <div class="mt-3">
+                    </small>                    
+                    <div class="mt-3">
                         <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;" alt="Preview Foto Baru">
                     </div>
                 </div>

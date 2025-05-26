@@ -54,7 +54,7 @@
 <!-- Data Ekstrakurikuler -->
 <div class="container mx-auto py-10 px-4 mt-16">
     @if ($ekstrakurikuler->isEmpty())
-        <p class="text-center text-gray-600">Data ekstrakurikuler tidak ditemukan.</p>
+        <p class="text-center text-gray-600">Data ekstrakurikuler belum ada.</p>
     @else
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($ekstrakurikuler as $item)
