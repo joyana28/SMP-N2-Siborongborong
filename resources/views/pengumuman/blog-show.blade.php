@@ -10,15 +10,12 @@
 
 @section('content')
 
-<section class="pengumuman-hero-section position-relative text-center text-white">
-    <div class="pengumuman-hero-overlay"></div>
-    <div class="pengumuman-hero-content position-relative z-2 py-5">
-        <h1 class="display-5 fw-bold">Pengumuman Sekolah</h1>
-        <p class="fs-5 mt-3">
-            Temukan informasi dan pengumuman terbaru dari SMP Negeri 2 Siborongborong.
-        </p>
+<!-- Hero Section -->
+<section class="pengumuman-hero-section">
+    <div class="pengumuman-hero-text">
+        <h1 class="pengumuman-title">Pengumuman Sekolah</h1>
+        <p class="pengumuman-description">Temukan informasi dan pengumuman terbaru dari SMP Negeri 2 Siborongborong.</p>
     </div>
-    <div class="pengumuman-hero-shape"></div>
 </section>
 
 <!-- Detail Pengumuman -->

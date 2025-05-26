@@ -6,41 +6,251 @@
 }
 
 /* === Hero Section === */
-.pengumuman-hero-section {
-    background: linear-gradient(to right, var(--warna-utama), #003366);
-    position: relative;
-    padding: 100px 20px 80px;
-    overflow: hidden;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-.pengumuman-hero-overlay {
+@keyframes revealFromSides {
+    0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 100% 100%, 100% 100%, 100% 0);
+        transform: scaleX(0);
+    }
+    40% {
+        clip-path: polygon(0 0, 15% 0, 15% 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 85% 100%, 85% 100%, 100% 0);
+        transform: scaleX(0.5);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 50% 100%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+        transform: scaleX(1);
+    }
+}
+
+@keyframes slideTextFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-50%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideButtonFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(50%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulseGradient {
+    0% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.pengumuman-hero-section {
+    background: linear-gradient(
+        135deg,
+        #0a2744 0%,
+        #1a56a7 25%,
+        #0d3158 50%,
+        #1a56a7 75%,
+        #0a2744 100%
+    );
+    background-size: 400% 400%;
+    animation:
+        gradientFlow 15s ease infinite,
+        revealFromSides 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+    transform-origin: center;
+    perspective: 1000px;
+    height: 600px;
+    position: relative;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.pengumuman-hero-section::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 15, 30, 0.5);
+    background: linear-gradient(45deg,
+        rgba(10, 39, 68, 0.95) 0%,
+        rgba(26, 86, 167, 0.8) 100%
+    );
     z-index: 1;
 }
 
-.pengumuman-hero-content {
-    z-index: 2;
-    position: relative;
+.pengumuman-hero-section::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle,
+        rgba(26, 86, 167, 0.2) 0%,
+        rgba(10, 39, 68, 0) 70%
+    );
+    transform: rotate(30deg);
+    animation: pulseGradient 8s ease-in-out infinite;
+    z-index: 1;
 }
 
-.pengumuman-hero-title {
+.pengumuman-hero-text {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards, slideTextFromBottom 0.7s ease-out forwards;
+    animation-delay: 0.8s;
+    text-align: center;
+}
+
+.pengumuman-hero-text::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background-color: #f3b11f;
+    animation: expandLine 0.5s ease-out forwards;
+    animation-delay: 1.5s;
+    opacity: 0;
+}
+
+@keyframes slideTextFromBottom {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes expandLine {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        width: 60px;
+        opacity: 1;
+    }
+}
+
+.pengumuman-hero-text .pengumuman-title {
     font-size: 3rem;
     font-weight: 700;
-    color: var(--warna-aksen);
-    animation: fadeDown 0.8s ease;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards, slideTextFromBottom 0.7s ease-out forwards;
+    animation-delay: 1s;
 }
 
-.pengumuman-hero-desc {
+.pengumuman-hero-text .pengumuman-description {
     font-size: 1.2rem;
-    color: #fff;
-    margin-top: 10px;
-    animation: fadeUp 1s ease;
+    color: #eee;
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards, slideTextFromBottom 0.7s ease-out forwards;
+    animation-delay: 1.2s;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 992px) {
+    .pengumuman-hero-section {
+        height: 500px;
+    }
+    .pengumuman-hero-text {
+        padding: 0 20px;
+    }
+    .pengumuman-hero-text .pengumuman-title {
+        font-size: 2.5rem;
+    }
+    .pengumuman-hero-text .pengumuman-description {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pengumuman-hero-section {
+        height: 400px;
+    }
+    .pengumuman-hero-text .pengumuman-title {
+        font-size: 2rem;
+    }
+    .pengumuman-hero-text .pengumuman-description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .pengumuman-hero-section {
+        height: 350px;
+    }
+    .pengumuman-hero-text {
+        padding: 0 15px;
+    }
+    .pengumuman-hero-text .pengumuman-title {
+        font-size: 1.8rem;
+    }
+    .pengumuman-hero-text .pengumuman-description {
+        font-size: 0.9rem;
+    }
+    .pengumuman-hero-text::before {
+         width: 40px;
+    }
 }
 
 /* === Detail Section === */
