@@ -47,6 +47,7 @@
     #preview {
         transition: 0.3s ease;
         border: 2px dashed #0d47a1;
+        max-height: 200px;
     }
 
     #preview:hover {
@@ -57,7 +58,7 @@
 
 <div class="container mt-5">
     <h2 class="mb-4 text-primary">Edit Ekstrakurikuler</h2>
-{{-- Notifikasi sukses --}}
+
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -66,6 +67,7 @@
             </button>
         </div>
     @endif
+
     <div class="card card-custom">
         <div class="card-body">
             <form action="{{ route('admin.ekstrakurikuler.update', $ekstrakurikuler->id_ekstrakurikuler) }}" method="POST" enctype="multipart/form-data">
@@ -75,48 +77,35 @@
                 <div class="form-group">
                     <label for="nama">Nama Ekstrakurikuler <span class="text-danger">*</span></label>
                     <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $ekstrakurikuler->nama) }}" required>
-                    @error('nama')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $ekstrakurikuler->deskripsi) }}</textarea>
-                    @error('deskripsi')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="pembina">Pembina</label>
                     <input type="text" name="pembina" id="pembina" class="form-control @error('pembina') is-invalid @enderror" value="{{ old('pembina', $ekstrakurikuler->pembina) }}" required>
-                    @error('pembina')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    @error('pembina') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="jadwal">Jadwal</label>
                     <input type="text" name="jadwal" id="jadwal" class="form-control @error('jadwal') is-invalid @enderror" value="{{ old('jadwal', $ekstrakurikuler->jadwal) }}" required>
-                    @error('jadwal')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                    @error('jadwal') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div> <br>
 
                 <div class="form-group">
-                    <label>Foto Ekstrakurikuler</label>
-                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
-                @error('foto') 
-                    <div class="invalid-feedback d-block">{{ $message }}</div> 
-                @enderror
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
+                    <label for="foto">Foto Ekstrakurikuler</label>
+                    <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                    @error('foto') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maksimal 2MB.</small>
+                    
                     <div class="mt-3">
-                @if ($ekstrakurikuler->foto)
-                    <p>Foto saat ini:</p>
-                    <img src="{{ asset('ekstrakurikuler/' . $ekstrakurikuler->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
-                @endif
-                    <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
+                        <img id="preview" class="img-thumbnail d-none">
                     </div>
                 </div>
 

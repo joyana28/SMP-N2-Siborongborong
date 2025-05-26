@@ -48,6 +48,10 @@
     #preview {
         transition: 0.3s ease;
         border: 2px dashed #0d47a1;
+        max-height: 200px;
+        max-width: 100%;
+        display: none;
+        margin-top: 10px;
     }
 
     #preview:hover {
@@ -87,31 +91,24 @@
                     <label for="tanggal_berakhir">Tanggal Berakhir <span class="text-danger">*</span></label>
                     <input type="date" name="tanggal_berakhir" class="form-control @error('tanggal_berakhir') is-invalid @enderror" value="{{ old('tanggal_berakhir', $pengumuman->tanggal_berakhir) }}" required>
                     @error('tanggal_berakhir') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+                </div> <br>
 
                 <div class="form-group">
-                    <label>Foto Pengumuman (Opsional)</label>
-                    <input type="file" name="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
+                    <label for="foto">Ganti Foto Pengumuman (Opsional)</label>
+                    <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
                     @error('foto') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks: 2MB.</small>
+                    <img id="preview" class="img-thumbnail">
+                </div> <br>
 
-                    <div class="mt-3">
-                        @if ($pengumuman->foto)
-                            <p>Foto saat ini:</p>
-                            <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Pengumuman">
-                        @endif
-                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="lampiran" class="form-label">Ganti Lampiran (opsional)</label>
-                    <input type="file" class="form-control @error('lampiran') is-invalid @enderror" name="lampiran" id="lampiran" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                <div class="form-group">
+                    <label for="lampiran">Ganti Lampiran (Opsional)</label>
+                    <small class="form-text text-muted">PDF, DOC/DOCX, XLS/XLSX. Maks: 5MB.</small>
+                    <input type="file" name="lampiran" id="lampiran" class="form-control @error('lampiran') is-invalid @enderror" accept=".pdf,.doc,.docx,.xls,.xlsx">
                     @error('lampiran') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                    <small class="form-text text-muted">Format: PDF, DOC, DOCX, XLS, XLSX. Maks 5MB.</small>
 
                     @if ($pengumuman->lampiran)
-                        <small class="form-text text-muted">
+                        <small class="form-text text-muted mt-2">
                             Lampiran saat ini: 
                             <a href="{{ asset('pengumuman/lampiran/' . $pengumuman->lampiran) }}" target="_blank">{{ $pengumuman->lampiran }}</a>
                         </small>
@@ -131,14 +128,14 @@
 @push('scripts')
 <script>
     function previewImage() {
-        const input = document.querySelector('input[name="foto"]');
+        const input = document.getElementById('foto');
         const preview = document.getElementById('preview');
 
         if (input.files && input.files[0]) {
             const reader = new FileReader();
             reader.onload = function(e) {
                 preview.src = e.target.result;
-                preview.classList.remove('d-none');
+                preview.style.display = 'block';
             };
             reader.readAsDataURL(input.files[0]);
         }

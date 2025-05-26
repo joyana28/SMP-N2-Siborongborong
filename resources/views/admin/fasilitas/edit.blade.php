@@ -123,7 +123,7 @@
                 <div class="form-group">
                     <label for="perhatian_teknis">Perhatian Teknis</label>
                     <small class="form-text text-muted mb-2">
-                        Perhatian teknis merupakan kondisi jumlah fasilitas yang mengalami kerusakan dan memerlukan penanganan perbaikan segera (opsional).
+                        Perhatian teknis merupakan kondisi jumlah fasilitas yang mengalami kerusakan dan memerlukan perbaikan (opsional).
                     </small>
                     <input
                         type="text"
@@ -146,10 +146,9 @@
                         name="penambahan"
                         value="{{ old('penambahan', $fasilitas->penambahan) }}"
                     >
-                </div>
+                </div> <br>
 
                 <div class="form-group">
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                     <label for="foto">Foto Fasilitas</label>
                     <input
                         type="file"
@@ -162,8 +161,9 @@
                     @error('foto')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
-
-                    <div class="mt-3">
+                    <small class="form-text text-muted mb-2">
+                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                    </small>                    <div class="mt-3">
                         <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;" alt="Preview Foto Baru">
                     </div>
                 </div>

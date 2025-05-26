@@ -105,7 +105,7 @@
                 <div class="form-group">
                     <label for="perhatian_teknis">Perhatian Teknis</label>
                     <small class="form-text text-muted mb-2">
-                        Perhatian teknis merupakan kondisi jumlah fasilitas yang mengalami kerusakan dan memerlukan penanganan perbaikan segera (opsional).
+                        Perhatian teknis merupakan kondisi jumlah fasilitas yang mengalami kerusakan dan memerlukan perbaikan (opsional).
                     </small>
                     <input type="text" name="perhatian_teknis" id="perhatian_teknis" class="form-control @error('perhatian_teknis') is-invalid @enderror" value="{{ old('perhatian_teknis') }}">
                     @error('perhatian_teknis')
@@ -122,15 +122,15 @@
                     @error('penambahan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> <br>
 
                 <div class="form-group">
                     <label for="foto">Foto Fasilitas</label>
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                     <input type="file" name="foto" id="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror" onchange="previewImage()">
                     @error('foto')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                     <div class="mt-3">
                         <img id="preview" class="img-thumbnail d-none" alt="Preview Foto Fasilitas">
                     </div>

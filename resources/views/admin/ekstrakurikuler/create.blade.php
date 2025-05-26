@@ -93,7 +93,7 @@
                     <label for="jadwal">Jadwal</label>
                     <input type="text" name="jadwal" id="jadwal" class="form-control @error('jadwal') is-invalid @enderror" value="{{ old('jadwal') }}" required>
                     @error('jadwal') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div>
+                </div> <br>
 
                 <div class="form-group">
                     <label for="foto">Foto Ektrakurikuler</label>
@@ -101,6 +101,7 @@
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
+                    <small class="form-text text-muted">Format: JPG, JPEG, PNG. Maks 2MB.</small>
                 @if(isset($ektrakurikuler) && $ektrakurikuler->foto)
                         <div class="mt-2">
                         <img src="{{ asset('ektrakurikuler/' . $ektrakurikuler->foto) }}" alt="Foto Ektrakurikuler" width="200">

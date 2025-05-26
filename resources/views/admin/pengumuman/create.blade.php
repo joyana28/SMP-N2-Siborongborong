@@ -95,24 +95,23 @@
                     @error('tanggal_berakhir')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> <br>
 
                 <div class="form-group">
                     <label for="foto">Foto (opsional)</label>
-                    <small class="form-text text-muted mb-2">
-                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
-                    </small>
                     <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
-
+                    <small class="form-text text-muted mb-2">
+                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                    </small>
                     @if(isset($pengumuman) && $pengumuman->foto)
                         <div class="mt-2">
                             <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" width="200">
                         </div>
                     @endif
-                </div>
+                </div> <br>
 
                 <div class="form-group mb-3">
                     <label for="lampiran" class="form-label">Lampiran Dokumen (opsional)</label>
