@@ -36,7 +36,7 @@
         </li>
         <li class="nav-item mb-2">
             <a href="{{ route('admin.siswa.index') }}" class="nav-link {{ request()->routeIs('admin.siswa') ? 'active' : '' }}">
-                <i class="fas fa-user me-2"></i> Siswa
+                <i class="fas fa-user me-2"></i> Siswa dan Kelas
             </a>
         </li>
         <li class="nav-item mb-2">

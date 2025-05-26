@@ -14,10 +14,10 @@ return new class extends Migration
                   ->constrained('admin', 'id_admin')
                   ->onDelete('cascade');
             $table->string('nama', 100);
-            $table->string('nip', 50);
+            $table->unique('nip');
             $table->string('golongan', 50);
             $table->string('bidang', 100);
-            $table->string('no_telp', 15);
+            $table->integer('no_telp', 15);
             $table->string('foto', 100)->nullable();
             $table->timestamps();
         });

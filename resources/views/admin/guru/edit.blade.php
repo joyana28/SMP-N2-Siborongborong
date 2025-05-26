@@ -70,7 +70,7 @@
                 @csrf
                 @method('PUT')
 
-                @foreach (['nama' => 'Nama', 'nip' => 'NIP', 'golongan' => 'Golongan', 'bidang' => 'Bidang', 'no_telp' => 'No. Telepon'] as $field => $label)
+                @foreach (['nama' => 'Nama', 'nip' => 'NIP', 'bidang' => 'Bidang', 'no_telp' => 'No. Telepon'] as $field => $label)
                     <div class="form-group">
                         <label for="{{ $field }}">{{ $label }}{{ $field === 'nama' ? ' *' : '' }}</label>
                         <input type="text" name="{{ $field }}" id="{{ $field }}"
@@ -83,6 +83,22 @@
                 @endforeach
 
                 <div class="form-group">
+                    <label for="golongan">Golongan</label>
+                    <select name="golongan" id="golongan" class="form-control @error('golongan') is-invalid @enderror" required>
+                        <option value="">-- Pilih Golongan --</option>
+                        @php
+                            $golonganOptions = ['III/a', 'III/b', 'III/c', 'III/d', 'IV/a', 'IV/b', 'IV/c', 'IV/d', 'IV/e'];
+                        @endphp
+                        @foreach ($golonganOptions as $gol)
+                            <option value="{{ $gol }}" {{ old('golongan', $guru->golongan) == $gol ? 'selected' : '' }}>{{ $gol }}</option>
+                        @endforeach
+                    </select>
+                    @error('golongan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div><br>
+
+                <div class="form-group">
                     <label for="foto">Foto Guru</label>
                     <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
                     @error('foto') 
@@ -91,10 +107,6 @@
                     <small class="form-text">Format: JPG, JPEG, PNG. Maksimal 2MB.</small>
 
                     <div class="mt-3">
-                        @if ($guru->foto)
-                            <p class="mb-1">Foto saat ini:</p>
-                            <img src="{{ asset('guru/' . $guru->foto) }}" width="120" class="img-thumbnail mb-2" alt="Foto Guru">
-                        @endif
                         <img id="preview" class="img-thumbnail d-none">
                     </div>
                 </div>
