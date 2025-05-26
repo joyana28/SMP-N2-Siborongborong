@@ -439,6 +439,7 @@
     gap: 1.5rem;
     justify-content: center;
     padding: 0 1rem;
+    margin-bottom: 80px;
 }
 
 /* Individual Card */
@@ -449,11 +450,15 @@
     overflow: hidden;
     max-width: 300px;
     width: 100%;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15), 0 4px 8px rgba(0,0,0,0.08);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 .idcard-modern:hover {
-    transform: scale(1.03);
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.2), 0 6px 12px rgba(0,0,0,0.12);
 }
 
 /* Diagonal background style */
@@ -463,6 +468,11 @@
     padding: 1rem;
     position: relative;
     text-align: center;
+    transition: background 0.4s ease-in-out;
+}
+
+.idcard-modern:hover .idcard-bg-diagonal {
+    background: linear-gradient(135deg, #FFA500 60%, #002B5B 40%);
 }
 
 /* Logo & Tagline */
@@ -475,13 +485,25 @@
     margin: 0 auto 0.5rem;
     background-color: #fff;
     border-radius: 50%;
+    transition: transform 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-logo {
+    transform: rotate(360deg) scale(1.1);
 }
 .idcard-business {
     font-weight: bold;
     font-size: 1.1rem;
+    transition: color 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-business {
+    color: #eee;
 }
 .idcard-tagline {
     font-size: 0.9rem;
+    transition: color 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-tagline {
+    color: #eee;
 }
 
 /* Foto */
@@ -500,6 +522,11 @@
     max-height: 130px;
     border-radius: 8px;
     cursor: pointer;
+    transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-photo {
+    transform: scale(1.08);
+    filter: brightness(1.1);
 }
 .idcard-photo-placeholder {
     color: #888;
@@ -524,16 +551,30 @@
     font-weight: bold;
     font-size: 1.1rem;
     color: #002B5B;
+    transition: color 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-name {
+    color: #FFA500;
 }
 .idcard-role {
     font-size: 0.9rem;
     color: #FFA500;
+    transition: color 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-role {
+    color: #002B5B;
 }
 .idcard-divider {
     height: 2px;
     background-color: #002B5B;
     margin: 0.5rem 0;
     border-radius: 1px;
+    transition: background-color 0.4s ease-in-out, width 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-divider {
+    background-color: #FFA500;
+    width: 90%;
+    margin-left: 5%;
 }
 .idcard-meta {
     font-size: 0.9rem;
@@ -541,11 +582,20 @@
 }
 .idcard-deskripsi {
     margin-bottom: 0.5rem;
+    transition: color 0.4s ease-in-out;
+}
+.idcard-modern:hover .idcard-deskripsi {
+    color: #333;
 }
 .akademik-card-date {
     font-size: 0.85rem;
     color: #555;
     text-align: right;
+    transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+.idcard-modern:hover .akademik-card-date {
+    color: #333;
+    transform: translateX(5px);
 }
 
 /* Pagination */
