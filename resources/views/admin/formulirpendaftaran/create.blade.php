@@ -98,24 +98,25 @@
                 </div>
 
                 <div class="form-group mb-3">
-    <label for="formulir_pendaftaran" class="form-label">
-        <strong>Formulir Pendaftaran</strong> <small class="text-muted">(PDF, DOC, DOCX)</small>
-    </label>
-    <input
-        type="file"
-        name="formulir_pendaftaran"
-        id="formulir_pendaftaran"
-        class="form-control @error('formulir_pendaftaran') is-invalid @enderror"
-        accept=".pdf,.doc,.docx"
-    >
-    @error('formulir_pendaftaran')
-        <div class="invalid-feedback">{{ $message }}</div>
-    @enderror
-</div>
+                    <label for="formulir_pendaftaran" class="form-label">
+                        <strong>Formulir Pendaftaran</strong>
+                        <small class="form-text text-muted mb-2">
+                            Format yang diizinkan: PDF, DOC, DOCX, XLS, XLSX. Ukuran maksimal: 5MB.
+                        </small>
+                    </label>
+                    <input type="file" name="formulir_pendaftaran" id="formulir_pendaftaran"
+                        class="form-control @error('formulir_pendaftaran') is-invalid @enderror"
+                        accept=".pdf,.doc,.docx">
+                    @error('formulir_pendaftaran')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <div class="form-group">
                     <label for="tanggal_terbit">Tanggal Terbit</label>
-                    <input type="date" name="tanggal_terbit" id="tanggal_terbit" class="form-control @error('tanggal_terbit') is-invalid @enderror" value="{{ old('tanggal_terbit') }}">
+                    <input type="date" name="tanggal_terbit" id="tanggal_terbit"
+                        class="form-control @error('tanggal_terbit') is-invalid @enderror"
+                        value="{{ old('tanggal_terbit') }}">
                     @error('tanggal_terbit')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -123,7 +124,9 @@
 
                 <div class="form-group">
                     <label for="tanggal_berakhir">Tanggal Berakhir</label>
-                    <input type="date" name="tanggal_berakhir" id="tanggal_berakhir" class="form-control @error('tanggal_berakhir') is-invalid @enderror" value="{{ old('tanggal_berakhir') }}">
+                    <input type="date" name="tanggal_berakhir" id="tanggal_berakhir"
+                        class="form-control @error('tanggal_berakhir') is-invalid @enderror"
+                        value="{{ old('tanggal_berakhir') }}">
                     @error('tanggal_berakhir')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -137,5 +140,4 @@
         </div>
     </div>
 </div>
-
 @endsection

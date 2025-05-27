@@ -41,10 +41,6 @@
     .invalid-feedback {
         font-size: 0.875rem;
     }
-
-    .alert-danger {
-        color: red;
-    }
 </style>
 
 <div class="container mt-5">
@@ -67,50 +63,60 @@
 
                 <div class="form-group">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ old('nama') }}">
-                    @error('nama') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" required>
+                    @error('nama')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="nip">NIP</label>
-                    <input type="text" class="form-control @error('nip') is-invalid @enderror" id="nip" name="nip" value="{{ old('nip') }}">
-                @error('nip')
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                    <input type="text" name="nip" id="nip" class="form-control @error('nip') is-invalid @enderror" value="{{ old('nip') }}" required>
+                    @error('nip')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="golongan">Golongan</label>
-                        <select class="form-control @error('golongan') is-invalid @enderror" id="golongan" name="golongan">
+                    <select name="golongan" id="golongan" class="form-control @error('golongan') is-invalid @enderror" required>
                         <option value="">-- Pilih Golongan --</option>
-                    @foreach(['III/a', 'III/b', 'III/c', 'III/d', 'IV/a', 'IV/b', 'IV/c', 'IV/d', 'IV/e'] as $golongan)
-                        <option value="{{ $golongan }}" {{ old('golongan') == $golongan ? 'selected' : '' }}>{{ $golongan }}</option>
-                    @endforeach
+                        @foreach(['III/a', 'III/b', 'III/c', 'III/d', 'IV/a', 'IV/b', 'IV/c', 'IV/d', 'IV/e'] as $golongan)
+                            <option value="{{ $golongan }}" {{ old('golongan') == $golongan ? 'selected' : '' }}>{{ $golongan }}</option>
+                        @endforeach
                     </select>
-                        @error('golongan') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    @error('golongan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label for="periode">Periode</label>
-                    <input type="text" class="form-control @error('periode') is-invalid @enderror" id="periode" name="periode" value="{{ old('periode') }}">
-                    @error('periode') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                </div> <br>
+                    <input type="text" name="periode" id="periode" class="form-control @error('periode') is-invalid @enderror" value="{{ old('periode') }}" required>
+                    @error('periode')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <div class="form-group">
                     <label for="foto">Foto Kepala Sekolah</label>
-                    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
+                    <input type="file" name="foto" id="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror" onchange="previewImage()">
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                     <small class="form-text text-muted mb-2">
                         Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
-                    </small>  
-                @if(isset($kepalaSekolah) && $kepalaSekolah->foto)
+                    </small>
+
+                    @if(isset($kepalaSekolah) && $kepalaSekolah->foto)
                         <div class="mt-2">
-                        <img src="{{ asset('kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto Kepala Sekolah" width="200">
+                            <img src="{{ asset('kepala_sekolah/' . $kepalaSekolah->foto) }}" alt="Foto Kepala Sekolah" width="200">
                         </div>
-                @endif
+                    @endif
+
+                    <img id="preview" src="#" alt="Preview Foto" class="d-none mt-2" style="max-height: 200px;" />
                 </div>
+
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Simpan</button>
                     <a href="{{ route('admin.kepala_sekolah.index') }}" class="btn btn-secondary-custom ml-2">Kembali</a>
@@ -120,3 +126,23 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function previewImage() {
+        const input = document.getElementById('foto');
+        const preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none');
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.classList.add('d-none');
+        }
+    }
+</script>
+@endpush

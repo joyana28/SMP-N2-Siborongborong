@@ -79,19 +79,48 @@
 
                 <div class="form-group">
                     <label for="golongan">Golongan</label>
-                    <input type="text" name="golongan" class="form-control @error('golongan') is-invalid @enderror" value="{{ old('golongan') }}" required>
+                    <select name="golongan" id="golongan" class="form-control @error('golongan') is-invalid @enderror" required>
+                        <option value="">-- Pilih Golongan --</option>
+                        @php
+                            $golonganOptions = ['III/a', 'III/b', 'III/c', 'III/d', 'IV/a', 'IV/b', 'IV/c', 'IV/d', 'IV/e'];
+                        @endphp
+                        @foreach ($golonganOptions as $gol)
+                            <option value="{{ $gol }}" {{ old('golongan') == $gol ? 'selected' : '' }}>{{ $gol }}</option>
+                        @endforeach
+                    </select>
                     @error('golongan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <label for="bidang">Bidang</label>
-                    <input type="text" name="bidang" class="form-control @error('bidang') is-invalid @enderror" value="{{ old('bidang') }}" required>
-                    @error('bidang')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+<div class="form-group">
+    <label for="bidang">Bidang</label>
+    @php
+        $bidangOptions = [
+            'Agama',
+            'PKN',
+            'Bahasa Indonesia',
+            'Matematika',
+            'IPA',
+            'IPS',
+            'Bahasa Inggris',
+            'Seni Budaya',
+            'Prakarya',
+            'TIK',
+            'Bahasa Daerah'
+        ];
+    @endphp
+    <select name="bidang" id="bidang" class="form-control @error('bidang') is-invalid @enderror" required>
+        <option value="">-- Pilih Bidang --</option>
+        @foreach ($bidangOptions as $bidang)
+            <option value="{{ $bidang }}" {{ old('bidang') == $bidang ? 'selected' : '' }}>{{ $bidang }}</option>
+        @endforeach
+    </select>
+    @error('bidang')
+        <div class="invalid-feedback">{{ $message }}</div>
+    @enderror
+</div>
+
 
                 <div class="form-group">
                     <label for="no_telp">Nomor Telepon</label>
@@ -101,16 +130,17 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <label for="foto">Foto Guru</label>
-                    <input type="file" name="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror">
+                    <input type="file" name="foto" id="foto" accept="image/*" class="form-control-file @error('foto') is-invalid @enderror" onchange="previewImage()">
                     @error('foto') 
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
+                    <small class="form-text text-muted mb-2">
+                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                    </small> 
+                    <img id="preview" src="#" alt="Preview Foto" class="d-none mt-2" style="max-height: 200px;" />
                 </div>
-
-        
-
 
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary-custom">Simpan</button>
@@ -121,3 +151,23 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function previewImage() {
+        const input = document.getElementById('foto');
+        const preview = document.getElementById('preview');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none');
+            };
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.classList.add('d-none');
+        }
+    }
+</script>
+@endpush

@@ -74,33 +74,30 @@
 
                 <div class="form-group">
                     <label for="tahun_lulus">Tahun Lulus</label>
-                    <input type="number" name="tahun_lulus" id="tahun_lulus" class="form-control @error('tahun_lulus') is-invalid @enderror" value="{{ old('tahun_lulus', $alumni->tahun_lulus) }}">
+                    <input type="text" name="tahun_lulus" id="tahun_lulus" class="form-control @error('tahun_lulus') is-invalid @enderror" value="{{ old('tahun_lulus', $alumni->tahun_lulus) }}" autocomplete="off">
                     @error('tahun_lulus')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
                 <div class="form-group">
                     <label for="deskripsi">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" rows="4" class="form-control @error('deskripsi') is-invalid @enderror">{{ old('deskripsi', $alumni->deskripsi) }}</textarea>
                     @error('deskripsi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
+                </div> <br>
+
                 <div class="form-group">
                     <label for="foto">Foto Alumni</label>
                     <input type="file" name="foto" id="foto" class="form-control-file @error('foto') is-invalid @enderror" accept="image/*" onchange="previewImage()">
                     @error('foto')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
-                    <small class="form-text text-muted">Format: JPG, JPEG, PNG, GIF. Maks 2MB.</small>
-
-                    <div class="mt-3">
-                        @if($alumni->foto)
-                            <p>Foto saat ini:</p>
-                            <img src="{{ asset('alumni/'.$alumni->foto) }}" alt="{{ $alumni->nama }}" class="img-thumbnail mb-2" style="max-height: 200px;">
-                        @endif
-                        <img id="preview" class="img-thumbnail d-none" style="max-height: 200px;">
-                    </div>
+                    <small class="form-text text-muted mb-2">
+                        Format yang diizinkan: jpeg, jpg, png, gif. Ukuran maksimal: 2MB.
+                    </small> 
+                    <img id="preview" class="img-thumbnail d-none mt-2" style="max-height: 200px;">
                 </div>
 
                 <div class="text-right mt-4">
@@ -113,8 +110,25 @@
 </div>
 @endsection
 
+@push('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+@endpush
+
 @push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 <script>
+    $(document).ready(function () {
+        $('#tahun_lulus').datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years",
+            autoclose: true,
+            startDate: new Date(1980, 0, 1),
+            endDate: new Date()
+        });
+    });
+
     function previewImage() {
         const input = document.getElementById('foto');
         const preview = document.getElementById('preview');
