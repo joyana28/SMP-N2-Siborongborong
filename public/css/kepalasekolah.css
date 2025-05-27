@@ -998,3 +998,19 @@
         border-radius: 0 18px 18px 0;
     }
 }
+
+/* Custom styles for admin form buttons in kepalasekolah create page */
+.card-body .btn,
+form .btn {
+    color: #fff !important; /* Mengubah warna teks tombol menjadi putih di dalam form atau card body */
+}
+
+.card-body .btn-primary,
+form .btn-primary {
+    color: #fff !important; /* Mengubah warna teks tombol primary menjadi putih di dalam form atau card body */
+}
+
+.card-body .btn-secondary,
+form .btn-secondary {
+    color: #fff !important; /* Mengubah warna teks tombol secondary menjadi putih di dalam form atau card body */
+}

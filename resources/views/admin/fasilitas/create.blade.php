@@ -17,6 +17,7 @@
     .btn-primary-custom {
         background-color: #0d47a1;
         border: none;
+        color: #fff !important;
     }
 
     .btn-primary-custom:hover {
@@ -27,6 +28,7 @@
     .btn-secondary-custom {
         background-color: #b0bec5;
         border: none;
+        color: #fff !important;
     }
 
     .btn-secondary-custom:hover {

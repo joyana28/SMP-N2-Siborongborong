@@ -1,6 +1,62 @@
 @extends('layouts.backend.app')
 
 @section('content')
+<style>
+    /* Custom styles for admin form buttons in siswa create page */
+    .btn-primary-custom {
+        background-color: #0d47a1; /* Example background, adjust if needed */
+        border: none;
+        color: #fff !important; /* Mengubah warna teks tombol menjadi putih */
+    }
+
+    .btn-primary-custom:hover {
+        background-color: #08306b; /* Darker hover color */
+        border-color: #08306b;
+    }
+
+    .btn-secondary-custom {
+        background-color: #b0bec5; /* Example background, adjust if needed */
+        border: none;
+        color: #fff !important; /* Mengubah warna teks tombol menjadi putih */
+    }
+
+    .btn-secondary-custom:hover {
+        background-color: #90a4ae; /* Darker hover color */
+    }
+    
+    /* Add other styles from the original <style> block if they exist and are needed */
+    body {
+        background-color: #f4f6f8;
+    }
+
+    .container {
+        margin-top: 4rem; /* Adjust as needed */
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem !important; /* Adjust spacing */
+    }
+
+    .alert-danger {
+        color: red;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #0d47a1;
+    }
+
+    .form-control:focus {
+        border-color: #0d47a1;
+        box-shadow: 0 0 0 0.2rem rgba(13,71,161,.25);
+    }
+
+    .invalid-feedback {
+        font-size: 0.875rem;
+    }
+
+</style>
+
 <div class="container mt-4">
     <h1 class="mb-4">Tambah Data Kelas</h1>
 
@@ -76,8 +132,8 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3">Simpan</button>
-        <a href="{{ route('admin.siswa.index') }}" class="btn btn-secondary mt-3">Kembali</a>
+        <button type="submit" class="btn btn-primary-custom mt-3">Simpan</button>
+        <a href="{{ route('admin.siswa.index') }}" class="btn btn-secondary-custom mt-3">Kembali</a>
     </form>
 </div>
 
