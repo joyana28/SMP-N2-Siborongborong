@@ -2821,7 +2821,7 @@ body {
   }
 }
 
-// Custom styles for admin form buttons in fasilitas create page
+
 .card-body .btn,
 form .btn {
     color: #fff !important; /* Mengubah warna teks tombol menjadi putih di dalam form atau card body */

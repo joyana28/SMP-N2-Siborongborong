@@ -773,10 +773,10 @@
   z-index: 2;
   background: linear-gradient(120deg, #1a56a7 60%, #14386a 100%);
   box-shadow: 0 8px 32px #1a56a7aa;
-  padding: 0;
+  padding: 20px;
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: center;
   transition: filter 0.5s;
 }
 .alumni-swap-card-shape-left {
@@ -840,9 +840,9 @@
   justify-content: center;
 }
 .alumni-swap-card-nama {
-  margin-left: 140px;
-  align-self: flex-start;
-  margin-top: 38px;
+  margin-left: 0;
+  margin-top: 10px;
+  align-self: center;
   font-size: 1.35rem;
   font-weight: 800;
   color: #fff;
@@ -850,6 +850,11 @@
   text-shadow: 0 2px 8px #1a56a7cc;
   font-family: 'Montserrat', Arial, sans-serif;
   z-index: 5;
+  text-align: center;
+  line-height: 1.3;
+  min-height: 2.2em;
+  overflow: visible;
+  word-break: break-word;
 }
 .alumni-swap-card-back {
   background: #fff;
@@ -911,9 +916,10 @@
   transform: scale(0.98);
 }
 @media (max-width: 600px) {
-  .alumni-swap-card { width: 98vw; height: 180px; }
-  .alumni-swap-card-photo-area { width: 70px; }
-  .alumni-swap-card-nama { margin-left: 90px; font-size: 1rem; margin-top: 18px; }
+  .alumni-swap-card { width: 98vw; height: 180px; padding: 10px 0; }
+  .alumni-swap-card-photo-area { width: 60px; height: 60px; }
+  .alumni-swap-photo, .alumni-swap-no-photo { width: 100%; height: 100%; }
+  .alumni-swap-card-nama { margin-left: 0; margin-top: 8px; font-size: 1rem; text-align: center; }
   .alumni-swap-card-brand { left: 8px; top: 8px; }
   .alumni-swap-card-back-content { padding: 0 2px; }
 }
