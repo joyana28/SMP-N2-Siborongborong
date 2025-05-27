@@ -9,61 +9,46 @@
 @section('content')
 
 <!-- Hero Section -->
-<section class="fasilitas-hero-section">
-    <div class="fasilitas-hero-text">
-        <h1 class="fasilitas-title">Pengumuman Sekolah</h1>
-        <p class="fasilitas-description">Temukan informasi dan pengumuman terbaru dari SMP Negeri 2 Siborongborong.</p>
+<section class="pengumuman-hero-section">
+    <div class="pengumuman-hero-text">
+        <h1 class="pengumuman-title">Pengumuman Sekolah</h1>
+        <p class="pengumuman-description">Temukan informasi dan pengumuman terbaru dari SMP Negeri 2 Siborongborong.</p>
     </div>
 </section>
 
 <!-- Detail Pengumuman -->
 <section class="pengumuman-detail-section">
-    <div class="pengumuman-detail-container">
-
-        <h2 class="pengumuman-detail-title">{{ $pengumuman->judul }}</h2>
-        <p class="pengumuman-detail-date">
-            Diterbitkan pada {{ \Carbon\Carbon::parse($pengumuman->tanggal_terbit)->translatedFormat('d F Y') }}
-        </p>
-
-        @if ($pengumuman->foto)
-            <div class="pengumuman-detail-image">
-                <img 
-                    src="{{ asset('pengumuman/' . $pengumuman->foto) }}" 
-                    alt="Foto Pengumuman" 
-                    class="pengumuman-detail-img"
-                    style="max-width: 600px; max-height: 350px; object-fit: cover;">
-            </div>
-        @endif
-
-        <div class="pengumuman-lampiran-wrapper">
-            <h5 class="pengumuman-lampiran-title">📎 Lampiran Dokumen</h5>
-            @if ($pengumuman->lampiran)
-                <div class="pengumuman-lampiran-card">
-                    <div class="lampiran-icon-area">
-                        <i class="bi bi-file-earmark-text-fill"></i>
+    <div class="pengumuman-flip-card">
+        <div class="pengumuman-flip-inner">
+            <!-- FRONT SIDE -->
+            <div class="pengumuman-flip-front">
+                <div class="pengumuman-front-content">
+                    <div class="pengumuman-front-header">
+                        <div class="pengumuman-front-judul">{{ $pengumuman->judul }}</div>
                     </div>
-                    <div class="lampiran-content-area">
-                        <p class="lampiran-nama">{{ $pengumuman->lampiran }}</p>
-                        <a href="{{ asset('pengumuman/lampiran/' . $pengumuman->lampiran) }}" 
-                           class="lampiran-btn" 
-                           target="_blank">
-                            Unduh Lampiran
-                        </a>
+                    @if ($pengumuman->foto)
+                    <div class="pengumuman-front-image">
+                        <img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" class="pengumuman-front-img">
                     </div>
+                    @endif
                 </div>
-            @else
-                <p class="pengumuman-lampiran-empty">Tidak ada lampiran tersedia untuk pengumuman ini.</p>
-            @endif
+            </div>
+            <!-- BACK SIDE -->
+            <div class="pengumuman-flip-back">
+                <div class="pengumuman-back-content">
+                    <div class="pengumuman-back-title">Detail Pengumuman</div>
+                    <div class="pengumuman-back-info"><b>Isi:</b> {!! nl2br(e($pengumuman->isi)) !!}</div>
+                    <div class="pengumuman-back-info"><b>Tanggal Terbit:</b> {{ \Carbon\Carbon::parse($pengumuman->tanggal_terbit)->translatedFormat('d F Y') }}</div>
+                    <div class="pengumuman-back-info"><b>Tanggal Berakhir:</b> {{ $pengumuman->tanggal_berakhir ? \Carbon\Carbon::parse($pengumuman->tanggal_berakhir)->translatedFormat('d F Y') : '-' }}</div>
+                    @if ($pengumuman->foto)
+                    <div class="pengumuman-back-info"><b>Foto:</b><br><img src="{{ asset('pengumuman/' . $pengumuman->foto) }}" alt="Foto Pengumuman" class="pengumuman-back-img"></div>
+                    @endif
+                    @if ($pengumuman->lampiran)
+                    <div class="pengumuman-back-info"><b>Lampiran:</b> <a href="{{ asset('pengumuman/lampiran/' . $pengumuman->lampiran) }}" target="_blank" class="pengumuman-back-lampiran">{{ $pengumuman->lampiran }}</a></div>
+                    @endif
+                </div>
+            </div>
         </div>
-
-        <div class="pengumuman-detail-content">
-            {!! nl2br(e($pengumuman->isi)) !!}
-        </div>
-
-        <a href="{{ url()->previous() }}" class="pengumuman-back-btn">
-            Kembali
-        </a>
-
     </div>
 </section>
 
