@@ -2999,3 +2999,43 @@ form .btn-secondary {
     padding: 16px 10px 16px 0;
   }
 }
+
+.fasilitas-business-card {
+  /* ... existing code ... */
+  height: 380px;
+}
+.fasilitas-business-back-content {
+  /* ... existing code ... */
+  max-height: 320px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f3b11f #eee;
+}
+.fasilitas-business-back-content::-webkit-scrollbar {
+  width: 8px;
+}
+.fasilitas-business-back-content::-webkit-scrollbar-thumb {
+  background: #f3b11f;
+  border-radius: 6px;
+}
+.fasilitas-business-imgbox {
+  /* ... existing code ... */
+  top: 40px;
+  left: 32px;
+  width: 160px;
+  height: 160px;
+}
+@media (max-width: 700px) {
+  .fasilitas-business-card {
+    height: 260px;
+  }
+  .fasilitas-business-imgbox {
+    width: 100px;
+    height: 100px;
+    top: 16px;
+    left: 10px;
+  }
+  .fasilitas-business-back-content {
+    max-height: 180px;
+  }
+}
