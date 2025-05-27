@@ -56,8 +56,7 @@
 </style>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-primary">Edit Data Alumni</h2>
-
+<h2 class="mb-4" style="color: #001f3f">Edit Data Alumni</h2>
     <div class="card card-custom">
         <div class="card-body">
             <form action="{{ route('admin.alumni.update', $alumni->id_alumni) }}" method="POST" enctype="multipart/form-data">
@@ -86,6 +85,9 @@
                     @error('deskripsi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                    <small class="form-text text-muted mb-2">
+                        Maksimal isi dari deskripsi adalah 150 karakter.
+                    </small>
                 </div> <br>
 
                 <div class="form-group">
@@ -101,7 +103,7 @@
                 </div>
 
                 <div class="text-right mt-4">
-                    <button type="submit" class="btn btn-primary-custom">Perbarui</button>
+                <button type="submit" class="btn" style="background-color: #001f3f; color: white; border-color: #001f3f;">Perbarui</button>
                     <a href="{{ route('admin.alumni.index') }}" class="btn btn-warning-custom ml-2">Batal</a>
                 </div>
             </form>

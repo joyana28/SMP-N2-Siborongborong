@@ -24,7 +24,7 @@ class AlumniController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'tahun_lulus' => 'required|integer',
-            'deskripsi' => 'nullable|string',
+            'deskripsi' => 'nullable|string|max:150',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -72,7 +72,7 @@ class AlumniController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'tahun_lulus' => 'required|integer',
-            'deskripsi' => 'nullable|string',
+            'deskripsi' => 'nullable|string|max:150',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 

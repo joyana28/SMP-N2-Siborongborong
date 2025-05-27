@@ -87,7 +87,7 @@
                       </div>
                       <div class="alumni-swap-card-back-desc">
                         <i class="fas fa-quote-left"></i> <b>Deskripsi Alumni</b>
-                        <p class="scrollable-description">{{ $a->deskripsi ?: 'Deskripsi tidak tersedia.' }}</p>
+                          <p class="alumni-deskripsi-full">{{ $a->deskripsi ?: 'Deskripsi tidak tersedia.' }}</p>
                       </div>
                     </div>
                   </div>
