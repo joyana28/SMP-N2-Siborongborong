@@ -57,7 +57,7 @@
 </style>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-primary">Edit Ekstrakurikuler</h2>
+    <h2 class="mb-4 style="color: #001f3f>Edit Ekstrakurikuler</h2>
 
     @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="text-right mt-4">
-                    <button type="submit" class="btn btn-primary-custom">Perbarui</button>
+                <button type="submit" class="btn" style="background-color: #001f3f; color: white; border-color: #001f3f;">Perbarui</button>
                     <a href="{{ route('admin.ekstrakurikuler.index') }}" class="btn btn-warning-custom ml-2">Batal</a>
                 </div>
             </form>
