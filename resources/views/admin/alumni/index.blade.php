@@ -46,7 +46,7 @@
                                 </td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->tahun_lulus ?? '-' }}</td>
-                                <td>{{ $item->deskripsi ? \Illuminate\Support\Str::limit($item->deskripsi, 60) : '-' }}</td>
+                                <td style="text-align: justify;">{{ $item->deskripsi }}</td>
                                 <td>
                                     <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm mb-2 w-100">
                                      Edit

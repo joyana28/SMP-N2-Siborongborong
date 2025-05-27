@@ -14,7 +14,7 @@
         <tr>
             <th>No</th>
             <th>Nama Prestasi</th>
-            <th>Deskripsi</th>
+            <th style="text-align: justify;">Deskripsi</th>
             <th>Jenis</th>
             <th>Tanggal</th>
             <th>Foto</th>
@@ -26,7 +26,7 @@
             <tr>
                 <td>{{ $prestasi->firstItem() + $key }}</td>
                 <td>{{ $item->nama }}</td>
-                <td>{{ $item->deskripsi ?? '-' }}</td>
+                <td style="text-align: justify;">{{ $item->deskripsi ?? '-' }}</td>
                 <td>{{ ucfirst($item->jenis) }}</td>
                 <td>{{ $item->tanggal }}</td>
                 <td>

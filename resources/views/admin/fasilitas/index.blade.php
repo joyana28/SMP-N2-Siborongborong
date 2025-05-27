@@ -33,7 +33,7 @@
                     <tr>
                         <td>{{ $fasilitas->firstItem() + $index }}</td>
                         <td>{{ $item->nama }}</td>
-                        <td>{{ Str::limit($item->deskripsi, 50) }}</td>
+                        <td style="text-align: justify;">{{ $item->deskripsi }}</td>
                         <td>
                         @if($item->foto)
                             <img src="{{ asset('fasilitas/' . $item->foto) }}" width="100" alt="Foto fasilitas">

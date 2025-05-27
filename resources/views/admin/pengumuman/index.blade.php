@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>Judul</th>
-                <th>Isi</th>
+                <th style="text-align: justify;">Isi</th>
                 <th>Tanggal Terbit</th>
                 <th>Tanggal Berakhir</th>
                 <th>Foto</th>
@@ -27,7 +27,7 @@
             @foreach ($pengumuman as $item)
                 <tr>
                     <td>{{ $item->judul }}</td>
-                    <td>{{ Str::limit(strip_tags($item->isi), 50) }}</td>
+                    <td style="text-align: justify;">{{ strip_tags($item->isi) }}</td>
                     <td>{{ $item->tanggal_terbit }}</td>
                     <td>{{ $item->tanggal_berakhir }}</td>
                     <td>

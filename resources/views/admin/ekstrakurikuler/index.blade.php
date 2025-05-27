@@ -33,7 +33,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $ekstra->nama }}</td>
-                <td>{{ $ekstra->deskripsi }}</td>
+                <td style="text-align: justify;">{{ $ekstra->deskripsi }}</td>
                 <td>{{ $ekstra->pembina }}</td>
                 <td>{{ $ekstra->jadwal }}</td>
                         <td>

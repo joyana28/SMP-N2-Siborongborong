@@ -23,16 +23,16 @@
         <tbody>
             @foreach ($formulir as $item)
                 <tr>
-                    <td>{{ $item->deskripsi }}</td>
-<td>
-    @if ($item->formulir_pendaftaran)
-        <a href="{{ asset('formulirpendaftaran/' . $item->formulir_pendaftaran) }}" target="_blank">
-            {{ $item->formulir_pendaftaran }}
-        </a>
-    @else
-        <em class="text-muted">Tidak ada file</em>
-    @endif
-</td>
+                    <td style="text-align: justify;">{{ $item->deskripsi }}</td>
+                    <td>
+                        @if ($item->formulir_pendaftaran)
+                            <a href="{{ asset('formulirpendaftaran/' . $item->formulir_pendaftaran) }}" target="_blank">
+                                {{ $item->formulir_pendaftaran }}
+                            </a>
+                        @else
+                            <em class="text-muted">Tidak ada file</em>
+                        @endif
+                    </td>
                     <td>{{ $item->tanggal_terbit }}</td>
                     <td>{{ $item->tanggal_berakhir }}</td>
                     <td>
