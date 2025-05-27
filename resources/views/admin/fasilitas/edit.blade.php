@@ -62,7 +62,7 @@
 </style>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-primary">Edit Data Fasilitas</h2>
+    <h2 class="mb-4 style="color: #001f3f>Edit Data Fasilitas</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -170,7 +170,7 @@
                 </div>
 
                 <div class="text-right mt-4">
-                    <button type="submit" class="btn btn-primary-custom">Perbarui</button>
+                <button type="submit" class="btn" style="background-color: #001f3f; color: white; border-color: #001f3f;">Perbarui</button>
                     <a href="{{ route('admin.fasilitas.index') }}" class="btn btn-warning-custom ml-2">Batal</a>
                 </div>
             </form>
