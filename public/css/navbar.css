@@ -61,7 +61,7 @@
     padding: 12px 0;
     list-style: none;
     margin: 0;
-    box-shadow: 0 6px 18px rgba(7, 4, 69, 0.15);
+    box-shadow: 0 6px 18px rgba(219, 219, 225, 0.15);
     min-width: 200px;
     border-radius: 10px;
     animation: fadeIn 0.3s ease-in-out;
@@ -128,7 +128,7 @@
         top: 70px;
         left: 0;
         width: 100%;
-        background-color: #E8AA42;
+        background-color: #070445;
         padding: 20px 0;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     }
@@ -149,7 +149,7 @@
     }
 
     .nav-link:hover {
-        color: #070445;
+        color: #f8f8f8;
     }
 
     .dropdown-menu {
@@ -165,7 +165,7 @@
     }
 
     .dropdown-menu a:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color:  #ffc107;
         color: #070445;
     }
     .nav-link.active {
