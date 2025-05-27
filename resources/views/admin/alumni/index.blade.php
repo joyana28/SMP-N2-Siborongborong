@@ -48,15 +48,14 @@
                                 <td>{{ $item->tahun_lulus ?? '-' }}</td>
                                 <td style="text-align: justify;">{{ $item->deskripsi }}</td>
                                 <td>
-                                    <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm mb-2 w-100">
-                                     Edit
-                                    </a>
-                                    <form action="{{ route('admin.alumni.destroy', $item->id_alumni) }}" method="POST" class="form-hapus w-100">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                    </form>
-                                </td>
+                           <a href="{{ route('admin.alumni.edit', $item->id_alumni) }}" class="btn btn-warning btn-sm mb-2 w-100"> Edit
+                           </a>
+                            <form action="{{ route('admin.alumni.destroy', $item->id_alumni) }}" method="POST" class="form-hapus w-100">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm w-100">Hapus</button>
+                            </form>
+                          </td>
                             </tr>
                         @empty
                             <tr>

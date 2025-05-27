@@ -49,7 +49,7 @@
                         <form action="{{ route('admin.pengumuman.destroy', $item->id_pengumuman) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <button class="btn btn-sm btn-danger mb-2 w-100">Hapus</button>
                         </form>
                     </td>
                 </tr>

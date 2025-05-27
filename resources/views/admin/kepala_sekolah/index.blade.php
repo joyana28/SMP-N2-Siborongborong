@@ -46,7 +46,7 @@
                         <form action="{{ route('admin.kepala_sekolah.destroy', $ks->id_kepsek) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                            <button type="submit" class="btn btn-danger btn-sm mb-2 w-100">Hapus</button>
                         </form>
                     </td>
                 </tr>
