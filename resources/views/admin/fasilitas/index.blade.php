@@ -45,16 +45,16 @@
                         <td>{{ $item->perhatian_teknis ?? '-' }}</td>
                         <td>{{ $item->penambahan ?? '-' }}</td>
                         <td>
-                        <a href="{{ route('admin.fasilitas.edit', $item->id_fasilitas) }}" class="btn btn-warning btn-sm">
-                                       Edit
-                                    </a>
-                                    <form action="{{ route('admin.fasilitas.destroy', $item->id_fasilitas) }}" method="POST" class="d-inline form-hapus">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm">
-                                             Hapus
-                                        </button>
-                                    </form>
+                            <a href="{{ route('admin.fasilitas.edit', $item->id_fasilitas) }}" class="btn btn-warning btn-sm mb-2 w-100">
+                               Edit
+                            </a>
+                            <form action="{{ route('admin.fasilitas.destroy', $item->id_fasilitas) }}" method="POST" class="form-hapus w-100">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                     Hapus
+                                </button>
+                            </form>
                         </td>
                     </tr>
                 @empty

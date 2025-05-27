@@ -42,9 +42,10 @@
                         @else
                         -
                         @endif
+                </td>
                 <td>
-                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="d-inline form-hapus">
+                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm mb-2 w-100">Edit</a>
+                    <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="form-hapus w-100">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

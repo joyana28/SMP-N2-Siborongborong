@@ -88,8 +88,8 @@
                     <td>{{ $item->bidang }}</td>
                     <td>{{ $item->no_telp }}</td>
                     <td>
-                        <a href="{{ route('admin.guru.edit', $item->id_guru) }}" class="btn btn-sm btn-edit mb-1">Edit</a>
-                        <form action="{{ route('admin.guru.destroy', $item->id_guru) }}" method="POST" class="d-inline form-hapus">
+                        <a href="{{ route('admin.guru.edit', $item->id_guru) }}" class="btn btn-sm btn-edit mb-1 w-100">Edit</a>
+                        <form action="{{ route('admin.guru.destroy', $item->id_guru) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-delete">Hapus</button>

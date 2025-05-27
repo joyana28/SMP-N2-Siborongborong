@@ -37,8 +37,8 @@
                     @endif
                 </td>
                 <td>
-                    <a href="{{ route('admin.prestasi.edit', $item->id_prestasi) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('admin.prestasi.destroy', $item->id_prestasi) }}" method="POST" class="form-hapus d-inline">
+                    <a href="{{ route('admin.prestasi.edit', $item->id_prestasi) }}" class="btn btn-warning btn-sm mb-2 w-100">Edit</a>
+                    <form action="{{ route('admin.prestasi.destroy', $item->id_prestasi) }}" method="POST" class="form-hapus w-100">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger btn-sm">Hapus</button>

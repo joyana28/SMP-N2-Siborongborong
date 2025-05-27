@@ -42,8 +42,8 @@
                         @endif
                     </td>
                     <td>
-                        <a href="{{ route('admin.kepala_sekolah.edit', $ks->id_kepsek) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('admin.kepala_sekolah.destroy', $ks->id_kepsek) }}" method="POST" class="form-hapus" style="display:inline;">
+                        <a href="{{ route('admin.kepala_sekolah.edit', $ks->id_kepsek) }}" class="btn btn-warning btn-sm mb-2 w-100">Edit</a>
+                        <form action="{{ route('admin.kepala_sekolah.destroy', $ks->id_kepsek) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

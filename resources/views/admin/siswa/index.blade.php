@@ -33,9 +33,8 @@
                     <td>{{ $s->tahun }}</td>
                     <td>{{ $s->wali_kelas ?? '-' }}</td>
                     <td>
-                        <a href="{{ route('admin.siswa.edit', $s->id_siswa) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <!-- Perbaiki form dengan menambahkan class 'form-hapus' -->
-                        <form action="{{ route('admin.siswa.destroy', $s->id_siswa) }}" method="POST" class="form-hapus d-inline">
+                        <a href="{{ route('admin.siswa.edit', $s->id_siswa) }}" class="btn btn-sm btn-warning mb-2 w-100">Edit</a>
+                        <form action="{{ route('admin.siswa.destroy', $s->id_siswa) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
