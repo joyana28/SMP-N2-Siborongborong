@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ asset('css/pengumuman-blog.css') }}">
+
 <section class="blog-section">
     <div class="container">
         <div class="section-title">
@@ -5,7 +7,7 @@
         </div>
         <div class="blog-grid">
             @foreach ($pengumuman as $item)
-            @foreach ($pengumuman as $item)
+        
     <div class="blog-card">
         <div class="blog-image">
             <img src="{{ asset('pengumuman/' . $item->foto) }}" alt="Blog" style="object-fit: cover;">

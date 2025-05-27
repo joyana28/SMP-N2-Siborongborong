@@ -115,5 +115,6 @@
     </div>
 </section>
 
- 
+<link rel="stylesheet" href="{{ asset('css/pengumuman-blog.css') }}">
+
 @endsection
