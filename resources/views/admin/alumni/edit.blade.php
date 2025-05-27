@@ -86,6 +86,9 @@
                     @error('deskripsi')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
+                    <small class="form-text text-muted mb-2">
+                        Maksimal isi dari deskripsi adalah 150 karakter.
+                    </small>
                 </div> <br>
 
                 <div class="form-group">

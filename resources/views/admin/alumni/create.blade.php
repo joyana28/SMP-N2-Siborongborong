@@ -91,6 +91,9 @@
                     <label for="deskripsi">Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4">{{ old('deskripsi') }}</textarea>
                     @error('deskripsi') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    <small class="form-text text-muted mb-2">
+                        Maksimal isi dari deskripsi adalah 150 karakter.
+                    </small> 
                 </div><br>
 
                 <div class="form-group">
