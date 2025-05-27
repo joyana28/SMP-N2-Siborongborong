@@ -78,32 +78,25 @@
     @if ($fasilitas->count())
         <div class="fasilitas-card-row">
             @foreach ($fasilitas as $item)
-                <div class="fasilitas-flip-card">
-                    <div class="fasilitas-flip-inner">
+                <div class="fasilitas-business-card">
+                    <div class="fasilitas-business-inner">
                         <!-- FRONT SIDE -->
-                        <div class="fasilitas-flip-front">
-                            <div class="fasilitas-front-content">
-                                <div class="fasilitas-front-left">
-                                    <div class="fasilitas-nama">{{ $item->nama }}</div>
-                                </div>
-                                <div class="fasilitas-front-right">
-                                    <img src="{{ asset('fasilitas/' . $item->foto) }}" alt="Foto {{ $item->nama }}" class="fasilitas-foto">
-                                </div>
+                        <div class="fasilitas-business-front">
+                            <div class="fasilitas-business-imgbox">
+                                <img src="{{ asset('fasilitas/' . $item->foto) }}" alt="Foto {{ $item->nama }}" class="fasilitas-business-img">
+                            </div>
+                            <div class="fasilitas-business-title-area">
+                                <div class="fasilitas-business-title">{{ $item->nama }}</div>
                             </div>
                         </div>
                         <!-- BACK SIDE -->
-                        <div class="fasilitas-flip-back">
-                            <div class="fasilitas-back-content">
-                                <div class="fasilitas-back-left">
-                                    <img src="{{ asset('storage/fasilitas/' . $item->foto) }}" alt="Foto {{ $item->nama }}" class="fasilitas-foto">
-                                </div>
-                                <div class="fasilitas-back-right">
-                                    <div class="fasilitas-nama-back">{{ $item->nama }}</div>
-                                    <div class="fasilitas-deskripsi">{{ $item->deskripsi }}</div>
-                                    <div class="fasilitas-info"><b>Tahun:</b> {{ $item->tahun }}</div>
-                                    <div class="fasilitas-info"><b>Perhatian Teknis:</b> {{ $item->perhatian_teknis }}</div>
-                                    <div class="fasilitas-info"><b>Penambahan:</b> {{ $item->penambahan }}</div>
-                                </div>
+                        <div class="fasilitas-business-back">
+                            <div class="fasilitas-business-back-content">
+                                <div class="fasilitas-business-back-title">{{ $item->nama }}</div>
+                                <div class="fasilitas-business-back-desc">{{ $item->deskripsi }}</div>
+                                <div class="fasilitas-business-back-info"><b>Tahun:</b> {{ $item->tahun }}</div>
+                                <div class="fasilitas-business-back-info"><b>Perhatian Teknis:</b> {{ $item->perhatian_teknis }}</div>
+                                <div class="fasilitas-business-back-info"><b>Penambahan:</b> {{ $item->penambahan }}</div>
                             </div>
                         </div>
                     </div>
