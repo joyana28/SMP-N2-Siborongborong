@@ -37,7 +37,7 @@
                         <form action="{{ route('admin.siswa.destroy', $s->id_siswa) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                            <button type="submit" class="btn btn-sm btn-danger mb-2 w-100">Hapus</button>
                         </form>
                     </td>
                 </tr>

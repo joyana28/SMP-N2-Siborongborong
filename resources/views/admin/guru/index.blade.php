@@ -92,7 +92,7 @@
                         <form action="{{ route('admin.guru.destroy', $item->id_guru) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-delete">Hapus</button>
+                            <button type="submit" class="btn btn-sm btn-delete mb-1 w-100">Hapus</button>
                         </form>
                     </td>
                 </tr>
