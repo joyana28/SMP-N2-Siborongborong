@@ -22,89 +22,58 @@
     to { opacity: 1; }
 }
 
-.nonakademik-hero-section {
-    background: linear-gradient(
-        135deg,
-        #0a2744 0%,
-        #1a56a7 25%,
-        #0d3158 50%,
-        #1a56a7 75%,
-        #0a2744 100%
-    );
-    background-size: 400% 400%;
-    animation: 
-        gradientFlow 15s ease infinite,
-        revealFromSides 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
-    transform-origin: center;
-    perspective: 1000px;
-    min-height: 54vh;
-    height: auto;
-    padding-top: 60px;
-    margin-bottom: 40px;
-    position: relative;
-    color: #fff;
+@keyframes slideTextFromBottom {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.akademik-hero-section, .nonakademik-hero-section {
+    width: 100%;
+    min-height: 520px;
     display: flex;
     align-items: center;
-    overflow: hidden;
-}
-
-.nonakademik-hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, 
-        rgba(10, 39, 68, 0.95) 0%,
-        rgba(26, 86, 167, 0.8) 100%
-    );
-    z-index: 1;
-}
-
-.nonakademik-hero-section::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 100%;
-    height: 200%;
-    background: radial-gradient(circle, 
-        rgba(26, 86, 167, 0.2) 0%,
-        rgba(10, 39, 68, 0) 70%
-    );
-    transform: rotate(30deg);
-    animation: pulseGradient 8s ease-in-out infinite;
-    z-index: 1;
-}
-
-@keyframes pulseGradient {
-    0% { opacity: 0.3; }
-    50% { opacity: 0.7; }
-    100% { opacity: 0.3; }
-}
-
-.nonakademik-hero-content {
+    justify-content: flex-start;
     position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 15px;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
-    animation-delay: 0.8s;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a2744 0%, #1a56a7 25%, #0d3158 50%, #1a56a7 75%, #0a2744 100%);
+    background-size: 400% 400%;
+    animation: gradientFlow 15s ease infinite, revealFromSides 1.5s cubic-bezier(0.85,0,0.15,1) forwards;
+    transform-origin: center;
+    perspective: 1000px;
 }
 
-.nonakademik-hero-text {
-    max-width: 600px;
-    padding-left: 0;
+.akademik-hero-section::before, .nonakademik-hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, #1a56a7 0%, #0a2744 100%);
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: fasilitasHeroReveal 1.2s cubic-bezier(0.7,0,0.3,1) forwards;
+}
+
+@keyframes fasilitasHeroReveal {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+
+.akademik-hero-text, .nonakademik-hero-text {
+    max-width: 650px;
+    padding-left: 56px;
     position: relative;
     z-index: 2;
     text-align: left;
+    color: #fff;
 }
 
-.nonakademik-hero-text::before {
+.akademik-hero-text::before, .nonakademik-hero-text::before {
     content: '';
     position: absolute;
     left: 0;
@@ -112,76 +81,63 @@
     width: 5px;
     height: 80%;
     background-color: #f3b11f;
+    border-radius: 3px;
+    opacity: 1;
     animation: slideTextFromLeft 0.8s ease-out forwards;
     animation-delay: 1s;
-    opacity: 1;
 }
 
-.nonakademik-title {
+.akademik-title, .nonakademik-title {
     font-size: 48px;
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
     text-transform: capitalize;
+    opacity: 0;
     animation: slideTextFromLeft 1.2s ease-out forwards;
     animation-delay: 0.5s;
-    opacity: 0;
 }
 
-.nonakademik-description {
+.akademik-description, .nonakademik-description {
     font-size: 16px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255,255,255,0.9);
     max-width: 500px;
     margin-top: 20px;
     padding-left: 2px;
     position: relative;
     overflow: hidden;
+    opacity: 0;
     animation: slideTextFromBottom 1.2s ease-out forwards;
     animation-delay: 1.1s;
-    opacity: 0;
-}
-
-@keyframes slideTextFromBottom {
-    0% { transform: translateY(30px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-
-.nonakademik-description::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 1px;
-    background: #f3b11f;
-    animation: expandLine 1.5s ease-out forwards;
-    animation-delay: 1.8s;
-}
-
-@keyframes expandLine {
-    0% { width: 0; }
-    100% { width: 100%; }
 }
 
 @media (max-width: 900px) {
-    .nonakademik-hero-section {
+    .akademik-hero-section, .nonakademik-hero-section {
         min-height: 30vh;
         padding-top: 20px;
     }
-    .nonakademik-title {
+    .akademik-title, .nonakademik-title {
         font-size: 32px;
     }
 }
 @media (max-width: 600px) {
-    .nonakademik-hero-section {
+    .akademik-hero-section, .nonakademik-hero-section {
         min-height: 20vh;
         padding-top: 10px;
     }
-    .nonakademik-title {
+    .akademik-title, .nonakademik-title {
         font-size: 24px;
     }
+    .akademik-hero-text, .nonakademik-hero-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .akademik-hero-text::before, .nonakademik-hero-text::before {
+        display: none;
+    }
 }
+
 /* Non-academic Exploration Section */
 .nonakademik-explore-section {
     position: relative;

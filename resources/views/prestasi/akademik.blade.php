@@ -4,13 +4,11 @@
 <link rel="stylesheet" href="{{ asset('css/prestasi.css') }}">
 <script src="{{ asset('js/prestasi.js') }}" defer></script>
 
-<!-- Hero Section Akademik -->
-<section class="nonakademik-hero-section">
-    <div class="nonakademik-hero-content">
-        <div class="nonakademik-hero-text">
-            <h1 class="nonakademik-title">Prestasi Akademik</h1>
-            <p class="nonakademik-description">Menampilkan prestasi-prestasi akademik yang membanggakan dari siswa-siswi SMP Negeri 2 Siborongborong.</p>
-        </div>
+<!-- Hero Section Akademik (disamakan dengan fasilitas) -->
+<section class="akademik-hero-section">
+    <div class="akademik-hero-text">
+        <h1 class="akademik-title">Prestasi Akademik</h1>
+        <p class="akademik-description">Menampilkan prestasi-prestasi akademik yang membanggakan dari siswa-siswi SMP Negeri 2 Siborongborong.</p>
     </div>
 </section>
 
