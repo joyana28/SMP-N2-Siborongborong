@@ -43,7 +43,7 @@
 
                 <!-- Tenaga Pendidik -->
                 <li class="nav-item-dropdown">
-                    <a href="#" class="nav-link {{ request()->is('guru*') || request()->is('kepala_sekolah*') ? 'active' : '' }}">Tenaga Pendidik</a>
+                    <a href="#" class="nav-link {{ (request()->is('teacher') || request()->is('kepala-sekolah')) ? 'active' : '' }}">Tenaga Pendidik</a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('kepala_sekolah.show') }}"><i class="fas fa-user-tie"></i> Kepala Sekolah</a></li>
                         <li><a href="{{ route('guru.index') }}"><i class="fas fa-chalkboard-teacher"></i> Guru</a></li>
@@ -52,21 +52,21 @@
 
                 <!-- Siswa dan Kelas -->
                 <li>
-                    <a class="nav-link {{ request()->is('siswa*') ? 'active' : '' }}" href="{{ route('siswa.show') }}">
+                    <a class="nav-link {{ request()->is('siswa') ? 'active' : '' }}" href="{{ route('siswa.show') }}">
                         Siswa dan Kelas
                     </a>
                 </li>
 
                 <!-- Profil Alumni -->
                 <li>
-                    <a class="nav-link {{ request()->is('alumni*') ? 'active' : '' }}" href="{{ route('alumni.show') }}">
+                    <a class="nav-link {{ request()->is('profil-alumni') ? 'active' : '' }}" href="{{ route('alumni.show') }}">
                         Profil Alumni
                     </a>
                 </li>
 
                 <!-- Prosedur Pendaftaran -->
                 <li>
-                    <a class="nav-link {{ request()->is('formulirpendaftaran*') ? 'active' : '' }}" href="{{ route('formulirpendaftaran.show') }}">
+                    <a class="nav-link {{ request()->is('formulir-pendaftaran') ? 'active' : '' }}" href="{{ route('formulirpendaftaran.show') }}">
                         Prosedur Pendaftaran
                     </a>
                 </li>
