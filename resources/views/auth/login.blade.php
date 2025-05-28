@@ -21,21 +21,9 @@
         <div class="left-panel">
             <div class="light-effect"> <img src="{{ asset('images/logo.png') }}" alt="SMP NEGERI 2 Siborong" class="logo">
         </div>
-
-            <div class="stars">
-                <?php for ($i = 0; $i < 30; $i++) { ?>
-                    <div class="star" style="top: <?php echo rand(5, 95); ?>%; left: <?php echo rand(5, 95); ?>%; animation-delay: <?php echo rand(0, 5000) / 1000; ?>s;"></div>
-                <?php } ?>
-            </div>
-
-            <div class="diagonal-lines">
-                <?php for ($i = 0; $i < 50; $i++) { ?>
-                    <div class="line" style="left: <?php echo rand(0, 100); ?>%; animation-delay: <?php echo rand(0, 5000) / 1000; ?>s; width: <?php echo (rand(0, 100) > 80) ? '2px' : '1px'; ?>; opacity: <?php echo rand(10, 30) / 100; ?>;"></div>
-                <?php } ?>
-            </div>
             <div class="welcome-text">
                 <h1>Hello,<br>Selamat Datang!</h1>
-                <p>SMP NEGERI 2 SIBORONGBORONG</p>
+                <h2>SMP NEGERI 2 SIBORONGBORONG</h2>
             </div>
         </div>
 

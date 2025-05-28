@@ -52,39 +52,47 @@ body, html {
 .left-panel {
     flex: 1;
     background: #ffffff;
-    padding: 5%;
+    padding: 40px 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 15px; /* beri jarak antar elemen anak */
 }
 
 .left-panel .logo {
-    margin-bottom: 20px;
+    margin-bottom: 0; /* hapus margin bawah, karena gap sudah mengatur jarak */
 }
 
 .logo-img {
-    width: 100px;
-    max-width: 30%;
+    width: 120px; /* sedikit lebih besar supaya jelas */
     height: auto;
+    margin-bottom: 15px; /* beri jarak bawah ke teks */
+    object-fit: contain; /* agar gambar proporsional */
+    display: block;
 }
 
 .welcome-text h1 {
-    font-size: clamp(20px, 5vw, 32px);
-    margin: 10px 0;
-}
-
-.welcome-text p {
-    font-size: clamp(14px, 3vw, 16px);
+    font-size: clamp(24px, 5vw, 32px);
+    margin: 8px 0;
+    font-weight: 700;
     color: #0d47a1;
 }
+
+.welcome-text h2 {
+    font-size: clamp(16px, 3vw, 20px);
+    color: #0d47a1;
+    margin: 0;
+    font-weight: 500;
+}
+
 
 /* Right Panel */
 .right-panel {
     flex: 1;
     background: linear-gradient(135deg, #0d47a1, #ff9800);
-    padding: 5%;
+     padding: 40px 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -108,36 +116,45 @@ body, html {
     margin-bottom: 25px;
 }
 
+.input-field {
+    position: relative;
+    margin-bottom: 25px;
+}
+
 .input-field input {
     width: 100%;
-    padding: clamp(10px, 3vw, 12px) 10px;
-    border: 1px solid rgba(17, 17, 94, 0.15);
-    border-radius: 8px;
+    padding: 16px 12px 8px 12px; /* Tambah padding atas agar label naik tetap dalam kotak */
+    border: 1px solid rgba(17, 17, 94, 0.2);
+    border-radius: 10px;
     outline: none;
-    background: rgba(255, 255, 255, 0.9);
-    font-size: clamp(0.85em, 2vw, 1em);
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 1em;
     color: #020202;
+    transition: 0.3s ease;
 }
 
 .input-field label {
     position: absolute;
-    left: 10px;
-    top: 12px;
-    font-size: clamp(0.85em, 2vw, 1em);
+    left: 14px;
+    top: 16px;
+    font-size: 1em;
     pointer-events: none;
     transition: 0.3s ease;
-    padding: 0 4px;
-    color: #030303;
-    background: rgba(255, 255, 255, 0.2);
+    padding: 0 5px;
+    color: #333;
+    background: rgba(255, 255, 255, 0.95);
 }
 
+/* Saat input fokus atau sudah diisi, label naik */
 .input-field input:focus + label,
 .input-field input:not(:placeholder-shown):valid + label {
-    top: -10px;
-    left: 8px;
-    font-size: clamp(0.7em, 1.8vw, 0.85em);
-    background: transparent;
+    top: -8px;
+    left: 10px;
+    font-size: 0.8em;
+    background: rgba(255, 255, 255, 0.95);
+    color: #0d47a1;
 }
+
 
 /* Checkbox */
 .checkbox-container {
