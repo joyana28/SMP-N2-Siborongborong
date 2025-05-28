@@ -58,7 +58,7 @@
 </style>
 
 <div class="container mt-4">
-    <h1 class="mb-4">Tambah Data Kelas</h1>
+    <h1 class="mb-4" style="color: #001f3f">Tambah Data Kelas</h1>
 
     {{-- Tampilkan error validasi --}}
     @if ($errors->any())

@@ -46,7 +46,7 @@
 </style>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-primary">Tambah Kepala Sekolah</h2>
+    <h2 class="mb-4" style="color: #001f3f">Tambah Kepala Sekolah</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">

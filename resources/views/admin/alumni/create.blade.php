@@ -58,7 +58,7 @@
 </style>
 
 <div class="container mt-5">
-    <h2 class="mb-4 text-primary">Tambah Alumni</h2>
+    <h2 class="mb-4" style="color: #001f3f">Tambah Alumni</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">
