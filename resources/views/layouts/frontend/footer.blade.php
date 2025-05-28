@@ -124,9 +124,9 @@
       <div class="footer-left">
         <p><strong>SMP Negeri 2 Siborongborong</strong> adalah sekolah menengah pertama yang berkomitmen mencetak generasi unggul dan berprestasi.</p>
         <div class="social-icons">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
-          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://www.facebook.com/share/16JeniM1Ei/"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.tiktok.com/@siborongborongsmpn2?_t=ZS-8winXA1Ci4w&_r=1"><i class="fab fa-tiktok"></i></a>
+          <a href="081370422455"><i class="fab fa-whatsapp"></i></a>
         </div>
       </div>
 
