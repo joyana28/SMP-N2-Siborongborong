@@ -23,13 +23,6 @@
   <div class="alumni-banner-v2-bg"></div>
   <div class="alumni-banner-v2-under"></div>
   <div class="alumni-banner-v2-content">
-    <div class="alumni-banner-v2-icon">
-      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="38" height="38" rx="0" fill="#f3b11f"/>
-        <circle cx="19" cy="14" r="7" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
-        <ellipse cx="19" cy="27" rx="9" ry="5" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
-      </svg>
-    </div>
     <div class="alumni-banner-v2-titlebox">
       <span class="alumni-banner-v2-title">DETAIL ALUMNI</span>
     </div>
@@ -69,13 +62,7 @@
                         </div>
                       @endif
                     </div>
-                    <div class="alumni-swap-card-brand">
-                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="38" height="38" rx="8" fill="#f3b11f"/>
-                        <circle cx="19" cy="14" r="7" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
-                        <ellipse cx="19" cy="27" rx="9" ry="5" stroke="#1a56a7" stroke-width="2.5" fill="none"/>
-                      </svg>
-                    </div>
+                  
                     <div class="alumni-swap-card-nama">{{ $a->nama }}</div>
                   </div>
                   <!-- BACK SIDE -->

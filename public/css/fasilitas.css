@@ -2580,7 +2580,7 @@ body {
   }
 }
 
-.fasilitas-card-row {
+ilitas-card-row {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -2748,7 +2748,7 @@ body {
 .fasilitas-back-right::-webkit-scrollbar {
   width: 6px;
 }
-
+.fas
 .fasilitas-back-right::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 6px;
@@ -2837,205 +2837,182 @@ form .btn-secondary {
     color: #fff !important; /* Mengubah warna teks tombol secondary menjadi putih di dalam form atau card body */
 }
 
-/* === FASILITAS BUSINESS CARD === */
+.fasilitas-card-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    padding: 2rem 0;
+}
+
 .fasilitas-business-card {
-  width: 420px;
-  height: 240px;
-  background: linear-gradient(135deg, #1a56a7 60%, #f3b11f 100%);
-  border-radius: 22px;
-  box-shadow: 0 8px 32px #1a56a733, 0 1.5px 8px #f3b11f44;
-  overflow: hidden;
-  position: relative;
-  margin: 0 12px 32px 0;
-  cursor: pointer;
-  transition: box-shadow 0.4s, transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
-  display: flex;
-  align-items: stretch;
+    perspective: 1000px;
+    width: 100%;
+    max-width: 320px;
+    height: 400px;
 }
+
 .fasilitas-business-inner {
-  width: 100%;
-  height: 100%;
-  display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+.fasilitas-business-card {
   position: relative;
-  transition: box-shadow 0.4s, transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+  width: 100%;
+  height: 380px;
+  perspective: 1000px;
+  border-radius: 20px;
+  transition: transform 0.5s;
 }
-.fasilitas-business-front {
+
+.fasilitas-business-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  position: absolute;
-  left: 0; top: 0;
-  z-index: 2;
-  transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
-  background: transparent;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
 }
-.fasilitas-business-imgbox {
-  width: 140px;
-  height: 140px;
-  background: #fff;
-  border-radius: 18px 0 60px 0;
-  overflow: hidden;
-  box-shadow: 0 4px 18px #1a56a744;
+
+.fasilitas-business-card:hover .fasilitas-business-inner {
+  transform: rotateY(180deg);
+}
+
+.fasilitas-business-front,
+.fasilitas-business-back {
   position: absolute;
-  left: 28px;
-  top: 28px;
-  z-index: 3;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  backface-visibility: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.fasilitas-business-front {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  background: linear-gradient(to bottom right, #002B5B, #005B96);
+  padding: 1rem;
+  color: #fff;
 }
+
+.fasilitas-business-imgbox {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
 .fasilitas-business-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 18px 0 60px 0;
-  transition: transform 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+  transition: transform 0.3s ease;
 }
+
+.fasilitas-business-card:hover .fasilitas-business-img {
+  transform: scale(1.05);
+}
+
 .fasilitas-business-title-area {
-  position: absolute;
-  right: 32px;
-  bottom: 32px;
-  z-index: 4;
-  background: rgba(255,255,255,0.12);
-  padding: 12px 28px;
-  border-radius: 16px 0 16px 16px;
-  box-shadow: 0 2px 8px #f3b11f33;
+  text-align: center;
 }
+
 .fasilitas-business-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: 1.2px;
-  text-shadow: 0 2px 8px #1a56a7cc;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #F3B11F;
 }
+
 .fasilitas-business-back {
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  border-radius: 22px;
-  position: absolute;
-  left: 0; top: 0;
-  z-index: 1;
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  transition: opacity 0.7s cubic-bezier(.68,-0.55,.27,1.55);
-}
-.fasilitas-business-back-content {
-  width: 60%;
-  padding: 32px 32px 32px 0;
-  color: #1a56a7;
+  transform: rotateY(180deg);
+  background: #ffffff;
+  padding: 1.5rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
-  background: transparent;
 }
+
 .fasilitas-business-back-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1a56a7;
-  margin-bottom: 8px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color:  linear-gradient(135deg, #0d47a1, #ff9800);
+  text-align: center;
 }
+
 .fasilitas-business-back-desc {
-  font-size: 1rem;
-  color: #222;
-  margin-bottom: 10px;
-  font-weight: 500;
-  opacity: 0.95;
-  word-break: break-word;
-  line-height: 1.45;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: justify;
 }
+
 .fasilitas-business-back-info {
-  font-size: 0.98rem;
-  color: #1a56a7;
-  font-weight: 600;
-  margin-bottom: 6px;
-  word-break: break-word;
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 0.3rem;
 }
+
 .fasilitas-business-back-info b {
-  color: #f3b11f;
+  color: #F3B11F;
   font-weight: 700;
 }
-.fasilitas-business-card:hover .fasilitas-business-front {
-  transform: translateX(-60%) scale(0.92) rotate(-6deg);
-  opacity: 0.7;
-}
-.fasilitas-business-card:hover .fasilitas-business-imgbox {
-  transform: translateX(-30px) scale(1.08) rotate(-8deg);
-}
+
 .fasilitas-business-card:hover .fasilitas-business-back {
   opacity: 1;
   pointer-events: auto;
 }
+
+
+
+.fasilitas-business-back-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.fasilitas-business-back-content::-webkit-scrollbar-thumb {
+  background: #F3B11F;
+  border-radius: 6px;
+}
+
+/* RESPONSIVE */
 @media (max-width: 700px) {
   .fasilitas-business-card {
     width: 98vw;
-    height: 180px;
+    height: 260px;
     border-radius: 14px;
   }
+
   .fasilitas-business-imgbox {
-    width: 80px;
-    height: 80px;
-    left: 12px;
-    top: 12px;
+    width: 100px;
+    height: 100px;
+    top: 16px;
+    left: 10px;
     border-radius: 10px 0 30px 0;
   }
+
   .fasilitas-business-title-area {
     right: 12px;
     bottom: 12px;
     padding: 8px 14px;
     border-radius: 10px 0 10px 10px;
   }
+
   .fasilitas-business-title {
     font-size: 1rem;
   }
-  .fasilitas-business-back-content {
-    padding: 16px 10px 16px 0;
-  }
-}
 
-.fasilitas-business-card {
-  /* ... existing code ... */
-  height: 380px;
-}
-.fasilitas-business-back-content {
-  /* ... existing code ... */
-  max-height: 320px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #f3b11f #eee;
-}
-.fasilitas-business-back-content::-webkit-scrollbar {
-  width: 8px;
-}
-.fasilitas-business-back-content::-webkit-scrollbar-thumb {
-  background: #f3b11f;
-  border-radius: 6px;
-}
-.fasilitas-business-imgbox {
-  /* ... existing code ... */
-  top: 40px;
-  left: 32px;
-  width: 160px;
-  height: 160px;
-}
-@media (max-width: 700px) {
-  .fasilitas-business-card {
-    height: 260px;
-  }
-  .fasilitas-business-imgbox {
-    width: 100px;
-    height: 100px;
-    top: 16px;
-    left: 10px;
-  }
   .fasilitas-business-back-content {
     max-height: 180px;
+    padding: 16px 10px 16px 0;
   }
 }
