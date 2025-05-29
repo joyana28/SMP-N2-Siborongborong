@@ -173,14 +173,7 @@
     font-weight: bold;
     border-bottom: 2px solid #ffc107;
     
-}
-
-
-
-
-  
-
-}
+}}
 
 /* ========== Animasi Dropdown ========== */
 @keyframes fadeIn {
@@ -193,4 +186,3 @@
         transform: translateY(0);
     }
 }
-
