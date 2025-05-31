@@ -371,69 +371,101 @@
     flex-direction: column;
     gap: 8px;
 }
-
 .info-row {
     display: flex;
     align-items: center;
+    margin-bottom: 8px;
+    padding: 4px 0;
 }
 
 .idcard-label {
+    font-weight: 600;
+    color: #374151;
     min-width: 100px;
-    font-weight: 700;
-    color: #052C65;
+    flex-shrink: 0;
+    font-size: 14px;
 }
 
 .idcard-separator {
-    margin: 0 6px;
+    margin: 0 12px;
+    color: #6b7280;
+    font-weight: 500;
 }
 
 .idcard-value {
-     width: 250px;
-     white-space: normal;
-     overflow: visible;
-     text-overflow: unset;
+    color: #111827;
+    font-size: 14px;
+    flex: 1;
 }
 
+/* Grid layout untuk alignment yang sejajar dan rapi */
+.info-container {
+    display: grid;
+    grid-template-columns: 120px auto 1fr;
+    gap: 8px 12px;
+    max-width: 500px;
+}
 
+.info-container .idcard-label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 14px;
+    text-align: left;
+    width: 120px;
+}
 
+.info-container .idcard-separator {
+    color: #6b7280;
+    font-weight: 500;
+}
 
+.info-container .idcard-value {
+    color: #111827;
+    font-size: 14px;
+}
 
-/* Responsive tweaks */
-@media (max-width: 600px) {
-    .idcard-info div {
+/* Styling untuk card container */
+.id-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    max-width: 500px;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .info-row {
         flex-direction: column;
         align-items: flex-start;
+        margin-bottom: 12px;
     }
-
+    
+    .idcard-separator {
+        display: none;
+    }
+    
     .idcard-label {
+        margin-bottom: 4px;
         min-width: unset;
     }
-
-    .idcard-value,
-    .idcard-info input,
-    .idcard-info textarea,
-    .idcard-info select {
-        width: 100%;
+    
+    .info-container {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+    
+    .info-container .idcard-label {
+        text-align: left;
+    }
+    
+    .info-container .idcard-separator {
+        display: none;
     }
 }
 
-/* Responsif untuk layar kecil (hp) */
-@media (max-width: 600px) {
-    .idcard-info div {
-        flex-direction: column;    /* tumpuk ke bawah */
-        align-items: flex-start;   /* sejajarkan ke kiri */
-    }
 
-    .idcard-label {
-        min-width: unset;          /* jangan pakai lebar tetap */
-        text-align: left;          /* rata kiri */
-    }
-
-    .idcard-info div span + * {
-        width: 100%;               /* isi penuh */
-        white-space: normal;       /* boleh turun baris */
-    }
-}
 
 /* ===== GURU CARD FLEX LAYOUT ===== */
 .guru-card-row {

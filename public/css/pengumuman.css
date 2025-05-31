@@ -233,20 +233,7 @@
     margin-bottom: 24px;
 }
 
-/* === Tombol Kembali === */
-.pengumuman-back-btn {
-    display: inline-block;
-    margin-top: 20px;
-    color: #1a56a7;
-    border: 2px solid #1a56a7;
-    border-radius: 30px;
-    padding: 10px 25px;
-    font-weight: 700;
-    text-decoration: none;
-    background-color: transparent;
-    transition: all 0.3s cubic-bezier(.68,-0.55,.27,1.55);
-    font-size: 1.05rem;
-}
+
 
 .pengumuman-back-btn:hover {
     background-color: #f3b11f;
@@ -570,18 +557,23 @@ section.pengumuman-detail-section .lampiran-btn:hover {
 .pengumuman-flip-card:hover .pengumuman-front-img {
   transform: scale(1.04) rotate(-2deg);
 }
+/* Flip Card - Back Side */
 .pengumuman-flip-back {
   background: linear-gradient(120deg, #f3b11f 10%, #1a56a7 90%);
   color: #fff;
   transform: rotateY(180deg);
   z-index: 3;
-  padding: 36px 28px 28px 28px;
+  padding: 6px 18px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   overflow-y: auto;
+  backface-visibility: hidden;
+  border-radius: 12px;
 }
+
+/* Title on Back */
 .pengumuman-back-title {
   font-size: 1.3rem;
   font-weight: 700;
@@ -592,45 +584,59 @@ section.pengumuman-detail-section .lampiran-btn:hover {
   margin-bottom: 16px;
   box-shadow: 0 2px 8px #f3b11faa;
 }
+
+/* Description Text */
 .pengumuman-back-info {
   font-size: 1.05rem;
   color: #fff;
   margin-bottom: 12px;
   word-break: break-word;
   line-height: 1.6;
-  background: rgba(26,86,167,0.08);
+  background: rgba(26, 86, 167, 0.08);
   padding: 8px 12px;
   border-radius: 8px;
-  box-shadow: 0 1px 4px #1a56a722;
+  box-shadow: 0 1px 4px rgba(26, 86, 167, 0.13);
 }
+
+/* Image Preview */
 .pengumuman-back-img {
   width: 120px;
   height: 80px;
   object-fit: cover;
   border-radius: 8px;
   margin-top: 6px;
-  box-shadow: 0 2px 8px #1a56a7aa;
+  box-shadow: 0 2px 8px rgba(26, 86, 167, 0.66);
   border: 2px solid #fff;
 }
+
+/* Lampiran Link Style */
 .pengumuman-back-lampiran {
-  color: #f3b11f;
+  color: rgba(26, 86, 167, 0.7);
   font-weight: 700;
   text-decoration: underline;
-  transition: color 0.2s;
+  transition: color 0.2s ease;
+  margin-top: 10px;
 }
+
 .pengumuman-back-lampiran:hover {
   color: #fff;
 }
+
+/* Responsive Design */
 @media (max-width: 600px) {
   .pengumuman-flip-card {
     max-width: 98vw;
     height: 320px;
   }
-  .pengumuman-front-img {
+
+  .pengumuman-front-img,
+  .pengumuman-back-img {
     width: 120px;
     height: 160px;
   }
-  .pengumuman-flip-front, .pengumuman-flip-back {
-    padding: 18px 8px 8px 8px;
+
+  .pengumuman-flip-front,
+  .pengumuman-flip-back {
+    padding: 18px 8px;
   }
 }
