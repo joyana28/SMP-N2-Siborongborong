@@ -47,12 +47,25 @@
                 <div class="idcard-body">
                     <div class="idcard-nama"><span>{{ $g->nama }}</span></div>
                     <div class="idcard-bidang">{{ $g->bidang }}</div>
-                    <div class="idcard-info">
-                        <div><span class="idcard-label">NIP</span>: {{ $g->nip }}</div>
-                        <div><span class="idcard-label">Golongan</span>: {{ $g->golongan }}</div>
-                        <div><span class="idcard-label">No. Telp</span>: {{ $g->no_telp }}</div>
-                    </div>
-                </div>2
+                   <div class="idcard-info">
+    <div class="info-row">
+        <span class="idcard-label">NIP</span>
+        <span class="idcard-separator">:</span>
+        <span class="idcard-value">{{ $g->nip }}</span>
+    </div>
+    <div class="info-row">
+        <span class="idcard-label">Golongan</span>
+        <span class="idcard-separator">:</span>
+        <span class="idcard-value">{{ $g->golongan }}</span>
+    </div>
+    <div class="info-row">
+        <span class="idcard-label">No. Telp</span>
+        <span class="idcard-separator">:</span>
+        <span class="idcard-value">{{ $g->no_telp }}</span>
+    </div>
+</div>
+
+                </div>
                 <div class="idcard-bg-bottom"></div>
             </div>
         </div>

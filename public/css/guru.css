@@ -302,12 +302,14 @@
 }
 .idcard-body {
     width: 100%;
-    padding: 0 24px 0 24px;
+    padding: 0 24px;
     margin-top: 12px;
     text-align: center;
     z-index: 10;
     position: relative;
+    box-sizing: border-box;
 }
+
 .idcard-nama {
     font-size: 1.25rem;
     font-weight: 800;
@@ -316,19 +318,22 @@
     letter-spacing: 1px;
     text-shadow: 0 2px 8px #052c6533;
 }
+
 .idcard-nama span {
     background: linear-gradient(90deg, #052C65 60%, #f3b11f 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 .idcard-bidang {
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     color: #333;
     font-weight: 500;
     margin-bottom: 10px;
     letter-spacing: 0.5px;
 }
+
 .idcard-info {
     margin-top: 10px;
     font-size: 1rem;
@@ -336,34 +341,97 @@
     text-align: left;
     font-weight: 400;
     padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
+
 .idcard-info div {
-    margin-bottom: 4px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
 }
+
 .idcard-label {
     font-weight: 700;
     color: #052C65;
-    min-width: 90px;
-    display: inline-block;
+    min-width: 100px;
+    flex-shrink: 0;
 }
-@media (max-width: 900px) {
-    .idcard-guru {
-        min-width: 90vw;
-        max-width: 98vw;
-        min-height: 340px;
-        border-radius: 18px;
+
+
+.idcard-info {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #222;
+    font-weight: 400;
+    padding-left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+}
+
+.idcard-label {
+    min-width: 100px;
+    font-weight: 700;
+    color: #052C65;
+}
+
+.idcard-separator {
+    margin: 0 6px;
+}
+
+.idcard-value {
+     width: 250px;
+     white-space: normal;
+     overflow: visible;
+     text-overflow: unset;
+}
+
+
+
+
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    .idcard-info div {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .idcard-photo {
-        width: 80px; height: 80px;
+
+    .idcard-label {
+        min-width: unset;
     }
-    .idcard-photo-wrap::before {
-        width: 96px; height: 96px;
-        top: -7px; left: -7px;
+
+    .idcard-value,
+    .idcard-info input,
+    .idcard-info textarea,
+    .idcard-info select {
+        width: 100%;
     }
-    .idcard-body {
-        padding: 0 8px 0 8px;
+}
+
+/* Responsif untuk layar kecil (hp) */
+@media (max-width: 600px) {
+    .idcard-info div {
+        flex-direction: column;    /* tumpuk ke bawah */
+        align-items: flex-start;   /* sejajarkan ke kiri */
+    }
+
+    .idcard-label {
+        min-width: unset;          /* jangan pakai lebar tetap */
+        text-align: left;          /* rata kiri */
+    }
+
+    .idcard-info div span + * {
+        width: 100%;               /* isi penuh */
+        white-space: normal;       /* boleh turun baris */
     }
 }
 
