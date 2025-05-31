@@ -129,7 +129,8 @@
                     <select name="golongan" id="golongan" class="form-control @error('golongan') is-invalid @enderror" required>
                         <option value="">-- Pilih Golongan --</option>
                         @php
-                            $golonganOptions = ['III/a', 'III/b', 'III/c', 'III/d', 'IV/a', 'IV/b', 'IV/c', 'IV/d', 'IV/e'];
+                            $golonganOptions = ['III/a', 'III/b', 'III/c', 'III/d', 'IV/a', 'IV/b', 'IV/c', 'IV/d', 'IV/e',
+                            'IX', 'X', 'XI', 'XII', 'XIII'];
                         @endphp
                         @foreach ($golonganOptions as $gol)
                             <option value="{{ $gol }}" {{ old('golongan', $guru->golongan) == $gol ? 'selected' : '' }}>{{ $gol }}</option>
