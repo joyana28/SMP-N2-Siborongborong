@@ -32,7 +32,7 @@ class GuruController extends Controller
             'nip' => 'required|string|max:50|unique:guru,nip',
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'no_telp' => 'required|digits_between:10,15',
-            'golongan' => 'nullable|string|max:50',
+            'golongan' => 'required|string|max:50',
             'bidang' => ['required', Rule::in(['Agama', 'PKN', 'Bahasa Indonesia', 'Matematika', 'IPA', 'IPS', 'Bahasa Inggris', 'Seni Budaya', 'Prakarya', 'TIK', 'Bahasa Daerah', 'Bimbingan dan Penyuluhan'])],
         ]);
 

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integer('jumlah_siswa_l');
             $table->integer('jumlah_siswa_p');
             $table->year('tahun');
-            $table->text('history')->nullable();
             $table->string('wali_kelas', 50)->nullable();
             $table->foreignId('id_admin')
                   ->constrained('admin', 'id_admin')

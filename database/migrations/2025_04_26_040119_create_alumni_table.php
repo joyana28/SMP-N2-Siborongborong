@@ -16,7 +16,7 @@ return new class extends Migration
                   ->onUpdate('cascade');
             $table->string('nama', 100);
             $table->text('deskripsi')->nullable();
-            $table->year('tahun_lulus')->nullable();
+            $table->year('tahun_lulus');
             $table->string('foto', 100)->nullable();
             $table->timestamps();
         });

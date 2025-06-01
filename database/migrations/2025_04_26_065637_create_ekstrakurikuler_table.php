@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('deskripsi')->nullable();
             $table->string('pembina', 100);
             $table->string('jadwal', 100);
-            $table->string('foto', 100)->nullable(); 
+            $table->string('foto', 100); 
             $table->timestamps();
         });
     }

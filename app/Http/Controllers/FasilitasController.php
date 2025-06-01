@@ -28,8 +28,8 @@ class FasilitasController extends Controller
             'deskripsi' => 'required|string',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'tahun' => ['required', 'regex:/^\d{4}$/'],
-            'perhatian_teknis' => 'nullable|string|max:100',
-            'penambahan' => 'nullable|string|max:100',
+            'perhatian_teknis' => 'nullable|integer',
+            'penambahan' => 'nullable|integer',
         ]);
 
         if ($validator->fails()) {
@@ -72,8 +72,8 @@ class FasilitasController extends Controller
             'deskripsi' => 'required|string',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'tahun' => 'required|string|max:100',
-            'perhatian_teknis' => 'nullable|string|max:100',
-            'penambahan' => 'nullable|string|max:100',
+            'perhatian_teknis' => 'nullable|integer',
+            'penambahan' => 'nullable|integer',
         ]);
 
         if ($validator->fails()) {

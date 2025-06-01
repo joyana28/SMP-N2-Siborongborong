@@ -26,7 +26,7 @@ class KepalaSekolahController extends Controller
             'nip' => 'required|numeric|digits_between:8,20|unique:kepala_sekolah,nip',
             'golongan' => 'required|string|max:50',
             'periode' => 'required|string|max:50',
-            'foto' => 'nullable|image|max:2048',
+            'foto' => 'required|image|max:2048',
         ]);
 
         $data = $request->except('foto');

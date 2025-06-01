@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('nip')->unique();
             $table->string('golongan', 50);
             $table->string('periode', 50);
-            $table->string('foto', 100)->nullable();
+            $table->string('foto', 100);
             $table->timestamps();
         });
     }
