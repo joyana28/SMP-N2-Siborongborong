@@ -98,7 +98,7 @@
                     @error('periode')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
-                </div>
+                </div><br>
 
                 <div class="form-group">
                     <label for="foto">Foto Kepala Sekolah</label>

@@ -21,7 +21,7 @@ class FormulirPendaftaranController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'deskripsi' => 'required|string|max:100',
+            'deskripsi' => 'required|string|max:150',
             'formulir_pendaftaran' => 'required|mimes:pdf,doc,docx|max:5000',
             'tanggal_terbit' => 'required|date',
             'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',
@@ -57,7 +57,7 @@ class FormulirPendaftaranController extends Controller
         $formulirPendaftaran = FormulirPendaftaran::findOrFail($id);
 
         $request->validate([
-            'deskripsi' => 'required|string|max:100',
+            'deskripsi' => 'required|string|max:150',
             'formulir_pendaftaran' => 'nullable|mimes:pdf,doc,docx|max:5000',
             'tanggal_terbit' => 'required|date',
             'tanggal_berakhir' => 'required|date|after_or_equal:tanggal_terbit',

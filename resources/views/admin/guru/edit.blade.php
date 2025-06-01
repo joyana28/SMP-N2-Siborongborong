@@ -99,7 +99,7 @@
                     <select name="bidang" id="bidang" class="form-control @error('bidang') is-invalid @enderror" required>
                         <option value="">-- Pilih Bidang --</option>
                         @php
-                            $bidangOptions = ['Agama', 'PKN', 'Bahasa Indonesia', 'Matematika', 'IPA', 'IPS', 'Bahasa Inggris', 'Seni Budaya', 'Prakarya', 'TIK', 'Bahasa Daerah'];
+                            $bidangOptions = ['Agama', 'PKN', 'Bahasa Indonesia', 'Matematika', 'IPA', 'IPS', 'Bahasa Inggris', 'Seni Budaya', 'Prakarya', 'TIK', 'Bahasa Daerah', 'Bimbingan dan Penyuluhan'];
                         @endphp
                         @foreach ($bidangOptions as $bidang)
                             <option value="{{ $bidang }}" {{ old('bidang', $guru->bidang) == $bidang ? 'selected' : '' }}>

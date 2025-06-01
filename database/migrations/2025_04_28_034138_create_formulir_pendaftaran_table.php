@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('formulir_pendaftaran', function (Blueprint $table) {
             $table->id('id_pendaftaran');
-            $table->string('deskripsi', 100);
+            $table->string('deskripsi', 150);
             $table->string('formulir_pendaftaran', 100);
             $table->date('tanggal_terbit');
             $table->date('tanggal_berakhir');

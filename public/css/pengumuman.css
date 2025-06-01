@@ -82,11 +82,11 @@
 
 .pengumuman-hero-section {
     background: linear-gradient(135deg, #0a2744 0%, #1a56a7 25%, #0d3158 50%, #1a56a7 75%, #0a2744 100%);
-    background-size: 400% 400%;
+    background-size: 200% 200%;
     animation: pengumumanGradientFlow 15s ease infinite, pengumumanRevealFromSides 1.5s cubic-bezier(0.85, 0, 0.15, 1) forwards;
     transform-origin: center;
     perspective: 1000px;
-    height: 500px;
+    height: 400px;
     position: relative;
     color: #fff;
     display: flex;
@@ -483,7 +483,7 @@ section.pengumuman-detail-section .lampiran-btn:hover {
   background: transparent;
   width: 100%;
   max-width: 1200px;
-  height: 450px;
+  height: 500px;
   margin: 0 auto 32px auto;
   perspective: 1200px;
   border-radius: 24px;

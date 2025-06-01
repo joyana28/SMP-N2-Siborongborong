@@ -46,7 +46,7 @@
         @else
             <div class="text-center">
                 <h3>Data Kepala Sekolah belum tersedia.</h3>
-                <p>Silakan periksa kembali data di dashboard admin.</p>
+                <p>Data belum ditambahkan!</p>
             </div>
         @endif
     </div>

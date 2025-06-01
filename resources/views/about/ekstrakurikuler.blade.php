@@ -56,7 +56,7 @@
     @if ($ekstrakurikuler->isEmpty())
         <p class="text-center text-gray-600">Data ekstrakurikuler belum ada.</p>
     @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
             @foreach ($ekstrakurikuler as $item)
                 <div class="ekstra-card-animate group">
                     @if ($item->foto)

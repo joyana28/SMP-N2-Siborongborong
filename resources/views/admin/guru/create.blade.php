@@ -110,7 +110,8 @@
             'Seni Budaya',
             'Prakarya',
             'TIK',
-            'Bahasa Daerah'
+            'Bahasa Daerah',
+            'Bimbingan dan Penyuluhan'
         ];
     @endphp
     <select name="bidang" id="bidang" class="form-control @error('bidang') is-invalid @enderror" required>

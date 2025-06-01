@@ -20,6 +20,7 @@ body {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 15px;
+    justify-content: center;
 }
 
 .img-fluid {
@@ -1312,6 +1313,7 @@ body {
   transform: translateX(40px);
   animation: introDescIn 0.8s 0.7s cubic-bezier(0.7,0,0.3,1) forwards;
   transition: box-shadow 0.3s, color 0.3s;
+  margin-left: 60px; 
 }
 
 .intro-desc:hover {
@@ -2884,8 +2886,8 @@ form .btn-secondary {
 .fasilitas-business-front,
 .fasilitas-business-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 355px;
+  height: 387px;
   border-radius: 20px;
   backface-visibility: hidden;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);

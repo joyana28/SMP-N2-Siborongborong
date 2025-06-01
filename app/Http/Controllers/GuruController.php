@@ -33,7 +33,7 @@ class GuruController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'no_telp' => 'required|digits_between:10,15',
             'golongan' => 'nullable|string|max:50',
-            'bidang' => ['required', Rule::in(['Agama', 'PKN', 'Bahasa Indonesia', 'Matematika', 'IPA', 'IPS', 'Bahasa Inggris', 'Seni Budaya', 'Prakarya', 'TIK', 'Bahasa Daerah'])],
+            'bidang' => ['required', Rule::in(['Agama', 'PKN', 'Bahasa Indonesia', 'Matematika', 'IPA', 'IPS', 'Bahasa Inggris', 'Seni Budaya', 'Prakarya', 'TIK', 'Bahasa Daerah', 'Bimbingan dan Penyuluhan'])],
         ]);
 
         $data = $request->except('foto');
