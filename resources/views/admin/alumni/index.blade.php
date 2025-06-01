@@ -19,8 +19,8 @@
         </div>
     @endif
 
-    <div class="card shadow-sm">
-        <div class="card-body">
+    
+       
             <div class="table-responsive">
                 <table class="table table-bordered align-middle">
                     <thead>
