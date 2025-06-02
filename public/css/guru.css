@@ -1,4 +1,5 @@
 /* ===== GURU HERO SECTION ===== */
+
 .guru-hero-section {
     position: relative;
     width: 100%;
@@ -373,8 +374,8 @@
 }
 .info-row {
     display: flex;
-    align-items: center;
-    margin-bottom: 8px;
+   align-items: baseline; /* Sejajarkan berdasarkan garis dasar teks */
+    margin-bottom: 5px; /* Beri sedikit jarak antar baris */
     padding: 4px 0;
 }
 
@@ -387,15 +388,17 @@
 }
 
 .idcard-separator {
-    margin: 0 12px;
+  
     color: #6b7280;
     font-weight: 500;
+     margin: 0 5px; 
 }
 
 .idcard-value {
     color: #111827;
     font-size: 14px;
     flex: 1;
+     white-space: nowrap;
 }
 
 /* Grid layout untuk alignment yang sejajar dan rapi */
@@ -435,37 +438,77 @@
 }
 
 /* Responsive design */
+/* Styling Dasar untuk Tampilan Desktop atau Layar Lebih Besar */
+
+.idcard-value {
+    color: #111827;
+    font-size: 14px;
+    flex: 1;
+    white-space: nowrap; /* Mencegah pemotongan baris untuk NIP/angka panjang */
+    overflow: hidden; /* Sembunyikan bagian yang melebihi */
+    text-overflow: ellipsis; /* Tampilkan elipsis jika terpotong */
+}
+
+.idcard-label {
+    font-weight: 700;
+    color: #052C65;
+    min-width: 100px; /* Lebar minimum default untuk label */
+    flex-shrink: 0;
+}
+
+.info-row {
+    display: flex; /* Menggunakan Flexbox untuk tata letak horizontal */
+    align-items: baseline; /* Sejajarkan item berdasarkan garis dasar teks */
+    margin-bottom: 5px; /* Jarak antar baris informasi */
+}
+
+.idcard-separator {
+    margin: 0 5px; /* Jarak di sekitar titik dua */
+    display: inline-block; /* Pastikan titik dua selalu tampil dan berada di baris yang sama */
+}
+
+/* Styling untuk container utama jika menggunakan grid */
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Default ke 1 kolom, atau bisa repeat(auto-fit, minmax(300px, 1fr)); */
+    gap: 15px; /* Jarak antar item di dalam grid container */
+    padding: 15px; /* Padding di sekitar container */
+    background-color: #f9fafb; /* Contoh warna latar belakang */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Media Query untuk Tampilan Responsif pada Layar Kecil (maks. 480px) */
 @media (max-width: 480px) {
+    /* Untuk setiap .info-row (termasuk NIP, Golongan, dan No. Telp) */
     .info-row {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-bottom: 12px;
+        align-items: baseline; /* Tetap sejajar seperti sebelumnya */
+        margin-bottom: 8px; /* Sedikit lebih banyak jarak antar baris */
+        /* Jika teks terlalu panjang, kita perlu mengoptimalkan ruang */
     }
     
     .idcard-separator {
-        display: none;
+        display: inline-block; /* Pastikan titik dua tetap terlihat */
     }
     
     .idcard-label {
-        margin-bottom: 4px;
-        min-width: unset;
+        min-width: 70px; /* Kurangi lebar minimum label agar lebih ringkas */
+        font-size: 13px; /* Kecilkan font label agar lebih hemat ruang */
     }
     
+    .idcard-value {
+        font-size: 13px; /* Kecilkan font nilai agar lebih hemat ruang */
+    }
+
+    /* Penyesuaian untuk .info-container pada layar kecil */
     .info-container {
-        grid-template-columns: 1fr;
-        gap: 4px;
+        grid-template-columns: 1fr; /* Pastikan container menggunakan satu kolom */
+        gap: 10px; /* Sesuaikan jarak antar item */
+        padding: 10px; /* Sesuaikan padding */
     }
-    
-    .info-container .idcard-label {
-        text-align: left;
-    }
-    
-    .info-container .idcard-separator {
-        display: none;
-    }
+
+   
 }
-
-
 
 /* ===== GURU CARD FLEX LAYOUT ===== */
 .guru-card-row {
