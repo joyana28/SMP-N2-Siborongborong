@@ -1,7 +1,7 @@
 /* Hero Section Ekstrakurikuler */
 .ekstra-hero-section {
   width: 100%;
-  min-height: 380px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -27,7 +27,7 @@
 
 .ekstra-hero-text {
   max-width: 600px;
-  padding-left: 30px;
+  padding-left: 56px;
   position: relative;
   z-index: 2;
   text-align: left;
@@ -49,9 +49,9 @@
 }
 
 .ekstra-title {
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   line-height: 1.2;
   text-transform: capitalize;
   opacity: 0;
@@ -63,8 +63,8 @@
   font-size: 16px;
   line-height: 1.5;
   color: rgba(255,255,255,0.9);
-  max-width: 450px;
-  margin-top: 15px;
+  max-width: 500px;
+  margin-top: 20px;
   padding-left: 2px;
   position: relative;
   overflow: hidden;
