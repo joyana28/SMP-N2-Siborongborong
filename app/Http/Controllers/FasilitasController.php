@@ -70,7 +70,7 @@ class FasilitasController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:100',
             'deskripsi' => 'required|string',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'tahun' => 'required|string|max:100',
             'perhatian_teknis' => 'nullable|integer',
             'penambahan' => 'nullable|integer',

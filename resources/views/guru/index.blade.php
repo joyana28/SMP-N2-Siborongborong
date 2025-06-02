@@ -64,9 +64,7 @@
         <span class="idcard-value">{{ $g->no_telp }}</span>
     </div>
 </div>
-
                 </div>
-                <div class="idcard-bg-bottom"></div>
             </div>
         </div>
         @empty
