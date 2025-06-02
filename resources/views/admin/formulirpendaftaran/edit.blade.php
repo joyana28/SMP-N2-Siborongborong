@@ -85,7 +85,7 @@
 
                 <div class="form-group">
                     <label for="tanggal_terbit">Tanggal Terbit</label>
-                    <input type="date" name="tanggal_terbit" id="tanggal_terbit" class="form-control @error('tanggal_terbit') is-invalid @enderror" value="{{ old('tanggal_terbit', $formulirPendaftaran->tanggal_terbit) }}">
+<input type="date" name="tanggal_terbit" id="tanggal_terbit" class="form-control @error('tanggal_terbit') is-invalid @enderror" value="{{ old('tanggal_terbit', \Carbon\Carbon::parse($formulirPendaftaran->tanggal_terbit)->format('Y-m-d')) }}">
                     @error('tanggal_terbit')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -93,7 +93,7 @@
 
                 <div class="form-group">
                     <label for="tanggal_berakhir">Tanggal Berakhir</label>
-                    <input type="date" name="tanggal_berakhir" id="tanggal_berakhir" class="form-control @error('tanggal_berakhir') is-invalid @enderror" value="{{ old('tanggal_berakhir', $formulirPendaftaran->tanggal_berakhir) }}">
+<input type="date" name="tanggal_berakhir" id="tanggal_berakhir" class="form-control @error('tanggal_berakhir') is-invalid @enderror" value="{{ old('tanggal_berakhir', \Carbon\Carbon::parse($formulirPendaftaran->tanggal_berakhir)->format('Y-m-d')) }}">
                     @error('tanggal_berakhir')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
