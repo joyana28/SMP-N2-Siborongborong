@@ -24,7 +24,7 @@
 
                 <!-- Tentang -->
                 <li class="nav-item-dropdown">
-                    <a href="#" class="nav-link {{ request()->is('profil*') ? 'active' : '' }}">Tentang</a>
+                    <a href="#" class="nav-link {{ (request()->is('profil/visimisi') || request()->is('profil/fasilitas') || request()->is('profil/ekstrakurikuler')) ? 'active' : '' }}">Tentang</a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('profil.visimisi') }}"><i class="fas fa-bullseye"></i> Visi dan Misi</a></li>
                         <li><a href="{{ route('profil.fasilitas') }}"><i class="fas fa-building"></i> Fasilitas</a></li>
