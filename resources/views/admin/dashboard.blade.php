@@ -13,11 +13,13 @@
             color: #001f3f !important;
         }
 
+        /* ========== BAGIAN 1: PERUBAHAN UTAMA PADA TOMBOL ========== */
         .custom-btn {
             background-color: #001f3f !important;
             border-color: #001f3f !important;
             color: white;
             transition: background-color 0.3s ease, border-color 0.3s ease;
+            /* TAMBAHAN BARU: Membuat tombol full width dan konsisten */
             width: 100%;
             font-size: 0.8rem;
             padding: 0.375rem 0.75rem;
@@ -31,6 +33,7 @@
             color: #001f3f !important;
         }
 
+        /* ========== BAGIAN 2: MEDIA QUERIES UNTUK RESPONSIF ========== */
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .custom-btn {
@@ -46,6 +49,7 @@
             }
         }
 
+        /* ========== BAGIAN 3: KONSISTENSI TINGGI CARD ========== */
         /* Ensure consistent card heights */
         .dashboard-card {
             min-height: 140px;
@@ -72,8 +76,10 @@
         <div class="row">
             <!-- Alumni -->
             <div class="col-xl-3 col-md-6 mb-4">
+                <!-- ========== BAGIAN 4: PENAMBAHAN CLASS dashboard-card ========== -->
                 <div class="card custom-border shadow h-100 py-2 dashboard-card">
                     <div class="card-body">
+                        <!-- ========== BAGIAN 5: PENAMBAHAN mb-2 UNTUK SPACING ========== -->
                         <div class="row no-gutters align-items-center mb-2">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold custom-text text-uppercase mb-1">
@@ -86,9 +92,7 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{{ route('admin.alumni.index') }}" class="btn custom-btn">
-                                <span class="d-none d-sm-inline">Lihat Detail</span>
-                                <span class="d-sm-none">Detail</span>
-                                <i class="fas fa-arrow-right ms-1"></i>
+                                Lihat Detail<i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -111,9 +115,7 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{{ route('admin.guru.index') }}" class="btn custom-btn">
-                                <span class="d-none d-sm-inline">Lihat Detail</span>
-                                <span class="d-sm-none">Detail</span>
-                                <i class="fas fa-arrow-right ms-1"></i>
+                                Lihat Detail <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -139,9 +141,7 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{{ route('admin.ekstrakurikuler.index') }}" class="btn custom-btn">
-                                <span class="d-none d-sm-inline">Lihat Detail</span>
-                                <span class="d-sm-none">Detail</span>
-                                <i class="fas fa-arrow-right ms-1"></i>
+                                Lihat Detail <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -167,9 +167,7 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{{ route('admin.prestasi.index') }}" class="btn custom-btn">
-                                <span class="d-none d-sm-inline">Lihat Detail</span>
-                                <span class="d-sm-none">Detail</span>
-                                <i class="fas fa-arrow-right ms-1"></i>
+                                Lihat Detail <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -192,9 +190,8 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{{ route('admin.fasilitas.index') }}" class="btn custom-btn">
-                                <span class="d-none d-sm-inline">Lihat Detail</span>
-                                <span class="d-sm-none">Detail</span>
-                                <i class="fas fa-arrow-right ms-1"></i>
+                                Lihat Detail
+                                 <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -217,8 +214,7 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{{ route('admin.pengumuman.index') }}" class="btn custom-btn">
-                                <span class="d-none d-sm-inline">Lihat Detail</span>
-                                <span class="d-sm-none">Detail</span>
+                                Lihat Detail
                                 <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
@@ -242,8 +238,7 @@
                         </div>
                         <div class="mt-auto">
                             <a href="{{ route('admin.siswa.index') }}" class="btn custom-btn">
-                                <span class="d-none d-sm-inline">Lihat Detail</span>
-                                <span class="d-sm-none">Detail</span>
+                                Lihat Detail
                                 <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
