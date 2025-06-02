@@ -506,11 +506,9 @@
         gap: 10px; /* Sesuaikan jarak antar item */
         padding: 10px; /* Sesuaikan padding */
     }
-
-   
 }
 
-/* ===== GURU CARD FLEX LAYOUT ===== */
+/* ===== GURU CARD FLEX LAYOUT WITH ENHANCED MOBILE SLIDER ===== */
 .guru-card-row {
     display: flex;
     flex-wrap: wrap;
@@ -520,6 +518,7 @@
     margin-left: -8px;
     margin-right: -8px;
 }
+
 .guru-card-col {
     flex: 0 1 360px;
     max-width: 400px;
@@ -529,15 +528,177 @@
     align-items: stretch;
     margin: 0 8px 32px 8px;
 }
+
+/* ===== MOBILE SLIDER ENHANCEMENT ===== */
 @media (max-width: 900px) {
     .guru-card-row {
-        gap: 18px 0;
+        display: flex;
+        flex-wrap: nowrap; /* Prevent wrapping for horizontal scroll */
+        gap: 20px;
+        justify-content: flex-start;
+        align-items: stretch;
+        margin: 0;
+        padding: 20px 0;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        /* Custom scrollbar styling */
+        scrollbar-width: thin;
+        scrollbar-color: #f3b11f #e0e0e0;
+        /* Add momentum scrolling for iOS */
+        -webkit-overflow-scrolling: touch;
+        /* Add padding for better visual */
+        padding-left: 20px;
+        padding-right: 20px;
     }
+    
+    /* Custom scrollbar for webkit browsers */
+    .guru-card-row::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .guru-card-row::-webkit-scrollbar-track {
+        background: rgba(224, 224, 224, 0.5);
+        border-radius: 10px;
+        margin: 0 20px;
+    }
+    
+    .guru-card-row::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, #052C65 60%, #f3b11f 100%);
+        border-radius: 10px;
+        transition: background 0.3s ease;
+    }
+    
+    .guru-card-row::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(90deg, #f3b11f 60%, #052C65 100%);
+    }
+    
     .guru-card-col {
-        flex: 1 1 90vw;
-        max-width: 98vw;
-        min-width: 0;
-        margin: 0 0 18px 0;
+        flex: 0 0 280px; /* Fixed width for consistent card sizing */
+        max-width: 280px;
+        min-width: 280px;
+        margin: 0 10px 0 0; /* Only right margin for spacing */
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+    }
+    
+    /* Ensure the last card has proper spacing */
+    .guru-card-col:last-child {
+        margin-right: 20px;
+    }
+    
+    /* Add visual indicators for scrollable content */
+    .guru-card-row::before {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+        pointer-events: none;
+        z-index: 1;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+    
+    .guru-card-row::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0.8), transparent);
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Add container for better control */
+    .guru-cards-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    /* Smooth slide animations */
+    .idcard-guru {
+        transform: scale(1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .idcard-guru:hover {
+        transform: scale(1.02);
+        box-shadow: 0 20px 60px #052c6588, 0 8px 32px #f3b11faa;
+    }
+    
+    /* Add snap scrolling for better UX */
+    .guru-card-row {
+        scroll-snap-type: x mandatory;
+    }
+    
+    .guru-card-col {
+        scroll-snap-align: start;
+    }
+}
+
+/* ===== MOBILE SLIDER HELPER TEXT ===== */
+@media (max-width: 900px) {
+    .guru-slider-hint {
+        text-align: center;
+        color: #666;
+        font-size: 0.9rem;
+        margin: 10px 0 20px 0;
+        opacity: 0.8;
+        font-style: italic;
+    }
+    
+    .guru-slider-hint::before {
+        content: "← ";
+        color: #f3b11f;
+        font-weight: bold;
+    }
+    
+    .guru-slider-hint::after {
+        content: " →";
+        color: #f3b11f;
+        font-weight: bold;
+    }
+}
+
+/* ===== ENHANCED MOBILE TOUCH INTERACTIONS ===== */
+@media (max-width: 900px) {
+    .guru-card-row {
+        /* Improve touch scrolling */
+        touch-action: pan-x;
+        /* Add subtle shadow for depth */
+        position: relative;
+    }
+    
+    /* Add loading animation for better perceived performance */
+    .guru-card-col {
+        animation: slideInFromRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        opacity: 0;
+    }
+    
+    .guru-card-col:nth-child(1) { animation-delay: 0.1s; }
+    .guru-card-col:nth-child(2) { animation-delay: 0.2s; }
+    .guru-card-col:nth-child(3) { animation-delay: 0.3s; }
+    .guru-card-col:nth-child(4) { animation-delay: 0.4s; }
+    .guru-card-col:nth-child(5) { animation-delay: 0.5s; }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
     }
 }
 
