@@ -2839,182 +2839,334 @@ form .btn-secondary {
     color: #fff !important; /* Mengubah warna teks tombol secondary menjadi putih di dalam form atau card body */
 }
 
+/* Container untuk cards */
 .fasilitas-card-row {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     justify-items: center;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Card utama */
 .fasilitas-business-card {
     perspective: 1000px;
     width: 100%;
     max-width: 320px;
     height: 400px;
+    border-radius: 20px;
+    transition: transform 0.5s;
 }
 
 .fasilitas-business-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.6s ease-in-out;
     transform-style: preserve-3d;
-}
-
-.fasilitas-business-card {
-  position: relative;
-  width: 100%;
-  height: 380px;
-  perspective: 1000px;
-  border-radius: 20px;
-  transition: transform 0.5s;
-}
-
-.fasilitas-business-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease;
+    transition: transform 0.8s ease;
 }
 
 .fasilitas-business-card:hover .fasilitas-business-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
+/* Sisi depan dan belakang */
 .fasilitas-business-front,
 .fasilitas-business-back {
-  position: absolute;
-  width: 355px;
-  height: 387px;
-  border-radius: 20px;
-  backface-visibility: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
+/* Sisi depan */
 .fasilitas-business-front {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to bottom right, #002B5B, #005B96);
-  padding: 1rem;
-  color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #002B5B, #005B96);
+    padding: 1.5rem;
+    color: #fff;
 }
 
 .fasilitas-business-imgbox {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-  position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    position: relative;
 }
 
 .fasilitas-business-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
 .fasilitas-business-card:hover .fasilitas-business-img {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .fasilitas-business-title-area {
-  text-align: center;
+    text-align: center;
+    width: 100%;
 }
 
 .fasilitas-business-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #F3B11F;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #F3B11F;
+    line-height: 1.3;
+    word-wrap: break-word;
 }
 
+/* Sisi belakang */
 .fasilitas-business-back {
-  transform: rotateY(180deg);
-  background: #ffffff;
-  padding: 1.5rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    transform: rotateY(180deg);
+    background: #ffffff;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.fasilitas-business-back-content {
+    height: 100%;
+    overflow-y: auto;
 }
 
 .fasilitas-business-back-title {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color:  linear-gradient(135deg, #0d47a1, #ff9800);
-  text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #002B5B;
+    text-align: center;
+    line-height: 1.3;
+    word-wrap: break-word;
 }
 
 .fasilitas-business-back-desc {
-  font-size: 0.95rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-  text-align: justify;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: justify;
+    line-height: 1.5;
 }
 
 .fasilitas-business-back-info {
-  font-size: 0.9rem;
-  color: #444;
-  margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
 }
 
 .fasilitas-business-back-info b {
-  color: #F3B11F;
-  font-weight: 700;
+    color: #F3B11F;
+    font-weight: 700;
 }
 
-.fasilitas-business-card:hover .fasilitas-business-back {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-
-
+/* Scrollbar styling */
 .fasilitas-business-back-content::-webkit-scrollbar {
-  width: 8px;
+    width: 6px;
 }
 
 .fasilitas-business-back-content::-webkit-scrollbar-thumb {
-  background: #F3B11F;
-  border-radius: 6px;
+    background: #F3B11F;
+    border-radius: 6px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 700px) {
-  .fasilitas-business-card {
-    width: 98vw;
-    height: 260px;
-    border-radius: 14px;
-  }
+.fasilitas-business-back-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
 
-  .fasilitas-business-imgbox {
-    width: 100px;
-    height: 100px;
-    top: 16px;
-    left: 10px;
-    border-radius: 10px 0 30px 0;
-  }
+/* RESPONSIVE BREAKPOINTS */
 
-  .fasilitas-business-title-area {
-    right: 12px;
-    bottom: 12px;
-    padding: 8px 14px;
-    border-radius: 10px 0 10px 10px;
-  }
+/* Tablet landscape dan desktop kecil */
+@media (max-width: 1024px) {
+    .fasilitas-card-row {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .fasilitas-business-card {
+        max-width: 300px;
+        height: 380px;
+    }
+}
 
-  .fasilitas-business-title {
-    font-size: 1rem;
-  }
+/* Tablet portrait */
+@media (max-width: 768px) {
+    .fasilitas-card-row {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .fasilitas-business-card {
+        max-width: 280px;
+        height: 360px;
+    }
+    
+    .fasilitas-business-front {
+        padding: 1.2rem;
+    }
+    
+    .fasilitas-business-back {
+        padding: 1.2rem;
+    }
+    
+    .fasilitas-business-imgbox {
+        height: 160px;
+    }
+    
+    .fasilitas-business-title {
+        font-size: 1.2rem;
+    }
+    
+    .fasilitas-business-back-title {
+        font-size: 1.1rem;
+    }
+    
+    .fasilitas-business-back-desc {
+        font-size: 0.9rem;
+    }
+}
 
-  .fasilitas-business-back-content {
-    max-height: 180px;
-    padding: 16px 10px 16px 0;
-  }
+/* Mobile landscape */
+@media (max-width: 640px) {
+    .fasilitas-card-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1rem 0.5rem;
+    }
+    
+    .fasilitas-business-card {
+        width: 100%;
+        max-width: 100%;
+        height: 340px;
+    }
+    
+    .fasilitas-business-front {
+        padding: 1rem;
+    }
+    
+    .fasilitas-business-back {
+        padding: 1rem;
+    }
+    
+    .fasilitas-business-imgbox {
+        height: 140px;
+    }
+}
+
+/* Mobile portrait */
+@media (max-width: 480px) {
+    .fasilitas-card-row {
+        padding: 1rem 0.25rem;
+        gap: 1rem;
+    }
+    
+    .fasilitas-business-card {
+        height: 320px;
+        border-radius: 15px;
+    }
+    
+    .fasilitas-business-front,
+    .fasilitas-business-back {
+        border-radius: 15px;
+    }
+    
+    .fasilitas-business-front {
+        padding: 0.8rem;
+    }
+    
+    .fasilitas-business-back {
+        padding: 0.8rem;
+    }
+    
+    .fasilitas-business-imgbox {
+        height: 120px;
+        border-radius: 12px;
+        margin-bottom: 0.8rem;
+    }
+    
+    .fasilitas-business-title {
+        font-size: 1.1rem;
+    }
+    
+    .fasilitas-business-back-title {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .fasilitas-business-back-desc {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .fasilitas-business-back-info {
+        font-size: 0.8rem;
+        margin-bottom: 0.4rem;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+    .fasilitas-business-card {
+        height: 300px;
+    }
+    
+    .fasilitas-business-imgbox {
+        height: 100px;
+    }
+    
+    .fasilitas-business-title {
+        font-size: 1rem;
+    }
+    
+    .fasilitas-business-back-title {
+        font-size: 0.95rem;
+    }
+    
+    .fasilitas-business-back-desc {
+        font-size: 0.8rem;
+    }
+    
+    .fasilitas-business-back-info {
+        font-size: 0.75rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .fasilitas-business-card {
+        /* Disable hover effect on touch devices, add tap functionality */
+        cursor: pointer;
+    }
+    
+    .fasilitas-business-card:active .fasilitas-business-inner {
+        transform: rotateY(180deg);
+    }
+    
+    /* Add a small indicator for touch interaction */
+    .fasilitas-business-front::after {
+        content: "Tap untuk detail";
+        position: absolute;
+        bottom: 10px;
+        right: 15px;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+    }
 }
