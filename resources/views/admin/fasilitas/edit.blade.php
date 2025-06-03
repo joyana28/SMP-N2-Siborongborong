@@ -193,7 +193,7 @@
                 viewMode: "years",
                 minViewMode: "years",
                 autoclose: true,
-                startDate: new Date(2000, 0, 1),
+                startDate: new Date(1960, 0, 1),
                 endDate: new Date()
             });
         });
