@@ -991,6 +991,8 @@ img {
   margin: 0 auto;
   padding: 0 20px;
   perspective: 1000px;
+  /* Pastikan setiap kolom memiliki width yang terbatas */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .blog-card {
@@ -1002,6 +1004,15 @@ img {
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   transform-style: preserve-3d;
+  /* Tambahkan max-width dan word-wrap untuk membatasi lebar card */
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  /* Paksa card untuk tidak melebihi container */
+  width: 100%;
+  min-width: 0;
+  /* Tambahan untuk memastikan content tidak overflow */
+  contain: layout;
 }
 
 /* Folded corner effect - top right */
@@ -1108,6 +1119,10 @@ img {
   z-index: 1;
   background: #fff;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  /* Tambahkan word-wrap dan text properties untuk content */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .blog-tag {
@@ -1121,6 +1136,9 @@ img {
   margin-bottom: 15px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateZ(20px);
+  /* Pastikan tag juga tidak overflow */
+  max-width: 100%;
+  word-wrap: break-word;
 }
 
 .blog-card:hover .blog-tag {
@@ -1137,11 +1155,43 @@ img {
   font-weight: 700;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateZ(10px);
+  /* Perbaikan untuk judul - word wrapping dan line height */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  max-width: 100%;
+  /* Tambahan untuk memaksa wrapping pada judul */
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  display: block;
+  width: 100%;
 }
 
 .blog-card:hover .blog-content h3 {
   color: #052C65;
   transform: translateZ(25px);
+}
+
+/* Tambahkan styling khusus untuk paragraf konten */
+.blog-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 15px;
+  /* Text alignment dan word wrapping */
+  text-align: justify;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  max-width: 100%;
+  /* Paksa text untuk wrap dengan width yang kecil */
+  width: 100%;
+  display: block;
+  /* Tambahan untuk memaksa wrapping */
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .blog-meta {
@@ -1152,6 +1202,9 @@ img {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   transform: translateZ(5px);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Flexbox wrapping untuk meta information */
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .blog-card:hover .blog-meta {
@@ -1164,6 +1217,16 @@ img {
   margin-right: 20px;
   color: #666;
   font-size: 14px;
+  /* Pastikan meta item tidak overflow */
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.blog-meta span {
+  /* Styling khusus untuk span dalam meta */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .blog-meta-item i {
@@ -1171,6 +1234,7 @@ img {
   margin-right: 8px;
   font-size: 16px;
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .blog-card:hover .blog-meta-item i {
@@ -1188,11 +1252,16 @@ img {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateZ(15px);
   opacity: 0.9;
+  text-decoration: none;
+  /* Prevent text overflow in read more link */
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .read-more i {
   margin-left: 8px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
 }
 
 .blog-card:hover .read-more {
@@ -1209,6 +1278,19 @@ img {
 @media screen and (max-width: 992px) {
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  .blog-content {
+    padding: 20px;
+  }
+  
+  .blog-content h3 {
+    font-size: 18px;
+  }
+  
+  .blog-content p {
+    font-size: 13px;
   }
 }
 
@@ -1216,10 +1298,92 @@ img {
   .blog-grid {
     grid-template-columns: 1fr;
     max-width: 500px;
+    gap: 20px;
   }
   
   .blog-card:hover {
     transform: translateY(-10px) rotateX(3deg) rotateY(-3deg);
+  }
+  
+  .blog-content {
+    padding: 18px;
+  }
+  
+  .blog-content h3 {
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  
+  .blog-content p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  
+  .blog-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .blog-meta-item {
+    margin-right: 0;
+  }
+}
+
+/* Tambahan untuk memastikan tidak ada overflow horizontal */
+.blog-section * {
+  box-sizing: border-box;
+}
+
+/* Utility class untuk text wrapping yang lebih baik */
+.text-wrap {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+}
+
+/* CSS tambahan untuk mengatasi masalah text yang tidak wrap */
+.blog-card * {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  max-width: 100% !important;
+}
+
+/* Styling khusus untuk text yang sangat panjang */
+.blog-content p,
+.blog-content h3 {
+  /* Paksa text untuk wrap setiap 5-6 kata */
+  max-width: 250px !important;
+  word-spacing: normal;
+  letter-spacing: normal;
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+  hyphens: auto;
+}
+
+/* Media query untuk memastikan responsive */
+@media screen and (max-width: 1200px) {
+  .blog-content p,
+  .blog-content h3 {
+    max-width: 200px !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .blog-content p,
+  .blog-content h3 {
+    max-width: 180px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .blog-content p,
+  .blog-content h3 {
+    max-width: 300px !important;
   }
 }
 
