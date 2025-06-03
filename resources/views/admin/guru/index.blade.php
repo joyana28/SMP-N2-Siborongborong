@@ -72,7 +72,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($guru as $index => $item)
+                @forelse ($guru as $index => $item)
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>
@@ -96,7 +96,11 @@
                         </form>
                     </td>
                 </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="9" class="text-center">Tidak ada data guru.</td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

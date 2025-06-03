@@ -27,7 +27,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($kepalaSekolah as $index => $ks)
+            @forelse($kepalaSekolah as $index => $ks)
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $ks->nama }}</td>
@@ -50,7 +50,11 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                    <tr>
+                        <td colspan="9" class="text-center">Tidak ada data kepala sekolah.</td>
+                    </tr>
+                @endforelse
         </tbody>
     </table>
 </div>

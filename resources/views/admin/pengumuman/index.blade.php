@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($pengumuman as $item)
+            @forelse($pengumuman as $item)
                 <tr>
                     <td>{{ $item->judul }}</td>
                     <td style="text-align: justify;">{{ strip_tags($item->isi) }}</td>
@@ -53,7 +53,11 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+                @empty
+                    <tr>
+                        <td colspan="9" class="text-center">Tidak ada data pengumuman.</td>
+                    </tr>
+                @endforelse
         </tbody>
     </table>
 

@@ -21,7 +21,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($formulir as $item)
+             @forelse ($formulir as $item)
                 <tr>
                     <td style="text-align: justify;">{{ $item->deskripsi }}</td>
                     <td>
@@ -40,12 +40,16 @@
                         <form action="{{ route('admin.formulirpendaftaran.destroy', $item->id_pendaftaran) }}" method="POST" class="form-hapus w-100">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger">Hapus</button>
+                            <button class="btn btn-sm btn-danger mb-2 w-100">Hapus</button>
                         </form>
                         
                     </td>
                 </tr>
-            @endforeach
+                 @empty
+                    <tr>
+                        <td colspan="9" class="text-center">Tidak ada data formulir pendaftaran.</td>
+                    </tr>
+                @endforelse
         </tbody>
     </table>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

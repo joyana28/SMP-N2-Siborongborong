@@ -51,7 +51,7 @@
                             <form action="{{ route('admin.fasilitas.destroy', $item->id_fasilitas) }}" method="POST" class="form-hapus w-100">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm">
+                                <button type="submit" class="btn btn-sm btn-danger mb-2 w-100">
                                      Hapus
                                 </button>
                             </form>
@@ -59,7 +59,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="9" class="text-center">Belum ada fasilitas.</td>
+                        <td colspan="9" class="text-center">Tidak ada data fasilitas.</td>
                     </tr>
                 @endforelse
             </tbody>

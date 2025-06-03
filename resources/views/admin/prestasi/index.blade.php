@@ -41,12 +41,12 @@
                     <form action="{{ route('admin.prestasi.destroy', $item->id_prestasi) }}" method="POST" class="form-hapus w-100">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger btn-sm">Hapus</button>
+                        <button class="btn btn-sm btn-danger mb-2 w-100">Hapus</button>
                     </form>
                 </td>
             </tr>
         @empty
-            <tr><td colspan="7" class="text-center">Belum ada data prestasi.</td></tr>
+            <tr><td colspan="7" class="text-center">Tidak ada data prestasi.</td></tr>
         @endforelse
     </tbody>
 </table>

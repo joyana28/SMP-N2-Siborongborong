@@ -14,7 +14,9 @@
     @endif
 
     <!-- Tombol Tambah (Warna Biru Terang) -->
-    <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">Tambah Ekstrakurikuler</a>
+    <a href="{{ route('admin.ekstrakurikuler.create') }}" class="btn mb-3" style="background-color: #001f3f; color: #E8AA42;">
+        Tambah Ekstrakurikuler
+    </a>
 
     <table class="table table-bordered">
         <thead>
@@ -29,30 +31,35 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($ekstrakurikuler as $ekstra)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $ekstra->nama }}</td>
-                <td style="text-align: justify;">{{ $ekstra->deskripsi }}</td>
-                <td>{{ $ekstra->pembina }}</td>
-                <td>{{ $ekstra->jadwal }}</td>
-                        <td>
+            @forelse($ekstrakurikuler as $ekstra)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $ekstra->nama }}</td>
+                    <td style="text-align: justify;">{{ $ekstra->deskripsi }}</td>
+                    <td>{{ $ekstra->pembina }}</td>
+                    <td>{{ $ekstra->jadwal }}</td>
+                    <td>
                         @if($ekstra->foto)
                             <img src="{{ asset('ekstrakurikuler/' . $ekstra->foto) }}" width="100" alt="Foto ekstrakurikuler">
                         @else
-                        -
+                            -
                         @endif
-                </td>
-                <td>
-                    <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm mb-2 w-100">Edit</a>
-                    <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="form-hapus w-100">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
+                    </td>
+                    <td>
+                        <a href="{{ route('admin.ekstrakurikuler.edit', $ekstra->id_ekstrakurikuler) }}" class="btn btn-warning btn-sm mb-2 w-100">Edit</a>
+                        <form action="{{ route('admin.ekstrakurikuler.destroy', $ekstra->id_ekstrakurikuler) }}" method="POST" class="form-hapus w-100">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger mb-2 w-100">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="7" class="text-center">Tidak ada data ekstrakurikuler</td>
+                </tr>
+                
+            @endforelse
         </tbody>
     </table>
 
