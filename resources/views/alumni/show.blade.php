@@ -33,7 +33,36 @@
     </div>
   </div>
 </div>
+<div class="card-paragraf" data-aos="fade-up">
+  <p>
+    Dokumentasi foto-foto alumni ini bukan sekadar kumpulan gambar, melainkan kisah perjalanan hidup yang penuh perjuangan dan inspirasi. Dari potret masa putih biru yang sederhana hingga momen-momen keberhasilan mereka di dunia nyata, semuanya menjadi bukti bahwa pendidikan yang bermakna dapat mengubah masa depan seseorang. Melalui halaman ini, kami ingin menghidupkan kembali semangat kebersamaan, persaudaraan, dan kebanggaan sebagai bagian dari keluarga besar SMP Negeri 2 Siborongborong.
+  </p>
+  <p>
+    Harapan kami, halaman alumni ini dapat menjadi sumber inspirasi bagi siswa-siswi saat ini untuk terus bermimpi, belajar dengan tekun, dan mengejar cita-cita mereka. Kepada para alumni, kami mengundang Anda untuk terus terlibat, berbagi pengalaman, dan menjadi bagian dari perubahan positif yang ingin kami bangun bersama. Karena setiap langkah yang kalian tempuh adalah bukti bahwa sekolah ini telah menjadi tempat bertumbuh yang sesungguhnya.
+  </p>
+</div>
 
+<style>
+  .card-paragraf {
+  max-width: 1000px;
+  margin: 40px auto 10px auto; /* dari 40px auto jadi 40px auto 10px auto */
+  padding: 25px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.8;
+  color: #333;
+  font-size: 18px;
+}
+
+.alumni-detail-section {
+  margin-top: 0 !important;  /* menghilangkan jarak atas tambahan jika ada */
+  padding-top: 0 !important; /* amankan padding jika terlalu besar */
+}
+
+
+</style>
 <!-- Alumni Detail Section -->
 <section class="alumni-detail-section">
     <div class="container py-5">

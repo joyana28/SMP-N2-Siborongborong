@@ -756,6 +756,7 @@
   transition: transform 0.85s cubic-bezier(.68,-0.55,.27,1.55), box-shadow 0.4s;
   transform-style: preserve-3d;
   will-change: transform;
+  
 }
 .alumni-swap-card:hover .alumni-swap-card-inner,
 .alumni-swap-card:focus-within .alumni-swap-card-inner {
