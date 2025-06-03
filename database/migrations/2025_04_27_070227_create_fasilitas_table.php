@@ -9,7 +9,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('fasilitas', function (Blueprint $table) {
-            $table->id('id_fasilitas');
+            $table->id('id_fasilitas'); // bigint unsigned + auto_increment + primary key
             $table->foreignId('id_admin')
                   ->constrained('admin', 'id_admin')
                   ->onDelete('cascade')
@@ -18,8 +18,8 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->string('foto', 100);
             $table->string('tahun', 4);
-            $table->integer('perhatian_teknis', 100)->nullable();
-            $table->integer('penambahan', 100)->nullable();
+            $table->integer('perhatian_teknis')->nullable(); // tanpa parameter kedua
+            $table->integer('penambahan')->nullable(); // tanpa parameter kedua
             $table->timestamps();
         });
     }
