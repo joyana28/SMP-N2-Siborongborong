@@ -113,17 +113,12 @@ body, html {
 /* Input fields */
 .input-field {
     position: relative;
-    margin-bottom: 25px;
-}
-
-.input-field {
-    position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 25px; /* Tetap pertahankan jarak antar input field */
 }
 
 .input-field input {
     width: 100%;
-    padding: 16px 12px 8px 12px; /* Tambah padding atas agar label naik tetap dalam kotak */
+    padding: 16px 12px 8px 12px; /* Sudah cukup baik */
     border: 1px solid rgba(17, 17, 94, 0.2);
     border-radius: 10px;
     outline: none;
@@ -136,26 +131,49 @@ body, html {
 .input-field label {
     position: absolute;
     left: 14px;
-    top: 16px;
+    top: 16px; /* Awalnya, posisi label di tengah vertikal input */
     font-size: 1em;
     pointer-events: none;
     transition: 0.3s ease;
-    padding: 0 5px;
+    padding: 0 5px; /* Padding ini penting untuk background label */
     color: #333;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95); /* Background untuk menutupi border input di bawahnya */
+    border-radius: 3px; /* Tambahkan sedikit border-radius agar lebih halus saat naik */
 }
 
 /* Saat input fokus atau sudah diisi, label naik */
 .input-field input:focus + label,
 .input-field input:not(:placeholder-shown):valid + label {
-    top: -8px;
-    left: 10px;
-    font-size: 0.8em;
-    background: rgba(255, 255, 255, 0.95);
-    color: #0d47a1;
+    top: -10px; /* Sesuaikan posisi Y agar label naik lebih tinggi sedikit dan tidak terpotong */
+    left: 10px; /* Sesuaikan posisi X jika perlu, agar ada sedikit jarak dari kiri */
+    font-size: 0.8em; /* Ukuran font lebih kecil saat naik */
+    background: #fff; /* Pastikan background tetap solid putih atau sesuai warna form */
+    color: #0d47a1; /* Warna teks label saat naik */
+    /* Tambahkan box-shadow tipis untuk ilusi "terangkat" atau border */
+    box-shadow: 0 0 5px rgba(13, 71, 161, 0.2);
+    padding: 2px 7px; /* Sesuaikan padding agar background label sedikit lebih besar dari teks saat naik */
+    border-radius: 5px; /* Sesuaikan border-radius agar cocok dengan input field */
 }
 
+/* Penyesuaian tambahan untuk placeholder jika ada */
+.input-field input::placeholder {
+    color: transparent; /* Sembunyikan placeholder karena label akan naik */
+}
 
+/* Pastikan elemen .input-field memiliki lebar yang benar */
+.form-container {
+    /* ... (kode yang sudah ada) ... */
+    display: flex; /* Tambahkan ini jika belum ada untuk flexbox */
+    flex-direction: column; /* Atur item dalam kolom */
+    gap: 20px; /* Ini bisa menggantikan margin-bottom di input-field untuk jarak yang lebih konsisten */
+}
+
+/* Jika menggunakan gap pada form-container, Anda bisa hapus margin-bottom dari input-field */
+
+.input-field {
+    position: relative;
+     margin-bottom: 25px; 
+}
 /* Checkbox */
 .checkbox-container {
     display: flex;
