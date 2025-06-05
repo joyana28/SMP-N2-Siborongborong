@@ -34,7 +34,7 @@ class AdminAuthController extends Controller
 
             return redirect()->route('admin.dashboard');
         } else {
-            return redirect()->back()->withErrors(['login' => 'Data login tidak sesuai.']);
+                return redirect()->back()->with('error', 'Data login tidak sesuai.');
         }
     }
 

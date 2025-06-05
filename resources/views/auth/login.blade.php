@@ -9,11 +9,13 @@
   <link rel="icon" type="images/x-icon" href="/images/logo.png" />
   <style>
     .error-text {
-      font-size: 14px;
-      color: #FFB100; /* kuning oranye */
-      margin-top: 5px;
-      margin-left: 5px;
-    }
+  font-size: 14px;
+  color: red;
+  background-color: #ffe6e6;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
   </style>
 </head>
 <body>
@@ -32,6 +34,11 @@
    <!-- Kanan: Form Login -->
     <div class="right-panel">
       <div class="form-container">
+        @if (session('error'))
+            <div class="error-text">
+            <i class="fas fa-exclamation-triangle"></i> {{ session('error') }}
+            </div>
+          @endif
         <form id="loginForm" method="POST" action="{{ route('admin.login.submit') }}">
           @csrf
 
