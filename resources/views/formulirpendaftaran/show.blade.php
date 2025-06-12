@@ -50,8 +50,7 @@
             <div class="formulir-card-desc">
                 {{ $formulir->deskripsi }}
 
-                <!-- Tambahan teks agar jelas -->
-                <p><em>Silakan unduh, cetak, dan isi formulir ini dengan lengkap. Kemudian serahkan langsung ke panitia pendaftaran di sekolah sesuai jadwal yang berlaku.</em></p>
+               
             </div>
             <div class="formulir-card-dates">
                 <span class="formulir-card-date"><b>Terbit:</b> {{ \Carbon\Carbon::parse($formulir->tanggal_terbit)->format('d M Y') }}</span>
@@ -83,7 +82,18 @@
         <div class="pendaftaran-prosedur-content">
             <div class="pendaftaran-prosedur-title">Serahkan Formulir ke Sekolah</div>
             <div class="pendaftaran-prosedur-desc">
-                Setelah formulir pendaftaran diunduh dan diisi lengkap, silakan serahkan langsung ke panitia pendaftaran di sekolah sesuai jadwal yang telah ditentukan.
+                  <p><em>Silahkan ikuti langkah langkah dan tahapan berikut :
+                </em></p>
+
+                <p>
+                    <ul>
+                        <li>Unduh Formulir:</li>
+                        Klik tombol "Unduh formulir". File biasanya dalam format PDF. Pastikan perangkat Anda mendukung pembukaan file tersebut.
+                        <li>Print Unduhan:</li>
+                        Sebelum mencetak, pastikan semua bagian formulir terbaca dengan jelas. Jika ada kolom yang tidak terlihat, pastikan ukuran kertas di pengaturan printer sesuai.Setelah itu, silahkan print unduhan formulir sesuai dengan pengaturan yang telah disesuaikan.
+                        <li>Menyerahkan Formulir ke Sekolah:</li>
+                        Bawa formulir dan kemnudian serahkan ke bagian administrasi sekolah pada jadwal yang berlaku
+</p>
             </div>
         </div>
     </div>
